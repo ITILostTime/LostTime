@@ -1,11 +1,12 @@
 # LostTime
-Projet Informatique 2016sS4
+RPG Game 
 ## Objectif
-Réalisation d'un jeu vidéo RPG steampunk sur smartphone avec Unity en C#
+Realization of a video game RPG steampunk on smartphone with Unity in C#
 
 ## Membres
-Guillaume Elisabeth, chef de projet
-Vivian Amdidouche
+Guillaume Elisabeth, Project Manager
+Julie Lacognata
+Yacine Chergui
 Pierre Koré
 Quentin Vanbutsele
 
