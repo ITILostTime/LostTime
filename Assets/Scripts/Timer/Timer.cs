@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour {
+
     public Light sun;
     private static float WAKE_UP_SUN = 0.22f;
     public float secondsInFullDay = 120f;
@@ -20,6 +21,7 @@ public class Timer : MonoBehaviour {
         get { return currentTimeOfDay; }
         set { currentTimeOfDay = value; }
     }
+
     void Start () {
         sun = GameObject.Find("Sun").GetComponent<Light>();
         sunInitialIntensity = sun.intensity;
@@ -31,7 +33,6 @@ public class Timer : MonoBehaviour {
         level = "LostTimeGearDistrict";
         getSwapMalus();
     }
-
 
     void Update () {
         getSwapMalus();
@@ -46,7 +47,6 @@ public class Timer : MonoBehaviour {
             GameObject.Find("Sun").GetComponent<SoundController>().GetSongOnOff = false;
         }
 	}
-
 
     void Chrono()
     {
@@ -67,7 +67,6 @@ public class Timer : MonoBehaviour {
 
     public void updateSun()
     {
-
         sun.transform.localRotation = Quaternion.Euler((currentTimeOfDay * 360f) - 90, 170, 0);
         float intensityMultiplier = 1;
 

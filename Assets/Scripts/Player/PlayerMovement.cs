@@ -8,9 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public VirtualLeftJoystick leftJoystick;
     public CharaAnimCtrl animCtrl;
     public float speed;
-
-    private Rigidbody playerRigidbody;   
-        
+    private Rigidbody playerRigidbody;           
     private NavMeshObstacle playerObstacle;
 
     // Use this for initialization
@@ -26,11 +24,8 @@ public class PlayerMovement : MonoBehaviour
         animCtrl = GetComponent<CharaAnimCtrl>();
         playerObstacle = GetComponent<NavMeshObstacle>();
 
-        
         setAstridPosition();
         
-
-
         SetPlayerObstacle();
     }
 
@@ -58,20 +53,30 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //send to the animator
+        //Send to the animator
         animCtrl.InputH = leftJoystick.LeftHorizontal();
         animCtrl.InputV = leftJoystick.LeftVertical();
    
         animCtrl.WalkMode = WalkMode.running;
+
         //Movement
         Vector3 move = new Vector3();
         move.z = leftJoystick.LeftVertical() * Time.deltaTime * speed;
         transform.Translate(move, Space.Self);
 
+        //Return Astrid when she move backward
+        if(leftJoystick.LeftVertical() < 0)
+        {
+            PlayerMoveBackward();
+        }
+
+        //Debug.Log(move.z);
+
         //Rotation   
         PlayerRotation(leftJoystick.LeftHorizontal());
-        //Debug.Log(string.Format("H: {0}, V : {1}, LJS : {2}", LeftJoystick.LeftHorizontal(), LeftJoystick.LeftVertical(), LeftJoystick.IsLeftJoystickUsed));
+        //Debug.Log(string.Format("H: {0}, V : {1}, LJS : {2}", leftJoystick.LeftHorizontal(), leftJoystick.LeftVertical(), leftJoystick.IsLeftJoystickUsed));
     }
+
     //initialize and sets property of the NavMeshObstacle
     private void SetPlayerObstacle()
     {
@@ -81,23 +86,18 @@ public class PlayerMovement : MonoBehaviour
         playerObstacle.carvingTimeToStationary = 0.2f;
         playerObstacle.carveOnlyStationary = true;
     }
+
     private void PlayerRotation(float xAxis)
     {
         transform.Rotate(Vector3.up, Time.deltaTime * xAxis * 100);       
     }
-    private void OnCollisionEnter(Collision collision)
+
+    /// <summary>
+    /// Rotate Astrid when we touch down 
+    /// </summary>
+    private void PlayerMoveBackward()
     {
-
-    }
-
-    private void OnCollisionStay(Collision collision)
-    {
-
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-
+        transform.Rotate(Vector3.down, Time.deltaTime * speed * 180);
     }
 }
 

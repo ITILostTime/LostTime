@@ -37,10 +37,7 @@ public class SoundController : MonoBehaviour {
         {
             _isSongPlaying = false;
         }
-
-
     }
-
 
     public void PlaySong(AudioClip SoundTrackName, float SoundVolume, bool IsSongLooping)
     {
