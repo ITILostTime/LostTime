@@ -12,8 +12,6 @@ public class CameraBehavior : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        //cameraPosition = camera.transform;
-        //targetPlayer = target.transform;
         cameraPosition = GameObject.Find("CameraPosition").transform;
         targetPlayer = GameObject.Find("CameraTarget").transform;
     }

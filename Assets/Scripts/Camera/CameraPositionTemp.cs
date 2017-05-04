@@ -38,7 +38,9 @@ public class CameraPositionTemp : MonoBehaviour {
             && InputH == 0
             && transform.localPosition != initial) transform.localPosition = Vector3.MoveTowards(transform.localPosition,initial, resetDelta);
     }
+
     public float InputH { get { return inputH; } set { inputH = Mathf.Clamp(value, -1.0f, 1.0f); } }
+
     public float InputV { get { return inputV; } set { inputV = Mathf.Clamp(value, -1.0f, 1.0f); } }
 
 }

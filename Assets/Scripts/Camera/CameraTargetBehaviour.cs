@@ -17,7 +17,6 @@ public class CameraTargetBehaviour : MonoBehaviour
     void Start()
     {
         initialPos = transform.localPosition;
-        //initialPos.localPosition = transform.localPosition;
     }
 
     // Update is called once per frame
@@ -32,16 +31,20 @@ public class CameraTargetBehaviour : MonoBehaviour
         {
             transform.Translate(Vector3.up * (4 * Time.deltaTime));
         }
+
         if (verticalInput < -0.5 && transform.localPosition.y >= 1.5)
         {
             transform.Translate(Vector3.down * (4 * Time.deltaTime));
         }
+
         //X Axis
         astridPos = GameObject.Find("AstridPlayer").transform.position;
+
         if (horizontalInput > 0.5)
         {
             transform.RotateAround(astridPos, Vector3.up, 30 * Time.deltaTime);
         }
+
         if (horizontalInput < -0.5)
         {
             transform.RotateAround(astridPos, Vector3.down, 30 * Time.deltaTime);

@@ -87,9 +87,13 @@ public class PlayerMovement : MonoBehaviour
         playerObstacle.carveOnlyStationary = true;
     }
 
+    /// <summary>
+    /// Rotation when we touch right or left on the x Axis
+    /// </summary>
+    /// <param name="xAxis"></param>
     private void PlayerRotation(float xAxis)
     {
-        transform.Rotate(Vector3.up, Time.deltaTime * xAxis * 100);       
+        transform.Rotate(Vector3.up, Time.deltaTime * xAxis * 120);       
     }
 
     /// <summary>
