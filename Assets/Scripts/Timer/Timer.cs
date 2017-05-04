@@ -70,13 +70,6 @@ public class Timer : MonoBehaviour {
         sun.transform.localRotation = Quaternion.Euler((currentTimeOfDay * 360f) - 90, 170, 0);
         float intensityMultiplier = 1;
 
-        //if (currentTimeOfDay <= 0.23f || currentTimeOfDay >= 0.75)
-        //    intensityMultiplier = 0f;
-        //else if (currentTimeOfDay <= 0.25f)
-        //    intensityMultiplier = Mathf.Clamp01((currentTimeOfDay - 23f) * (1 / 0.02f));
-        //else if (currentTimeOfDay >= 0.83)
-        //    intensityMultiplier = Mathf.Clamp01(1 - (currentTimeOfDay - 83f) * (1 / 0.02f));
-
         sun.intensity = sunInitialIntensity * intensityMultiplier;
     }
 
