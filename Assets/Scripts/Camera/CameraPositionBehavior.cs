@@ -30,6 +30,8 @@ public class CameraPositionBehavior : MonoBehaviour
         }
 
         //Reset position on moving
+        // Try something to test Unity Cloud Build
+        // And to do this I had 2 lines of comment
         if (leftJoystick.LeftHorizontal() != 0
             || leftJoystick.LeftVertical() != 0)
         {
