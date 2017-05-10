@@ -532,13 +532,13 @@ PlayerSettings:
   vrEditorSettings: {}
   cloudServicesEnabled:
     Analytics: 0
-    Build: 0
+    Build: 1
     Collab: 0
     ErrorHub: 0
     Game_Performance: 0
     Hub: 0
     Purchasing: 0
-    UNet: 0
+    UNet: 1
     Unity_Ads: 0
   cloudProjectId: cb609ecf-ae1d-4541-ab38-b04907034f80
   projectName: LostTimeGame
