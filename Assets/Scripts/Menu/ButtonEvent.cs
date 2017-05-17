@@ -28,19 +28,20 @@ public class ButtonEvent : MonoBehaviour
     public Sprite _yellow;
 
     private bool _isLoadPanelActivated;
-    private void Start()
+
+    /// <summary>
+    /// ///////////
+    /// </summary>
+    /// 
+
+    private GameObject _menuCanvas;
+    private GameObject _userInterfaceObject;
+    private GameObject _gameName;
+
+
+    /*private void Start()
     {
-
-        GameObject.Find("cloudLayer4").GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width * 2, Screen.height * 1.5f);
-        GameObject.Find("cloudLayer3").GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width * 2, Screen.height * 1.5f);
-        GameObject.Find("cloudLayer3.5").GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width * 2, Screen.height * 1.5f);
-        GameObject.Find("cloudLayer2").GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width * 2, Screen.height * 1.5f);
-        GameObject.Find("cloudLayer1").GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width * 2, Screen.height * 1.5f);
-
-        GameObject.Find("GameTittle").GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width / 3, Screen.height / 3);
-        GameObject.Find("GameTittle").GetComponent<RectTransform>().anchoredPosition = new Vector2((-Screen.width / 2) + GameObject.Find("GameTittle").GetComponent<RectTransform>().rect.width / 2.5f,
-            Screen.height / 4);
-
+    
 
         GameObject.Find("ButtonNewGame").transform.SetParent(GameObject.Find("GameTittle").transform, true);
         GameObject.Find("ButtonNewGame").GetComponent<RectTransform>().sizeDelta = new Vector2(GameObject.Find("GameTittle").GetComponent<RectTransform>().rect.width,
@@ -63,18 +64,72 @@ public class ButtonEvent : MonoBehaviour
         //GameObject.Find("ButtonConfigureText").GetComponent<Text>().fontSize = ((int)(GameObject.Find("ButtonConfigure").GetComponent<RectTransform>().rect.height - 10));
 
 
-        GameObject.Find("BackGroundMenu").transform.SetParent(GameObject.Find("MenuGameUserInterface").transform, true);
-        GameObject.Find("BackGroundMenu").GetComponent<RectTransform>().sizeDelta = GameObject.Find("MenuGameUserInterface").GetComponent<RectTransform>().sizeDelta;
-        GameObject.Find("BackGroundMenu").GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-
-
-        GameObject.Find("BackGroundMenuGame").transform.SetParent(GameObject.Find("BackGroundMenu").transform, true);
-        GameObject.Find("BackGroundMenuGame").GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.height, Screen.height);
-        GameObject.Find("BackGroundMenuGame").GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-
         GameObject.Find("EventSystem").AddComponent<SoundController>();
         GameObject.Find("EventSystem").GetComponent<SoundController>().PlaySong(((AudioClip)(Resources.Load("Sound/Cloud Atlas - 02 - Cloud Atlas Opening Title"))), 2f, true);
         GameObject.Find("EventSystem").GetComponent<SoundController>().GetSongOnOff = true;
+
+        if (PlayerPrefs.HasKey("CurrentLanguagesUsed") == false)
+        {
+            SceneManager.LoadScene("LostTimeGameLanguagesFirstChoice");
+        }
+    }*/
+
+    private void Start()
+    {
+        GameObject CanvasMenu = new GameObject("MenuCanvas");
+        Canvas MenuCanvas = CanvasMenu.AddComponent<Canvas>();
+        MenuCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        MenuCanvas.pixelPerfect = true;
+
+        CanvasMenu.AddComponent<AnimationUserInterfaceController>();
+        CanvasMenu.AddComponent<CreateUserInterfaceObject>();
+        CanvasMenu.AddComponent<TextMonitoring>();
+        CanvasMenu.AddComponent<SaveController>();
+
+        _menuCanvas = GameObject.Find("MenuCanvas");
+
+        GameObject PrefabCloudLayer = (GameObject)Instantiate(Resources.Load("CloudLayer/CloudLayer"));
+        PrefabCloudLayer.transform.SetParent(_menuCanvas.transform, true);
+        PrefabCloudLayer.GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width, Screen.height);
+        PrefabCloudLayer.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+
+        _menuCanvas.GetComponent<CreateUserInterfaceObject>().CreateEmptyGameObject("UserInterfaceObject", _menuCanvas, true, Screen.width, Screen.height, 0, 0);
+
+        _userInterfaceObject = GameObject.Find("UserInterfaceObject");
+
+        GameObject GameLogo = (GameObject)Instantiate(Resources.Load("GameLogo&Title/GameLogo"));
+        GameLogo.transform.SetParent(_userInterfaceObject.transform, true);
+        GameLogo.GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.height, Screen.height);
+        GameLogo.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+
+        GameObject GameName = (GameObject)Instantiate(Resources.Load("GameLogo&Title/GameName"));
+        GameName.transform.SetParent(_userInterfaceObject.transform, true);
+        GameName.GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width / 3, Screen.height / 3);
+        GameName.GetComponent<RectTransform>().anchoredPosition = new Vector2(((-Screen.width / 2) + GameObject.Find("GameName(Clone)").GetComponent<RectTransform>().rect.width / 2), Screen.height / 3);
+
+        _gameName = GameObject.Find("GameName(Clone)");
+
+        // essayer de créer un buttonWithImage et non un buttonWithText
+        _menuCanvas.GetComponent<CreateUserInterfaceObject>().CreateGameObjectButtonWithText("NewGameButton", _userInterfaceObject, true, _gameName.GetComponent<RectTransform>().rect.width,
+            _gameName.GetComponent<RectTransform>().rect.height / 4, _userInterfaceObject.GetComponent<RectTransform>().rect.width / -2 + _gameName.GetComponent<RectTransform>().rect.width / 2, 
+            _gameName.GetComponent<RectTransform>().rect.height / 2, "", _menuCanvas.GetComponent<TextMonitoring>().GetArialTextFont, 
+            TextAnchor.MiddleCenter, FontStyle.Bold, ((int)(Screen.height / 20)), Color.black);
+        _menuCanvas.GetComponent<TextMonitoring>().setTextInCorrectLanguages("NewGameButton", "New Game", "Nouvelle Partie");
+        GameObject.Find("NewGameButton").AddComponent<Button>();
+        GameObject.Find("NewGameButton").GetComponent<Button>().onClick.AddListener(() => NewGame());
+
+
+        _menuCanvas.GetComponent<CreateUserInterfaceObject>().CreateGameObjectButtonWithText("LoadGameButton", _userInterfaceObject, true, _gameName.GetComponent<RectTransform>().rect.width,
+            _gameName.GetComponent<RectTransform>().rect.height / 4, _userInterfaceObject.GetComponent<RectTransform>().rect.width / -2 + _gameName.GetComponent<RectTransform>().rect.width / 2, 
+            0, "", _menuCanvas.GetComponent<TextMonitoring>().GetArialTextFont,
+            TextAnchor.MiddleCenter, FontStyle.Bold, ((int)(Screen.height / 20)), Color.black);
+        _menuCanvas.GetComponent<TextMonitoring>().setTextInCorrectLanguages("LoadGameButton", "Load Game", "Charger une partie");
+
+        _menuCanvas.GetComponent<CreateUserInterfaceObject>().CreateGameObjectButtonWithText("ConfigureGameButton", _userInterfaceObject, true, _gameName.GetComponent<RectTransform>().rect.width,
+            _gameName.GetComponent<RectTransform>().rect.height / 4, _userInterfaceObject.GetComponent<RectTransform>().rect.width / -2 + _gameName.GetComponent<RectTransform>().rect.width / 2, 
+            _gameName.GetComponent<RectTransform>().rect.height / -2, "", _menuCanvas.GetComponent<TextMonitoring>().GetArialTextFont,
+            TextAnchor.MiddleCenter, FontStyle.Bold, ((int)(Screen.height / 20)), Color.black);
+        _menuCanvas.GetComponent<TextMonitoring>().setTextInCorrectLanguages("ConfigureGameButton", "Configure Game", "Configurer le jeu");
 
         if (PlayerPrefs.HasKey("CurrentLanguagesUsed") == false)
         {
@@ -181,7 +236,7 @@ public class ButtonEvent : MonoBehaviour
         }
     }
 
-    public void NewGame()
+    private void NewGame()
     {
         checkOpenPanel();
         _isLoadPanelActivated = false;

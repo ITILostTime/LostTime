@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TextMonitoring : MonoBehaviour {
 
-    public Font _ArialTextFont;
+    public Font _ArialTextFont = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
 
 
     public Font GetArialTextFont
