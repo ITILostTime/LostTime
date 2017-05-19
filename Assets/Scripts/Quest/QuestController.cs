@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Assets.Scripts.Quest
 {
-    class QuestController : IQuest
+    public class QuestController : IQuest
     {
         /// <summary>
         /// The informations of Quest
@@ -17,6 +17,14 @@ namespace Assets.Scripts.Quest
         
         ObjectLibrary _objectLibrary; //Call class ObjectLibrary (contains the quest in the form of list).
 
+        public QuestController(int questID, string questName, string questDescription, string questDialogue)
+        {
+            QuestID = questID;
+            QuestName = questName;
+            QuestDescription = questDescription;
+            QuestDialogue = questDialogue;
+        }
+
         /// <summary>
         /// Gets the quest identifier.
         /// </summary>
@@ -26,6 +34,7 @@ namespace Assets.Scripts.Quest
         public int QuestID
         {
             get { return questInformations.QuestID; }
+            set { questInformations.QuestID = value; }
         }
 
         /// <summary>
@@ -37,6 +46,7 @@ namespace Assets.Scripts.Quest
         public string QuestName
         {
             get { return questInformations.QuestName; }
+            set { questInformations.QuestName = value; }
         }
 
         /// <summary>
@@ -48,6 +58,7 @@ namespace Assets.Scripts.Quest
         public string QuestDescription
         {
             get { return questInformations.QuestDescription; }
+            set { questInformations.QuestDescription = value; }
         }
 
         /// <summary>
@@ -59,6 +70,7 @@ namespace Assets.Scripts.Quest
         public string QuestDialogue
         {
             get { return questInformations.QuestDialogue; }
+            set { questInformations.QuestDialogue = value; }
         }
 
         //QuestLog (à définir + à implémenter)

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Assets.Scripts.Quest.Interfaces
 {
-    interface IQuest
+    public interface IQuest
     {
         /// <summary>
         /// Gets the quest identifier.
@@ -13,7 +13,7 @@ namespace Assets.Scripts.Quest.Interfaces
         /// <value>
         /// The quest identifier.
         /// </value>
-        int QuestID { get; }
+        int QuestID { get; set; }
 
         /// <summary>
         /// Gets the name of the quest.
@@ -21,7 +21,7 @@ namespace Assets.Scripts.Quest.Interfaces
         /// <value>
         /// The name of the quest.
         /// </value>
-        string QuestName { get; }
+        string QuestName { get; set; }
 
         /// <summary>
         /// Gets the quest description.
@@ -29,7 +29,7 @@ namespace Assets.Scripts.Quest.Interfaces
         /// <value>
         /// The quest description.
         /// </value>
-        string QuestDescription { get; }
+        string QuestDescription { get; set; }
 
         /// <summary>
         /// Gets the quest dialogue.
@@ -37,6 +37,6 @@ namespace Assets.Scripts.Quest.Interfaces
         /// <value>
         /// The quest dialogue.
         /// </value>
-        string QuestDialogue { get; }
+        string QuestDialogue { get; set; }
     }
 }
