@@ -8,56 +8,33 @@ namespace Assets.Scripts.Quest
 {
     class QuestController : IQuest
     {
-        int _questID;
-        string _questName;
-        string _questDescription;
-        string _questDialogue;
-        //int _questSteps; a préciser entre une classe elle même, un string ou un int comme ici
-
-        ObjectLibrary _objectLibrary; //appel de la classe objectLibrary qui contient les objets de la quête sous forme de liste 
-
         /// <summary>
-        /// Gets the quest identifier.
+        /// The informations of Quest
         /// </summary>
-        /// <value>
-        /// The quest identifier.
-        /// </value>
+        IQuest questInformations;
+
+        //int _questSteps; a préciser entre une classe elle même, un string ou un int comme ici
+        
+        ObjectLibrary _objectLibrary; //Call class ObjectLibrary (contains the quest in the form of list).
+
         public int QuestID
         {
-            get { return _questID; }
+            get { return questInformations.QuestID; }
         }
 
-        /// <summary>
-        /// Gets the name of the quest.
-        /// </summary>
-        /// <value>
-        /// The name of the quest.
-        /// </value>
         public string QuestName
         {
-            get { return _questName; }
+            get { return questInformations.QuestName; }
         }
 
-        /// <summary>
-        /// Gets the quest description.
-        /// </summary>
-        /// <value>
-        /// The quest description.
-        /// </value>
         public string QuestDescription
         {
-            get { return _questDescription; }
+            get { return questInformations.QuestDescription; }
         }
 
-        /// <summary>
-        /// Gets the quest dialogue.
-        /// </summary>
-        /// <value>
-        /// The quest dialogue.
-        /// </value>
         public string QuestDialogue
         {
-            get { return _questDialogue; }
+            get { return questInformations.QuestDialogue; }
         }
 
         //QuestLog (à définir + à implémenter)
