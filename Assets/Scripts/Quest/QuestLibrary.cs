@@ -7,7 +7,9 @@ namespace Assets.Scripts.Quest
 {
     class QuestLibrary
     {
-        // Liste des différentes questcontrollers
+        /// <summary>
+        /// List of the different questController
+        /// </summary>
         List<QuestController> QuestControllers;
     }
 }

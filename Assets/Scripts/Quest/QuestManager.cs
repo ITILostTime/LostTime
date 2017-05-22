@@ -9,12 +9,11 @@ public class QuestManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		// Donner contenu du questLibrary (charger les quêtes à l'intérieur du questLibray)
+		// Give content of questLibrary (load quest inside the questLibray)
 	}
 	
     /// <summary>
-    /// Initialiser une quête
-    /// 
+    /// Initialize a quest
     /// </summary>
     void InitializeQuest()
     {

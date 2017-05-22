@@ -14,6 +14,7 @@ namespace LostTimeGame.Tests.QuestSystemTests
     {
         /// <summary>
         /// QuestController takes arguments (int questID, string questName, string questDescription, string questDialogue)
+        /// Test works
         /// </summary>
         [Test]
         public void Create_basic_quest_informations()

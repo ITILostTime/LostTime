@@ -6,7 +6,7 @@ using System.Text;
 namespace Assets.Scripts.Quest
 {
     /// <summary>
-    /// Contient les objets d'une quête
+    /// Contains the object of a quest
     /// </summary>
     class ObjectLibrary
     {
