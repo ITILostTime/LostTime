@@ -118,19 +118,6 @@ public class ButtonEvent : MonoBehaviour
         GameObject.Find("NewGameButton").AddComponent<Button>();
         GameObject.Find("NewGameButton").GetComponent<Button>().onClick.AddListener(() => NewGame());
 
-
-        /*_menuCanvas.GetComponent<CreateUserInterfaceObject>().CreateGameObjectButtonWithText("LoadGameButton", _userInterfaceObject, true, _gameName.GetComponent<RectTransform>().rect.width,
-            _gameName.GetComponent<RectTransform>().rect.height / 4, _userInterfaceObject.GetComponent<RectTransform>().rect.width / -2 + _gameName.GetComponent<RectTransform>().rect.width / 2, 
-            0, "", _menuCanvas.GetComponent<TextMonitoring>().GetArialTextFont,
-            TextAnchor.MiddleCenter, FontStyle.Bold, ((int)(Screen.height / 20)), Color.black);
-        _menuCanvas.GetComponent<TextMonitoring>().setTextInCorrectLanguages("LoadGameButton", "Load Game", "Charger une partie");
-
-        _menuCanvas.GetComponent<CreateUserInterfaceObject>().CreateGameObjectButtonWithText("ConfigureGameButton", _userInterfaceObject, true, _gameName.GetComponent<RectTransform>().rect.width,
-            _gameName.GetComponent<RectTransform>().rect.height / 4, _userInterfaceObject.GetComponent<RectTransform>().rect.width / -2 + _gameName.GetComponent<RectTransform>().rect.width / 2, 
-            _gameName.GetComponent<RectTransform>().rect.height / -2, "", _menuCanvas.GetComponent<TextMonitoring>().GetArialTextFont,
-            TextAnchor.MiddleCenter, FontStyle.Bold, ((int)(Screen.height / 20)), Color.black);
-        _menuCanvas.GetComponent<TextMonitoring>().setTextInCorrectLanguages("ConfigureGameButton", "Configure Game", "Configurer le jeu");*/
-
         if (PlayerPrefs.HasKey("CurrentLanguagesUsed") == false)
         {
             SceneManager.LoadScene("LostTimeGameLanguagesFirstChoice");

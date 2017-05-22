@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SetBackgroundMenu : MonoBehaviour {
 
@@ -10,6 +11,11 @@ public class SetBackgroundMenu : MonoBehaviour {
 
 	void Start ()
     {
+        if (PlayerPrefs.HasKey("CurrentLanguagesUsed") == false)
+        {
+            SceneManager.LoadScene("LostTimeGameLanguagesFirstChoice");
+        }
+
         GameObject CanvasMenu = new GameObject("MenuCanvas");
         Canvas MenuCanvas = CanvasMenu.AddComponent<Canvas>();
         CanvasMenu.AddComponent<CanvasScaler>();
@@ -20,6 +26,7 @@ public class SetBackgroundMenu : MonoBehaviour {
         CanvasMenu.AddComponent<CreateUserInterfaceObject>();
         CanvasMenu.AddComponent<TextMonitoring>();
         CanvasMenu.AddComponent<SaveController>();
+        CanvasMenu.AddComponent<ImageMonitoring>();
 
         _menuCanvas = GameObject.Find("MenuCanvas");
 
@@ -42,5 +49,7 @@ public class SetBackgroundMenu : MonoBehaviour {
         UserInterfaceEvent.transform.SetParent(_menuCanvas.transform, true);
         UserInterfaceEvent.AddComponent<StandaloneInputModule>();
         UserInterfaceEvent.AddComponent<SetUserInterfaceMenu>();
+
+
     }
 }

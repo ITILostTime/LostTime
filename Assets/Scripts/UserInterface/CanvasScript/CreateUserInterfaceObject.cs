@@ -56,6 +56,7 @@ public class CreateUserInterfaceObject : MonoBehaviour {
         float AnchoredPositionX, float AnchoredPositionY, string text, Font font, TextAnchor textAnchor, FontStyle fontStyle, int FontSize, Color TextColor)
     {
         GameObject gameobject = new GameObject(GameObjectName);
+        gameobject.AddComponent<Button>();
         gameobject.AddComponent<RectTransform>();
         gameobject.transform.SetParent(GameObjectParent.transform, isAnchoredToParent);
         gameobject.GetComponent<RectTransform>().sizeDelta = new Vector2(SizeDeltaX, SizeDeltaY);
