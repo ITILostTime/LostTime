@@ -20,6 +20,7 @@ namespace LostTimeGame.Tests.QuestSystemTests
         public void Create_basic_quest_informations()
         {
             IQuest iQuest = new QuestController(1, "Tutoriel", "Vérifier que le test passe", "Hello, je m'appelle Juju");
+            IQuest quest2 = new QuestController(2, "Au secours des poulets mécanique", "Julie a perdu ces poulets aide-là à les récupérer", "J'ai perdu mes poulets, aide moi !");
         }
     }
 }

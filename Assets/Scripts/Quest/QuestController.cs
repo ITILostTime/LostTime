@@ -78,8 +78,5 @@ namespace Assets.Scripts.Quest
             get { return _questDialogue; }
             set { _questDialogue = value; }
         }
-
-        //QuestLog (à définir + à implémenter)
-        //EventLog (à définir + à implémenter)
     }
 }
