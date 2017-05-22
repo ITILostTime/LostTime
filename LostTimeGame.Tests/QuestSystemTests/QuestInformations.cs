@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using Assets.Scripts.Quest.Interfaces;
 using Assets.Scripts.Quest;
 
 namespace LostTimeGame.Tests.QuestSystemTests
@@ -17,9 +18,7 @@ namespace LostTimeGame.Tests.QuestSystemTests
         [Test]
         public void Create_basic_quest_informations()
         {
-            QuestController questController = new QuestController(1, "Tutoriel", "Vérifier que le test passe", "Hello, je m'appelle Juju");
-
-            Assert.That(questController.QuestID == 1);
+            IQuest iQuest = new QuestController(1, "Tutoriel", "Vérifier que le test passe", "Hello, je m'appelle Juju");
         }
     }
 }

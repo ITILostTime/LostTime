@@ -8,19 +8,21 @@ namespace Assets.Scripts.Quest
 {
     public class QuestController : IQuest
     {
-        /// <summary>
-        /// The informations of Quest
-        /// </summary>
-        IQuest questInformations;
-
         //int _questSteps; a préciser entre une classe elle même, un string ou un int comme ici
-        
-        ObjectLibrary _objectLibrary; //Call class ObjectLibrary (contains the quest in the form of list).
+        //ObjectLibrary _objectLibrary; //Call class ObjectLibrary (contains the quest in the form of list).
+
         private int _questID;
         private string _questName;
         private string _questDescription;
         private string _questDialogue;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="QuestController"/> class.
+        /// </summary>
+        /// <param name="questID">The quest identifier.</param>
+        /// <param name="questName">Name of the quest.</param>
+        /// <param name="questDescription">The quest description.</param>
+        /// <param name="questDialogue">The quest dialogue.</param>
         public QuestController(int questID, string questName, string questDescription, string questDialogue)
         {
             QuestID = questID;
