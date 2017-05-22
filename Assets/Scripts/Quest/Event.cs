@@ -18,7 +18,7 @@ public interface IEvent
 public class Toggle : IEvent
 {
     [Inject]
-    QuestManager _questManager;
+    QuestM _questM;
     public string _value = null;
     public string _target = null;
     public int indexQuest = 0;
@@ -27,7 +27,7 @@ public class Toggle : IEvent
 
     public Toggle()
     {
-        _questManager = GameObject.Find("QuestTable").GetComponent<QuestManager>();
+        _questM = GameObject.Find("QuestTable").GetComponent<QuestM>();
     }
 
     public void set(string value, string target)
@@ -38,11 +38,11 @@ public class Toggle : IEvent
 
     public void Update()
     {
-        for (indexValue = 1; _questManager.questContainer.questCollection[indexQuest].stateArray[indexState].valuesList[indexValue] != null; indexValue++)
+        for (indexValue = 1; _questM.questContainer.questCollection[indexQuest].stateArray[indexState].valuesList[indexValue] != null; indexValue++)
         {
-            if (_questManager.questContainer.questCollection[indexQuest].stateArray[indexState].valuesList[indexValue].state == true)
+            if (_questM.questContainer.questCollection[indexQuest].stateArray[indexState].valuesList[indexValue].state == true)
             {
-                _questManager.questContainer.questCollection[indexQuest].stateArray[indexState].valuesList[0].state = true;
+                _questM.questContainer.questCollection[indexQuest].stateArray[indexState].valuesList[0].state = true;
             }
         }
     }
@@ -50,22 +50,22 @@ public class Toggle : IEvent
     public void doSomething()
     {
 
-        for (; _questManager.questContainer.questCollection[indexQuest].questID != null; indexQuest++)
+        for (; _questM.questContainer.questCollection[indexQuest].questID != null; indexQuest++)
         {
-            if (_questManager.questContainer.questCollection[indexQuest].questID == _questManager.questContainer.currentQuest)
-                for (; _questManager.questContainer.questCollection[indexQuest].stateArray[indexState].name != null; indexState++)
+            if (_questM.questContainer.questCollection[indexQuest].questID == _questM.questContainer.currentQuest)
+                for (; _questM.questContainer.questCollection[indexQuest].stateArray[indexState].name != null; indexState++)
                 {
-                    if (_questManager.questContainer.questCollection[indexQuest].stateArray[indexState].name == _target)
+                    if (_questM.questContainer.questCollection[indexQuest].stateArray[indexState].name == _target)
                     {
-                        for (; _questManager.questContainer.questCollection[indexQuest].stateArray[indexState].valuesList[indexValue] != null; indexValue++)
+                        for (; _questM.questContainer.questCollection[indexQuest].stateArray[indexState].valuesList[indexValue] != null; indexValue++)
                         {
-                            if (_questManager.questContainer.questCollection[indexQuest].stateArray[indexState].valuesList[indexValue].linkedActorName == _target)
+                            if (_questM.questContainer.questCollection[indexQuest].stateArray[indexState].valuesList[indexValue].linkedActorName == _target)
                             {
-                                _questManager.questContainer.questCollection[indexQuest].stateArray[indexState].valuesList[indexValue].state = true;
+                                _questM.questContainer.questCollection[indexQuest].stateArray[indexState].valuesList[indexValue].state = true;
                                 Update();
-                                if (_questManager.questContainer.questCollection[indexQuest].stateArray[indexState].valuesList[indexValue].isDisposable == true)
+                                if (_questM.questContainer.questCollection[indexQuest].stateArray[indexState].valuesList[indexValue].isDisposable == true)
                                 {
-                                    _questManager.questContainer.questCollection[indexQuest].stateArray[indexState].valuesList[0].state = true;
+                                    _questM.questContainer.questCollection[indexQuest].stateArray[indexState].valuesList[0].state = true;
                                 }
                             }
                         }
@@ -84,8 +84,8 @@ public class EventDialogue : IEvent
 
     public EventDialogue()
     {
-        QuestManager questManager = GameObject.Find("QuestTable").GetComponent<QuestManager>();
-        _dialogueCollection = questManager.dialogueCollection;
+        QuestM questM = GameObject.Find("QuestTable").GetComponent<QuestM>();
+        _dialogueCollection = questM.dialogueCollection;
     }
 
     public void set(string dialogueId)
@@ -125,7 +125,7 @@ public class EventDialogue : IEvent
 public class SwitchQuest : IEvent
 {
     [Inject]
-    QuestManager _questManager;
+    QuestM _questM;
     public string _value;
     public string _target;
     int indexQuest = 0;
@@ -133,7 +133,7 @@ public class SwitchQuest : IEvent
 
     public SwitchQuest()
     {
-        _questManager = GameObject.Find("QuestTable").GetComponent<QuestManager>();
+        _questM = GameObject.Find("QuestTable").GetComponent<QuestM>();
     }
 
     public void set(string value, string target)
@@ -144,13 +144,13 @@ public class SwitchQuest : IEvent
 
     public void doSomething()
     {
-        for (; _questManager.questContainer.questCollection[indexQuest].questID != null; indexQuest++)
+        for (; _questM.questContainer.questCollection[indexQuest].questID != null; indexQuest++)
         {
-            if (_questManager.questContainer.questCollection[indexQuest].questID == _target)
+            if (_questM.questContainer.questCollection[indexQuest].questID == _target)
             {
-                _questManager.questContainer.currentQuest = _target;
-                _questManager.questContainer.questCollection[indexQuest].currentState = _questManager.questContainer.questCollection[indexQuest].stateArray[0].name;
-                _questManager.NPCsCaching(_questManager.questContainer.questCollection[indexQuest].stateArray[0].LinkedActor);
+                _questM.questContainer.currentQuest = _target;
+                _questM.questContainer.questCollection[indexQuest].currentState = _questM.questContainer.questCollection[indexQuest].stateArray[0].name;
+                _questM.NPCsCaching(_questM.questContainer.questCollection[indexQuest].stateArray[0].LinkedActor);
             }
         }
     }
@@ -159,7 +159,7 @@ public class SwitchQuest : IEvent
 public class SwitchState : IEvent
 {
     [Inject]
-    QuestManager _questManager;
+    QuestM _questM;
     public string _value;
     public string _target;
     int indexQuest;
@@ -168,7 +168,7 @@ public class SwitchState : IEvent
 
     public SwitchState()
     {
-        _questManager = GameObject.Find("QuestTable").GetComponent<QuestManager>();
+        _questM = GameObject.Find("QuestTable").GetComponent<QuestM>();
     }
 
     public void set(string value, string target)
@@ -179,15 +179,15 @@ public class SwitchState : IEvent
 
     public void doSomething()
     {
-        for (; _questManager.questContainer.questCollection[indexQuest].questID != null; indexQuest++)
+        for (; _questM.questContainer.questCollection[indexQuest].questID != null; indexQuest++)
         {
-            if (_questManager.questContainer.questCollection[indexQuest].questID == _questManager.questContainer.currentQuest)
-                for (; _questManager.questContainer.questCollection[indexQuest].stateArray[indexState].name != null; indexState++)
+            if (_questM.questContainer.questCollection[indexQuest].questID == _questM.questContainer.currentQuest)
+                for (; _questM.questContainer.questCollection[indexQuest].stateArray[indexState].name != null; indexState++)
                 {
-                    if (_questManager.questContainer.questCollection[indexQuest].stateArray[indexState].name == _target)
+                    if (_questM.questContainer.questCollection[indexQuest].stateArray[indexState].name == _target)
                     {
-                        _questManager.questContainer.questCollection[indexQuest].currentState = _questManager.questContainer.questCollection[indexQuest].stateArray[indexState].name;
-                        _questManager.NPCsCaching(_questManager.questContainer.questCollection[indexQuest].stateArray[indexState].LinkedActor);
+                        _questM.questContainer.questCollection[indexQuest].currentState = _questM.questContainer.questCollection[indexQuest].stateArray[indexState].name;
+                        _questM.NPCsCaching(_questM.questContainer.questCollection[indexQuest].stateArray[indexState].LinkedActor);
                     }
                 }
         }
@@ -197,7 +197,7 @@ public class SwitchState : IEvent
 public class SwitchAction : IEvent
 {
     [Inject]
-    QuestManager _questManager;
+    QuestM _questM;
     int indexQuest = 0;
     int indexState = 0;
     int indexActor = 0;
@@ -208,7 +208,7 @@ public class SwitchAction : IEvent
 
     public SwitchAction()
     {
-        _questManager = GameObject.Find("QuestTable").GetComponent<QuestManager>();
+        _questM = GameObject.Find("QuestTable").GetComponent<QuestM>();
     }
 
     public void set(string value, string target)
@@ -223,19 +223,19 @@ public class SwitchAction : IEvent
         int newActionIndex;
         ActorAction[] current;
 
-        for (; _questManager.questContainer.questCollection[indexQuest].questID != null; indexQuest++)
+        for (; _questM.questContainer.questCollection[indexQuest].questID != null; indexQuest++)
         {
-            if (_questManager.questContainer.questCollection[indexQuest].questID == _questManager.questContainer.currentQuest)
-                for (; _questManager.questContainer.questCollection[indexQuest].stateArray[indexState].name != null; indexState++)
+            if (_questM.questContainer.questCollection[indexQuest].questID == _questM.questContainer.currentQuest)
+                for (; _questM.questContainer.questCollection[indexQuest].stateArray[indexState].name != null; indexState++)
                 {
-                    if (_questManager.questContainer.questCollection[indexQuest].stateArray[indexState].name == _questManager.questContainer.questCollection[indexQuest].currentState)
-                        for (; _questManager.questContainer.questCollection[indexQuest].stateArray[indexState].actorArray[indexActor] != null; indexActor++)
+                    if (_questM.questContainer.questCollection[indexQuest].stateArray[indexState].name == _questM.questContainer.questCollection[indexQuest].currentState)
+                        for (; _questM.questContainer.questCollection[indexQuest].stateArray[indexState].actorArray[indexActor] != null; indexActor++)
                         {
-                            if (_questManager.questContainer.questCollection[indexQuest].stateArray[indexState].actorArray[indexActor].name == _target)
+                            if (_questM.questContainer.questCollection[indexQuest].stateArray[indexState].actorArray[indexActor].name == _target)
                             {
-                                current = _questManager.questContainer.questCollection[indexQuest].stateArray[indexState].actorArray[indexActor].currentActions;
-                                newActionIndex = _questManager.questContainer.questCollection[indexQuest].stateArray[indexState].actorArray[indexActor].actionListSetUp.IndexOf(current);
-                                _questManager.questContainer.questCollection[indexQuest].stateArray[indexState].actorArray[indexActor].currentActions = _questManager.questContainer.questCollection[indexQuest].stateArray[indexState].actorArray[indexActor].actionListSetUp[newActionIndex + _value]; // set la nouvelle list d'action en fonction du int correspondant a la position dans la liste 
+                                current = _questM.questContainer.questCollection[indexQuest].stateArray[indexState].actorArray[indexActor].currentActions;
+                                newActionIndex = _questM.questContainer.questCollection[indexQuest].stateArray[indexState].actorArray[indexActor].actionListSetUp.IndexOf(current);
+                                _questM.questContainer.questCollection[indexQuest].stateArray[indexState].actorArray[indexActor].currentActions = _questM.questContainer.questCollection[indexQuest].stateArray[indexState].actorArray[indexActor].actionListSetUp[newActionIndex + _value]; // set la nouvelle list d'action en fonction du int correspondant a la position dans la liste 
                             }
 
                         }

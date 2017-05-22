@@ -11,8 +11,11 @@ namespace LostTimeGame.Tests.QuestSystemTests
     [TestFixture]
     public class QuestInformations
     {
+        /// <summary>
+        /// QuestController takes arguments (int questID, string questName, string questDescription, string questDialogue)
+        /// </summary>
         [Test]
-        public void create_basic_quest_informations()
+        public void Create_basic_quest_informations()
         {
             QuestController questController = new QuestController(1, "Tutoriel", "Vérifier que le test passe", "Hello, je m'appelle Juju");
         }

@@ -7,7 +7,7 @@ public class Behaviour : MonoBehaviour
 {
     public string _name;
     //[Inject]
-    QuestManager _questManager;
+    QuestM _questManager;
 
     Toggle _toggle;
     EventDialogue _eventDialogue;
@@ -20,7 +20,7 @@ public class Behaviour : MonoBehaviour
     {
         _name = "Forgeron";
 
-        _questManager = GameObject.Find("QuestTable").GetComponent<QuestManager>();
+        _questManager = GameObject.Find("QuestTable").GetComponent<QuestM>();
         _toggle = new Toggle();
         _eventDialogue = new EventDialogue();
         _switchQuest = new SwitchQuest();

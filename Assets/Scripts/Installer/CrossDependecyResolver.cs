@@ -7,9 +7,9 @@ using Zenject;
 public class CrossDependecyResolver
 {
     NPCSpawner npcSpawner;
-    QuestManager questManager;
+    QuestM questManager;
     [Inject]
-    public CrossDependecyResolver(NPCSpawner npcSpawner, QuestManager questManager)
+    public CrossDependecyResolver(NPCSpawner npcSpawner, QuestM questManager)
     {
         this.questManager = questManager;
         this.npcSpawner = npcSpawner;

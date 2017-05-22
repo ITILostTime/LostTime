@@ -25,7 +25,7 @@ public class GameInstaller : MonoInstaller
         Container.Bind<FactoryTailor>().AsSingle();
 
         //Container.Bind<float>().FromInstance(0.1f);
-        Container.BindFactory<ITailor,QuestManager,NPCData,IAnimCtrl,IPathfinding, NPC, NPC.Factory>().FromPrefab(NPCPrefab);
+        Container.BindFactory<ITailor,QuestM,NPCData,IAnimCtrl,IPathfinding, NPC, NPC.Factory>().FromPrefab(NPCPrefab);
 
         //Container.Bind<CrossDependecyResolver>().AsSingle().NonLazy();
 

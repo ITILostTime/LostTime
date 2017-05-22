@@ -13,11 +13,11 @@ public class NPCSpawner : ITickable, IInitializable
     FactoryPathfinding _pathfindingFactory;
     FactoryTailor _tailorFactory;
 
-    QuestManager _questManager;
+    QuestM _questManager;
     private int npcCount = 0;
-    public QuestManager QuestManagerInjector { get { return _questManager; } set { _questManager = value; } }
+    public QuestM QuestManagerInjector { get { return _questManager; } set { _questManager = value; } }
     public NPCSpawner(
-        QuestManager questManager,
+        QuestM questManager,
         FactoryAnimation animationFactory,
         FactoryPathfinding pathfindingFactory,
         FactoryTailor tailorFactory,
@@ -40,8 +40,6 @@ public class NPCSpawner : ITickable, IInitializable
     public void Tick()
     {
 
-        //Debug.Log("tick");
-        // if questmanager warehouse is true then create the bunch of npcs requested
         if (_questManager.hasRequest)
         {
             List<NPCData> npcRequested =  _questManager.NPCCache;

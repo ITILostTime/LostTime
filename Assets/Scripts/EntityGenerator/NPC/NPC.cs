@@ -32,7 +32,7 @@ public class NPC : MonoBehaviour
 
     public class Factory : Factory<
         ITailor,
-        QuestManager,
+        QuestM,
         NPCData, 
         IAnimCtrl,
         IPathfinding, 
