@@ -16,6 +16,10 @@ namespace Assets.Scripts.Quest
         //int _questSteps; a préciser entre une classe elle même, un string ou un int comme ici
         
         ObjectLibrary _objectLibrary; //Call class ObjectLibrary (contains the quest in the form of list).
+        private int _questID;
+        private string _questName;
+        private string _questDescription;
+        private string _questDialogue;
 
         public QuestController(int questID, string questName, string questDescription, string questDialogue)
         {
@@ -33,8 +37,8 @@ namespace Assets.Scripts.Quest
         /// </value>
         public int QuestID
         {
-            get { return questInformations.QuestID; }
-            set { questInformations.QuestID = value; }
+            get { return _questID; }
+            set { _questID = value; }
         }
 
         /// <summary>
@@ -45,8 +49,8 @@ namespace Assets.Scripts.Quest
         /// </value>
         public string QuestName
         {
-            get { return questInformations.QuestName; }
-            set { questInformations.QuestName = value; }
+            get { return _questName; }
+            set { _questName = value; }
         }
 
         /// <summary>
@@ -57,8 +61,8 @@ namespace Assets.Scripts.Quest
         /// </value>
         public string QuestDescription
         {
-            get { return questInformations.QuestDescription; }
-            set { questInformations.QuestDescription = value; }
+            get { return _questDescription; }
+            set { _questDescription = value; }
         }
 
         /// <summary>
@@ -69,8 +73,8 @@ namespace Assets.Scripts.Quest
         /// </value>
         public string QuestDialogue
         {
-            get { return questInformations.QuestDialogue; }
-            set { questInformations.QuestDialogue = value; }
+            get { return _questDialogue; }
+            set { _questDialogue = value; }
         }
 
         //QuestLog (à définir + à implémenter)

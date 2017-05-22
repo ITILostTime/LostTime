@@ -18,6 +18,8 @@ namespace LostTimeGame.Tests.QuestSystemTests
         public void Create_basic_quest_informations()
         {
             QuestController questController = new QuestController(1, "Tutoriel", "Vérifier que le test passe", "Hello, je m'appelle Juju");
+
+            Assert.That(questController.QuestID == 1);
         }
     }
 }
