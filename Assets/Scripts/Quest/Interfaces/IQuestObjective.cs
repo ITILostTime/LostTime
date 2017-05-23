@@ -5,23 +5,23 @@ using System.Text;
 
 namespace Assets.Scripts.Quest.Interfaces
 {
-    interface IQuestObjective
+    public interface IQuestObjective
     {
         /// <summary>
-        /// Gets or sets the name of the quest.
+        /// Gets the quest identifier.
         /// </summary>
         /// <value>
-        /// The name of the quest.
+        /// The quest identifier.
         /// </value>
-        string QuestName { get; set; }
+        int QuestID { get; }
 
         /// <summary>
-        /// Gets or sets the quest description.
+        /// Gets or sets the objective description.
         /// </summary>
         /// <value>
-        /// The quest description.
+        /// The objective description.
         /// </value>
-        string QuestDescription { get; set; }
+        string ObjectiveDescription { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this instance is complete.
@@ -30,11 +30,6 @@ namespace Assets.Scripts.Quest.Interfaces
         ///   <c>true</c> if this instance is complete; otherwise, <c>false</c>.
         /// </value>
         bool IsComplete { get; set; }
-
-        /// <summary>
-        /// Updates the progress.
-        /// </summary>
-        void UpdateProgress();
 
         /// <summary>
         /// Checks the progress.

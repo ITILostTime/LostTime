@@ -10,7 +10,7 @@ using Assets.Scripts.Quest;
 namespace LostTimeGame.Tests.QuestSystemTests
 {
     [TestFixture]
-    public class QuestInformations
+    public class QuestInformationsTests
     {
         /// <summary>
         /// QuestController takes arguments (int questID, string questName, string questDescription, string questDialogue)
@@ -21,6 +21,8 @@ namespace LostTimeGame.Tests.QuestSystemTests
         {
             IQuest iQuest = new QuestController(1, "Tutoriel", "Vérifier que le test passe", "Hello, je m'appelle Juju");
             IQuest quest2 = new QuestController(2, "Au secours des poulets mécanique", "Julie a perdu ces poulets aide-là à les récupérer", "J'ai perdu mes poulets, aide moi !");
+
+            Assert.That(iQuest.QuestID == 1);
         }
     }
 }
