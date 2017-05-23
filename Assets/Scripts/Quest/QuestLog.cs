@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Scripts.Quest.Interfaces;
+using Assets.Scripts.Quest.ObjectiveTypes;
 
 namespace Assets.Scripts.Quest
 {
@@ -12,6 +13,7 @@ namespace Assets.Scripts.Quest
         private int _questID;
         private string _objectiveDescription;
         private bool _isComplete;
+        private EnumTypes _types;
 
         //IQuest
         private string _questName;
@@ -123,6 +125,17 @@ namespace Assets.Scripts.Quest
         {
             get { return _questDialogue; }
             set { _questDialogue = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the type of the objective.
+        /// </summary>
+        /// <value>
+        /// The type.
+        /// </value>
+        public EnumTypes Type
+        {
+            get { return _types; }
         }
     }
 }

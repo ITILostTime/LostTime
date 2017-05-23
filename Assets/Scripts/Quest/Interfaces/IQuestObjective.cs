@@ -38,6 +38,6 @@ namespace Assets.Scripts.Quest.Interfaces
         /// <value>
         /// The type.
         /// </value>
-        EnumTypes Type { get; set; }
+        EnumTypes Type { get; }
     }
 }
