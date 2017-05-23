@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Scripts.Quest.ObjectiveTypes;
 
 namespace Assets.Scripts.Quest.Interfaces
 {
@@ -30,5 +31,13 @@ namespace Assets.Scripts.Quest.Interfaces
         ///   <c>true</c> if this instance is complete; otherwise, <c>false</c>.
         /// </value>
         bool IsComplete { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type of the objective.
+        /// </summary>
+        /// <value>
+        /// The type.
+        /// </value>
+        EnumTypes Type { get; set; }
     }
 }
