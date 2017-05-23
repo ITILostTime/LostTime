@@ -86,5 +86,10 @@ namespace Assets.Scripts.Quest
         {
             throw new NotImplementedException();
         }
+
+        /// <summary>
+        /// List of quest objectives
+        /// </summary>
+        List<QuestObjective> QuestObjectives;
     }
 }
