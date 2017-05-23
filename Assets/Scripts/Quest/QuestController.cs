@@ -82,7 +82,7 @@ namespace Assets.Scripts.Quest
         /// <summary>
         /// Checks the progress.
         /// </summary>
-        void CheckProgress() 
+        public void CheckProgress() 
         {
             throw new NotImplementedException();
         }
