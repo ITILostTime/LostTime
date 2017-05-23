@@ -78,5 +78,13 @@ namespace Assets.Scripts.Quest
             get { return _questDialogue; }
             set { _questDialogue = value; }
         }
+
+        /// <summary>
+        /// Checks the progress.
+        /// </summary>
+        void CheckProgress() 
+        {
+            throw new NotImplementedException();
+        }
     }
 }

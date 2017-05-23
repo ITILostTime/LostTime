@@ -8,10 +8,12 @@ namespace Assets.Scripts.Quest
 {
     public class QuestLog : IQuestObjective, IQuest
     {
+        //IQuestObjective
         private int _questID;
         private string _objectiveDescription;
         private bool _isComplete;
 
+        //IQuest
         private string _questName;
         private string _questDescription;
         private string _questDialogue;

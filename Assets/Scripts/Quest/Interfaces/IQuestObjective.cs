@@ -30,10 +30,5 @@ namespace Assets.Scripts.Quest.Interfaces
         ///   <c>true</c> if this instance is complete; otherwise, <c>false</c>.
         /// </value>
         bool IsComplete { get; set; }
-
-        /// <summary>
-        /// Checks the progress.
-        /// </summary>
-        void CheckProgress();
     }
 }
