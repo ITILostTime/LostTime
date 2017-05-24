@@ -26,11 +26,12 @@ namespace Assets.Scripts.Quest
         /// <param name="questID">The quest identifier.</param>
         /// <param name="objectiveDescription">The objective description.</param>
         /// <param name="isComplete">if set to <c>true</c> [is complete].</param>
-        public QuestLog(int questID, string objectiveDescription, bool isComplete)
+        public QuestLog(int questID, string objectiveDescription, bool isComplete, ObjectiveTypes objectiveType)
         {
             QuestID = questID;
             ObjectiveDescription = objectiveDescription;
             IsComplete = isComplete;
+            Type = objectiveType;
         }
 
         /// <summary>
@@ -136,6 +137,7 @@ namespace Assets.Scripts.Quest
         public ObjectiveTypes Type
         {
             get { return _types; }
+            set { _types = value; }
         }
     }
 }

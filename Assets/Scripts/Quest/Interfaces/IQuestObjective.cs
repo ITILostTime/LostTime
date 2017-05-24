@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Assets.Scripts.Quest.ObjectiveTypes;
+using Assets.Scripts.Quest.ObjectivesTypes;
 
 namespace Assets.Scripts.Quest.Interfaces
 {
@@ -38,6 +38,6 @@ namespace Assets.Scripts.Quest.Interfaces
         /// <value>
         /// The type.
         /// </value>
-        EnumTypes Type { get; }
+        ObjectiveTypes Type { get; set; }
     }
 }
