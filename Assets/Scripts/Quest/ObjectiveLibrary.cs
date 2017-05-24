@@ -8,8 +8,8 @@ namespace Assets.Scripts.Quest
     /// <summary>
     /// Contains the object of a quest
     /// </summary>
-    class ObjectLibrary
+    class ObjectiveLibrary
     {
-        List<Object> ObjectsLibrary;
+        List<ObjectiveController> ObjectsLibrary;
     }
 }

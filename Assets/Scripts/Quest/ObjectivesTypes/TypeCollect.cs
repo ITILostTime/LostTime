@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Assets.Scripts.Quest.ObjectiveTypes
+namespace Assets.Scripts.Quest.ObjectivesTypes
 {
     /// <summary>
-    /// Implement the objective type talk to a pnj
+    /// Implement the objective types collect.
     /// </summary>
-    class TypeTalkToPNJ
+    class TypeCollect
     {
+
     }
 }

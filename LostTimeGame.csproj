@@ -124,8 +124,9 @@
     <Compile Include="Assets\Scripts\Quest\Event.cs" />
     <Compile Include="Assets\Scripts\Quest\Interfaces\IQuest.cs" />
     <Compile Include="Assets\Scripts\Quest\Interfaces\IQuestObjective.cs" />
-    <Compile Include="Assets\Scripts\Quest\ObjectiveTypes\TypeTalkToPNJ.cs" />
-    <Compile Include="Assets\Scripts\Quest\ObjectLibrary.cs" />
+    <Compile Include="Assets\Scripts\Quest\ObjectiveController.cs" />
+    <Compile Include="Assets\Scripts\Quest\ObjectivesTypes\TypeTalkToPNJ.cs" />
+    <Compile Include="Assets\Scripts\Quest\ObjectiveLibrary.cs" />
     <Compile Include="Assets\Scripts\Quest\QuestContainer.cs" />
     <Compile Include="Assets\Scripts\Quest\QuestController.cs" />
     <Compile Include="Assets\Scripts\Quest\QuestLibrary.cs" />
@@ -135,8 +136,8 @@
     <Compile Include="Assets\Scripts\Quest\QuestObjective.cs" />
     <Compile Include="Assets\Scripts\QuestBook\QuestBook.cs" />
     <Compile Include="Assets\Scripts\Quest\ObjectiveTypeManager.cs" />
-    <Compile Include="Assets\Scripts\Quest\ObjectiveTypes\EnumTypes.cs" />
-    <Compile Include="Assets\Scripts\Quest\ObjectiveTypes\TypeCollect.cs" />
+    <Compile Include="Assets\Scripts\Quest\ObjectivesTypes\ObjectiveTypes.cs" />
+    <Compile Include="Assets\Scripts\Quest\ObjectivesTypes\TypeCollect.cs" />
     <Compile Include="Assets\Scripts\Save\SaveController.cs" />
     <Compile Include="Assets\Scripts\Save\SaveStateAnimation.cs" />
     <Compile Include="Assets\Scripts\Save\SaveStateController.cs" />

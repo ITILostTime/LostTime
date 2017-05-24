@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Assets.Scripts.Quest.ObjectiveTypes
+namespace Assets.Scripts.Quest.ObjectivesTypes
 {
-    public class EnumTypes
+    public class ObjectiveTypes
     {
+
+
         /// <summary>
         /// Enum of the different quest types
         /// </summary>
