@@ -11,6 +11,8 @@ namespace Assets.Scripts.Quest
     {
         //IQuestObjective
         private int _questID;
+        private int _objectiveID;
+        private string _objectiveName;
         private string _objectiveDescription;
         private bool _isComplete;
         private ObjectiveTypes _types;
@@ -19,6 +21,7 @@ namespace Assets.Scripts.Quest
         private string _questName;
         private string _questDescription;
         private string _questDialogue;
+        private IList<IQuestObjective> _objectivesControllers;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="QuestLog"/> class.
@@ -57,6 +60,19 @@ namespace Assets.Scripts.Quest
         {
             get { return _questID; }
             set { _questID = value; }
+        }
+
+        //
+        public int ObjectiveID
+        {
+            get { return _objectiveID; }
+            set { _objectiveID = value; }
+        }
+
+        public string ObjectiveName
+        {
+            get { return _objectiveName; }
+            set { _objectiveName = value; }
         }
 
         /// <summary>
@@ -139,5 +155,12 @@ namespace Assets.Scripts.Quest
             get { return _types; }
             set { _types = value; }
         }
+
+        public IList<IQuestObjective> Objectives
+        {
+            get { return _objectivesControllers; }
+        }
+
+
     }
 }

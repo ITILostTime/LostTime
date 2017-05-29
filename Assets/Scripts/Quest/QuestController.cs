@@ -79,10 +79,15 @@ namespace Assets.Scripts.Quest
             set { _questDialogue = value; }
         }
 
+        public IList<IQuestObjective> Objectives
+        {
+            get { throw new NotImplementedException(); }
+        }
+
         /// <summary>
         /// Checks the progress.
         /// </summary>
-        public void CheckProgress() 
+        public void CheckProgress()
         {
             throw new NotImplementedException();
         }
@@ -90,6 +95,6 @@ namespace Assets.Scripts.Quest
         /// <summary>
         /// List of quest objectives
         /// </summary>
-        List<QuestObjective> QuestObjectives;
+        List<ObjectiveController> QuestObjectives;
     }
 }

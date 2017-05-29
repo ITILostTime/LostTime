@@ -17,6 +17,22 @@ namespace Assets.Scripts.Quest.Interfaces
         int QuestID { get; }
 
         /// <summary>
+        /// Gets or sets the objective identifier.
+        /// </summary>
+        /// <value>
+        /// The objective identifier.
+        /// </value>
+        int ObjectiveID { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the objective.
+        /// </summary>
+        /// <value>
+        /// The name of the objective.
+        /// </value>
+        string ObjectiveName { get; set; }
+
+        /// <summary>
         /// Gets or sets the objective description.
         /// </summary>
         /// <value>

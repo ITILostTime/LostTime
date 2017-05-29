@@ -43,5 +43,13 @@ namespace Assets.Scripts.Quest.Interfaces
         /// Checks the progress.
         /// </summary>
         void CheckProgress();
+
+        /// <summary>
+        /// Gets the objectives of the quest.
+        /// </summary>
+        /// <value>
+        /// The objectives of the quest.
+        /// </value>
+        IList<IQuestObjective> Objectives { get; }
     }
 }
