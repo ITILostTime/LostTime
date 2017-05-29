@@ -7,7 +7,7 @@ using Assets.Scripts.Quest.ObjectivesTypes;
 
 namespace Assets.Scripts.Quest
 {
-    class ObjectiveController : IQuestObjective
+    public class ObjectiveController : IQuestObjective
     {
         private int _questID;
         private int _objectiveID;
@@ -25,23 +25,47 @@ namespace Assets.Scripts.Quest
             IsComplete = isComplete;
         }
 
+        /// <summary>
+        /// Gets the quest identifier.
+        /// </summary>
+        /// <value>
+        /// The quest identifier.
+        /// </value>
         public int QuestID
         {
             get { return _questID; }
         }
 
+        /// <summary>
+        /// Gets or sets the objective identifier.
+        /// </summary>
+        /// <value>
+        /// The objective identifier.
+        /// </value>
         public int ObjectiveID
         {
             get { return _objectiveID; }
             set { _objectiveID = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the name of the objective.
+        /// </summary>
+        /// <value>
+        /// The name of the objective.
+        /// </value>
         public string ObjectiveName
         {
             get { return _objectiveName; }
             set { _objectiveName = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the type of the objective.
+        /// </summary>
+        /// <value>
+        /// The type of the objective.
+        /// </value>
         public ObjectiveTypes ObjectiveType
         {
             get { return _objectiveType; }

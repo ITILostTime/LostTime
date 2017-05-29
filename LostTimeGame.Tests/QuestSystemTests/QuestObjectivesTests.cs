@@ -15,7 +15,7 @@ namespace LostTimeGame.Tests.QuestSystemTests
         [Test]
         public void Create_basic_objectives_informations()
         {
-            //IQuestObjective objectives = new QuestObjective()
+            //ObjectiveController test = new ObjectiveController(1, "test", "this is an objective test",, false);
         }
     }
 }
