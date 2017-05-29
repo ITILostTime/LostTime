@@ -8,7 +8,8 @@ namespace Assets.Scripts.Quest.ObjectivesTypes
     /// <summary>
     /// Implement the objective type talk to a pnj
     /// </summary>
-    class TypeTalkToPNJ
+    public class TypeTalkToPNJ
     {
+        
     }
 }

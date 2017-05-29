@@ -47,13 +47,9 @@ namespace Assets.Scripts.Quest.Interfaces
         ///   <c>true</c> if this instance is complete; otherwise, <c>false</c>.
         /// </value>
         bool IsComplete { get; set; }
+        
+        TypeCollect TypeCollect { get; set; }
 
-        /// <summary>
-        /// Gets or sets the type of the objective.
-        /// </summary>
-        /// <value>
-        /// The type.
-        /// </value>
-        ObjectiveTypes Type { get; set; }
+        TypeTalkToPNJ TypeTalkToPNJ { get; set; }
     }
 }
