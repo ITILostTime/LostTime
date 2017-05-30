@@ -14,6 +14,8 @@ namespace Assets.Scripts.Quest
         private int _objectiveID;
         private string _objectiveName;
         private string _objectiveDescription;
+        private TypeCollect _typeCollect;
+        private TypeTalkToPNJ _typeTalkToPNJ;
         private bool _isComplete;
         private ObjectiveTypes _types;
 
@@ -156,11 +158,39 @@ namespace Assets.Scripts.Quest
             set { _types = value; }
         }
 
+        /// <summary>
+        /// Gets the objectives of the quest.
+        /// </summary>
+        /// <value>
+        /// The objectives of the quest.
+        /// </value>
         public IList<IQuestObjective> Objectives
         {
             get { return _objectivesControllers; }
         }
 
+        /// <summary>
+        /// Gets or sets the type collect.
+        /// </summary>
+        /// <value>
+        /// The type collect.
+        /// </value>
+        public TypeCollect TypeCollect
+        {
+            get { return _typeCollect; }
+            set { _typeCollect = value; }
+        }
 
+        /// <summary>
+        /// Gets or sets the type talk to PNJ.
+        /// </summary>
+        /// <value>
+        /// The type talk to PNJ.
+        /// </value>
+        public TypeTalkToPNJ TypeTalkToPNJ
+        {
+            get { return _typeTalkToPNJ; }
+            set { _typeTalkToPNJ = value; }
+        }
     }
 }

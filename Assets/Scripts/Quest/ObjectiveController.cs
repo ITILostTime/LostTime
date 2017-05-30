@@ -13,15 +13,25 @@ namespace Assets.Scripts.Quest
         private int _objectiveID;
         private string _objectiveName;
         private string _objectiveDescription;
-        private ObjectiveTypes _objectiveType;
+        private TypeCollect _typeCollect;
+        private TypeTalkToPNJ _typeTalkToPNJ;
         private bool _isComplete;
 
-        public ObjectiveController(int objectiveID, string objectiveName, string objectiveDescription, ObjectiveTypes objectiveType, bool isComplete)
+        public ObjectiveController(int objectiveID, string objectiveName, string objectiveDescription, TypeCollect typeCollect, bool isComplete)
         {
             ObjectiveID = objectiveID;
             ObjectiveName = objectiveName;
             ObjectiveDescription = objectiveDescription;
-            ObjectiveType = objectiveType;
+            TypeCollect = typeCollect;
+            IsComplete = isComplete;
+        }
+
+        public ObjectiveController(int objectiveID, string objectiveName, string objectiveDescription, TypeTalkToPNJ typeTalkToPNJ, bool isComplete)
+        {
+            ObjectiveID = objectiveID;
+            ObjectiveName = objectiveName;
+            ObjectiveDescription = objectiveDescription;
+            TypeTalkToPNJ = typeTalkToPNJ;
             IsComplete = isComplete;
         }
 
@@ -61,18 +71,6 @@ namespace Assets.Scripts.Quest
         }
 
         /// <summary>
-        /// Gets or sets the type of the objective.
-        /// </summary>
-        /// <value>
-        /// The type of the objective.
-        /// </value>
-        public ObjectiveTypes ObjectiveType
-        {
-            get { return _objectiveType; }
-            set { _objectiveType = value; }
-        }
-
-        /// <summary>
         /// Gets or sets the objective description.
         /// </summary>
         /// <value>
@@ -83,19 +81,7 @@ namespace Assets.Scripts.Quest
             get { return _objectiveDescription; }
             set { _objectiveDescription = value; }
         }
-
-        /// <summary>
-        /// Gets or sets the type of the objective.
-        /// </summary>
-        /// <value>
-        /// The type.
-        /// </value>
-        public ObjectiveTypes Type
-        {
-            get { return _objectiveType; }
-            set { _objectiveType = value; }
-        }
-
+        
         /// <summary>
         /// Gets or sets a value indicating whether this objective is complete.
         /// </summary>
@@ -108,5 +94,30 @@ namespace Assets.Scripts.Quest
             set { _isComplete = value; }
         }
 
+        public TypeCollect TypeCollect
+        {
+            get
+            {
+                return _typeCollect;
+            }
+
+            set
+            {
+                _typeCollect = value;
+            }
+        }
+
+        public TypeTalkToPNJ TypeTalkToPNJ
+        {
+            get
+            {
+                return _typeTalkToPNJ;
+            }
+
+            set
+            {
+                _typeTalkToPNJ = value;
+            }
+        }
     }
 }
