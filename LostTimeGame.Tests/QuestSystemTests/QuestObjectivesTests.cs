@@ -24,5 +24,19 @@ namespace LostTimeGame.Tests.QuestSystemTests
             Assert.That(test.TypeCollect == TestType);
             Assert.That(test.IsComplete == false);
         }
+
+        [Test]
+        public void Objective_type_collect_can_be_completed()
+        {
+            TypeCollect TestType = new TypeCollect(0, 10);
+            ObjectiveController test = new ObjectiveController(1, "test", "this is an objective test", TestType, false);
+
+            Assert.That(test.ObjectiveName == "test");
+            Assert.That(test.ObjectiveDescription == "this is an objective test");
+            Assert.That(test.TypeCollect == TestType);
+            Assert.That(test.IsComplete == false);
+            TestType.Amount = 10;
+            Assert.That(TestType.IsComplete() == true);
+        }
     }
 }
