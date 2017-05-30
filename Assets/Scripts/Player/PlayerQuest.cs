@@ -17,7 +17,6 @@ class PlayerQuest : MonoBehaviour
         inventory = new List<string>();
     }
 
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "Marteau")

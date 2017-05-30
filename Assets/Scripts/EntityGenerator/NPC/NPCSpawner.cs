@@ -15,7 +15,23 @@ public class NPCSpawner : ITickable, IInitializable
 
     QuestM _questManager;
     private int npcCount = 0;
+
+    /// <summary>
+    /// Gets or sets the quest manager injector.
+    /// </summary>
+    /// <value>
+    /// The quest manager injector.
+    /// </value>
     public QuestM QuestManagerInjector { get { return _questManager; } set { _questManager = value; } }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="NPCSpawner"/> class.
+    /// </summary>
+    /// <param name="questManager">The quest manager.</param>
+    /// <param name="animationFactory">The animation factory.</param>
+    /// <param name="pathfindingFactory">The pathfinding factory.</param>
+    /// <param name="tailorFactory">The tailor factory.</param>
+    /// <param name="NPCFactory">The NPC factory.</param>
     public NPCSpawner(
         QuestM questManager,
         FactoryAnimation animationFactory,
@@ -32,11 +48,19 @@ public class NPCSpawner : ITickable, IInitializable
 
         Debug.Log("End Building NPCSpawner");
     }
+
+    /// <summary>
+    /// Initializes this instance.
+    /// </summary>
     public void Initialize()
     {
         _questManager.NPCSpawnerInjector = this;
         Debug.Log("Loaded");
     }
+
+    /// <summary>
+    /// Ticks this instance.
+    /// </summary>
     public void Tick()
     {
 
@@ -55,6 +79,11 @@ public class NPCSpawner : ITickable, IInitializable
         }
         //Debug.Log("Tick");
     }
+
+    /// <summary>
+    /// Spawns the NPC.
+    /// </summary>
+    /// <param name="data">The data.</param>
     private void spawnNPC(NPCData data)
     {
         //Debug.Log(string.Format("Start Factory NPC #{0}",npcCount));      
@@ -65,12 +94,15 @@ public class NPCSpawner : ITickable, IInitializable
         //Debug.Log("End Factory NPC");
         Debug.Log(string.Format("Spawn NPC #{0}, {1}", npcCount, data.ToString()));
     }
+
+    /// <summary>
+    /// Shoulds the spawn crowd NPC.
+    /// </summary>
+    /// <returns></returns>
     public bool ShouldSpawnCrowdNPC()
     {
         npcCount++;
         return (npcCount<_questManager.AmountOfCrowdToSpawn) ? true : false;
-    }
-
-    
+    }  
 }
 
