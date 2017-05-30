@@ -10,6 +10,26 @@ namespace Assets.Scripts.Quest.ObjectivesTypes
     /// </summary>
     public class TypeTalkToPNJ
     {
-        
+        private string _talk;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TypeTalkToPNJ"/> class.
+        /// </summary>
+        /// <param name="talk">The talk.</param>
+        public TypeTalkToPNJ(string talk)
+        {
+            _talk = talk;
+        }
+
+        /// <summary>
+        /// Gets the talk.
+        /// </summary>
+        /// <value>
+        /// The talk.
+        /// </value>
+        public string Talk
+        {
+            get { return _talk; }
+        }
     }
 }
