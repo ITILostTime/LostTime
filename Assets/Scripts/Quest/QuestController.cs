@@ -8,9 +8,6 @@ namespace Assets.Scripts.Quest
 {
     public class QuestController : IQuest
     {
-        //int _questSteps; a préciser entre une classe elle même, un string ou un int comme ici
-        //ObjectLibrary _objectLibrary; //Call class ObjectLibrary (contains the quest in the form of list).
-
         private int _questID;
         private string _questName;
         private string _questDescription;
@@ -79,6 +76,13 @@ namespace Assets.Scripts.Quest
             set { _questDialogue = value; }
         }
 
+        /// <summary>
+        /// Gets the objectives of the quest.
+        /// </summary>
+        /// <value>
+        /// The objectives of the quest.
+        /// </value>
+        /// <exception cref="System.NotImplementedException"></exception>
         public IList<IQuestObjective> Objectives
         {
             get { throw new NotImplementedException(); }

@@ -47,9 +47,29 @@ namespace Assets.Scripts.Quest.Interfaces
         ///   <c>true</c> if this instance is complete; otherwise, <c>false</c>.
         /// </value>
         bool IsComplete { get; set; }
-        
+
+        /// <summary>
+        /// Gets or sets the type collect.
+        /// </summary>
+        /// <value>
+        /// The type collect.
+        /// </value>
         TypeCollect TypeCollect { get; set; }
 
+        /// <summary>
+        /// Gets or sets the type talk to PNJ.
+        /// </summary>
+        /// <value>
+        /// The type talk to PNJ.
+        /// </value>
         TypeTalkToPNJ TypeTalkToPNJ { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type tutorial.
+        /// </summary>
+        /// <value>
+        /// The type tutorial.
+        /// </value>
+        TypeTutorial TypeTutorial { get; set; }
     }
 }

@@ -16,8 +16,8 @@ namespace Assets.Scripts.Quest
         private string _objectiveDescription;
         private TypeCollect _typeCollect;
         private TypeTalkToPNJ _typeTalkToPNJ;
+        private TypeTutorial _typeTutorial;
         private bool _isComplete;
-        private ObjectiveTypes _types;
 
         //IQuest
         private string _questName;
@@ -31,12 +31,48 @@ namespace Assets.Scripts.Quest
         /// <param name="questID">The quest identifier.</param>
         /// <param name="objectiveDescription">The objective description.</param>
         /// <param name="isComplete">if set to <c>true</c> [is complete].</param>
-        public QuestLog(int questID, string objectiveDescription, bool isComplete, ObjectiveTypes objectiveType)
+        public QuestLog(int questID, int objectiveID, string objectiveName, string objectiveDescription, bool isComplete, TypeCollect typeCollect)
         {
             QuestID = questID;
+            ObjectiveID = objectiveID;
+            ObjectiveName = objectiveName;
             ObjectiveDescription = objectiveDescription;
             IsComplete = isComplete;
-            Type = objectiveType;
+            TypeCollect = typeCollect;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="QuestLog"/> class.
+        /// </summary>
+        /// <param name="questID">The quest identifier.</param>
+        /// <param name="objectiveDescription">The objective description.</param>
+        /// <param name="isComplete">if set to <c>true</c> [is complete].</param>
+        /// <param name="typeTalkToPNJ">The type talk to PNJ.</param>
+        public QuestLog(int questID, int objectiveID, string objectiveName, string objectiveDescription, bool isComplete, TypeTalkToPNJ typeTalkToPNJ)
+        {
+            QuestID = questID;
+            ObjectiveID = objectiveID;
+            ObjectiveName = objectiveName;
+            ObjectiveDescription = objectiveDescription;
+            IsComplete = isComplete;
+            TypeTalkToPNJ = typeTalkToPNJ;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="QuestLog"/> class.
+        /// </summary>
+        /// <param name="questID">The quest identifier.</param>
+        /// <param name="objectiveDescription">The objective description.</param>
+        /// <param name="isComplete">if set to <c>true</c> [is complete].</param>
+        /// <param name="typeTutorial">The type tutorial.</param>
+        public QuestLog(int questID, int objectiveID, string objectiveName, string objectiveDescription, bool isComplete, TypeTutorial typeTutorial)
+        {
+            QuestID = questID;
+            ObjectiveID = objectiveID;
+            ObjectiveName = objectiveName;
+            ObjectiveDescription = objectiveDescription;
+            IsComplete = isComplete;
+            TypeTutorial = typeTutorial;
         }
 
         /// <summary>
@@ -45,8 +81,9 @@ namespace Assets.Scripts.Quest
         /// <param name="questName">Name of the quest.</param>
         /// <param name="questDescription">The quest description.</param>
         /// <param name="questDialogue">The quest dialogue.</param>
-        public QuestLog(string questName, string questDescription, string questDialogue)
+        public QuestLog(int questID, string questName, string questDescription, string questDialogue)
         {
+            QuestID = questID;
             QuestName = questName;
             QuestDescription = questDescription;
             QuestDialogue = questDialogue;
@@ -64,13 +101,24 @@ namespace Assets.Scripts.Quest
             set { _questID = value; }
         }
 
-        //
+        /// <summary>
+        /// Gets or sets the objective identifier.
+        /// </summary>
+        /// <value>
+        /// The objective identifier.
+        /// </value>
         public int ObjectiveID
         {
             get { return _objectiveID; }
             set { _objectiveID = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the name of the objective.
+        /// </summary>
+        /// <value>
+        /// The name of the objective.
+        /// </value>
         public string ObjectiveName
         {
             get { return _objectiveName; }
@@ -147,18 +195,6 @@ namespace Assets.Scripts.Quest
         }
 
         /// <summary>
-        /// Gets or sets the type of the objective.
-        /// </summary>
-        /// <value>
-        /// The type.
-        /// </value>
-        public ObjectiveTypes Type
-        {
-            get { return _types; }
-            set { _types = value; }
-        }
-
-        /// <summary>
         /// Gets the objectives of the quest.
         /// </summary>
         /// <value>
@@ -191,6 +227,18 @@ namespace Assets.Scripts.Quest
         {
             get { return _typeTalkToPNJ; }
             set { _typeTalkToPNJ = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the type tutorial.
+        /// </summary>
+        /// <value>
+        /// The type tutorial.
+        /// </value>
+        public TypeTutorial TypeTutorial
+        {
+            get { return _typeTutorial; }
+            set { _typeTutorial = value; }
         }
     }
 }

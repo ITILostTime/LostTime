@@ -126,6 +126,7 @@
     <Compile Include="Assets\Scripts\Quest\Interfaces\IQuestObjective.cs" />
     <Compile Include="Assets\Scripts\Quest\ObjectiveController.cs" />
     <Compile Include="Assets\Scripts\Quest\ObjectivesTypes\TypeTalkToPNJ.cs" />
+    <Compile Include="Assets\Scripts\Quest\ObjectivesTypes\TypeTutorial.cs" />
     <Compile Include="Assets\Scripts\Quest\QuestContainer.cs" />
     <Compile Include="Assets\Scripts\Quest\QuestController.cs" />
     <Compile Include="Assets\Scripts\Quest\QuestLibrary.cs" />
@@ -133,7 +134,6 @@
     <Compile Include="Assets\Scripts\Quest\QuestM.cs" />
     <Compile Include="Assets\Scripts\Quest\QuestManager.cs" />
     <Compile Include="Assets\Scripts\QuestBook\QuestBook.cs" />
-    <Compile Include="Assets\Scripts\Quest\ObjectivesTypes\ObjectiveTypes.cs" />
     <Compile Include="Assets\Scripts\Quest\ObjectivesTypes\TypeCollect.cs" />
     <Compile Include="Assets\Scripts\Save\SaveController.cs" />
     <Compile Include="Assets\Scripts\Save\SaveStateAnimation.cs" />
