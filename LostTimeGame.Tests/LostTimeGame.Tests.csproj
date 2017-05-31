@@ -44,11 +44,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuestSystemTests\JsonParser\QuestJsonParserTests.cs" />
     <Compile Include="QuestSystemTests\QuestInformationsTests.cs" />
     <Compile Include="QuestSystemTests\QuestObjectivesTests.cs" />
+    <Compile Include="QuestSystemTests\JsonParser\SimpleJSON.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="QuestSystemTests\JsonParser\QuestTest.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LostTimeGame.csproj">
