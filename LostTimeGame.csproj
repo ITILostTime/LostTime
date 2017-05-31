@@ -129,6 +129,7 @@
     <Compile Include="Assets\Scripts\Quest\ObjectivesTypes\TypeTalkToPNJ.cs" />
     <Compile Include="Assets\Scripts\Quest\QuestContainer.cs" />
     <Compile Include="Assets\Scripts\Quest\QuestController.cs" />
+    <Compile Include="Assets\Scripts\Quest\QuestJsonParser.cs" />
     <Compile Include="Assets\Scripts\Quest\QuestLibrary.cs" />
     <Compile Include="Assets\Scripts\Quest\QuestLog.cs" />
     <Compile Include="Assets\Scripts\Quest\QuestM.cs" />
@@ -345,9 +346,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\Data\Dialogue.xml" />
+    <None Include="Assets\Scripts\Quest\QuestFiles\QuestTest.json" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets\Scripts\Quest\QuestFiles\" />
+    <Folder Include="Assets\Scripts\Quest\QuestFiles\Tutorial\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
