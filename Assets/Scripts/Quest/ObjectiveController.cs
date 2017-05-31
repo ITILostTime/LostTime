@@ -53,6 +53,23 @@ namespace Assets.Scripts.Quest
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="ObjectiveController"/> class.
+        /// </summary>
+        /// <param name="objectiveID">The objective identifier.</param>
+        /// <param name="objectiveName">Name of the objective.</param>
+        /// <param name="objectiveDescription">The objective description.</param>
+        /// <param name="typeGoToZone">The type go to zone.</param>
+        /// <param name="isComplete">if set to <c>true</c> [is complete].</param>
+        public ObjectiveController(int objectiveID, string objectiveName, string objectiveDescription, TypeGoToZone typeGoToZone, bool isComplete)
+        {
+            ObjectiveID = objectiveID;
+            ObjectiveName = objectiveName;
+            ObjectiveDescription = objectiveDescription;
+            TypeGoToZone = typeGoToZone;
+            IsComplete = isComplete;
+        }
+
+        /// <summary>
         /// Gets the quest identifier.
         /// </summary>
         /// <value>

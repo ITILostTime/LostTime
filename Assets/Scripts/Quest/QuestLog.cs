@@ -61,6 +61,25 @@ namespace Assets.Scripts.Quest
         /// <summary>
         /// Initializes a new instance of the <see cref="QuestLog"/> class.
         /// </summary>
+        /// <param name="questID">The quest identifier.</param>
+        /// <param name="objectiveID">The objective identifier.</param>
+        /// <param name="objectiveName">Name of the objective.</param>
+        /// <param name="objectiveDescription">The objective description.</param>
+        /// <param name="isComplete">if set to <c>true</c> [is complete].</param>
+        /// <param name="typeGoToZone">The type go to zone.</param>
+        public QuestLog(int questID, int objectiveID, string objectiveName, string objectiveDescription, bool isComplete, TypeGoToZone typeGoToZone)
+        {
+            QuestID = questID;
+            ObjectiveID = objectiveID;
+            ObjectiveName = objectiveName;
+            ObjectiveDescription = objectiveDescription;
+            IsComplete = isComplete;
+            TypeGoToZone = typeGoToZone;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="QuestLog"/> class.
+        /// </summary>
         /// <param name="questName">Name of the quest.</param>
         /// <param name="questDescription">The quest description.</param>
         /// <param name="questDialogue">The quest dialogue.</param>
