@@ -16,6 +16,7 @@ namespace Assets.Scripts.Quest
         private string _objectiveDescription;
         private TypeCollect _typeCollect;
         private TypeTalkToPNJ _typeTalkToPNJ;
+        private TypeGoToZone _typeGoToZone;
         private bool _isComplete;
 
         //IQuest
@@ -209,6 +210,18 @@ namespace Assets.Scripts.Quest
         {
             get { return _typeTalkToPNJ; }
             set { _typeTalkToPNJ = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the type go to zone.
+        /// </summary>
+        /// <value>
+        /// The type go to zone.
+        /// </value>
+        public TypeGoToZone TypeGoToZone
+        {
+            get { return _typeGoToZone; }
+            set { _typeGoToZone = value; }
         }
     }
 }
