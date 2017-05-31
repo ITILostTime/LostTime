@@ -126,7 +126,6 @@
     <Compile Include="Assets\Scripts\Quest\Interfaces\IQuestObjective.cs" />
     <Compile Include="Assets\Scripts\Quest\ObjectiveController.cs" />
     <Compile Include="Assets\Scripts\Quest\ObjectivesTypes\TypeTalkToPNJ.cs" />
-    <Compile Include="Assets\Scripts\Quest\ObjectivesTypes\TypeTutorial.cs" />
     <Compile Include="Assets\Scripts\Quest\QuestContainer.cs" />
     <Compile Include="Assets\Scripts\Quest\QuestController.cs" />
     <Compile Include="Assets\Scripts\Quest\QuestLibrary.cs" />

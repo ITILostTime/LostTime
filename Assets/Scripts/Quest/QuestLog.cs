@@ -16,7 +16,6 @@ namespace Assets.Scripts.Quest
         private string _objectiveDescription;
         private TypeCollect _typeCollect;
         private TypeTalkToPNJ _typeTalkToPNJ;
-        private TypeTutorial _typeTutorial;
         private bool _isComplete;
 
         //IQuest
@@ -56,23 +55,6 @@ namespace Assets.Scripts.Quest
             ObjectiveDescription = objectiveDescription;
             IsComplete = isComplete;
             TypeTalkToPNJ = typeTalkToPNJ;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="QuestLog"/> class.
-        /// </summary>
-        /// <param name="questID">The quest identifier.</param>
-        /// <param name="objectiveDescription">The objective description.</param>
-        /// <param name="isComplete">if set to <c>true</c> [is complete].</param>
-        /// <param name="typeTutorial">The type tutorial.</param>
-        public QuestLog(int questID, int objectiveID, string objectiveName, string objectiveDescription, bool isComplete, TypeTutorial typeTutorial)
-        {
-            QuestID = questID;
-            ObjectiveID = objectiveID;
-            ObjectiveName = objectiveName;
-            ObjectiveDescription = objectiveDescription;
-            IsComplete = isComplete;
-            TypeTutorial = typeTutorial;
         }
 
         /// <summary>
@@ -227,18 +209,6 @@ namespace Assets.Scripts.Quest
         {
             get { return _typeTalkToPNJ; }
             set { _typeTalkToPNJ = value; }
-        }
-
-        /// <summary>
-        /// Gets or sets the type tutorial.
-        /// </summary>
-        /// <value>
-        /// The type tutorial.
-        /// </value>
-        public TypeTutorial TypeTutorial
-        {
-            get { return _typeTutorial; }
-            set { _typeTutorial = value; }
         }
     }
 }

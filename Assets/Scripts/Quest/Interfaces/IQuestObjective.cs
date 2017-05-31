@@ -63,13 +63,5 @@ namespace Assets.Scripts.Quest.Interfaces
         /// The type talk to PNJ.
         /// </value>
         TypeTalkToPNJ TypeTalkToPNJ { get; set; }
-
-        /// <summary>
-        /// Gets or sets the type tutorial.
-        /// </summary>
-        /// <value>
-        /// The type tutorial.
-        /// </value>
-        TypeTutorial TypeTutorial { get; set; }
     }
 }
