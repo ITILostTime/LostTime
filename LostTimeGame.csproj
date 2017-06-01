@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>5.5.3f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -125,6 +123,7 @@
     <Compile Include="Assets\Scripts\Quest\Interfaces\IQuest.cs" />
     <Compile Include="Assets\Scripts\Quest\Interfaces\IQuestObjective.cs" />
     <Compile Include="Assets\Scripts\Quest\ObjectiveController.cs" />
+    <Compile Include="Assets\Scripts\Quest\ObjectivesTypes\TypeCollect.cs" />
     <Compile Include="Assets\Scripts\Quest\ObjectivesTypes\TypeGoToZone.cs" />
     <Compile Include="Assets\Scripts\Quest\ObjectivesTypes\TypeTalkToPNJ.cs" />
     <Compile Include="Assets\Scripts\Quest\QuestContainer.cs" />
@@ -135,7 +134,6 @@
     <Compile Include="Assets\Scripts\Quest\QuestM.cs" />
     <Compile Include="Assets\Scripts\Quest\QuestManager.cs" />
     <Compile Include="Assets\Scripts\QuestBook\QuestBook.cs" />
-    <Compile Include="Assets\Scripts\Quest\ObjectivesTypes\TypeCollect.cs" />
     <Compile Include="Assets\Scripts\Save\SaveController.cs" />
     <Compile Include="Assets\Scripts\Save\SaveStateAnimation.cs" />
     <Compile Include="Assets\Scripts\Save\SaveStateController.cs" />
@@ -346,10 +344,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\Data\Dialogue.xml" />
-    <None Include="Assets\Scripts\Quest\QuestFiles\QuestTest.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Assets\Scripts\Quest\QuestFiles\Tutorial\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
