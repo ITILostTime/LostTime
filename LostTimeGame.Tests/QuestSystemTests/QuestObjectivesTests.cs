@@ -38,5 +38,34 @@ namespace LostTimeGame.Tests.QuestSystemTests
             TestType.Amount = 10;
             Assert.That(TestType.IsComplete() == true);
         }
+
+        [Test]
+        public void Objective_type_go_to_returns_informations()
+        {
+            TypeGoToZone typeGoToZone = new TypeGoToZone(1, 3, 4, 5);
+            ObjectiveController objectiveController = new ObjectiveController(1, "Test", "This is a test", typeGoToZone, false);
+
+            Assert.That(objectiveController.ObjectiveName == "Test");
+            Assert.That(objectiveController.ObjectiveDescription == "This is a test");
+            Assert.That(objectiveController.TypeGoToZone == typeGoToZone);
+            Assert.That(objectiveController.IsComplete == false);
+
+            typeGoToZone.Zone = 1;
+            typeGoToZone.PositionX = 3;
+            typeGoToZone.PositionY = 4;
+            typeGoToZone.PositionZ = 5;
+        }
+
+        [Test]
+        public void Objective_talk_to_PNJ_returns_informations()
+        {
+            TypeTalkToPNJ typeTalkToPNJ = new TypeTalkToPNJ("Test");
+            ObjectiveController oc = new ObjectiveController(1, "Try something", "Try talktopnj", typeTalkToPNJ, false);
+
+            Assert.That(oc.ObjectiveName == "Try something");
+            Assert.That(oc.ObjectiveDescription == "Try talktopnj");
+            Assert.That(oc.TypeTalkToPNJ == typeTalkToPNJ);
+            Assert.That(oc.IsComplete == false); 
+        }
     }
 }
