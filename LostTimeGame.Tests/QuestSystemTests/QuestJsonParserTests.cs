@@ -15,9 +15,11 @@ namespace LostTimeGame.Tests.QuestSystemTests.JsonParser
     class QuestJsonParserTests
     {
         [Test]
-        public void Parse_json_file()
+        public void Read_JSON_file()
         {
-            
+            //Theoretical test
+            string[] n = System.IO.File.ReadAllLines(@"..\..\QuestSystemTests\JsonParser\QuestTest.json");
+            Console.WriteLine(n);
         }
     }
 }
