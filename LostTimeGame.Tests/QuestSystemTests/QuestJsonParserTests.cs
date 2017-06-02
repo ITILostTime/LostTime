@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit;
 using NUnit.Framework;
+using System.Runtime.Serialization.Json;
 
 using System.IO;
 using SimpleJSON;
@@ -20,6 +21,9 @@ namespace LostTimeGame.Tests.QuestSystemTests.JsonParser
             //Theoretical test
             string[] n = System.IO.File.ReadAllLines(@"..\..\QuestSystemTests\JsonParser\QuestTest.json");
             Console.WriteLine(n);
+
+            string[] o = System.IO.File.ReadAllLines(@"..\..\QuestSystemTests\JsonParser\QuestTest1.json");
+            Console.WriteLine(o);
         }
     }
 }

@@ -35,6 +35,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,6 +53,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="QuestSystemTests\JsonParser\QuestTest.json" />
+    <None Include="QuestSystemTests\JsonParser\QuestTest1.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LostTimeGame.csproj">

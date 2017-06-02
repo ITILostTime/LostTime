@@ -1,0 +1,23 @@
+﻿{
+  "Quest": [
+    {
+      "2": 
+      {
+        "QuestID": "2",
+        "QuestName": "Un marteau disparu...",
+        "QuestDescription": "Tutoriel numéro 2 pour essayer",
+        "QuestDialogue": "A définir",
+        "Objectives": 
+        [
+          {
+            "QuestID": "2",
+            "ObjectiveID": "1",
+            "ObjectiveName": "parler avec le forgeron",
+            "ObjectiveDescription": "Test",
+            "ObjectiveType": "TalkToPNJ"
+          }
+        ]
+      }
+    }
+  ]
+}
