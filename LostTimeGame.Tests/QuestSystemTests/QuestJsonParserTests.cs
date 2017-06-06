@@ -12,6 +12,7 @@ using SimpleJSON;
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Assets.Scripts.Quest;
 
 namespace LostTimeGame.Tests.QuestSystemTests.JsonParser
 {
@@ -31,12 +32,12 @@ namespace LostTimeGame.Tests.QuestSystemTests.JsonParser
             }*/
 
             //Deserialize JSON 
-            /*Quest quest1 = JsonConvert.DeserializeObject<Quest>(File.ReadAllText(@"..\..\QuestSystemTests\JsonParser\QuestTest.json"));
+            /*QuestController quest1 = JsonConvert.DeserializeObject<QuestController>(File.ReadAllText(@"..\..\QuestSystemTests\JsonParser\QuestTest.json"));
 
             using (StreamReader file = File.OpenText(@"..\..\QuestSystemTests\JsonParser\QuestTest.json"))
             {
                 JsonSerializer serializer = new JsonSerializer();
-                Quest quest2 = (Quest)serializer.Deserialize(file, typeof(Quest));
+                QuestController quest2 = (QuestController)serializer.Deserialize(file, typeof(QuestController));
             }*/
 
             //Theoretical test
