@@ -11,6 +11,7 @@ using System.IO;
 using SimpleJSON;
 
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace LostTimeGame.Tests.QuestSystemTests.JsonParser
 {
@@ -20,13 +21,23 @@ namespace LostTimeGame.Tests.QuestSystemTests.JsonParser
         [Test]
         public void Read_JSON_file()
         {
-            Quest quest1 = JsonConvert.DeserializeObject<Quest>(File.ReadAllText(@"..\..\QuestSystemTests\JsonParser\QuestTest.json"));
+            //Read JSON from a file
+            /*JObject quest1 = JObject.Parse(File.ReadAllText(@"..\..\QuestSystemTests\JsonParser\QuestTest.json"));
+
+            using (StreamReader file = File.OpenText(@"..\..\QuestSystemTests\JsonParser\QuestTest.json"))
+            using (JsonTextReader reader = new JsonTextReader(file))
+            {
+                JObject quest2 = (JObject)JToken.ReadFrom(reader);
+            }*/
+
+            //Deserialize JSON 
+            /*Quest quest1 = JsonConvert.DeserializeObject<Quest>(File.ReadAllText(@"..\..\QuestSystemTests\JsonParser\QuestTest.json"));
 
             using (StreamReader file = File.OpenText(@"..\..\QuestSystemTests\JsonParser\QuestTest.json"))
             {
                 JsonSerializer serializer = new JsonSerializer();
                 Quest quest2 = (Quest)serializer.Deserialize(file, typeof(Quest));
-            }
+            }*/
 
             //Theoretical test
             /*string[] n = System.IO.File.ReadAllLines(@"..\..\QuestSystemTests\JsonParser\QuestTest.json");
