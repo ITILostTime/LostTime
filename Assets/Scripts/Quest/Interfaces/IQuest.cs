@@ -37,6 +37,14 @@ namespace Assets.Scripts.Quest.Interfaces
         void CheckProgress();
 
         /// <summary>
+        /// Gets or sets a value indicating whether this instance is complete.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if this instance is complete; otherwise, <c>false</c>.
+        /// </value>
+        bool QuestIsComplete { get; set; }
+
+        /// <summary>
         /// Gets the objectives of the quest.
         /// </summary>
         /// <value>
