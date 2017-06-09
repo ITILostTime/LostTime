@@ -99,10 +99,10 @@ public class SystemConfigurationScript : MonoBehaviour, IPointerDownHandler
             (int)(GameObject.Find("SystemConfigurationPanel").GetComponent<RectTransform>().rect.height / 16), Color.black);
         GameObject.Find("Canvas").GetComponent<TextMonitoring>().setTextInCorrectLanguages("GameLanguagesText", "Language", "Langue");
 
-        createDropDownGameObjectLanguages();
+        CreateDropDownGameObjectLanguages();
     }
 
-    private void createDropDownGameObjectLanguages()
+    private void CreateDropDownGameObjectLanguages()
     {
         GameObject.Find("Canvas").GetComponent<CreateUserInterfaceObject>().CreateGameObjectImage("GameLanguagesDropDown", GameObject.Find("GameLanguagesText"), true,
             GameObject.Find("GameLanguagesText").GetComponent<RectTransform>().rect.width,
@@ -178,10 +178,10 @@ public class SystemConfigurationScript : MonoBehaviour, IPointerDownHandler
         GameObject.Find("Canvas").GetComponent<Monitoring>().CreateGameLanguagesList();
         GameObject.Find("GameLanguagesDropDownLabel").GetComponent<Text>().text = PlayerPrefs.GetString("CurrentLanguagesUsed");
         Destroy(GameObject.Find("GameLanguagesDropDownList"));
-        updatePanelLanguages();
+        UpdatePanelLanguages();
     }
 
-    private void updatePanelLanguages()
+    private void UpdatePanelLanguages()
     {
         GameObject.Find("Canvas").GetComponent<TextMonitoring>().setTextInCorrectLanguages("SystemConfigurationPanelLabel", "Game Configuration", "Configuration du Jeu");
         GameObject.Find("Canvas").GetComponent<TextMonitoring>().setTextInCorrectLanguages("GameLanguagesText", "Language", "Langue");

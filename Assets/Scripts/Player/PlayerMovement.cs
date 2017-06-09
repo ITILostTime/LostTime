@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public VirtualLeftJoystick leftJoystick;
+    public GameObject _leftJoystick;
     public CharaAnimCtrl animCtrl;
     public float speed;
     private Rigidbody playerRigidbody;           
@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        _leftJoystick = GameObject.Find("LeftJoystickStick");
         speed = 4.0f;
 
         //playerRigidbody = gameObject.AddComponent<Rigidbody>();
@@ -54,18 +55,18 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         //Send to the animator
-        animCtrl.InputH = leftJoystick.LeftHorizontal();
-        animCtrl.InputV = leftJoystick.LeftVertical();
+        animCtrl.InputH = _leftJoystick.GetComponent<UIVirtualLeftJoystick>().GetLeftHorizontalPosition();
+        animCtrl.InputV = _leftJoystick.GetComponent<UIVirtualLeftJoystick>().GetLeftVercitalPosition();
    
         animCtrl.WalkMode = WalkMode.running;
 
         //Movement
         Vector3 move = new Vector3();
-        move.z = leftJoystick.LeftVertical() * Time.deltaTime * speed;
+        move.z = _leftJoystick.GetComponent<UIVirtualLeftJoystick>().GetLeftVercitalPosition() * Time.deltaTime * speed;
         transform.Translate(move, Space.Self);
 
         //Return Astrid when she move backward
-        if(leftJoystick.LeftVertical() < 0)
+        if(_leftJoystick.GetComponent<UIVirtualLeftJoystick>().GetLeftVercitalPosition() < 0)
         {
             PlayerMoveBackward();
         }
@@ -73,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
         //Debug.Log(move.z);
 
         //Rotation   
-        PlayerRotation(leftJoystick.LeftHorizontal());
+        PlayerRotation(_leftJoystick.GetComponent<UIVirtualLeftJoystick>().GetLeftHorizontalPosition());
         //Debug.Log(string.Format("H: {0}, V : {1}, LJS : {2}", leftJoystick.LeftHorizontal(), leftJoystick.LeftVertical(), leftJoystick.IsLeftJoystickUsed));
     }
 

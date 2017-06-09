@@ -5,12 +5,9 @@ using UnityEngine.UI;
 
 public class TextMonitoring : MonoBehaviour {
 
-    public Font _ArialTextFont;
-
-
     public Font GetArialTextFont
     {
-        get { return _ArialTextFont; }
+        get { return Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font; }
     }
 
     public void setTextInCorrectLanguages(string gameObjectName, string englishText, string frenchText)
