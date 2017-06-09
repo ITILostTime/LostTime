@@ -39,13 +39,24 @@ namespace LostTimeGame.Tests.QuestSystemTests
         [Test]
         public void Validate_quest_objectives()
         {
-            throw new NotImplementedException();
+            TypeCollect TestType = new TypeCollect(0, 10);
+            ObjectiveController test = new ObjectiveController(1, "test", "this is an objective test", TestType, true);
+
+            Assert.That(test.ObjectiveName == "test");
+            Assert.That(test.ObjectiveDescription == "this is an objective test");
+            Assert.That(test.TypeCollect == TestType);
+            Assert.That(test.IsComplete == true);
         }
 
         [Test]
         public void Validate_quest()
         {
-            throw new NotImplementedException();
+            QuestController quest = new QuestController(1, "Test", "Tutorial", true);
+
+            Assert.That(quest.QuestID == 1);
+            Assert.That(quest.QuestName == "Test");
+            Assert.That(quest.QuestDescription == "Tutorial");
+            Assert.That(quest.QuestIsComplete == true);
         }
 
         [Test]

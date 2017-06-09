@@ -28,11 +28,12 @@ namespace LostTimeGame.Tests.QuestSystemTests.JsonParser
             {
                 JObject o = (JObject)JToken.ReadFrom(new JsonTextReader(reader));
 
-                QuestController quest1 = new QuestController((int)o["Quest"][0]["1"]["QuestID"], (string)o["Quest"][0]["1"]["QuestName"],(string)o["Quest"][0]["1"]["QuestDescription"]);
+                QuestController quest1 = new QuestController((int)o["Quest"][0]["1"]["QuestID"], (string)o["Quest"][0]["1"]["QuestName"],(string)o["Quest"][0]["1"]["QuestDescription"], (bool)o["Quest"][0]["1"]["QuestIsComplete"]);
 
                 Assert.That(quest1.QuestID == 1);
                 Assert.That(quest1.QuestName == "Tutorial");
                 Assert.That(quest1.QuestDescription == "Prise en main du jeu et d'astrid");
+                Assert.That(quest1.QuestIsComplete == false);
             }
         }
     }
