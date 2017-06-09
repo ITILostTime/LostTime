@@ -32,14 +32,6 @@ namespace Assets.Scripts.Quest.Interfaces
         string QuestDescription { get; set; }
 
         /// <summary>
-        /// Gets the quest dialogue.
-        /// </summary>
-        /// <value>
-        /// The quest dialogue.
-        /// </value>
-        string QuestDialogue { get; set; }
-
-        /// <summary>
         /// Checks the progress.
         /// </summary>
         void CheckProgress();

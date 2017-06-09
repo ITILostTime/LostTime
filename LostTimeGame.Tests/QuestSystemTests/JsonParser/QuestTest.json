@@ -5,7 +5,6 @@
         "QuestID": 1,
         "QuestName": "Tutorial",
         "QuestDescription": "Prise en main du jeu et d'astrid",
-        "QuestDialogue": "Prise en main du jeu et d'astrid",
         "Objectives": [
           {
             "QuestID": "1",

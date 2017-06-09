@@ -11,7 +11,6 @@ namespace Assets.Scripts.Quest
         private int _questID;
         private string _questName;
         private string _questDescription;
-        private string _questDialogue;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="QuestController"/> class.
@@ -20,12 +19,11 @@ namespace Assets.Scripts.Quest
         /// <param name="questName">Name of the quest.</param>
         /// <param name="questDescription">The quest description.</param>
         /// <param name="questDialogue">The quest dialogue.</param>
-        public QuestController(int questID, string questName, string questDescription, string questDialogue)
+        public QuestController(int questID, string questName, string questDescription)
         {
             QuestID = questID;
             QuestName = questName;
             QuestDescription = questDescription;
-            QuestDialogue = questDialogue;
         }
 
         /// <summary>
@@ -62,18 +60,6 @@ namespace Assets.Scripts.Quest
         {
             get { return _questDescription; }
             set { _questDescription = value; }
-        }
-
-        /// <summary>
-        /// Gets the quest dialogue.
-        /// </summary>
-        /// <value>
-        /// The quest dialogue.
-        /// </value>
-        public string QuestDialogue
-        {
-            get { return _questDialogue; }
-            set { _questDialogue = value; }
         }
 
         /// <summary>
