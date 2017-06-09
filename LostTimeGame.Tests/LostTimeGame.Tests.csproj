@@ -49,9 +49,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestSystemTests\QuestJsonParserTests.cs" />
-    <Compile Include="QuestSystemTests\QuestInformationsTests.cs" />
-    <Compile Include="QuestSystemTests\QuestObjectivesTests.cs" />
     <Compile Include="QuestSystemTests\JsonParser\SimpleJSON.cs" />
+    <Compile Include="QuestSystemTests\QuestSystemTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

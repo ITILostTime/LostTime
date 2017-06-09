@@ -3,18 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using NUnit.Framework;
-using Assets.Scripts.Quest.Interfaces;
 using Assets.Scripts.Quest;
 using Assets.Scripts.Quest.ObjectivesTypes;
 
 namespace LostTimeGame.Tests.QuestSystemTests
 {
     [TestFixture]
-    class QuestObjectivesTests
+    public class QuestSystemTests
     {
         [Test]
-        public void Create_basic_objectives_informations()
+        public void Create_quest()
+        {
+            QuestController quest = new QuestController(1, "Test", "Tutorial");
+
+            Assert.That(quest.QuestID == 1);
+            Assert.That(quest.QuestName == "Test");
+            Assert.That(quest.QuestDescription == "Tutorial");
+        }
+
+        [Test]
+        public void Create_quest_objectives()
         {
             TypeCollect TestType = new TypeCollect(0, 10);
             ObjectiveController test = new ObjectiveController(1, "test", "this is an objective test", TestType, false);
@@ -23,6 +33,18 @@ namespace LostTimeGame.Tests.QuestSystemTests
             Assert.That(test.ObjectiveDescription == "this is an objective test");
             Assert.That(test.TypeCollect == TestType);
             Assert.That(test.IsComplete == false);
+        }
+
+        [Test]
+        public void Validate_quest_objectives()
+        {
+            throw new NotImplementedException();
+        }
+
+        [Test]
+        public void Validate_quest()
+        {
+            throw new NotImplementedException();
         }
 
         [Test]
@@ -65,7 +87,7 @@ namespace LostTimeGame.Tests.QuestSystemTests
             Assert.That(oc.ObjectiveName == "Try something");
             Assert.That(oc.ObjectiveDescription == "Try talktopnj");
             Assert.That(oc.TypeTalkToPNJ == typeTalkToPNJ);
-            Assert.That(oc.IsComplete == false); 
+            Assert.That(oc.IsComplete == false);
         }
     }
 }
