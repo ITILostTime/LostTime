@@ -243,5 +243,11 @@ namespace Assets.Scripts.Quest
             get { return _typeGoToZone; }
             set { _typeGoToZone = value; }
         }
+
+        List<IQuestObjective> IQuest.Objectives
+        {
+            get { throw new NotImplementedException(); }
+            set { throw new NotImplementedException(); }
+        }
     }
 }

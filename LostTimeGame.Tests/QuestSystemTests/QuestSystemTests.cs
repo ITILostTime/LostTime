@@ -101,5 +101,36 @@ namespace LostTimeGame.Tests.QuestSystemTests
             Assert.That(oc.TypeTalkToPNJ == typeTalkToPNJ);
             Assert.That(oc.IsComplete == false);
         }
+
+        [Test]
+        public void Objectives_can_be_add_to_a_quest()
+        {
+            //Quest creation
+            QuestController quest = new QuestController(1, "Test", "Tutorial", false);
+
+            Assert.That(quest.QuestID == 1);
+            Assert.That(quest.QuestName == "Test");
+            Assert.That(quest.QuestDescription == "Tutorial");
+            Assert.That(quest.QuestIsComplete == false);
+
+            //Objective creation
+            TypeCollect TestType = new TypeCollect(0, 10);
+            ObjectiveController test = new ObjectiveController(1, "test", "this is an objective test", TestType, false);
+
+            Assert.That(test.ObjectiveName == "test");
+            Assert.That(test.ObjectiveDescription == "this is an objective test");
+            Assert.That(test.TypeCollect == TestType);
+            Assert.That(test.IsComplete == false);
+
+            //Add the objective to the quest
+            quest.Objectives.Add(test);
+
+            Assert.That(quest.Objectives.Count == 1);
+            Assert.That(quest.Objectives[0].ObjectiveName == "test");
+            Assert.That(quest.Objectives[0].ObjectiveDescription == "this is an objective test");
+            Assert.That(quest.Objectives[0].TypeCollect == TestType);
+            Assert.That(quest.Objectives[0].IsComplete == false);
+        }
+        
     }
 }

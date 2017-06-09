@@ -12,7 +12,7 @@ namespace Assets.Scripts.Quest
         private string _questName;
         private string _questDescription;
         private bool _questIsComplete;
-
+        private List<IQuestObjective> _questObjectives;
         /// <summary>
         /// Initializes a new instance of the <see cref="QuestController"/> class.
         /// </summary>
@@ -26,6 +26,7 @@ namespace Assets.Scripts.Quest
             QuestName = questName;
             QuestDescription = questDescription;
             QuestIsComplete = questIsComplete;
+            Objectives = new List<IQuestObjective>();
         }
 
         /// <summary>
@@ -83,9 +84,10 @@ namespace Assets.Scripts.Quest
         /// The objectives of the quest.
         /// </value>
         /// <exception cref="System.NotImplementedException"></exception>
-        public IList<IQuestObjective> Objectives
+        public List<IQuestObjective> Objectives
         {
-            get { throw new NotImplementedException(); }
+            get { return _questObjectives; }
+            set { _questObjectives = value; }
         }
 
         /// <summary>

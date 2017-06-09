@@ -50,6 +50,6 @@ namespace Assets.Scripts.Quest.Interfaces
         /// <value>
         /// The objectives of the quest.
         /// </value>
-        IList<IQuestObjective> Objectives { get; }
+        List<IQuestObjective> Objectives { get; set; }
     }
 }
