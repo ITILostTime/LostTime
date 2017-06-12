@@ -16,7 +16,7 @@ public class CameraPositionTemp : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        _rightJoystick = GameObject.Find("RightJoystickStick");
+        _rightJoystick = GameObject.Find("RightJoystickPanel");
         rotationDelta = 50;
         translateDelta = 0.1f;
         resetDelta = 0.1f;

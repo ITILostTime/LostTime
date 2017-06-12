@@ -12,8 +12,8 @@ public class CameraPositionBehavior : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        _rightJoystick = GameObject.Find("RightJoystickStick");
-        _leftJoystick = GameObject.Find("LeftJoystickStick");
+        _rightJoystick = GameObject.Find("RightJoystickPanel");
+        _leftJoystick = GameObject.Find("LeftJoystickPanel");
         initialPos = transform.localPosition;
     }
 

@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        _leftJoystick = GameObject.Find("LeftJoystickStick");
+        _leftJoystick = GameObject.Find("LeftJoystickPanel");
         speed = 4.0f;
 
         //playerRigidbody = gameObject.AddComponent<Rigidbody>();

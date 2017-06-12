@@ -67,8 +67,8 @@ public class GameLanguagesFirstChoiceScript : MonoBehaviour {
         GameObject.Find("SecondEnglishGear").GetComponent<RectTransform>().Rotate(0, 0, -90);
 
         _userInterface.GetComponent<CreateUserInterfaceObject>().CreateGameObjectButtonWithText("Validate", _userInterface, true, 
-            _userInterface.GetComponent<RectTransform>().rect.width / 4, _userInterface.GetComponent<RectTransform>().rect.height / 8, 
-            0, (_userInterface.GetComponent<RectTransform>().rect.height / -2) + _userInterface.GetComponent<RectTransform>().rect.height / 16 , 
+            _userInterface.GetComponent<RectTransform>().rect.width / 4, (_userInterface.GetComponent<RectTransform>().rect.height / 8), 
+            0, (_userInterface.GetComponent<RectTransform>().rect.height / -2) + _userInterface.GetComponent<RectTransform>().rect.height / 8 , 
             "OK", _userInterface.GetComponent<TextMonitoring>().GetArialTextFont, 
             TextAnchor.MiddleCenter, FontStyle.Bold,
             ((int)(_userInterface.GetComponent<RectTransform>().rect.height / 10)), Color.black);
