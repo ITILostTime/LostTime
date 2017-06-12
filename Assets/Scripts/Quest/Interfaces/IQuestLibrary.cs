@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Assets.Scripts.Quest.Interfaces
 {
-    public class IQuestLibrary
+    public interface IQuestLibrary
     {
         /// <summary>
         /// Gets or sets the quest list.
