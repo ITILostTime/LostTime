@@ -77,7 +77,6 @@ public class GameLanguagesFirstChoiceScript : MonoBehaviour {
         GameObject.Find("Validate").GetComponent<Button>().onClick.AddListener(() => ButtonValidation());
 
         AdminCommand();
-        CreateAdminPanel();
     }
 
     private void AdminCommand()
@@ -92,10 +91,10 @@ public class GameLanguagesFirstChoiceScript : MonoBehaviour {
 
     private void Update()
     {
-        //if(GameObject.Find("AdminInputZone").GetComponent<UIAdminCommand>()._isAdminCommandOn == true && GameObject.Find("AdminPanel") == false)
-        //{
-        //    CreateAdminPanel();
-        //}
+        if (GameObject.Find("AdminInputZone").GetComponent<UIAdminCommand>()._isAdminCommandOn == true && GameObject.Find("AdminPanel") == false)
+        {
+            CreateAdminPanel();
+        }
     }
 
     private void CreateAdminPanel()
@@ -111,14 +110,26 @@ public class GameLanguagesFirstChoiceScript : MonoBehaviour {
             AdminPanel.GetComponent<RectTransform>().rect.width / 2, _userInterface.GetComponent<RectTransform>().rect.height / 10, 0, 
             _userInterface.GetComponent<RectTransform>().rect.height / 3, "Reset All PlayerPrefs", _userInterface.GetComponent<TextMonitoring>().GetArialTextFont, 
             TextAnchor.MiddleCenter, FontStyle.Bold, 0, Color.black);
+        GameObject.Find("ButtonResetPlayerPrefs").GetComponent<Button>().onClick.AddListener(() => ResetAllPlayersPrefs());
 
         // TPAstridToAstridHouse select the save Game and save position astrid to astrid House
         // Close Admin Panel
+
+        _userInterface.GetComponent<CreateUserInterfaceObject>().CreateGameObjectButtonWithText("ClosePanel", AdminPanel, true,
+            AdminPanel.GetComponent<RectTransform>().rect.width / 2, _userInterface.GetComponent<RectTransform>().rect.height / 10, 0,
+            _userInterface.GetComponent<RectTransform>().rect.height / -3, "Close", _userInterface.GetComponent<TextMonitoring>().GetArialTextFont,
+            TextAnchor.MiddleCenter, FontStyle.Bold, 0, Color.black);
+        GameObject.Find("ClosePanel").GetComponent<Button>().onClick.AddListener(() => DestroyAdminPanel());
     }
 
     private void ResetAllPlayersPrefs()
     {
         PlayerPrefs.DeleteAll();
+    }
+
+    private void DestroyAdminPanel()
+    {
+        Destroy(GameObject.Find("AdminPanel"));
     }
 
     private void FrenchButtonAction()
