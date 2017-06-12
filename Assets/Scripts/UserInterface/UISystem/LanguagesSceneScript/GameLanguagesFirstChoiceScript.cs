@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class GameLanguagesFirstChoiceScript : MonoBehaviour {
 
     private GameObject _userInterface;
+    private bool _AdminCommand;
 
     private void Start()
     {
@@ -72,14 +74,51 @@ public class GameLanguagesFirstChoiceScript : MonoBehaviour {
             "OK", _userInterface.GetComponent<TextMonitoring>().GetArialTextFont, 
             TextAnchor.MiddleCenter, FontStyle.Bold,
             ((int)(_userInterface.GetComponent<RectTransform>().rect.height / 10)), Color.black);
-        GameObject.Find("Validate").AddComponent<Button>();
         GameObject.Find("Validate").GetComponent<Button>().onClick.AddListener(() => ButtonValidation());
+
+        AdminCommand();
+        CreateAdminPanel();
+    }
+
+    private void AdminCommand()
+    {
+        _userInterface.GetComponent<CreateUserInterfaceObject>().CreateEmptyGameObject("AdminInputZone", GameObject.Find("GameName(Clone)"), true,
+            GameObject.Find("GameName(Clone)").GetComponent<RectTransform>().rect.width / 5, GameObject.Find("GameName(Clone)").GetComponent<RectTransform>().rect.height,
+            0, 0);
+        GameObject.Find("AdminInputZone").AddComponent<Image>();
+        GameObject.Find("AdminInputZone").GetComponent<Image>().color = new Color(255, 255, 255, 0f);
+        GameObject.Find("AdminInputZone").AddComponent<UIAdminCommand>();
     }
 
     private void Update()
     {
-        //GameObject.Find("Canvas").GetComponent<AnimationUserInterfaceController>().RotationObjectOnAxe("FirstFrenchGear", 0, 0, 0, 0, -1, 2);
-        //GameObject.Find("Canvas").GetComponent<AnimationUserInterfaceController>().RotationObjectOnAxe("FirstEnglishGear", 0, 0, 0, 0, -1, 2);
+        //if(GameObject.Find("AdminInputZone").GetComponent<UIAdminCommand>()._isAdminCommandOn == true && GameObject.Find("AdminPanel") == false)
+        //{
+        //    CreateAdminPanel();
+        //}
+    }
+
+    private void CreateAdminPanel()
+    {
+        _userInterface.GetComponent<CreateUserInterfaceObject>().CreateEmptyGameObject("AdminPanel", _userInterface, true,
+            _userInterface.GetComponent<RectTransform>().rect.width / 5, _userInterface.GetComponent<RectTransform>().rect.height, 
+            _userInterface.GetComponent<RectTransform>().rect.width / 2 - _userInterface.GetComponent<RectTransform>().rect.width / 10, 0);
+        GameObject AdminPanel = GameObject.Find("AdminPanel");
+        AdminPanel.AddComponent<Image>();
+        AdminPanel.GetComponent<Image>().color = new Color(255, 255, 255, 0.1f);
+
+        _userInterface.GetComponent<CreateUserInterfaceObject>().CreateGameObjectButtonWithText("ButtonResetPlayerPrefs", AdminPanel, true, 
+            AdminPanel.GetComponent<RectTransform>().rect.width / 2, _userInterface.GetComponent<RectTransform>().rect.height / 10, 0, 
+            _userInterface.GetComponent<RectTransform>().rect.height / 3, "Reset All PlayerPrefs", _userInterface.GetComponent<TextMonitoring>().GetArialTextFont, 
+            TextAnchor.MiddleCenter, FontStyle.Bold, 0, Color.black);
+
+        // TPAstridToAstridHouse select the save Game and save position astrid to astrid House
+        // Close Admin Panel
+    }
+
+    private void ResetAllPlayersPrefs()
+    {
+        PlayerPrefs.DeleteAll();
     }
 
     private void FrenchButtonAction()
