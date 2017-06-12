@@ -6,9 +6,18 @@ using System.Text;
 
 namespace Assets.Scripts.Quest
 {
-    class QuestLibrary : IQuestLibrary
+    public class QuestLibrary : IQuestLibrary
     {
-        List<IQuest> _questList;
+        private List<IQuest> _questList;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="QuestLibrary"/> class.
+        /// </summary>
+        /// <param name="questList">The quest list.</param>
+        public QuestLibrary(List<IQuest> questList)
+        {
+            _questList = questList;
+        }
 
         /// <summary>
         /// Gets or sets the quest list.
@@ -16,7 +25,7 @@ namespace Assets.Scripts.Quest
         /// <value>
         /// The quest list.
         /// </value>
-        List<IQuest> QuestList
+        List<IQuest> IQuestLibrary.QuestList
         {
             get { return _questList; }
             set { _questList = value; }
