@@ -36,5 +36,17 @@ namespace LostTimeGame.Tests.QuestSystemTests.JsonParser
                 Assert.That(quest1.QuestIsComplete == false);
             }
         }
+
+        [Test]
+        public void Read_JSON_with_SimpleJSON()
+        {
+            using (StreamReader reader = File.OpenText(@"..\..\QuestSystemTests\JsonParser\QuestTest.json"))
+            {
+                string jsonString = reader.ReadToEnd();
+                var N = JSON.Parse(jsonString);
+
+                Assert.That(N["Quest"][0]["1"]["QuestID"].Value == "1");
+            }
+        }
     }
 }
