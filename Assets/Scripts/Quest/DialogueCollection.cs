@@ -1,31 +1,11 @@
-﻿using Assets.Scripts.Quest.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Xml.Serialization;
 
-namespace Assets.Scripts.Quest
+[XmlRoot("DialogueCollection")]
+public class DialogueCollection
 {
-    public class DialogueCollection : IDialogueCollection
-    {
-        /// <summary>
-        /// Dialogues the quest.
-        /// </summary>
-        /// <returns></returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        IDictionary<string, string> IDialogueCollection.DialogueQuest()
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Dialogues the standard.
-        /// </summary>
-        /// <returns></returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        IDictionary<string, string> IDialogueCollection.DialogueStandard()
-        {
-            throw new NotImplementedException();
-        }
-    }
+    [XmlArray("dialogueArray")]
+    [XmlArrayItem("dialogue")]
+    public string[] dialogueArray;
 }
