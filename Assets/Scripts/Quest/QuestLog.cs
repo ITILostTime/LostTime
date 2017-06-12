@@ -158,7 +158,7 @@ namespace Assets.Scripts.Quest
         /// <exception cref="System.NotImplementedException"></exception>
         public void CheckProgress()
         {
-            throw new NotImplementedException();
+            // Verifier si on a pas fait des erreurs avec QuestLog
         }
 
         /// <summary>

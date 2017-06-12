@@ -13,6 +13,7 @@ namespace Assets.Scripts.Quest
         private string _questDescription;
         private bool _questIsComplete;
         private List<IQuestObjective> _questObjectives;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="QuestController"/> class.
         /// </summary>
@@ -83,7 +84,6 @@ namespace Assets.Scripts.Quest
         /// <value>
         /// The objectives of the quest.
         /// </value>
-        /// <exception cref="System.NotImplementedException"></exception>
         public List<IQuestObjective> Objectives
         {
             get { return _questObjectives; }
@@ -95,7 +95,16 @@ namespace Assets.Scripts.Quest
         /// </summary>
         public void CheckProgress()
         {
-            throw new NotImplementedException();
+            // A modifier
+            foreach (IQuestObjective iO in Objectives)
+            {
+                if (iO.IsComplete == false)
+                {
+                    QuestIsComplete = false;
+                    return;
+                }
+            }
+            QuestIsComplete = true;
         }
 
         /// <summary>
