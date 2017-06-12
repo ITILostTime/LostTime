@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using Assets.Scripts.Quest;
 using Assets.Scripts.Quest.ObjectivesTypes;
+using Assets.Scripts.Quest.Interfaces;
 
 namespace LostTimeGame.Tests.QuestSystemTests
 {
@@ -131,6 +132,20 @@ namespace LostTimeGame.Tests.QuestSystemTests
             Assert.That(quest.Objectives[0].TypeCollect == TestType);
             Assert.That(quest.Objectives[0].IsComplete == false);
         }
-        
+
+        //Pass without monobehaviour on questlog 
+        //Must probably be test inside unity
+        /*[Test]
+        public void The_Quest_log_contains_questLibrary()
+        {
+            QuestController quest = new QuestController(1, "Test", "Tutorial", false);
+            QuestController quest1 = new QuestController(2, "Test", "Tutorial", false);
+            List<IQuest> LIQ = new List<IQuest> { quest, quest1 };
+            QuestLibrary QLib = new QuestLibrary(LIQ);
+
+            QuestLog QLog = new QuestLog(QLib);
+
+            Assert.That(QLog.QuestLibrary != null);
+        }*/
     }
 }
