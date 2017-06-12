@@ -1,15 +1,25 @@
-﻿using System;
+﻿using Assets.Scripts.Quest.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace Assets.Scripts.Quest
 {
-    class QuestLibrary
+    class QuestLibrary : IQuestLibrary
     {
+        List<IQuest> _questList;
+
         /// <summary>
-        /// List of the different questController
+        /// Gets or sets the quest list.
         /// </summary>
-        List<QuestController> QuestControllers;
+        /// <value>
+        /// The quest list.
+        /// </value>
+        List<IQuest> QuestList
+        {
+            get { return _questList; }
+            set { _questList = value; }
+        }
     }
 }
