@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestManager : MonoBehaviour {
-
+public class QuestManager : MonoBehaviour
+{
     QuestLibrary _questLibrary;
 
 	// Use this for initialization
@@ -17,7 +17,10 @@ public class QuestManager : MonoBehaviour {
     /// </summary>
     void InitializeQuest()
     {
-
+        // Initialize quest 
+        // recois un id
+        // recuperer quest
+        // ajout à la questlibrary
     }
 
 	// Update is called once per frame
