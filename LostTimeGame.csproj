@@ -126,6 +126,7 @@
     <Compile Include="Assets\Scripts\Quest\Behaviour.cs" />
     <Compile Include="Assets\Scripts\Quest\DialogueCollection.cs" />
     <Compile Include="Assets\Scripts\Quest\Event.cs" />
+    <Compile Include="Assets\Scripts\Quest\Interfaces\IDialogueCollection.cs" />
     <Compile Include="Assets\Scripts\Quest\Interfaces\IQuest.cs" />
     <Compile Include="Assets\Scripts\Quest\Interfaces\IQuestLibrary.cs" />
     <Compile Include="Assets\Scripts\Quest\Interfaces\IQuestObjective.cs" />
