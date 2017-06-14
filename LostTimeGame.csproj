@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>5.5.3f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -113,10 +115,10 @@
     <Compile Include="Assets\Scripts\EntityGenerator\PositionEntity.cs" />
     <Compile Include="Assets\Scripts\Installer\CrossDependecyResolver.cs" />
     <Compile Include="Assets\Scripts\Installer\GameInstaller.cs" />
-    <Compile Include="Assets\Scripts\InventoryBagScript\InventaireScript.cs" />
+    <Compile Include="Assets\Scripts\InstanceSceneContext\InstanceAstridHouseContext.cs" />
+    <Compile Include="Assets\Scripts\InstanceSceneContext\InstanceLostTimeGearDistrictContext.cs" />
     <Compile Include="Assets\Scripts\LoadNewSceneScript\CreateLoadSceneWayPoints.cs" />
     <Compile Include="Assets\Scripts\LoadNewSceneScript\NewSceneWayPointsController.cs" />
-    <Compile Include="Assets\Scripts\Menu\ButtonEvent.cs" />
     <Compile Include="Assets\Scripts\Pathfinding\Pathfinder.cs" />
     <Compile Include="Assets\Scripts\Pathfinding\Pathfinding.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
@@ -142,12 +144,14 @@
     <Compile Include="Assets\Scripts\Quest\QuestLog.cs" />
     <Compile Include="Assets\Scripts\Quest\QuestM.cs" />
     <Compile Include="Assets\Scripts\Quest\QuestManager.cs" />
-    <Compile Include="Assets\Scripts\QuestBook\QuestBook.cs" />
     <Compile Include="Assets\Scripts\Save\SaveController.cs" />
     <Compile Include="Assets\Scripts\Save\SaveStateAnimation.cs" />
     <Compile Include="Assets\Scripts\Save\SaveStateController.cs" />
     <Compile Include="Assets\Scripts\Save\SaveStateSpriteAnimation.cs" />
     <Compile Include="Assets\Scripts\Save\SaveStateWayPoints.cs" />
+    <Compile Include="Assets\Scripts\SaveControllerSystem\PlayerPrefsController.cs" />
+    <Compile Include="Assets\Scripts\SaveControllerSystem\SaveWayPointsController.cs" />
+    <Compile Include="Assets\Scripts\SceneControllerSystem\SceneController.cs" />
     <Compile Include="Assets\Scripts\Sound\SoundController.cs" />
     <Compile Include="Assets\Scripts\Timer\Timer.cs" />
     <Compile Include="Assets\Scripts\Timer\lightCtrl.cs" />
@@ -160,20 +164,23 @@
     <Compile Include="Assets\Scripts\UserInterface\CanvasScript\ImageMonitoring.cs" />
     <Compile Include="Assets\Scripts\UserInterface\CanvasScript\Monitoring.cs" />
     <Compile Include="Assets\Scripts\UserInterface\CanvasScript\TextMonitoring.cs" />
-    <Compile Include="Assets\Scripts\UserInterface\Joystick\VirtualLeftJoystick.cs" />
-    <Compile Include="Assets\Scripts\UserInterface\Joystick\VirtualRightJoystick.cs" />
-    <Compile Include="Assets\Scripts\UserInterface\UISystem\GameLanguagesFirstChoiceScript.cs" />
-    <Compile Include="Assets\Scripts\UserInterface\UISystem\GameMapScript.cs" />
-    <Compile Include="Assets\Scripts\UserInterface\UISystem\InventoryScript.cs" />
-    <Compile Include="Assets\Scripts\UserInterface\UISystem\MultiChoiceScript.cs" />
-    <Compile Include="Assets\Scripts\UserInterface\UISystem\QuestBookScript.cs" />
-    <Compile Include="Assets\Scripts\UserInterface\UISystem\SliderScriptSoundEffect.cs" />
-    <Compile Include="Assets\Scripts\UserInterface\UISystem\SliderScriptSoundTrack.cs" />
-    <Compile Include="Assets\Scripts\UserInterface\UISystem\SystemButtonScript.cs" />
-    <Compile Include="Assets\Scripts\UserInterface\UISystem\SystemConfigurationScript.cs" />
-    <Compile Include="Assets\Scripts\UserInterface\UISystem\TextDialogPNJController.cs" />
-    <Compile Include="Assets\Scripts\UserInterface\UISystem\UserInterfaceLeftJoystick.cs" />
-    <Compile Include="Assets\Scripts\UserInterface\UISystem\UserInterfaceRightJoystick.cs" />
+    <Compile Include="Assets\Scripts\UserInterface\UISystem\LanguagesSceneScript\GameLanguagesFirstChoiceScript.cs" />
+    <Compile Include="Assets\Scripts\UserInterface\UISystem\LanguagesSceneScript\UIAdminCommand.cs" />
+    <Compile Include="Assets\Scripts\UserInterface\UISystem\MenuSceneScript\PrefabBlueGearAnimation.cs" />
+    <Compile Include="Assets\Scripts\UserInterface\UISystem\MenuSceneScript\PrefabRedGearAnimation.cs" />
+    <Compile Include="Assets\Scripts\UserInterface\UISystem\MenuSceneScript\PrefabYellowGearAnimation.cs" />
+    <Compile Include="Assets\Scripts\UserInterface\UISystem\MenuSceneScript\SetBackgroundMenu.cs" />
+    <Compile Include="Assets\Scripts\UserInterface\UISystem\MenuSceneScript\SetConfigureButtonScript.cs" />
+    <Compile Include="Assets\Scripts\UserInterface\UISystem\MenuSceneScript\SetLoadGameButtonScript.cs" />
+    <Compile Include="Assets\Scripts\UserInterface\UISystem\MenuSceneScript\SetNewGameButtonScript.cs" />
+    <Compile Include="Assets\Scripts\UserInterface\UISystem\MenuSceneScript\SetUserInterfaceMenu.cs" />
+    <Compile Include="Assets\Scripts\UserInterface\UISystem\UIGameScript\UICanvas.cs" />
+    <Compile Include="Assets\Scripts\UserInterface\UISystem\UIGameScript\UIConfigure.cs" />
+    <Compile Include="Assets\Scripts\UserInterface\UISystem\UIGameScript\UIInventory.cs" />
+    <Compile Include="Assets\Scripts\UserInterface\UISystem\UIGameScript\UIMap.cs" />
+    <Compile Include="Assets\Scripts\UserInterface\UISystem\UIGameScript\UIQuestBook.cs" />
+    <Compile Include="Assets\Scripts\UserInterface\UISystem\UIGameScript\UIVirtualLeftJoystick.cs" />
+    <Compile Include="Assets\Scripts\UserInterface\UISystem\UIGameScript\UIVirtualRightJoystick.cs" />
     <Compile Include="Assets\UnityTestTools\Assertions\AssertionComponent.cs" />
     <Compile Include="Assets\UnityTestTools\Assertions\AssertionException.cs" />
     <Compile Include="Assets\UnityTestTools\Assertions\Assertions.cs" />

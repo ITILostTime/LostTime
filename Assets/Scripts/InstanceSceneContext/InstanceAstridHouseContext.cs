@@ -9,6 +9,7 @@ public class InstanceAstridHouseContext : MonoBehaviour {
         GameObject Camera = new GameObject("Main Camera");
         Camera.transform.tag = "MainCamera";
         Camera.AddComponent<Camera>();
+        Camera.GetComponent<Camera>().backgroundColor = new Color(0, 0, 0, 0);
         Camera.AddComponent<GUILayer>();
         Camera.AddComponent<FlareLayer>();
         Camera.AddComponent<AudioListener>();
