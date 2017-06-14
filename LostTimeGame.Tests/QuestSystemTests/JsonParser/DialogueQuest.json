@@ -1,0 +1,19 @@
+﻿{
+  "DialogueQuest": [
+    {
+      "QuestID": "1",
+      "Objectives": [
+        {
+          "ObjectiveID": "1",
+          "Dialogue": "Test pour les dialogues de quête"
+        },
+        {
+          "ObjectiveID": "2",
+          "Dialogue": "Ta mère"
+        }
+      ]
+    }
+  ]
+}
+
+//ObjectiveID, string dialogue

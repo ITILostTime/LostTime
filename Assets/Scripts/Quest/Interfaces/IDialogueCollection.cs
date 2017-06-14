@@ -11,12 +11,12 @@ namespace Assets.Scripts.Quest.Interfaces
         /// Dialogues the standard.
         /// </summary>
         /// <returns></returns>
-        IDictionary<string, string> DialogueStandard();
+        IDictionary<EnumJob, string> DialogueJob();
 
         /// <summary>
         /// Dialogues the quest.
         /// </summary>
         /// <returns></returns>
-        IDictionary<string, string> DialogueQuest();
+        IDictionary<int, string> DialogueQuest();
     }
 }

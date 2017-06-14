@@ -78,7 +78,7 @@ public class ToggleEvent : IEvent
 public class EventDialogue : IEvent
 {
     [Inject]
-    DialogueCollection _dialogueCollection;
+    DialogueC _dialogueCollection;
     private string _dialogueId = null;
     List<string> _dialoguelist = new List<string>();
 

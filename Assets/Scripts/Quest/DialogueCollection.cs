@@ -1,11 +1,38 @@
-﻿using System;
+﻿using Assets.Scripts.Quest.Interfaces;
+using System;
 using System.Collections.Generic;
-using System.Xml.Serialization;
+using System.IO;
+using System.Linq;
+using System.Text;
 
-[XmlRoot("DialogueCollection")]
-public class DialogueCollection
+using SimpleJSON;
+
+namespace Assets.Scripts.Quest
 {
-    [XmlArray("dialogueArray")]
-    [XmlArrayItem("dialogue")]
-    public string[] dialogueArray;
+    public class DialogueCollection : IDialogueCollection
+    {
+        /// <summary>
+        /// Dialogues the quest.
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="System.NotImplementedException"></exception>
+        IDictionary<int, string> IDialogueCollection.DialogueQuest()
+        {
+            /*using (StreamReader reader = File.OpenText(@"..\..\QuestSystemTests\JsonParser\DialogueQuest.json"))
+            {
+                
+            }*/
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Dialogues the standard.
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="System.NotImplementedException"></exception>
+        IDictionary<EnumJob, string> IDialogueCollection.DialogueJob()
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

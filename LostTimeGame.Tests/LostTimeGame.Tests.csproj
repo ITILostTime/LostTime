@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="QuestSystemTests\JsonParser\DialogueQuest.json" />
     <None Include="QuestSystemTests\JsonParser\QuestTest.json" />
     <None Include="QuestSystemTests\JsonParser\QuestTest1.json" />
   </ItemGroup>

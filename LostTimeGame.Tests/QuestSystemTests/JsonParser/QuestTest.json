@@ -5,22 +5,19 @@
         "QuestID": "1",
         "QuestName": "Tutorial",
         "QuestDescription": "Prise en main du jeu et d'astrid",
-        "QuestIsComplete":  "false",
+        "QuestIsComplete": "false",
         "Objectives": [
           {
-            "QuestID": "1",
             "ObjectiveID": "1",
             "ObjectiveName": "Marcher avec le stick gauche",
             "ObjectiveDescription": "Utilisation du stick gauche"
           },
           {
-            "QuestID": "1",
             "ObjectiveID": "2",
             "ObjectiveName": "Bouger la caméra avec le stick droit",
             "ObjectiveDescription": "Utilisation du stick gauche"
           },
           {
-            "QuestID": "1",
             "ObjectiveID": "3",
             "ObjectiveName": "Découvrir des objets",
             "ObjectiveDescription": "Appuyer sur écran pour interagir avec un objet"

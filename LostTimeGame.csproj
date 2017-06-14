@@ -126,8 +126,9 @@
     <Compile Include="Assets\Scripts\Pnj\ForgeronController.cs" />
     <Compile Include="Assets\Scripts\Pnj\interactionWithUser.cs" />
     <Compile Include="Assets\Scripts\Quest\Behaviour.cs" />
-    <Compile Include="Assets\Scripts\Quest\Dialogue.cs" />
     <Compile Include="Assets\Scripts\Quest\DialogueCollection.cs" />
+    <Compile Include="Assets\Scripts\Quest\DialogueC.cs" />
+    <Compile Include="Assets\Scripts\Quest\EnumJob.cs" />
     <Compile Include="Assets\Scripts\Quest\Event.cs" />
     <Compile Include="Assets\Scripts\Quest\Interfaces\IDialogueCollection.cs" />
     <Compile Include="Assets\Scripts\Quest\Interfaces\IQuest.cs" />
@@ -156,9 +157,6 @@
     <Compile Include="Assets\Scripts\Timer\Timer.cs" />
     <Compile Include="Assets\Scripts\Timer\lightCtrl.cs" />
     <Compile Include="Assets\Scripts\Toolbox\Toolbox.cs" />
-    <Compile Include="Assets\Scripts\Tutoriel\LetterScript.cs" />
-    <Compile Include="Assets\Scripts\Tutoriel\TmpTutorielScript.cs" />
-    <Compile Include="Assets\Scripts\Tutoriel\TmpTutorielScriptColliderWithFire.cs" />
     <Compile Include="Assets\Scripts\UserInterface\CanvasScript\AnimationUserInterfaceController.cs" />
     <Compile Include="Assets\Scripts\UserInterface\CanvasScript\CreateUserInterfaceObject.cs" />
     <Compile Include="Assets\Scripts\UserInterface\CanvasScript\ImageMonitoring.cs" />

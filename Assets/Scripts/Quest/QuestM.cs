@@ -23,7 +23,7 @@ public class QuestM
 
     public ProcessEvent _processEvent;
 
-    public DialogueCollection dialogueCollection;
+    public DialogueC dialogueCollection;
 
     public NPCSpawner _npcSpawner;
 
@@ -132,17 +132,17 @@ public class QuestM
 
 
 
-    public static DialogueCollection loadDialogue()
+    public static DialogueC loadDialogue()
 
     {
 
-        var serializer = new XmlSerializer(typeof(DialogueCollection));
+        var serializer = new XmlSerializer(typeof(DialogueC));
 
         using (var stream = new FileStream("C:\\Users\\Camille\\Desktop\\Dialogue.xml", FileMode.Open))
 
         {
 
-            return serializer.Deserialize(stream) as DialogueCollection;
+            return serializer.Deserialize(stream) as DialogueC;
 
         }
 
