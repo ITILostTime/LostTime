@@ -180,19 +180,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 287446851}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4b055cf9a824c247ba0072c5c4f24c5, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a598b28064326b4a95655b16d5286ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Cloud04: {fileID: 21300000, guid: 74088b6fb36ecd341a4ee3b3a32704d3, type: 3}
-  _Cloud03: {fileID: 21300000, guid: f7e9c6492a4c5ec4f9d72c5747c98c7d, type: 3}
-  _Cloud02: {fileID: 21300000, guid: 5feace3470bb212499474a9150357692, type: 3}
-  _Cloud01: {fileID: 21300000, guid: 10aa39df78426f74aa9c4a31bcc799dc, type: 3}
-  _Storm: {fileID: 21300000, guid: 870d52421944c0047815be7ca4ed12d4, type: 3}
-  _GameTittle: {fileID: 21300000, guid: fcc790995c28568449750c4546d552b5, type: 3}
-  _GameLogo: {fileID: 21300000, guid: cf61a206dc971574185876b3f63d56bf, type: 3}
-  _Frenchgear: {fileID: 21300000, guid: 361680ee6d087b147894069907b46fb3, type: 3}
-  _EnglishGear: {fileID: 21300000, guid: 871313a3ec39d894bb908c246b3b42fb, type: 3}
-  _Gear: {fileID: 21300000, guid: a59436839c00e7d4bb6b6035ed54e91e, type: 3}
 --- !u!114 &287446853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,6 +243,7 @@ GameObject:
   - component: {fileID: 1785368810}
   - component: {fileID: 1785368816}
   - component: {fileID: 1785368817}
+  - component: {fileID: 1785368809}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -260,6 +251,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1785368809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1785368808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e350baa3360c3064da443b9cc325371e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &1785368810
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -362,7 +364,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 448d14b9424800448b60d76a88247200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ArialTextFont: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &1785368817
 MonoBehaviour:
   m_ObjectHideFlags: 0

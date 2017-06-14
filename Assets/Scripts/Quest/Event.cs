@@ -15,7 +15,7 @@ public interface IEvent
 /// Récepteur
 /// 
 /// </summary>
-public class Toggle : IEvent
+public class ToggleEvent : IEvent
 {
     [Inject]
     QuestM _questM;
@@ -25,7 +25,7 @@ public class Toggle : IEvent
     public int indexState = 0;
     public int indexValue = 1;
 
-    public Toggle()
+    public ToggleEvent()
     {
         _questM = GameObject.Find("QuestTable").GetComponent<QuestM>();
     }

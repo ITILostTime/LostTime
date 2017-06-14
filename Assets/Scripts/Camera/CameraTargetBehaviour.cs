@@ -6,8 +6,8 @@ using UnityEngine.AI;
 
 public class CameraTargetBehaviour : MonoBehaviour
 {
-    public VirtualRightJoystick rightJoystick;
-    public VirtualLeftJoystick leftJoystick;
+    private GameObject _rightJoystick;
+    private GameObject _leftJoystick;
     private float verticalInput;
     private float horizontalInput;
     private Vector3 initialPos;
@@ -16,6 +16,8 @@ public class CameraTargetBehaviour : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        _rightJoystick = GameObject.Find("RightJoystickPanel");
+        _leftJoystick = GameObject.Find("LeftJoystickPanel");
         initialPos = transform.localPosition;
     }
 
@@ -23,8 +25,8 @@ public class CameraTargetBehaviour : MonoBehaviour
     void Update()
     {
         //inputs
-        verticalInput = rightJoystick.RightVertical();
-        horizontalInput = rightJoystick.RightHorizontal();
+        verticalInput = _rightJoystick.GetComponent<UIVirtualRightJoystick>().GetRightVercitalPosition();
+        horizontalInput = _rightJoystick.GetComponent<UIVirtualRightJoystick>().GetRightHorizontalPosition();
 
         //Y Axis
         if (verticalInput > 0.5 && transform.localPosition.y <=8.5)
@@ -51,8 +53,8 @@ public class CameraTargetBehaviour : MonoBehaviour
         }
 
         //Reset position on moving
-        if (leftJoystick.LeftHorizontal() != 0.0f
-           || leftJoystick.LeftVertical() != 0.0f)
+        if (_leftJoystick.GetComponent<UIVirtualLeftJoystick>().GetLeftHorizontalPosition() != 0.0f
+           || _leftJoystick.GetComponent<UIVirtualLeftJoystick>().GetLeftVercitalPosition() != 0.0f)
         {
             transform.localPosition = Vector3.Lerp(transform.localPosition, initialPos, 30 * Time.deltaTime);
         }

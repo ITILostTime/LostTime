@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CameraPositionTemp : MonoBehaviour {
 
-    public VirtualRightJoystick rightJoystick;
+    public GameObject _rightJoystick;
 
     private Vector3 initial;
     private float rotationDelta;
@@ -14,7 +14,9 @@ public class CameraPositionTemp : MonoBehaviour {
     private float inputV;
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
+        _rightJoystick = GameObject.Find("RightJoystickPanel");
         rotationDelta = 50;
         translateDelta = 0.1f;
         resetDelta = 0.1f;
@@ -23,8 +25,8 @@ public class CameraPositionTemp : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        InputH = rightJoystick.RightHorizontal();
-        InputV = rightJoystick.RightVertical();
+        InputH = _rightJoystick.GetComponent<UIVirtualRightJoystick>().GetRightHorizontalPosition();
+        InputV = _rightJoystick.GetComponent<UIVirtualRightJoystick>().GetRightVercitalPosition();
         //  Debug.Log(string.Format("{0},  {1}", InputH, InputV));
 
         //rotation (left and right)

@@ -5,8 +5,8 @@ using System.Collections;
 
 public class VirtualLeftJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDownHandler
 {
-    private Image BackGroundLeftJoystick;
-    private Image LeftJoystick;
+    public Image BackGroundLeftJoystick;
+    public Image LeftJoystick;
     private Vector3 LeftJostickInputVector;
     public bool _isLeftJoystickUsed;
 
@@ -41,7 +41,8 @@ public class VirtualLeftJoystick : MonoBehaviour, IDragHandler, IPointerUpHandle
     {
         Vector2 positionJoystick;
 
-        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(BackGroundLeftJoystick.rectTransform, pedLeftJoystick.position, pedLeftJoystick.pressEventCamera, out positionJoystick))
+        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(BackGroundLeftJoystick.rectTransform, pedLeftJoystick.position, 
+            pedLeftJoystick.pressEventCamera, out positionJoystick))
         {
             positionJoystick.x = (positionJoystick.x / BackGroundLeftJoystick.rectTransform.sizeDelta.x);
             positionJoystick.y = (positionJoystick.y / BackGroundLeftJoystick.rectTransform.sizeDelta.y);
