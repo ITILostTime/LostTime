@@ -8,15 +8,15 @@ namespace Assets.Scripts.Quest
 {
     public class QuestLibrary : IQuestLibrary
     {
-        private List<IQuest> _questList;
+        List<IQuest> _questList;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="QuestLibrary"/> class.
         /// </summary>
         /// <param name="questList">The quest list.</param>
-        public QuestLibrary(List<IQuest> questList)
+        public QuestLibrary()
         {
-            _questList = questList;
+            List<IQuest> _questList = new List<IQuest>();
         }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace Assets.Scripts.Quest
         /// <value>
         /// The quest list.
         /// </value>
-        List<IQuest> IQuestLibrary.QuestList
+        public List<IQuest> QuestList
         {
             get { return _questList; }
             set { _questList = value; }

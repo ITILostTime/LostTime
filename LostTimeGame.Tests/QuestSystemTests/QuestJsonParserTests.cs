@@ -48,5 +48,21 @@ namespace LostTimeGame.Tests.QuestSystemTests.JsonParser
                 Assert.That(N["Quest"][0]["1"]["QuestID"].Value == "1");
             }
         }
+
+        /*
+        Cannot run, unity behavior block
+        [Test]
+        public void Read_and_create_quest_from_JSON_with_SimpleJSON()
+        {
+            using (StreamReader reader = File.OpenText(@"..\..\QuestSystemTests\JsonParser\QuestTest.json"))
+            {
+                string jsonString = reader.ReadToEnd();
+                var N = JSON.Parse(jsonString);
+
+                QuestManager QM = new QuestManager();
+                QM.InitializeQuest(1);
+
+            }
+        }*/
     }
 }
