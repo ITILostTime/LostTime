@@ -36,7 +36,7 @@ public class Timer : MonoBehaviour
         // FIn rajout
 
         //On va lancer une fonction UpdateSun qui va modifier le soleil
-        UpdateSun(); //on lance en permanence la fonction Updatesun() qui nous permet de changer l'intensiter de la lumiere en fonction de l'heure
+        //UpdateSun(); //on lance en permanence la fonction Updatesun() qui nous permet de changer l'intensiter de la lumiere en fonction de l'heure
 
         //Le temps actuel va augmenter (mis en commentaire)
         //currentTimeOfDay += (Time.deltaTime / secondsInFullDay) * timeMutiplier; //permet de faire avancer le temps
@@ -48,10 +48,10 @@ public class Timer : MonoBehaviour
             //currentTimeOfDay = 0;
         }
         //rajouté
-        else
+        /*else
         {
             GameObject.Find("Sun").GetComponent<SoundController>().GetSongOnOff = false;
-        }
+        }*/
     }
 
 
@@ -62,7 +62,7 @@ public class Timer : MonoBehaviour
     }
 
 
-    void UpdateSun()
+    /*void UpdateSun()
     {
         sun.transform.localRotation = Quaternion.Euler((currentTimeOfDay * 360f) - 90, 170, 0); //Permet de faire tourner le soleil autour de la scène
 
@@ -82,8 +82,8 @@ public class Timer : MonoBehaviour
             intensityMultiplier = Mathf.Clamp01(1 - ((currentTimeOfDay - 0.73f) * (1 / 0.02f)));
         }*/
 
-        sun.intensity = sunInitialIntensity * intensityMultiplier; // l'intensité du soleil est toujours égale à l'intensité initiale multiplié par la var intensityMultiplier.
-    }
+        //sun.intensity = sunInitialIntensity * intensityMultiplier; // l'intensité du soleil est toujours égale à l'intensité initiale multiplié par la var intensityMultiplier.
+    //}
 
 
     /// <summary>
@@ -103,7 +103,7 @@ public class Timer : MonoBehaviour
                 currentTimeOfDay += ((Time.deltaTime / secondsInFullDay)) * timeMutiplier;
             }
         }
-        UpdateSun();
+        //UpdateSun();
     }
 
     /// <summary>
@@ -117,5 +117,4 @@ public class Timer : MonoBehaviour
         // Recharge toute la scène => pas efficace
         SceneManager.LoadScene(level);
     }
-
 }
