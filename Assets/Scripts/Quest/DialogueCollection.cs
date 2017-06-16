@@ -6,33 +6,20 @@ using System.Linq;
 using System.Text;
 
 using SimpleJSON;
+using System.Collections;
 
 namespace Assets.Scripts.Quest
 {
     public class DialogueCollection : IDialogueCollection
     {
-        /// <summary>
-        /// Dialogues the quest.
-        /// </summary>
-        /// <returns></returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        IDictionary<int, string> IDialogueCollection.DialogueQuest()
+        public Dictionary<EnumJob, string> DialogueJob()
         {
-            /*using (StreamReader reader = File.OpenText(@"..\..\QuestSystemTests\JsonParser\DialogueQuest.json"))
-            {
-                
-            }*/
-            throw new NotImplementedException();
+            return new Dictionary<EnumJob, string>();
         }
 
-        /// <summary>
-        /// Dialogues the standard.
-        /// </summary>
-        /// <returns></returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        IDictionary<EnumJob, string> IDialogueCollection.DialogueJob()
+        public Dictionary<int, string> DialogueQuest()
         {
-            throw new NotImplementedException();
+            return new Dictionary<int, string>();
         }
     }
 }
