@@ -4,6 +4,7 @@
       "1": {
         "QuestID": "1",
         "QuestName": "Tutorial",
+        "QuestContext": "Bonjour voyageur, j'effectue un test",
         "QuestDescription": "Prise en main du jeu et d'astrid",
         "QuestIsComplete":  "false",
         "Objectives": [
@@ -11,18 +12,21 @@
             "QuestID": "1",
             "ObjectiveID": "1",
             "ObjectiveName": "Marcher avec le stick gauche",
+            "QuestContext": "Bonjour voyageur, j'effectue un test ObjectiveID 1",
             "ObjectiveDescription": "Utilisation du stick gauche"
           },
           {
             "QuestID": "1",
             "ObjectiveID": "2",
             "ObjectiveName": "Bouger la caméra avec le stick droit",
+            "QuestContext": "Bonjour voyageur, j'effectue un testObjectiveID 2",
             "ObjectiveDescription": "Utilisation du stick gauche"
           },
           {
             "QuestID": "1",
             "ObjectiveID": "3",
             "ObjectiveName": "Découvrir des objets",
+            "QuestContext": "Bonjour voyageur, j'effectue un test ObjectiveID 3",
             "ObjectiveDescription": "Appuyer sur écran pour interagir avec un objet"
           }
         ]

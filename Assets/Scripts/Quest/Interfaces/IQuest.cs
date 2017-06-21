@@ -32,11 +32,6 @@ namespace Assets.Scripts.Quest.Interfaces
         string QuestDescription { get; set; }
 
         /// <summary>
-        /// Checks the progress.
-        /// </summary>
-        void CheckProgress();
-
-        /// <summary>
         /// Gets or sets a value indicating whether this instance is complete.
         /// </summary>
         /// <value>
@@ -51,5 +46,12 @@ namespace Assets.Scripts.Quest.Interfaces
         /// The objectives of the quest.
         /// </value>
         List<IQuestObjective> Objectives { get; set; }
+
+        /// <summary>
+        /// Quests the progression.
+        /// </summary>
+        /// <param name="objectiveID">The objective identifier.</param>
+        /// <returns></returns>
+        int QuestProgression(int objectiveID);
     }
 }

@@ -46,7 +46,7 @@ namespace Assets.Scripts.Quest.Interfaces
         /// <value>
         ///   <c>true</c> if this instance is complete; otherwise, <c>false</c>.
         /// </value>
-        bool IsComplete { get; set; }
+        bool ObjectiveIsComplete { get; set; }
 
         /// <summary>
         /// Gets or sets the type collect.

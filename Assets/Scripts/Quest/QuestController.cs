@@ -98,13 +98,24 @@ namespace Assets.Scripts.Quest
             // A modifier
             foreach (IQuestObjective iO in Objectives)
             {
-                if (iO.IsComplete == false)
+                if (iO.ObjectiveIsComplete == false)
                 {
                     QuestIsComplete = false;
                     return;
                 }
             }
             QuestIsComplete = true;
+        }
+
+        /// <summary>
+        /// Quests the progression.
+        /// </summary>
+        /// <param name="objectiveID">The objective identifier.</param>
+        /// <returns></returns>
+        /// <exception cref="System.NotImplementedException"></exception>
+        public int QuestProgression(int objectiveID)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>

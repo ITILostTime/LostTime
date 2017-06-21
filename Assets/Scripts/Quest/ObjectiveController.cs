@@ -16,7 +16,7 @@ namespace Assets.Scripts.Quest
         private TypeCollect _typeCollect;
         private TypeTalkToPNJ _typeTalkToPNJ;
         private TypeGoToZone _typeGoToZone;
-        private bool _isComplete;
+        private bool _objectiveIsComplete;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ObjectiveController"/> class.
@@ -26,13 +26,13 @@ namespace Assets.Scripts.Quest
         /// <param name="objectiveDescription">The objective description.</param>
         /// <param name="typeCollect">The type collect.</param>
         /// <param name="isComplete">if set to <c>true</c> [is complete].</param>
-        public ObjectiveController(int objectiveID, string objectiveName, string objectiveDescription, TypeCollect typeCollect, bool isComplete)
+        public ObjectiveController(int objectiveID, string objectiveName, string objectiveDescription, TypeCollect typeCollect, bool objectiveIsComplete)
         {
             ObjectiveID = objectiveID;
             ObjectiveName = objectiveName;
             ObjectiveDescription = objectiveDescription;
             TypeCollect = typeCollect;
-            IsComplete = isComplete;
+            ObjectiveIsComplete = objectiveIsComplete;
         }
 
         /// <summary>
@@ -43,13 +43,13 @@ namespace Assets.Scripts.Quest
         /// <param name="objectiveDescription">The objective description.</param>
         /// <param name="typeTalkToPNJ">The type talk to PNJ.</param>
         /// <param name="isComplete">if set to <c>true</c> [is complete].</param>
-        public ObjectiveController(int objectiveID, string objectiveName, string objectiveDescription, TypeTalkToPNJ typeTalkToPNJ, bool isComplete)
+        public ObjectiveController(int objectiveID, string objectiveName, string objectiveDescription, TypeTalkToPNJ typeTalkToPNJ, bool objectiveIsComplete)
         {
             ObjectiveID = objectiveID;
             ObjectiveName = objectiveName;
             ObjectiveDescription = objectiveDescription;
             TypeTalkToPNJ = typeTalkToPNJ;
-            IsComplete = isComplete;
+            ObjectiveIsComplete = objectiveIsComplete;
         }
 
         /// <summary>
@@ -60,13 +60,13 @@ namespace Assets.Scripts.Quest
         /// <param name="objectiveDescription">The objective description.</param>
         /// <param name="typeGoToZone">The type go to zone.</param>
         /// <param name="isComplete">if set to <c>true</c> [is complete].</param>
-        public ObjectiveController(int objectiveID, string objectiveName, string objectiveDescription, TypeGoToZone typeGoToZone, bool isComplete)
+        public ObjectiveController(int objectiveID, string objectiveName, string objectiveDescription, TypeGoToZone typeGoToZone, bool objectiveIsComplete)
         {
             ObjectiveID = objectiveID;
             ObjectiveName = objectiveName;
             ObjectiveDescription = objectiveDescription;
             TypeGoToZone = typeGoToZone;
-            IsComplete = isComplete;
+            ObjectiveIsComplete = objectiveIsComplete;
         }
 
         /// <summary>
@@ -122,10 +122,10 @@ namespace Assets.Scripts.Quest
         /// <value>
         ///   <c>true</c> if this objective is complete; otherwise, <c>false</c>.
         /// </value>
-        public bool IsComplete
+        public bool ObjectiveIsComplete
         {
-            get { return _isComplete; }
-            set { _isComplete = value; }
+            get { return _objectiveIsComplete; }
+            set { _objectiveIsComplete = value; }
         }
 
         /// <summary>
