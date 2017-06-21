@@ -8,6 +8,14 @@ namespace Assets.Scripts.Quest.Interfaces
     public interface IQuest
     {
         /// <summary>
+        /// Gets or sets the quest title.
+        /// </summary>
+        /// <value>
+        /// The quest title.
+        /// </value>
+        string QuestPNJ { get; set; }
+
+        /// <summary>
         /// Gets the quest identifier.
         /// </summary>
         /// <value>
@@ -22,6 +30,14 @@ namespace Assets.Scripts.Quest.Interfaces
         /// The name of the quest.
         /// </value>
         string QuestName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the quest context.
+        /// </summary>
+        /// <value>
+        /// The quest context.
+        /// </value>
+        string QuestContext { get; set; }
 
         /// <summary>
         /// Gets the quest description.

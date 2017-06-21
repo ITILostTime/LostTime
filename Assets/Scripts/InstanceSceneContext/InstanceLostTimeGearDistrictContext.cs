@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,8 +32,8 @@ public class InstanceLostTimeGearDistrictContext : MonoBehaviour {
         Sun.GetComponent<Light>().shadowBias = 0.05f;
         Sun.GetComponent<Light>().shadowNormalBias = 0.4f;
         Sun.GetComponent<Light>().shadowNearPlane = 0.2f;
-        Sun.AddComponent<Timer>();
-        Sun.AddComponent<lightCtrl>();
+        //Sun.AddComponent<Timer>();
+        //Sun.AddComponent<lightCtrl>();
 
         GameObject MapChunkSource = (GameObject)Instantiate(Resources.Load("MapEngrenage/map-chunk-source-v2"));
         GameObject.Find("map-chunk-source-v2(Clone)").name = "map-chunk-source";
@@ -85,5 +86,20 @@ public class InstanceLostTimeGearDistrictContext : MonoBehaviour {
         GameObject lampadaire = (GameObject)Instantiate(Resources.Load("LostTimeGearDistrict/Lampadaire"));
 
         GameObject Waypoints = (GameObject)Instantiate(Resources.Load("LostTimeGearDistrict/WayPoints"));
+        
+
+        Vector3 pos = new Vector3(10, 2, 2);
+        GeneratePNJQuestGearDistrict("testquestJson", pos);
+    }
+
+    private void GeneratePNJQuestGearDistrict(string name, Vector3 position)
+    {
+        GameObject gameobject = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        gameobject.transform.position = position;
+        gameobject.AddComponent<MeshCollider>();
+        gameobject.AddComponent<BoxCollider>();
+        gameobject.AddComponent<Rigidbody>();
+        gameobject.AddComponent<MeshFilter>();
+        gameobject.AddComponent<PNJQuestController>();
     }
 }

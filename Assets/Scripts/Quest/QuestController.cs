@@ -8,8 +8,10 @@ namespace Assets.Scripts.Quest
 {
     public class QuestController : IQuest
     {
+        private string _questPNJ;
         private int _questID;
         private string _questName;
+        private string _questContext;
         private string _questDescription;
         private bool _questIsComplete;
         private List<IQuestObjective> _questObjectives;
@@ -21,13 +23,28 @@ namespace Assets.Scripts.Quest
         /// <param name="questName">Name of the quest.</param>
         /// <param name="questDescription">The quest description.</param>
         /// <param name="questIsComplete">if set to <c>true</c> [quest is complete].</param>
-        public QuestController(int questID, string questName, string questDescription, bool questIsComplete)
+        public QuestController(string questPNJ, int questID, string questName, string questContext, string questDescription, 
+            bool questIsComplete)
         {
+            QuestPNJ = questPNJ;
             QuestID = questID;
             QuestName = questName;
+            QuestContext = questContext;
             QuestDescription = questDescription;
             QuestIsComplete = questIsComplete;
             Objectives = new List<IQuestObjective>();
+        }
+
+        /// <summary>
+        /// Gets or sets the quest title.
+        /// </summary>
+        /// <value>
+        /// The quest title.
+        /// </value>
+        public string QuestPNJ
+        {
+            get { return _questPNJ; }
+            set { _questPNJ = value; }
         }
 
         /// <summary>
@@ -52,6 +69,18 @@ namespace Assets.Scripts.Quest
         {
             get { return _questName; }
             set { _questName = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the quest context.
+        /// </summary>
+        /// <value>
+        /// The quest context.
+        /// </value>
+        public string QuestContext
+        {
+            get { return _questContext; }
+            set { _questContext = value; }
         }
 
         /// <summary>

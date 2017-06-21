@@ -1,6 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+using SimpleJSON;
+using System.IO;
 
 public class InitQuestTest : MonoBehaviour {
 
@@ -18,5 +22,26 @@ public class InitQuestTest : MonoBehaviour {
         transform.Translate(0, 0, z);
 
         Debug.Log("Test success");
+
+ //       if (Input.GetKeyDown("Fire1"))
+ //       {
+ //           try
+ //           {
+ //               using (StreamReader reader = File.OpenText(@"Assets/Scripts/Quest/JsonParser/QuestTest.json"))
+ //               {
+ //                   string jsonString = reader.ReadToEnd();
+ //                   var N = JSON.Parse(jsonString);
+
+ //                   QuestManager QM = new QuestManager();
+ //                   QM.InitializeQuest(1);
+ //               }
+ //           }
+ //           catch(Exception e)
+ //           {
+ //               Debug.Log(e);
+ //           }
+ //       }s
 	}
+
+
 }

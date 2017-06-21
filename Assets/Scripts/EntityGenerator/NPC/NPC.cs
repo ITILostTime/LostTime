@@ -7,7 +7,7 @@ using Zenject;
 
 public class NPC : MonoBehaviour
 {
-    QuestManager _questManager;
+    //QuestManager _questManager;
     NPCData _data;
     IAnimCtrl _animationControl;
     IPathfinding _pathfinding;
@@ -17,14 +17,14 @@ public class NPC : MonoBehaviour
     [Inject]
     public void Construct(
         ITailor tailor,
-        QuestManager questManager,
+        //QuestManager questManager,
         NPCData data,
         IAnimCtrl animationControl,
         IPathfinding pathfinding
         )
     {
         _tailor = tailor;
-        _questManager = questManager;
+        //_questManager = questManager;
         _data = data;
         _animationControl = animationControl;
         _pathfinding = pathfinding;

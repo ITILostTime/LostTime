@@ -12,7 +12,7 @@ public class GameInstaller : MonoInstaller
     {
 
         Container.BindAllInterfaces<NPCSpawner>().To<NPCSpawner>().AsSingle();
-        Container.Bind<QuestManager>().AsSingle();
+            //Container.Bind<QuestManager>().AsSingle();
 
 
         //Container.Bind<IPositionDirector>().To<NPCPositionDirector>();
