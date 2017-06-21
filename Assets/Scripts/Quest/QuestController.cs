@@ -9,7 +9,7 @@ namespace Assets.Scripts.Quest
     public class QuestController : IQuest
     {
         private string _questPNJ;
-        private int _questID;
+        private float _questID;
         private string _questName;
         private string _questContext;
         private string _questDescription;
@@ -23,7 +23,7 @@ namespace Assets.Scripts.Quest
         /// <param name="questName">Name of the quest.</param>
         /// <param name="questDescription">The quest description.</param>
         /// <param name="questIsComplete">if set to <c>true</c> [quest is complete].</param>
-        public QuestController(string questPNJ, int questID, string questName, string questContext, string questDescription, 
+        public QuestController(string questPNJ, float questID, string questName, string questContext, string questDescription, 
             bool questIsComplete)
         {
             QuestPNJ = questPNJ;
@@ -53,7 +53,7 @@ namespace Assets.Scripts.Quest
         /// <value>
         /// The quest identifier.
         /// </value>
-        public int QuestID
+        public float QuestID
         {
             get { return _questID; }
             set { _questID = value; }

@@ -1,0 +1,22 @@
+{
+    "Scene": [{
+        "SceneName": "LostTimeGearDistrict",
+        "PNJ": [{
+        "Cube": [{
+            "PNJName": "Cube",
+            "PNJCurrentQuestID": 1.1,
+            "PositionX": 10,
+            "PositionY": 2,
+            "PositionZ": 2,
+            "RotationX": 0,
+            "RotationY": 0,
+            "RotationZ": 0,
+            "ListQuestID": [{
+                "QuestID01": 1,
+                "QuestID02": 15,
+                "QuestID03": 7 
+            }] 
+        }]  
+        }]
+    }] 
+}

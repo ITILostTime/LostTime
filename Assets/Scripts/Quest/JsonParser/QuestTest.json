@@ -1,7 +1,8 @@
 {
-  "Quest0": [ {
+  "QuestMax": 2,
+  "Quest1.1": [ {
     "QuestPNJ": "Cube",
-    "QuestID": 1,
+    "QuestID": 1.1,
     "QuestName": "Tutorial",
     "QuestContext": "Bonjour voyageur, j'effectue un test",
     "QuestDescription": "Prise en main du jeu et d'astrid",

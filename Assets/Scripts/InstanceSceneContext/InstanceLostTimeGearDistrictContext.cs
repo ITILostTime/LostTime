@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using System.IO;
+using SimpleJSON;
+
 public class InstanceLostTimeGearDistrictContext : MonoBehaviour {
 
     private void Start()
@@ -86,20 +89,38 @@ public class InstanceLostTimeGearDistrictContext : MonoBehaviour {
         GameObject lampadaire = (GameObject)Instantiate(Resources.Load("LostTimeGearDistrict/Lampadaire"));
 
         GameObject Waypoints = (GameObject)Instantiate(Resources.Load("LostTimeGearDistrict/WayPoints"));
-        
 
-        Vector3 pos = new Vector3(10, 2, 2);
-        GeneratePNJQuestGearDistrict("testquestJson", pos);
+        string PNJ = ReadPNJJSON();
+        JSONNode json = JSON.Parse(PNJ);
+
+        GeneratePNJQuestGearDistrict(json["Scene"][0]["PNJ"][0]["Cube"][0]["PNJName"], json["Scene"][0]["PNJ"][0]["Cube"][0]["PositionX"].AsFloat,
+            json["Scene"][0]["PNJ"][0]["Cube"][0]["PositionY"].AsFloat, json["Scene"][0]["PNJ"][0]["Cube"][0]["PositionZ"].AsFloat, 
+            json["Scene"][0]["PNJ"][0]["Cube"][0]["RotationX"].AsFloat, json["Scene"][0]["PNJ"][0]["Cube"][0]["RotationY"].AsFloat, 
+            json["Scene"][0]["PNJ"][0]["Cube"][0]["RotationZ"].AsFloat, json["Scene"][0]["PNJ"][0]["Cube"][0]["PNJCurrentQuestID"].AsFloat);
+
+        //Debug.Log(json); 
     }
 
-    private void GeneratePNJQuestGearDistrict(string name, Vector3 position)
+    private string ReadPNJJSON()
+    {
+        StreamReader sr = new StreamReader(Application.dataPath + "/Scripts/Quest/JsonParser/PNJ.json");
+        string content = sr.ReadToEnd();
+
+        sr.Close();
+        return content;
+    }
+
+    private void GeneratePNJQuestGearDistrict(string name, float positionX, float positionY, float positionZ,
+        float rotationX, float rotationY, float rotationZ, float questID)
     {
         GameObject gameobject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        gameobject.transform.position = position;
+        // attribuer le nom du pnj via json
+        gameobject.transform.position = new Vector3(positionX, positionY, positionZ);
         gameobject.AddComponent<MeshCollider>();
         gameobject.AddComponent<BoxCollider>();
         gameobject.AddComponent<Rigidbody>();
         gameobject.AddComponent<MeshFilter>();
         gameobject.AddComponent<PNJQuestController>();
+        gameobject.GetComponent<PNJQuestController>().CurrentQuestID = questID;
     }
 }

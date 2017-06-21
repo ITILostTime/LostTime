@@ -120,10 +120,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="LostTimeGame.Plugins.csproj">
-      <Project>{4A282DC1-810F-DB62-C4EC-69E1433ED81F}</Project>
-      <Name>LostTimeGame.Plugins</Name>
-    </ProjectReference>
     <ProjectReference Include="LostTimeGame.csproj">
       <Project>{51D17DB1-017B-A1CA-67D9-DA20039D6F64}</Project>
       <Name>LostTimeGame</Name>
