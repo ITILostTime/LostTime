@@ -47,29 +47,7 @@ namespace Assets.Scripts.Quest.Interfaces
         ///   <c>true</c> if this instance is complete; otherwise, <c>false</c>.
         /// </value>
         bool ObjectiveIsComplete { get; set; }
-
-        /// <summary>
-        /// Gets or sets the type collect.
-        /// </summary>
-        /// <value>
-        /// The type collect.
-        /// </value>
-        TypeCollect TypeCollect { get; set; }
-
-        /// <summary>
-        /// Gets or sets the type talk to PNJ.
-        /// </summary>
-        /// <value>
-        /// The type talk to PNJ.
-        /// </value>
-        TypeTalkToPNJ TypeTalkToPNJ { get; set; }
-
-        /// <summary>
-        /// Gets or sets the type go to zone.
-        /// </summary>
-        /// <value>
-        /// The type go to zone.
-        /// </value>
-        TypeGoToZone TypeGoToZone { get; set; }
+        
+        string ObjectiveContext { get; set; }
     }
 }

@@ -61,13 +61,10 @@ namespace Assets.Scripts.Quest.Interfaces
         /// <value>
         /// The objectives of the quest.
         /// </value>
-        List<IQuestObjective> Objectives { get; set; }
+        List<ObjectiveController> Objectives { get; set; }
 
-        /// <summary>
-        /// Quests the progression.
-        /// </summary>
-        /// <param name="objectiveID">The objective identifier.</param>
-        /// <returns></returns>
-        int QuestProgression(int objectiveID);
+        int ObjectiveID { get; set; }
+
+        int ObjectiveMax { get; set; }
     }
 }

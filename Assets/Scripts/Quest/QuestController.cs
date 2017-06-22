@@ -14,7 +14,9 @@ namespace Assets.Scripts.Quest
         private string _questContext;
         private string _questDescription;
         private bool _questIsComplete;
-        private List<IQuestObjective> _questObjectives;
+        private List<ObjectiveController> _questObjectives;
+        private int _objectiveID;
+        private int _objectiveMax;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="QuestController"/> class.
@@ -24,7 +26,7 @@ namespace Assets.Scripts.Quest
         /// <param name="questDescription">The quest description.</param>
         /// <param name="questIsComplete">if set to <c>true</c> [quest is complete].</param>
         public QuestController(string questPNJ, float questID, string questName, string questContext, string questDescription, 
-            bool questIsComplete)
+            bool questIsComplete, int objectiveID, int objectiveMax, List<ObjectiveController> questObjectives)
         {
             QuestPNJ = questPNJ;
             QuestID = questID;
@@ -32,7 +34,10 @@ namespace Assets.Scripts.Quest
             QuestContext = questContext;
             QuestDescription = questDescription;
             QuestIsComplete = questIsComplete;
-            Objectives = new List<IQuestObjective>();
+            Objectives = new List<ObjectiveController>();
+            Objectives = questObjectives;
+            ObjectiveID = objectiveID;
+            ObjectiveMax = objectiveMax;
         }
 
         /// <summary>
@@ -113,43 +118,34 @@ namespace Assets.Scripts.Quest
         /// <value>
         /// The objectives of the quest.
         /// </value>
-        public List<IQuestObjective> Objectives
+        public List<ObjectiveController> Objectives
         {
             get { return _questObjectives; }
             set { _questObjectives = value; }
         }
 
         /// <summary>
-        /// Checks the progress.
+        /// Gets or sets the objective identifier.
         /// </summary>
-        public void CheckProgress()
+        /// <value>
+        /// The objective identifier.
+        /// </value>
+        public int ObjectiveID
         {
-            // A modifier
-            foreach (IQuestObjective iO in Objectives)
-            {
-                if (iO.ObjectiveIsComplete == false)
-                {
-                    QuestIsComplete = false;
-                    return;
-                }
-            }
-            QuestIsComplete = true;
+            get { return _objectiveID; }
+            set { _objectiveID = value; }
         }
 
         /// <summary>
-        /// Quests the progression.
+        /// Gets or sets the objective maximum.
         /// </summary>
-        /// <param name="objectiveID">The objective identifier.</param>
-        /// <returns></returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public int QuestProgression(int objectiveID)
+        /// <value>
+        /// The objective maximum.
+        /// </value>
+        public int ObjectiveMax
         {
-            throw new NotImplementedException();
+            get { return _objectiveMax; }
+            set { _objectiveMax = value; }
         }
-
-        /// <summary>
-        /// List of quest objectives
-        /// </summary>
-        List<ObjectiveController> QuestObjectives;
     }
 }

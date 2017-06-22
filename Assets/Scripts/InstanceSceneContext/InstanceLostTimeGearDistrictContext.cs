@@ -90,6 +90,8 @@ public class InstanceLostTimeGearDistrictContext : MonoBehaviour {
 
         GameObject Waypoints = (GameObject)Instantiate(Resources.Load("LostTimeGearDistrict/WayPoints"));
 
+        // if condition JsonScene == _currentScene (playerprefs)
+        // Read PNJ.json
         string PNJ = ReadPNJJSON();
         JSONNode json = JSON.Parse(PNJ);
 
@@ -98,9 +100,18 @@ public class InstanceLostTimeGearDistrictContext : MonoBehaviour {
             json["Scene"][0]["PNJ"][0]["Cube"][0]["RotationX"].AsFloat, json["Scene"][0]["PNJ"][0]["Cube"][0]["RotationY"].AsFloat, 
             json["Scene"][0]["PNJ"][0]["Cube"][0]["RotationZ"].AsFloat, json["Scene"][0]["PNJ"][0]["Cube"][0]["PNJCurrentQuestID"].AsFloat);
 
+        //GeneratePNJQuestGearDistrict(json["Scene"][0]["PNJ"][0]["Sphere"][0]["PNJName"], json["Scene"][0]["PNJ"][0]["Sphere"][0]["PositionX"].AsFloat,
+        //    json["Scene"][0]["PNJ"][0]["Sphere"][0]["PositionY"].AsFloat, json["Scene"][0]["PNJ"][0]["Sphere"][0]["PositionZ"].AsFloat,
+        //    json["Scene"][0]["PNJ"][0]["Sphere"][0]["RotationX"].AsFloat, json["Scene"][0]["PNJ"][0]["Sphere"][0]["RotationY"].AsFloat,
+        //    json["Scene"][0]["PNJ"][0]["Sphere"][0]["RotationZ"].AsFloat, json["Scene"][0]["PNJ"][0]["Sphere"][0]["PNJCurrentQuestID"].AsFloat);
+
         //Debug.Log(json); 
     }
 
+    /// <summary>
+    /// Reads the pnjjson.
+    /// </summary>
+    /// <returns></returns>
     private string ReadPNJJSON()
     {
         StreamReader sr = new StreamReader(Application.dataPath + "/Scripts/Quest/JsonParser/PNJ.json");
@@ -110,6 +121,17 @@ public class InstanceLostTimeGearDistrictContext : MonoBehaviour {
         return content;
     }
 
+    /// <summary>
+    /// Generates the PNJ quest gear district.
+    /// </summary>
+    /// <param name="name">The name.</param>
+    /// <param name="positionX">The position x.</param>
+    /// <param name="positionY">The position y.</param>
+    /// <param name="positionZ">The position z.</param>
+    /// <param name="rotationX">The rotation x.</param>
+    /// <param name="rotationY">The rotation y.</param>
+    /// <param name="rotationZ">The rotation z.</param>
+    /// <param name="questID">The quest identifier.</param>
     private void GeneratePNJQuestGearDistrict(string name, float positionX, float positionY, float positionZ,
         float rotationX, float rotationY, float rotationZ, float questID)
     {
@@ -122,5 +144,14 @@ public class InstanceLostTimeGearDistrictContext : MonoBehaviour {
         gameobject.AddComponent<MeshFilter>();
         gameobject.AddComponent<PNJQuestController>();
         gameobject.GetComponent<PNJQuestController>().CurrentQuestID = questID;
+
+        //GameObject gameobject1 = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        //gameobject1.transform.position = new Vector3(positionX, positionY, positionZ);
+        //gameobject1.AddComponent<MeshCollider>();
+        //gameobject1.AddComponent<BoxCollider>();
+        //gameobject1.AddComponent<Rigidbody>();
+        //gameobject1.AddComponent<MeshFilter>();
+        //gameobject1.AddComponent<PNJQuestController>();
+        //gameobject1.GetComponent<PNJQuestController>().CurrentQuestID = questID;
     }
 }
