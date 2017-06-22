@@ -1,10 +1,13 @@
 {
-    "Scene": [{
+    "Scene": 
+    [  
+        {
         "SceneName": "LostTimeGearDistrict",
-        "PNJ": [{
-        "Cube": [{
-            "PNJName": "Cube",
-            "PNJCurrentQuestID": 1.1,
+        "PNJ": 
+        [
+        {
+            "PNJName": "CubeE",
+            "PNJCurrentQuestID": 1,
             "PNJQuestIDMax": 3,
             "PositionX": 10,
             "PositionY": 2,
@@ -12,27 +15,35 @@
             "RotationX": 0,
             "RotationY": 0,
             "RotationZ": 0,
-            "ListQuestID": [{
-                "QuestID1": 1.1,
+            "ListQuestID": 
+            [
+                {
+                "QuestID1": 2,
                 "QuestID2": 15,
                 "QuestID3": 7 
-            }] 
-        }],
-        "Sphere": [{
-            "PNJName": "Sphere",
-            "PNJCurrentQuestID": 1.2,
+                }
+            ]
+        },
+        {
+            "PNJName": "Cube",
+            "PNJCurrentQuestID": 1,
+            "PNJQuestIDMax": 3,
             "PositionX": 14, 
             "PositionY": 5,
             "PositionZ": 5,
             "RotationX": 0,
             "RotationY": 0,
             "RotationZ": 0,
-            "ListQuestID": [{
-                "QuestID01": 2,
-                "QuestID02": 6,
-                "QuestID03": 10 
-            }] 
-        }]  
-        }]
-    }] 
+            "ListQuestID": 
+            [
+                {
+                "QuestID1": 1.1,
+                "QuestID2": 6,
+                "QuestID3": 10
+                }
+            ]
+        }
+        ]
+        }
+    ]
 }

@@ -27,30 +27,23 @@ public class PNJQuestController : MonoBehaviour {
     ObjectiveController _currentQuestObjectif;
 
     private float currentQuestID;
+    private int PNJCurrentQuestID;
     private int currentObjectiveID;
 
     public float CurrentQuestID
     {
-        get
-        {
-            return currentQuestID;
-        }
-
-        set
-        {
-            currentQuestID = value;
-        }
+        get { return currentQuestID; }
+        set { currentQuestID = value; }
     }
 
     void Start ()
     {
+        CheckNextQuest();
         string str = ReadJSON("/Scripts/Quest/JsonParser/QuestTest.json");
         JSONNode json = JSON.Parse(str);
 
         //2 boucles une sur les int ou sur les float
         // quest + i fonctionne 
-
-
         for (float i = 1; i < json["QuestMax"].AsInt; i += 0.1f)
         {
             if (CurrentQuestID == json["Quest" + i][0]["QuestID"].AsFloat && this.transform.name == json["Quest" + i][0]["QuestPNJ"].Value)
@@ -61,25 +54,21 @@ public class PNJQuestController : MonoBehaviour {
 
                 Debug.Log(json["Quest" + i][0]["ObjectiveMax"]);
                 for(int j = 1; j <= json["Quest" + i][0]["ObjectiveMax"].AsInt; j++)
-                {
-                    
+                {   
                     if(j == json["Quest" + i][0]["Objectives"][count]["ObjectiveID"])
                     {
                         tmpIQuestObjective = new ObjectiveController(
                             json["Quest" + i][0]["Objectives"][count]["ObjectiveID"], json["Quest" + i][0]["Objectives"][count]["ObjectiveName"],
                             json["Quest" + i][0]["Objectives"][count]["ObjectiveDescription"], json["Quest" + i][0]["Objectives"][count]["ObjectiveIsComplete"],
                             json["Quest" + i][0]["Objectives"][count]["QuestContext"]);
-                        
 
                         questObjectives.Add(tmpIQuestObjective);
                         count++;
                     }
                 }
-
                 questController = new QuestController(json["Quest" + i][0]["QuestPNJ"], json["Quest" + i][0]["QuestID"].AsFloat,
                 json["Quest" + i][0]["QuestName"], json["Quest" + i][0]["QuestContext"], json["Quest" + i][0]["QuestDescription"],
-                json["Quest" + i][0]["QuestIsComplete"].AsBool, json["Quest" + i][0]["ObjectiveID"].AsInt, json["Quest" + i][0]["ObjectiveMax"].AsInt, questObjectives);
-                
+                json["Quest" + i][0]["QuestIsComplete"].AsBool, json["Quest" + i][0]["ObjectiveID"].AsInt, json["Quest" + i][0]["ObjectiveMax"].AsInt, questObjectives);       
             }
         }
     }
@@ -87,7 +76,6 @@ public class PNJQuestController : MonoBehaviour {
     void Update ()
     {
         QuestSystemComportement();
-
     }
 
     private void QuestSystemComportement()
@@ -133,12 +121,42 @@ public class PNJQuestController : MonoBehaviour {
     private void CheckNextQuest()
     {
         string str = ReadJSON("/Scripts/Quest/JsonParser/PNJ.json");
-        JSONNode json = JSON.Parse(str);
-        Debug.Log(json);
 
-        //vérifier si on est dans la bonne scene
+        JSONNode json = JSON.Parse(str);
+
+        Debug.Log(json);
+        bool isPNJFind = false;
+
+        int pnjCount = 0;       //différencierles différenst pnjs et différencier les scènes
+
+        while(isPNJFind == false)
+        {
+            if (this.transform.name == json["Scene"][0]["PNJ"][pnjCount]["PNJName"]) // comparer si on est dans la bonne scène aussi
+            {
+                PNJCurrentQuestID = json["Scene"][0]["PNJ"][pnjCount]["PNJCurrentQuestID"];
+                Debug.Log(PNJCurrentQuestID);
+
+                int count = 0;
+
+                for (int i = 0; i < json["Scene"][0]["PNJ"][pnjCount]["PNJQuestIDMax"]; i++)
+                {
+                    if (i == json["Scene"][0]["PNJ"][pnjCount]["PNJCurrentQuestID"])
+                    {
+                        CurrentQuestID = json["Scene"][0]["PNJ"][pnjCount]["ListQuestID"][0]["QuestID" + i].AsFloat;
+                        isPNJFind = true;
+                    }
+
+                }
+
+            }
+            else
+            {
+                pnjCount++;
+            }
+        }
 
         
+        //vérifier si on est dans la bonne scene 
     }
 
     private string ReadJSON(string JSONPath)
