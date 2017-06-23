@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
         //playerRigidbody = gameObject.AddComponent<Rigidbody>();
         playerRigidbody = GetComponent<Rigidbody>();
         playerRigidbody.mass = 150;
-        playerRigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        playerRigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
         
         animCtrl = GetComponent<CharaAnimCtrl>();
         navMeshPlayerObstacle = GetComponent<NavMeshObstacle>();
@@ -102,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void PlayerMoveBackward()
     {
-        transform.Rotate(Vector3.down, Time.deltaTime * speed * 180);
+        transform.Rotate(Vector3.down, Time.deltaTime * speed /4 * 180);
     }
 }
 
