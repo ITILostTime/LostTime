@@ -21,6 +21,7 @@ public class PNJQuestController : MonoBehaviour {
     // supprimer. l'idée c'est qu'il récupère ses questID via JSON
     // _current questID  recupre les infos du JSON
 
+    private string currentPNJQuestContext;
     
     QuestController questController;
     List<ObjectiveController> questObjectives;
@@ -36,9 +37,30 @@ public class PNJQuestController : MonoBehaviour {
         set { currentQuestID = value; }
     }
 
+    public string CurrentPNJQuestContext
+    {
+        get
+        {
+            return currentPNJQuestContext;
+        }
+
+        set
+        {
+            currentPNJQuestContext = value;
+        }
+    }
+
     void Start ()
     {
+        GameObject.Find(this.transform.name).AddComponent<UIDialogueSystem>();
+
         CheckNextQuest();
+
+        GetQuestFromJson();
+    }
+
+    private void GetQuestFromJson()
+    {
         string str = ReadJSON("/Scripts/Quest/JsonParser/QuestTest.json");
         JSONNode json = JSON.Parse(str);
 
@@ -53,9 +75,9 @@ public class PNJQuestController : MonoBehaviour {
                 int count = 0;
 
                 Debug.Log(json["Quest" + i][0]["ObjectiveMax"]);
-                for(int j = 1; j <= json["Quest" + i][0]["ObjectiveMax"].AsInt; j++)
-                {   
-                    if(j == json["Quest" + i][0]["Objectives"][count]["ObjectiveID"])
+                for (int j = 1; j <= json["Quest" + i][0]["ObjectiveMax"].AsInt; j++)
+                {
+                    if (j == json["Quest" + i][0]["Objectives"][count]["ObjectiveID"])
                     {
                         tmpIQuestObjective = new ObjectiveController(
                             json["Quest" + i][0]["Objectives"][count]["ObjectiveID"], json["Quest" + i][0]["Objectives"][count]["ObjectiveName"],
@@ -68,7 +90,9 @@ public class PNJQuestController : MonoBehaviour {
                 }
                 questController = new QuestController(json["Quest" + i][0]["QuestPNJ"], json["Quest" + i][0]["QuestID"].AsFloat,
                 json["Quest" + i][0]["QuestName"], json["Quest" + i][0]["QuestContext"], json["Quest" + i][0]["QuestDescription"],
-                json["Quest" + i][0]["QuestIsComplete"].AsBool, json["Quest" + i][0]["ObjectiveID"].AsInt, json["Quest" + i][0]["ObjectiveMax"].AsInt, questObjectives);       
+                json["Quest" + i][0]["QuestIsComplete"].AsBool, json["Quest" + i][0]["ObjectiveID"].AsInt, json["Quest" + i][0]["ObjectiveMax"].AsInt, questObjectives);
+
+                currentPNJQuestContext = questController.QuestContext;
             }
         }
     }
@@ -78,15 +102,36 @@ public class PNJQuestController : MonoBehaviour {
         QuestSystemComportement();
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.name == "AstridPlayer") // si le PNJ a une quête 
+        {
+            if (GameObject.Find("TalkButtonBackground") == false)
+            {
+                this.gameObject.GetComponent<UIDialogueSystem>().InteractWithPNJ(this.transform.name);
+            }
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.transform.name == "AstridPlayer") // si le PNJ a une quête 
+        {
+            if (GameObject.Find("TalkButtonBackground") == true)
+            {
+                Destroy(GameObject.Find("TalkButtonBackground"));
+            }
+        }
+    }
+
     private void QuestSystemComportement()
     {
         int objID = 0;
-
+        
         for(int i = 0; i <= questController.ObjectiveMax; i++)
         {
             if(questController.ObjectiveID == objID)
             {
-                Debug.Log(questController.QuestContext);
                 questController.ObjectiveID++;
             }
             else
@@ -96,7 +141,8 @@ public class PNJQuestController : MonoBehaviour {
                     if(objC.ObjectiveID == questController.ObjectiveID)
                     {
                         _currentQuestObjectif = objC;
-                        Debug.Log(_currentQuestObjectif.ObjectiveContext);
+                        currentPNJQuestContext = objC.ObjectiveContext;
+                        //Debug.Log(_currentQuestObjectif.ObjectiveContext);
                         _currentQuestObjectif.ObjectiveIsComplete = true;
                     }
                 }
@@ -124,7 +170,7 @@ public class PNJQuestController : MonoBehaviour {
 
         JSONNode json = JSON.Parse(str);
 
-        Debug.Log(json);
+        //Debug.Log(json);
         bool isPNJFind = false;
 
         int pnjCount = 0;       //différencierles différenst pnjs et différencier les scènes
@@ -134,7 +180,7 @@ public class PNJQuestController : MonoBehaviour {
             if (this.transform.name == json["Scene"][0]["PNJ"][pnjCount]["PNJName"]) // comparer si on est dans la bonne scène aussi
             {
                 PNJCurrentQuestID = json["Scene"][0]["PNJ"][pnjCount]["PNJCurrentQuestID"];
-                Debug.Log(PNJCurrentQuestID);
+                //Debug.Log(PNJCurrentQuestID);
 
                 int count = 0;
 

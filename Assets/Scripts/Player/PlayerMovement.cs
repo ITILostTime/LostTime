@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
         //playerRigidbody = gameObject.AddComponent<Rigidbody>();
         playerRigidbody = GetComponent<Rigidbody>();
         playerRigidbody.mass = 150;
-        playerRigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        playerRigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
         
         animCtrl = GetComponent<CharaAnimCtrl>();
         playerObstacle = GetComponent<NavMeshObstacle>();

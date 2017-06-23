@@ -53,15 +53,15 @@ public class UICanvas : MonoBehaviour {
 
         _canvas.GetComponent<CreateUserInterfaceObject>().CreateGameObjectImage("LeftJoystickPanel", _canvas, true,
             _canvas.GetComponent<RectTransform>().rect.width / 4,
-            _canvas.GetComponent<RectTransform>().rect.height, 
-            _canvas.GetComponent<RectTransform>().rect.width / -4, 
+            _canvas.GetComponent<RectTransform>().rect.height,
+            (Screen.width / -2) + (_canvas.GetComponent<RectTransform>().rect.width / 8) + GameObject.Find("PanelButton").GetComponent<RectTransform>().rect.width, 
             0, Color.clear);
         GameObject.Find("LeftJoystickPanel").AddComponent<UIVirtualLeftJoystick>();
 
         _canvas.GetComponent<CreateUserInterfaceObject>().CreateGameObjectImage("RightJoystickPanel", _canvas, true,
             _canvas.GetComponent<RectTransform>().rect.width / 4,
-            _canvas.GetComponent<RectTransform>().rect.height, 
-            _canvas.GetComponent<RectTransform>().rect.width / 4, 
+            _canvas.GetComponent<RectTransform>().rect.height,
+            (Screen.width / 2) - (_canvas.GetComponent<RectTransform>().rect.width / 8) - GameObject.Find("InventoryButton").GetComponent<RectTransform>().rect.width, 
             0, Color.clear);
         GameObject.Find("RightJoystickPanel").AddComponent<UIVirtualRightJoystick>();
 

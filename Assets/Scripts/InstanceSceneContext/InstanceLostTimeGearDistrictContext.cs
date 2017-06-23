@@ -104,7 +104,7 @@ public class InstanceLostTimeGearDistrictContext : MonoBehaviour {
         //    json["Scene"][0]["PNJ"][0]["Sphere"][0]["RotationX"].AsFloat, json["Scene"][0]["PNJ"][0]["Sphere"][0]["RotationY"].AsFloat,
         //    json["Scene"][0]["PNJ"][0]["Sphere"][0]["RotationZ"].AsFloat, json["Scene"][0]["PNJ"][0]["Sphere"][0]["PNJCurrentQuestID"].AsFloat);
 
-            //Debug.Log(json);
+        //Debug.Log(json);
     }
 
     /// <summary>
