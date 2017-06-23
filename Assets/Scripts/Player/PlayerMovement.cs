@@ -25,12 +25,12 @@ public class PlayerMovement : MonoBehaviour
         animCtrl = GetComponent<CharaAnimCtrl>();
         playerObstacle = GetComponent<NavMeshObstacle>();
 
-        setAstridPosition();
+        SetAstridPosition();
         
         SetPlayerObstacle();
     }
 
-    private void setAstridPosition()
+    private void SetAstridPosition()
     {
         if (PlayerPrefs.GetString("CurrentSaveStateUsed") == "SaveStateOne")
         {

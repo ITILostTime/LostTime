@@ -6,15 +6,20 @@ using UnityEngine.EventSystems;
 
 public class UIAdminCommand : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
-    public bool _isAdminCommandOn;
+    private bool _isAdminCommandOn;
     private float _PointerDownTime;
     private float _PointerUpTime;
 
-    private void FixedUpdate()
+    public bool IsAdminCommandOn
     {
-        if(_isAdminCommandOn == true && (Time.time - _PointerUpTime) > 5)
+        get
         {
-            _isAdminCommandOn = false;
+            return _isAdminCommandOn;
+        }
+
+        set
+        {
+            _isAdminCommandOn = value;
         }
     }
 

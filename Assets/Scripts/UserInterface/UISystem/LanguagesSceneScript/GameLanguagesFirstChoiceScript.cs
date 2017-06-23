@@ -81,17 +81,21 @@ public class GameLanguagesFirstChoiceScript : MonoBehaviour {
 
     private void AdminCommand()
     {
-        _userInterface.GetComponent<CreateUserInterfaceObject>().CreateEmptyGameObject("AdminInputZone", GameObject.Find("GameName(Clone)"), true,
+        if (GameObject.Find("AdminInputZone") == false)
+        {
+            _userInterface.GetComponent<CreateUserInterfaceObject>().CreateEmptyGameObject("AdminInputZone", GameObject.Find("GameName(Clone)"), true,
             GameObject.Find("GameName(Clone)").GetComponent<RectTransform>().rect.width / 5, GameObject.Find("GameName(Clone)").GetComponent<RectTransform>().rect.height,
             0, 0);
-        GameObject.Find("AdminInputZone").AddComponent<Image>();
-        GameObject.Find("AdminInputZone").GetComponent<Image>().color = new Color(255, 255, 255, 0f);
-        GameObject.Find("AdminInputZone").AddComponent<UIAdminCommand>();
+            GameObject.Find("AdminInputZone").AddComponent<Image>();
+            GameObject.Find("AdminInputZone").GetComponent<Image>().color = new Color(255, 255, 255, 0f);
+            GameObject.Find("AdminInputZone").AddComponent<UIAdminCommand>();
+        }
+        
     }
 
     private void Update()
     {
-        if (GameObject.Find("AdminInputZone").GetComponent<UIAdminCommand>()._isAdminCommandOn == true && GameObject.Find("AdminPanel") == false)
+        if (GameObject.Find("AdminInputZone").GetComponent<UIAdminCommand>().IsAdminCommandOn == true && GameObject.Find("AdminPanel") == false)
         {
             CreateAdminPanel();
         }
@@ -129,6 +133,7 @@ public class GameLanguagesFirstChoiceScript : MonoBehaviour {
 
     private void DestroyAdminPanel()
     {
+        GameObject.Find("AdminInputZone").GetComponent<UIAdminCommand>().IsAdminCommandOn = false;
         Destroy(GameObject.Find("AdminPanel"));
     }
 

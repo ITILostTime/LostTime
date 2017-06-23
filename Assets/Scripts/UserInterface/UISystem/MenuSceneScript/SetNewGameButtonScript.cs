@@ -165,7 +165,7 @@ public class SetNewGameButtonScript : MonoBehaviour, IPointerDownHandler
         {
             PlayerPrefs.SetInt("Is" + SaveStateName + "Used", 1);
             PlayerPrefs.SetString("CurrentSaveStateUsed", SaveStateName);
-            _canvasMenu.GetComponent<SaveController>().InitialisePlayerSaveState();
+            _canvasMenu.GetComponent<SaveAndLoadSystemController>().InitializeBackUpSystemToZero();
             PlayerPrefs.SetString("CurrentScene", PlayerPrefs.GetString(SaveStateName + "LastScene"));
             SceneManager.LoadScene(PlayerPrefs.GetString(SaveStateName + "LastScene"));
         }
@@ -212,7 +212,7 @@ public class SetNewGameButtonScript : MonoBehaviour, IPointerDownHandler
 
         PlayerPrefs.SetInt("Is" + SaveStateName + "Used", 1);
         PlayerPrefs.SetString("CurrentSaveStateUsed", SaveStateName);
-        _canvasMenu.GetComponent<SaveController>().InitialisePlayerSaveState();
+        _canvasMenu.GetComponent<SaveAndLoadSystemController>().InitializeBackUpSystemToZero();
         PlayerPrefs.SetString("CurrentScene", PlayerPrefs.GetString(SaveStateName + "LastScene"));
         SceneManager.LoadScene(PlayerPrefs.GetString(SaveStateName + "LastScene"));
     }
