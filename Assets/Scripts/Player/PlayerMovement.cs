@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public CharaAnimCtrl animCtrl;
     public float speed;
     private Rigidbody playerRigidbody;           
-    private NavMeshObstacle playerObstacle;
+    private NavMeshObstacle navMeshPlayerObstacle;
 
     // Use this for initialization
     void Start()
@@ -23,14 +23,14 @@ public class PlayerMovement : MonoBehaviour
         playerRigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
         
         animCtrl = GetComponent<CharaAnimCtrl>();
-        playerObstacle = GetComponent<NavMeshObstacle>();
+        navMeshPlayerObstacle = GetComponent<NavMeshObstacle>();
 
-        setAstridPosition();
+        SetAstridPosition();
         
         SetPlayerObstacle();
     }
 
-    private void setAstridPosition()
+    private void SetAstridPosition()
     {
         if (PlayerPrefs.GetString("CurrentSaveStateUsed") == "SaveStateOne")
         {
@@ -81,11 +81,11 @@ public class PlayerMovement : MonoBehaviour
     //initialize and sets property of the NavMeshObstacle
     private void SetPlayerObstacle()
     {
-        playerObstacle.radius = 1;
-        playerObstacle.carving = true;
-        playerObstacle.carvingMoveThreshold = 0.1f;
-        playerObstacle.carvingTimeToStationary = 0.2f;
-        playerObstacle.carveOnlyStationary = true;
+        navMeshPlayerObstacle.radius = 1;
+        navMeshPlayerObstacle.carving = true;
+        navMeshPlayerObstacle.carvingMoveThreshold = 0.1f;
+        navMeshPlayerObstacle.carvingTimeToStationary = 0.2f;
+        navMeshPlayerObstacle.carveOnlyStationary = true;
     }
 
     /// <summary>
