@@ -181,7 +181,7 @@ public class SetLoadGameButtonScript : MonoBehaviour, IPointerDownHandler
         {
             PlayerPrefs.SetString("CurrentSaveStateUsed", SaveStateName);
             PlayerPrefs.SetString("CurrentScene", PlayerPrefs.GetString(SaveStateName + "LastScene"));
-            _canvasMenu.GetComponent<SaveController>().LoadGame();
+            _canvasMenu.GetComponent<SaveAndLoadSystemController>().LoadBackUpSystem();
             SceneManager.LoadScene(PlayerPrefs.GetString(SaveStateName + "LastScene"));
         }
         else

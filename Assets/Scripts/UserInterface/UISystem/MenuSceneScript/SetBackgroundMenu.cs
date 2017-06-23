@@ -25,7 +25,7 @@ public class SetBackgroundMenu : MonoBehaviour {
         CanvasMenu.AddComponent<AnimationUserInterfaceController>();
         CanvasMenu.AddComponent<CreateUserInterfaceObject>();
         CanvasMenu.AddComponent<TextMonitoring>();
-        CanvasMenu.AddComponent<SaveController>();
+        CanvasMenu.AddComponent<SaveAndLoadSystemController>();
         CanvasMenu.AddComponent<ImageMonitoring>();
 
         _menuCanvas = GameObject.Find("MenuCanvas");

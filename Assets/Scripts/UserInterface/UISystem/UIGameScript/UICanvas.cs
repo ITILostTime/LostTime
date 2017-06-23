@@ -32,8 +32,10 @@ public class UICanvas : MonoBehaviour {
         CanvasMenu.AddComponent<TextMonitoring>();
         CanvasMenu.AddComponent<ImageMonitoring>();
         CanvasMenu.AddComponent<SceneController>();
+        CanvasMenu.AddComponent<SaveWayPointsGenerator>();
+        CanvasMenu.AddComponent<SceneWayPointsGenerator>();
+        CanvasMenu.AddComponent<SaveAndLoadSystemController>();
 
-        CanvasMenu.AddComponent<SaveController>();
 
         _canvas = GameObject.Find("MenuCanvas");
 

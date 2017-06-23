@@ -18,7 +18,7 @@ public class SaveController : MonoBehaviour {
             PlayerPrefs.SetFloat("SaveStateOneAstridRotationX", GameObject.Find("AstridPlayer").transform.rotation.x);
             PlayerPrefs.SetFloat("SaveStateOneAstridRotationY", GameObject.Find("AstridPlayer").transform.rotation.y);
             PlayerPrefs.SetFloat("SaveStateOneAstridRotationZ", GameObject.Find("AstridPlayer").transform.rotation.z);
-            PlayerPrefs.SetFloat("SaveStateOneTimer", GameObject.Find("Sun").GetComponent<Timer>().CurrentTimeOfDay);
+            //PlayerPrefs.SetFloat("SaveStateOneTimer", GameObject.Find("Sun").GetComponent<Timer>().CurrentTimeOfDay);
             PlayerPrefs.SetString("SaveStateOneLastScene", CurrentScene);
         }
 
@@ -30,7 +30,7 @@ public class SaveController : MonoBehaviour {
             PlayerPrefs.SetFloat("SaveStateTwoAstridRotationX", GameObject.Find("AstridPlayer").transform.rotation.x);
             PlayerPrefs.SetFloat("SaveStateTwoAstridRotationY", GameObject.Find("AstridPlayer").transform.rotation.y);
             PlayerPrefs.SetFloat("SaveStateTwoAstridRotationZ", GameObject.Find("AstridPlayer").transform.rotation.z);
-            PlayerPrefs.SetFloat("SaveStateTwoTimer", GameObject.Find("Sun").GetComponent<Timer>().CurrentTimeOfDay);
+            //PlayerPrefs.SetFloat("SaveStateTwoTimer", GameObject.Find("Sun").GetComponent<Timer>().CurrentTimeOfDay);
             PlayerPrefs.SetString("SaveStateTwoLastScene", CurrentScene);
         }
 
@@ -42,7 +42,7 @@ public class SaveController : MonoBehaviour {
             PlayerPrefs.SetFloat("SaveStateThreeAstridRotationX", GameObject.Find("AstridPlayer").transform.rotation.x);
             PlayerPrefs.SetFloat("SaveStateThreeAstridRotationY", GameObject.Find("AstridPlayer").transform.rotation.y);
             PlayerPrefs.SetFloat("SaveStateThreeAstridRotationZ", GameObject.Find("AstridPlayer").transform.rotation.z);
-            PlayerPrefs.SetFloat("SaveStateThreeTimer", GameObject.Find("Sun").GetComponent<Timer>().CurrentTimeOfDay);
+            //PlayerPrefs.SetFloat("SaveStateThreeTimer", GameObject.Find("Sun").GetComponent<Timer>().CurrentTimeOfDay);
             PlayerPrefs.SetString("SaveStateThreeLastScene", CurrentScene);
         }
     }

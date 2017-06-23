@@ -73,6 +73,15 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\PNJQuest\PNJ.cs" />
@@ -139,13 +148,16 @@
     <Compile Include="Assets\Scripts\Quest\QuestM.cs" />
     <Compile Include="Assets\Scripts\Quest\ScriptTest\InitQuestTest.cs" />
     <Compile Include="Assets\Scripts\Save\SaveController.cs" />
-    <Compile Include="Assets\Scripts\Save\SaveStateAnimation.cs" />
     <Compile Include="Assets\Scripts\Save\SaveStateController.cs" />
-    <Compile Include="Assets\Scripts\Save\SaveStateSpriteAnimation.cs" />
     <Compile Include="Assets\Scripts\Save\SaveStateWayPoints.cs" />
     <Compile Include="Assets\Scripts\SaveControllerSystem\PlayerPrefsController.cs" />
+    <Compile Include="Assets\Scripts\SaveControllerSystem\SaveAndLoadSystemController.cs" />
+    <Compile Include="Assets\Scripts\SaveControllerSystem\SaveStateAnimation.cs" />
+    <Compile Include="Assets\Scripts\SaveControllerSystem\SaveStateSpriteAnimation.cs" />
     <Compile Include="Assets\Scripts\SaveControllerSystem\SaveWayPointsController.cs" />
+    <Compile Include="Assets\Scripts\SaveControllerSystem\SaveWayPointsGenerator.cs" />
     <Compile Include="Assets\Scripts\SceneControllerSystem\SceneController.cs" />
+    <Compile Include="Assets\Scripts\SceneControllerSystem\SceneWayPointsGenerator.cs" />
     <Compile Include="Assets\Scripts\Sound\SoundController.cs" />
     <Compile Include="Assets\Scripts\Timer\Timer.cs" />
     <Compile Include="Assets\Scripts\Timer\lightCtrl.cs" />
