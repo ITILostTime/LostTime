@@ -55,14 +55,7 @@ public class PNJQuestController : MonoBehaviour {
         {
             currentPNJQuestContext = value;
         }
-    }
-
-
-        set
-        {
-            currentPNJQuestContext = value;
-        }
-    }
+    }      
 
     void Start ()
     {
