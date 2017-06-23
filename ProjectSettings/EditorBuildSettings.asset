@@ -7,13 +7,13 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 0
     path: Assets/Scene/LostTimeMenuGame.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LostTimeGameLanguagesFirstChoice.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LostTimeMenuGame.unity
   - enabled: 1
     path: Assets/Scenes/LostTimeGearDistrict.unity
   - enabled: 0
     path: Assets/Scenes/LostTimeEnvironement3D.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LostTimeAstridHouse.unity
