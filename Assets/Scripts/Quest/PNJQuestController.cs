@@ -30,11 +30,18 @@ public class PNJQuestController : MonoBehaviour {
     private float currentQuestID;
     private int PNJCurrentQuestID;
     private int currentObjectiveID;
+    private string pnjName;
 
     public float CurrentQuestID
     {
         get { return currentQuestID; }
         set { currentQuestID = value; }
+    }
+
+    public string PNJName
+    {
+        get { return pnjName; }
+        set { pnjName = value; }
     }
 
     public string CurrentPNJQuestContext
@@ -43,6 +50,13 @@ public class PNJQuestController : MonoBehaviour {
         {
             return currentPNJQuestContext;
         }
+
+        set
+        {
+            currentPNJQuestContext = value;
+        }
+    }
+
 
         set
         {
@@ -99,7 +113,7 @@ public class PNJQuestController : MonoBehaviour {
 
     void Update ()
     {
-        QuestSystemComportement();
+        //QuestSystemComportement();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -132,6 +146,7 @@ public class PNJQuestController : MonoBehaviour {
         {
             if(questController.ObjectiveID == objID)
             {
+                Debug.Log(questController.QuestContext);
                 questController.ObjectiveID++;
             }
             else
@@ -171,33 +186,23 @@ public class PNJQuestController : MonoBehaviour {
         JSONNode json = JSON.Parse(str);
 
         //Debug.Log(json);
-        bool isPNJFind = false;
 
-        int pnjCount = 0;       //différencierles différenst pnjs et différencier les scènes
-
-        while(isPNJFind == false)
+        for (int i = 0; i <= json["PNJCount"]; i++)
         {
-            if (this.transform.name == json["Scene"][0]["PNJ"][pnjCount]["PNJName"]) // comparer si on est dans la bonne scène aussi
+            if (PNJName == json["Scene"][0]["PNJ"][i]["PNJName"]) // comparer si on est dans la bonne scène aussi
             {
-                PNJCurrentQuestID = json["Scene"][0]["PNJ"][pnjCount]["PNJCurrentQuestID"];
-                //Debug.Log(PNJCurrentQuestID);
+                PNJCurrentQuestID = json["Scene"][0]["PNJ"][i]["PNJCurrentQuestID"];
+                Debug.Log("PNJCurrentQuestID " + PNJCurrentQuestID);
 
-                int count = 0;
-
-                for (int i = 0; i < json["Scene"][0]["PNJ"][pnjCount]["PNJQuestIDMax"]; i++)
+                for (int j = 0; j < json["Scene"][0]["PNJ"][i]["PNJQuestIDMax"]; j++)
                 {
-                    if (i == json["Scene"][0]["PNJ"][pnjCount]["PNJCurrentQuestID"])
+                    if (j == json["Scene"][0]["PNJ"][i]["PNJCurrentQuestID"])
                     {
-                        CurrentQuestID = json["Scene"][0]["PNJ"][pnjCount]["ListQuestID"][0]["QuestID" + i].AsFloat;
-                        isPNJFind = true;
+                        CurrentQuestID = json["Scene"][0]["PNJ"][i]["ListQuestID"][0]["QuestID" + j].AsFloat;
                     }
 
                 }
-
-            }
-            else
-            {
-                pnjCount++;
+                Debug.Log("CurrentQuestID "+ CurrentQuestID);
             }
         }
 
