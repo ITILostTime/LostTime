@@ -70,16 +70,12 @@ public class PNJQuestController : MonoBehaviour {
         // quest + i fonctionne 
         for (float i = 1; i < json["QuestMax"].AsInt; i += 0.1f)
         {
-            Debug.Log(i);
-            Debug.Log(CurrentQuestID);
-            Debug.Log(this.transform.name);
             if (CurrentQuestID == json["Quest" + i][0]["QuestID"].AsFloat && this.transform.name == json["Quest" + i][0]["QuestPNJ"].Value)
             {
                 questObjectives = new List<ObjectiveController>();
                 ObjectiveController tmpIQuestObjective;
                 int count = 0;
 
-                //Debug.Log(json["Quest" + i][0]["ObjectiveMax"]);
                 for (int j = 1; j <= json["Quest" + i][0]["ObjectiveMax"].AsInt; j++)
                 {
                     if (j == json["Quest" + i][0]["Objectives"][count]["ObjectiveID"])
@@ -98,7 +94,6 @@ public class PNJQuestController : MonoBehaviour {
                 json["Quest" + i][0]["QuestIsComplete"].AsBool, json["Quest" + i][0]["ObjectiveID"].AsInt, json["Quest" + i][0]["ObjectiveMax"].AsInt, questObjectives);
 
                 currentPNJQuestContext = questController.QuestContext;
-                Debug.Log(questController.QuestContext);
                 _hasQuest = true;
             }
         }
@@ -113,6 +108,17 @@ public class PNJQuestController : MonoBehaviour {
     }
 
     private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.name == "AstridPlayer") // si le PNJ a une quête 
+        {
+            if (GameObject.Find("TalkButtonBackground") == false)
+            {
+                this.gameObject.GetComponent<UIDialogueSystem>().InteractWithPNJ(this.transform.name);
+            }
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
     {
         if (collision.transform.name == "AstridPlayer") // si le PNJ a une quête 
         {
@@ -142,7 +148,6 @@ public class PNJQuestController : MonoBehaviour {
         {
             if(questController.ObjectiveID == objID)
             {
-                Debug.Log(questController.QuestContext);
                 questController.ObjectiveID++;
             }
             else
@@ -153,7 +158,6 @@ public class PNJQuestController : MonoBehaviour {
                     {
                         _currentQuestObjectif = objC;
                         currentPNJQuestContext = objC.ObjectiveContext;
-                        //Debug.Log(_currentQuestObjectif.ObjectiveContext);
                         _currentQuestObjectif.ObjectiveIsComplete = true;
                     }
                 }
@@ -183,14 +187,11 @@ public class PNJQuestController : MonoBehaviour {
 
         JSONNode json = JSON.Parse(str);
 
-        //Debug.Log(json);
-
         for (int i = 0; i <= json["PNJCount"]; i++)
         {
             if (transform.name == json["Scene"][0]["PNJ"][i]["PNJName"]) // comparer si on est dans la bonne scène aussi
             {
                 PNJCurrentQuestID = json["Scene"][0]["PNJ"][i]["PNJCurrentQuestID"];
-                //Debug.Log("PNJCurrentQuestID " + PNJCurrentQuestID);
 
                 for (int j = 0; j < json["Scene"][0]["PNJ"][i]["PNJQuestIDMax"]; j++)
                 {
@@ -200,7 +201,6 @@ public class PNJQuestController : MonoBehaviour {
                     }
 
                 }
-                Debug.Log("CurrentQuestID" + CurrentQuestID);
             }
         }
 

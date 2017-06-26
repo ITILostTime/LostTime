@@ -46,5 +46,35 @@
         "ObjectiveDescription": "Test test test",
         "ObjectiveIsComplete": false       
     }]
+  }],
+  "Quest1.3": [{
+    "QuestPNJ": "Julie",
+    "QuestID": 1.3,
+    "QuestName": "Test numero 3",
+    "QuestContext": "Salut je m'appelle Pepito-dono",
+    "QuestDescription": "Prise en main du test",
+    "QuestIsComplete":  false,
+    "Objectives": [{
+      "ObjectiveID": 1,
+        "ObjectiveName": "Lire le JSON correctement",
+        "QuestContext": "Salut je suis une sphère 1",
+        "ObjectiveDescription": "Test test test",
+        "ObjectiveIsComplete": false
+      }]
+  }],
+  "Quest1.4": [{
+    "QuestPNJ": "CubeE",
+    "QuestID": 1.4,
+    "QuestName": "Test numero 4",
+    "QuestContext": "CubeE desu",
+    "QuestDescription": "Prise en main du test",
+    "QuestIsComplete":  false,
+    "Objectives": [{
+      "ObjectiveID": 1,
+        "ObjectiveName": "Lire le JSON correctement",
+        "QuestContext": "Salut je suis une sphère 1",
+        "ObjectiveDescription": "Test test test",
+        "ObjectiveIsComplete": false
+    }]
   }]
 }

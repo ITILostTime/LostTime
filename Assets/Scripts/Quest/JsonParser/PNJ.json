@@ -6,7 +6,7 @@
       "PNJ": [
         {
           "PNJName": "CubeE",
-          "PNJCurrentQuestID": 2,
+          "PNJCurrentQuestID": 1,
           "PNJQuestIDMax": 3,
           "PositionX": 14,
           "PositionY": 15,
@@ -16,7 +16,7 @@
           "RotationZ": 0,
           "ListQuestID": [
             {
-              
+              "QuestID1": 1.4
             }
           ]
         },
@@ -66,6 +66,7 @@
             "ListQuestID": 
             [
                 {
+                  "QuestID1": 1.3
                 }
             ]
         }
