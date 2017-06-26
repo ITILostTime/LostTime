@@ -42,6 +42,44 @@
                 "QuestID3": 10
                 }
             ]
+        },
+        {
+            "PNJName": "Julien",
+            "PNJCurrentQuestID": 1,
+            "PNJQuestIDMax": 3,
+            "PositionX": 10,
+            "PositionY": 2,
+            "PositionZ": 2,
+            "RotationX": 0,
+            "RotationY": 0,
+            "RotationZ": 0,
+            "ListQuestID": 
+            [
+                {
+                "QuestID1": 1.2,
+                "QuestID2": 15,
+                "QuestID3": 7 
+                }
+            ]
+        },
+        {
+            "PNJName": "Julie",
+            "PNJCurrentQuestID": 1,
+            "PNJQuestIDMax": 3,
+            "PositionX": 14, 
+            "PositionY": 5,
+            "PositionZ": 5,
+            "RotationX": 0,
+            "RotationY": 0,
+            "RotationZ": 0,
+            "ListQuestID": 
+            [
+                {
+                "QuestID1": 1.1,
+                "QuestID2": 6,
+                "QuestID3": 10
+                }
+            ]
         }
         ]
         }

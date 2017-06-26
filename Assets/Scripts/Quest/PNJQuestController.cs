@@ -30,6 +30,7 @@ public class PNJQuestController : MonoBehaviour {
     private float currentQuestID;
     private int PNJCurrentQuestID;
     private int currentObjectiveID;
+    private bool _hasQuest;
 
     public float CurrentQuestID
     {
@@ -74,7 +75,7 @@ public class PNJQuestController : MonoBehaviour {
                 ObjectiveController tmpIQuestObjective;
                 int count = 0;
 
-                Debug.Log(json["Quest" + i][0]["ObjectiveMax"]);
+                //Debug.Log(json["Quest" + i][0]["ObjectiveMax"]);
                 for (int j = 1; j <= json["Quest" + i][0]["ObjectiveMax"].AsInt; j++)
                 {
                     if (j == json["Quest" + i][0]["Objectives"][count]["ObjectiveID"])
@@ -93,13 +94,17 @@ public class PNJQuestController : MonoBehaviour {
                 json["Quest" + i][0]["QuestIsComplete"].AsBool, json["Quest" + i][0]["ObjectiveID"].AsInt, json["Quest" + i][0]["ObjectiveMax"].AsInt, questObjectives);
 
                 currentPNJQuestContext = questController.QuestContext;
+                _hasQuest = true;
             }
         }
     }
 
     void Update ()
     {
-        QuestSystemComportement();
+        if(_hasQuest == true)
+        {
+            QuestSystemComportement();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -156,7 +161,9 @@ public class PNJQuestController : MonoBehaviour {
             if(questController.ObjectiveID > questController.ObjectiveMax)
             {
                 questController.QuestIsComplete = true;
+                _hasQuest = false;
                 CheckNextQuest();
+                GetQuestFromJson();
                 //fct de recherche quete suivante
                 //demander pnj.json sa prochaine quete
                 // demande quetes.json donne moi la quete de telle ID

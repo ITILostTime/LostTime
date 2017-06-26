@@ -99,6 +99,21 @@ public class InstanceLostTimeGearDistrictContext : MonoBehaviour {
                 json["Scene"][0]["PNJ"][0]["PositionY"].AsFloat, json["Scene"][0]["PNJ"][0]["PositionZ"].AsFloat,
                 json["Scene"][0]["PNJ"][0]["RotationX"].AsFloat, json["Scene"][0]["PNJ"][0]["RotationY"].AsFloat,
                 json["Scene"][0]["PNJ"][0]["RotationZ"].AsFloat);
+
+        GeneratePNJQuestGearDistrict(json["Scene"][0]["PNJ"][1]["PNJName"], json["Scene"][0]["PNJ"][0]["PositionX"].AsFloat,
+                json["Scene"][0]["PNJ"][0]["PositionY"].AsFloat, json["Scene"][0]["PNJ"][0]["PositionZ"].AsFloat,
+                json["Scene"][0]["PNJ"][0]["RotationX"].AsFloat, json["Scene"][0]["PNJ"][0]["RotationY"].AsFloat,
+                json["Scene"][0]["PNJ"][0]["RotationZ"].AsFloat);
+
+        GeneratePNJQuestGearDistrict(json["Scene"][0]["PNJ"][2]["PNJName"], json["Scene"][0]["PNJ"][0]["PositionX"].AsFloat,
+                json["Scene"][0]["PNJ"][0]["PositionY"].AsFloat, json["Scene"][0]["PNJ"][0]["PositionZ"].AsFloat,
+                json["Scene"][0]["PNJ"][0]["RotationX"].AsFloat, json["Scene"][0]["PNJ"][0]["RotationY"].AsFloat,
+                json["Scene"][0]["PNJ"][0]["RotationZ"].AsFloat);
+
+        GeneratePNJQuestGearDistrict(json["Scene"][0]["PNJ"][3]["PNJName"], json["Scene"][0]["PNJ"][0]["PositionX"].AsFloat,
+                json["Scene"][0]["PNJ"][0]["PositionY"].AsFloat, json["Scene"][0]["PNJ"][0]["PositionZ"].AsFloat,
+                json["Scene"][0]["PNJ"][0]["RotationX"].AsFloat, json["Scene"][0]["PNJ"][0]["RotationY"].AsFloat,
+                json["Scene"][0]["PNJ"][0]["RotationZ"].AsFloat);
         //GeneratePNJQuestGearDistrict(json["Scene"][0]["PNJ"][0]["Sphere"][0]["PNJName"], json["Scene"][0]["PNJ"][0]["Sphere"][0]["PositionX"].AsFloat,
         //    json["Scene"][0]["PNJ"][0]["Sphere"][0]["PositionY"].AsFloat, json["Scene"][0]["PNJ"][0]["Sphere"][0]["PositionZ"].AsFloat,
         //    json["Scene"][0]["PNJ"][0]["Sphere"][0]["RotationX"].AsFloat, json["Scene"][0]["PNJ"][0]["Sphere"][0]["RotationY"].AsFloat,
@@ -135,7 +150,7 @@ public class InstanceLostTimeGearDistrictContext : MonoBehaviour {
         float rotationX, float rotationY, float rotationZ)
     {
         GameObject gameobject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        // attribuer le nom du pnj via json
+        GameObject.Find("Cube").transform.name = name;
         gameobject.transform.position = new Vector3(positionX, positionY, positionZ);
         gameobject.AddComponent<MeshCollider>();
         gameobject.AddComponent<BoxCollider>();
