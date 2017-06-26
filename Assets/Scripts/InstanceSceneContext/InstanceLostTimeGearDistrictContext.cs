@@ -148,7 +148,7 @@ public class InstanceLostTimeGearDistrictContext : MonoBehaviour {
         gameobject.AddComponent<Rigidbody>();
         gameobject.AddComponent<MeshFilter>();
         gameobject.AddComponent<PNJQuestController>();
-        gameobject.AddComponent<PNJQuestController>().PNJName = name;
+        gameobject.GetComponent<PNJQuestController>().name = name;
         gameobject.GetComponent<PNJQuestController>().CurrentQuestID = questID;
 
         //GameObject gameobject1 = GameObject.CreatePrimitive(PrimitiveType.Sphere);

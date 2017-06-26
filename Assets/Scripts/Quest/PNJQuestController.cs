@@ -29,20 +29,13 @@ public class PNJQuestController : MonoBehaviour {
     private float currentQuestID;
     private int PNJCurrentQuestID;
     private int currentObjectiveID;
-    private string pnjName;
 
     public float CurrentQuestID
     {
         get { return currentQuestID; }
         set { currentQuestID = value; }
     }
-
-    public string PNJName
-    {
-        get { return pnjName; }
-        set { pnjName = value; }
-    }
-
+    
     void Start ()
     {
         CheckNextQuest();
@@ -135,7 +128,7 @@ public class PNJQuestController : MonoBehaviour {
 
         for (int i = 0; i <= json["PNJCount"]; i++)
         {
-            if (PNJName == json["Scene"][0]["PNJ"][i]["PNJName"]) // comparer si on est dans la bonne scène aussi
+            if (transform.name == json["Scene"][0]["PNJ"][i]["PNJName"]) // comparer si on est dans la bonne scène aussi
             {
                 PNJCurrentQuestID = json["Scene"][0]["PNJ"][i]["PNJCurrentQuestID"];
                 Debug.Log("PNJCurrentQuestID " + PNJCurrentQuestID);
