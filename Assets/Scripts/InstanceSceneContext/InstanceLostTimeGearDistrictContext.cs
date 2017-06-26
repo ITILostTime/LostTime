@@ -6,8 +6,8 @@ using UnityEngine;
 using System.IO;
 using SimpleJSON;
 
-public class InstanceLostTimeGearDistrictContext : MonoBehaviour {
-
+public class InstanceLostTimeGearDistrictContext : MonoBehaviour
+{
     private void Start()
     {
         GameObject Event = new GameObject("Event");
@@ -75,13 +75,13 @@ public class InstanceLostTimeGearDistrictContext : MonoBehaviour {
         Mountains.transform.position = new Vector3(0, 0, 3.2f);
         Mountains.transform.localScale = new Vector3(1.33f, 1.12f, 1);
         GameObject.Find("east_moutain").transform.position = new Vector3(-7.1f, 15.2f, 61.8f);
-        
+
         GameObject CloudLayer = (GameObject)Instantiate(Resources.Load("LostTimeGearDistrict/CloudLayer"));
-        
+
         GameObject HouseDefault = (GameObject)Instantiate(Resources.Load("LostTimeGearDistrict/HouseDefaultFinalGroup"));
-        
+
         GameObject StreetMisc = (GameObject)Instantiate(Resources.Load("LostTimeGearDistrict/StreetMisc"));
-        
+
         GameObject Barrage = (GameObject)Instantiate(Resources.Load("LostTimeGearDistrict/Barrage"));
 
         GameObject Bridge = (GameObject)Instantiate(Resources.Load("LostTimeGearDistrict/Bridge"));
@@ -95,21 +95,14 @@ public class InstanceLostTimeGearDistrictContext : MonoBehaviour {
         string PNJ = ReadPNJJSON();
         JSONNode json = JSON.Parse(PNJ);
 
-        GeneratePNJQuestGearDistrict(json["Scene"][0]["PNJ"][1]["PNJName"], json["Scene"][0]["PNJ"][0]["PositionX"].AsFloat,
-                json["Scene"][0]["PNJ"][0]["PositionY"].AsFloat, json["Scene"][0]["PNJ"][0]["PositionZ"].AsFloat,
-                json["Scene"][0]["PNJ"][0]["RotationX"].AsFloat, json["Scene"][0]["PNJ"][0]["RotationY"].AsFloat,
-                json["Scene"][0]["PNJ"][0]["RotationZ"].AsFloat);
-
-        GeneratePNJQuestGearDistrict(json["Scene"][0]["PNJ"][2]["PNJName"], json["Scene"][0]["PNJ"][0]["PositionX"].AsFloat,
-                json["Scene"][0]["PNJ"][0]["PositionY"].AsFloat, json["Scene"][0]["PNJ"][0]["PositionZ"].AsFloat,
-                json["Scene"][0]["PNJ"][0]["RotationX"].AsFloat, json["Scene"][0]["PNJ"][0]["RotationY"].AsFloat,
-                json["Scene"][0]["PNJ"][0]["RotationZ"].AsFloat);
-
-        GeneratePNJQuestGearDistrict(json["Scene"][0]["PNJ"][3]["PNJName"], json["Scene"][0]["PNJ"][0]["PositionX"].AsFloat,
-                json["Scene"][0]["PNJ"][0]["PositionY"].AsFloat, json["Scene"][0]["PNJ"][0]["PositionZ"].AsFloat,
-                json["Scene"][0]["PNJ"][0]["RotationX"].AsFloat, json["Scene"][0]["PNJ"][0]["RotationY"].AsFloat,
-                json["Scene"][0]["PNJ"][0]["RotationZ"].AsFloat);
-}
+        for (int i = 0; i < json["PNJCount"].AsInt; i++)
+        {
+            GeneratePNJQuestGearDistrict(json["Scene"][0]["PNJ"][i]["PNJName"], json["Scene"][0]["PNJ"][i]["PositionX"].AsFloat,
+            json["Scene"][0]["PNJ"][i]["PositionY"].AsFloat, json["Scene"][0]["PNJ"][i]["PositionZ"].AsFloat,
+            json["Scene"][0]["PNJ"][i]["RotationX"].AsFloat, json["Scene"][0]["PNJ"][i]["RotationY"].AsFloat,
+            json["Scene"][0]["PNJ"][i]["RotationZ"].AsFloat, json["Scene"][0]["PNJ"][i]["PNJCurrentQuestID"].AsFloat);
+        }
+    }
 
     /// <summary>
     /// Reads the pnjjson.
@@ -146,8 +139,6 @@ public class InstanceLostTimeGearDistrictContext : MonoBehaviour {
         gameobject.AddComponent<Rigidbody>();
         gameobject.AddComponent<MeshFilter>();
         gameobject.AddComponent<PNJQuestController>();
-        gameobject.AddComponent<PNJQuestController>().PNJName = name;
         gameobject.GetComponent<PNJQuestController>().CurrentQuestID = questID;
-
     }
 }

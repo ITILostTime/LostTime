@@ -38,13 +38,7 @@ public class PNJQuestController : MonoBehaviour {
         get { return currentQuestID; }
         set { currentQuestID = value; }
     }
-
-    public string PNJName
-    {
-        get { return pnjName; }
-        set { pnjName = value; }
-    }
-
+    
     public string CurrentPNJQuestContext
     {
         get
@@ -76,6 +70,9 @@ public class PNJQuestController : MonoBehaviour {
         // quest + i fonctionne 
         for (float i = 1; i < json["QuestMax"].AsInt; i += 0.1f)
         {
+            Debug.Log(i);
+            Debug.Log(CurrentQuestID);
+            Debug.Log(this.transform.name);
             if (CurrentQuestID == json["Quest" + i][0]["QuestID"].AsFloat && this.transform.name == json["Quest" + i][0]["QuestPNJ"].Value)
             {
                 questObjectives = new List<ObjectiveController>();
@@ -101,6 +98,7 @@ public class PNJQuestController : MonoBehaviour {
                 json["Quest" + i][0]["QuestIsComplete"].AsBool, json["Quest" + i][0]["ObjectiveID"].AsInt, json["Quest" + i][0]["ObjectiveMax"].AsInt, questObjectives);
 
                 currentPNJQuestContext = questController.QuestContext;
+                Debug.Log(questController.QuestContext);
                 _hasQuest = true;
             }
         }
@@ -189,10 +187,10 @@ public class PNJQuestController : MonoBehaviour {
 
         for (int i = 0; i <= json["PNJCount"]; i++)
         {
-            if (PNJName == json["Scene"][0]["PNJ"][i]["PNJName"]) // comparer si on est dans la bonne scène aussi
+            if (transform.name == json["Scene"][0]["PNJ"][i]["PNJName"]) // comparer si on est dans la bonne scène aussi
             {
                 PNJCurrentQuestID = json["Scene"][0]["PNJ"][i]["PNJCurrentQuestID"];
-                Debug.Log("PNJCurrentQuestID " + PNJCurrentQuestID);
+                //Debug.Log("PNJCurrentQuestID " + PNJCurrentQuestID);
 
                 for (int j = 0; j < json["Scene"][0]["PNJ"][i]["PNJQuestIDMax"]; j++)
                 {
@@ -202,7 +200,7 @@ public class PNJQuestController : MonoBehaviour {
                     }
 
                 }
-                Debug.Log("CurrentQuestID "+ CurrentQuestID);
+                Debug.Log("CurrentQuestID" + CurrentQuestID);
             }
         }
 

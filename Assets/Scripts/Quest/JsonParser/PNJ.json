@@ -1,5 +1,5 @@
 {
-  "PNJCount": 1,
+  "PNJCount": 4,
   "Scene": [
     {
       "SceneName": "LostTimeGearDistrict",
@@ -16,9 +16,7 @@
           "RotationZ": 0,
           "ListQuestID": [
             {
-              "QuestID1": 2,
-              "QuestID2": 15,
-              "QuestID3": 7
+              
             }
           ]
         },
@@ -34,9 +32,7 @@
           "RotationZ": 0,
           "ListQuestID": [
             {
-              "QuestID1": 1.0,
-              "QuestID2": 6,
-              "QuestID3": 10
+              "QuestID1": 1.1
             }
           ]
         },
@@ -53,9 +49,7 @@
             "ListQuestID": 
             [
                 {
-                "QuestID1": 1.2,
-                "QuestID2": 15,
-                "QuestID3": 7 
+                  "QuestID1": 1.2
                 }
             ]
         },
@@ -72,9 +66,6 @@
             "ListQuestID": 
             [
                 {
-                "QuestID1": 1.1,
-                "QuestID2": 6,
-                "QuestID3": 10
                 }
             ]
         }
