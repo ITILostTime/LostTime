@@ -36,9 +36,11 @@
     "QuestPNJ": "Julien",
     "QuestID": 1.2,
     "QuestName": "TestJSON",
-    "QuestContext": "Salut je suis une sphère",
+    "QuestContext": "Patapo",
     "QuestDescription": "Prise en main du JSON",
     "QuestIsComplete":  false,
+    "ObjectiveID": 0,
+    "ObjectiveMax": 3,
     "Objectives": [{
       "ObjectiveID": 1,
         "ObjectiveName": "Lire le JSON correctement",
@@ -54,6 +56,8 @@
     "QuestContext": "Salut je m'appelle Pepito-dono",
     "QuestDescription": "Prise en main du test",
     "QuestIsComplete":  false,
+    "ObjectiveID": 0,
+    "ObjectiveMax": 3,
     "Objectives": [{
       "ObjectiveID": 1,
         "ObjectiveName": "Lire le JSON correctement",
@@ -69,6 +73,8 @@
     "QuestContext": "CubeE desu",
     "QuestDescription": "Prise en main du test",
     "QuestIsComplete":  false,
+    "ObjectiveID": 0,
+    "ObjectiveMax": 3,
     "Objectives": [{
       "ObjectiveID": 1,
         "ObjectiveName": "Lire le JSON correctement",

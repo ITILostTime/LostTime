@@ -64,7 +64,8 @@ public class UIDialogueSystem : MonoBehaviour
     /// </summary>
     private void ClickAccepted()
     {
-        Debug.Log("Accepted");
+        GameObject.Find(this.transform.name).GetComponent<PNJQuestController>().IsQuestAccepted = true;
+        Destroy(GameObject.Find("PanelPNJContextBackground"));
     }
 
     /// <summary>
@@ -72,7 +73,6 @@ public class UIDialogueSystem : MonoBehaviour
     /// </summary>
     private void ClickRefused()
     {
-        Debug.Log("Refused");
         Destroy(GameObject.Find("PanelPNJContextBackground"));
     }
 
