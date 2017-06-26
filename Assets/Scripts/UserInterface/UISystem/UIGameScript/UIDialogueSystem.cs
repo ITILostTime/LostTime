@@ -14,7 +14,8 @@ public class UIDialogueSystem : MonoBehaviour
     /// <returns></returns>
     public bool InteractWithPNJ(string pnjName)
     {
-        #region TalkButtonBackground
+        #region TalkButtonBackground | TalkButton
+        // TalkButtonBackground
         GameObject talkButtonBackground = new GameObject("TalkButtonBackground");
         talkButtonBackground.transform.SetParent(GameObject.Find("MenuCanvas").transform, true);
 
@@ -24,9 +25,8 @@ public class UIDialogueSystem : MonoBehaviour
 
         talkButtonBackground.AddComponent<Image>();
         talkButtonBackground.GetComponent<Image>().color = new Color(255, 255, 255, 0f); // Button is transparency
-        #endregion
-
-        #region TalkButton
+        
+        // TalkButton
         GameObject talkButton = new GameObject("TalkButton");
         talkButton.transform.SetParent(GameObject.Find("TalkButtonBackground").transform, true);
 
@@ -73,6 +73,7 @@ public class UIDialogueSystem : MonoBehaviour
     private void ClickRefused()
     {
         Debug.Log("Refused");
+        Destroy(GameObject.Find("PanelPNJContextBackground"));
     }
 
     /// <summary>
@@ -85,7 +86,8 @@ public class UIDialogueSystem : MonoBehaviour
         {
             Destroy(GameObject.Find("TalkButtonBackground")); // Destroy button "Discuter"
 
-            #region PanelPNJContextBackground
+            #region PanelPNJContextBackground | PanelPNJContext
+            // PanelPNJContextBackground
             GameObject panelPNJContextBackground = new GameObject("PanelPNJContextBackground");
             panelPNJContextBackground.transform.SetParent(GameObject.Find("MenuCanvas").transform, true);
 
@@ -97,9 +99,8 @@ public class UIDialogueSystem : MonoBehaviour
 
             panelPNJContextBackground.AddComponent<Image>();
             panelPNJContextBackground.GetComponent<Image>().color = new Color(255, 255, 255, 0.4f);
-            #endregion
 
-            #region PanelPNJContext
+            // PanelPNJContext
             GameObject panelPNJContext = new GameObject("PanelPNJContext");
             panelPNJContext.transform.SetParent(GameObject.Find("PanelPNJContextBackground").transform, true);
 
@@ -118,7 +119,8 @@ public class UIDialogueSystem : MonoBehaviour
             panelPNJContext.GetComponent<Text>().fontStyle = FontStyle.Bold;
             #endregion
 
-            #region PanelPNJTextBackground
+            #region PanelPNJTextBackground | PanelPNJText
+            // PanelPNJTextBackground
             GameObject panelPNJTextBackground = new GameObject("PanelPNJTextBackground");
             panelPNJTextBackground.transform.SetParent(GameObject.Find("PanelPNJContextBackground").transform, true);
 
@@ -130,9 +132,8 @@ public class UIDialogueSystem : MonoBehaviour
             /// ne fonctionne pas comme je le veux pour le moment
             panelPNJTextBackground.AddComponent<Image>();
             panelPNJTextBackground.GetComponent<Image>().color = new Color(102, 204, 0, 0.6f);  //pb de couleur
-            #endregion
 
-            #region PanelPNJText  
+            // PanelPNJText
             GameObject panelPNJText = new GameObject("PanelPNJText");
             panelPNJText.transform.SetParent(GameObject.Find("PanelPNJTextBackground").transform, true);
 
@@ -147,10 +148,9 @@ public class UIDialogueSystem : MonoBehaviour
             panelPNJText.GetComponent<Text>().alignment = TextAnchor.MiddleCenter;
             panelPNJText.GetComponent<Text>().fontStyle = FontStyle.Bold;
             panelPNJText.GetComponent<Text>().resizeTextForBestFit = true;
+            #endregion 
 
-            #endregion PanelPNJText
-
-            #region AcceptedButtonBackground
+            #region AcceptedButtonBackground | AcceptedButton
             GameObject acceptedButtonBackground = new GameObject("AcceptedButtonBackground");
             acceptedButtonBackground.transform.SetParent(GameObject.Find("PanelPNJContextBackground").transform, true);
             
@@ -165,9 +165,7 @@ public class UIDialogueSystem : MonoBehaviour
 
             acceptedButtonBackground.AddComponent<Image>();
             acceptedButtonBackground.GetComponent<Image>().color = new Color(153, 255, 51, 0.6f);
-            #endregion
 
-            #region AcceptedButton 
             GameObject acceptedButton = new GameObject("AcceptedButton");
             acceptedButton.transform.SetParent(GameObject.Find("AcceptedButtonBackground").transform, true);
 
@@ -187,7 +185,7 @@ public class UIDialogueSystem : MonoBehaviour
             acceptedButton.GetComponent<Text>().resizeTextForBestFit = true;
             #endregion
 
-            #region RefusedButtonBackground
+            #region RefusedButtonBackground | RefusedButton
             GameObject refusedButtonBackground = new GameObject("RefusedButtonBackground");
             refusedButtonBackground.transform.SetParent(GameObject.Find("PanelPNJContextBackground").transform, true);
 
@@ -202,9 +200,7 @@ public class UIDialogueSystem : MonoBehaviour
 
             refusedButtonBackground.AddComponent<Image>();
             refusedButtonBackground.GetComponent<Image>().color = new Color(153, 255, 51, 0.6f);
-            #endregion
 
-            #region RefusedButton
             GameObject refusedButton = new GameObject("RefusedButton");
             refusedButton.transform.SetParent(GameObject.Find("RefusedButtonBackground").transform, true);
 
