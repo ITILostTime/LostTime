@@ -29,7 +29,6 @@ public class PNJQuestController : MonoBehaviour {
     private float currentQuestID;
     private int PNJCurrentQuestID;
     private int currentObjectiveID;
-    private string pnjName;
 
     /// <summary>
     /// Gets or sets the current quest identifier.
@@ -42,19 +41,13 @@ public class PNJQuestController : MonoBehaviour {
         get { return currentQuestID; }
         set { currentQuestID = value; }
     }
-
+    
     /// <summary>
     /// Gets or sets the name of the PNJ.
     /// </summary>
     /// <value>
     /// The name of the PNJ.
     /// </value>
-    public string PNJName
-    {
-        get { return pnjName; }
-        set { pnjName = value; }
-    }
-
     /// <summary>
     /// Gets or sets the current PNJ quest context.
     /// </summary>
@@ -212,7 +205,7 @@ public class PNJQuestController : MonoBehaviour {
 
         for (int i = 0; i <= json["PNJCount"]; i++)
         {
-            if (PNJName == json["Scene"][0]["PNJ"][i]["PNJName"]) // comparer si on est dans la bonne scène aussi
+            if (transform.name == json["Scene"][0]["PNJ"][i]["PNJName"]) // comparer si on est dans la bonne scène aussi
             {
                 PNJCurrentQuestID = json["Scene"][0]["PNJ"][i]["PNJCurrentQuestID"];
                 Debug.Log("PNJCurrentQuestID " + PNJCurrentQuestID);
