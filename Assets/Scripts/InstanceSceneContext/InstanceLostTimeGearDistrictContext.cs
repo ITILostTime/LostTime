@@ -95,23 +95,21 @@ public class InstanceLostTimeGearDistrictContext : MonoBehaviour {
         string PNJ = ReadPNJJSON();
         JSONNode json = JSON.Parse(PNJ);
 
-        for (int i = 0; i <= json["PNJCount"]; i++)
-        {
+        GeneratePNJQuestGearDistrict(json["Scene"][0]["PNJ"][1]["PNJName"], json["Scene"][0]["PNJ"][0]["PositionX"].AsFloat,
+                json["Scene"][0]["PNJ"][0]["PositionY"].AsFloat, json["Scene"][0]["PNJ"][0]["PositionZ"].AsFloat,
+                json["Scene"][0]["PNJ"][0]["RotationX"].AsFloat, json["Scene"][0]["PNJ"][0]["RotationY"].AsFloat,
+                json["Scene"][0]["PNJ"][0]["RotationZ"].AsFloat);
 
-            GeneratePNJQuestGearDistrict(json["Scene"][0]["PNJ"][i]["PNJName"], json["Scene"][0]["PNJ"][i]["PositionX"].AsFloat,
-                json["Scene"][0]["PNJ"][i]["PositionY"].AsFloat, json["Scene"][0]["PNJ"][i]["PositionZ"].AsFloat,
-                json["Scene"][0]["PNJ"][i]["RotationX"].AsFloat, json["Scene"][0]["PNJ"][i]["RotationY"].AsFloat,
-                json["Scene"][0]["PNJ"][i]["RotationZ"].AsFloat, json["Scene"][0]["PNJ"][i]["PNJCurrentQuestID"].AsFloat);
+        GeneratePNJQuestGearDistrict(json["Scene"][0]["PNJ"][2]["PNJName"], json["Scene"][0]["PNJ"][0]["PositionX"].AsFloat,
+                json["Scene"][0]["PNJ"][0]["PositionY"].AsFloat, json["Scene"][0]["PNJ"][0]["PositionZ"].AsFloat,
+                json["Scene"][0]["PNJ"][0]["RotationX"].AsFloat, json["Scene"][0]["PNJ"][0]["RotationY"].AsFloat,
+                json["Scene"][0]["PNJ"][0]["RotationZ"].AsFloat);
 
-            //Debug.Log("Quest "+ json["Scene"][0]["PNJ"][i]["PNJCurrentQuestID"].AsFloat + " is attribued to" + json["Scene"][0]["PNJ"][i]["PNJName"]);
-        }
-        //GeneratePNJQuestGearDistrict(json["Scene"][0]["PNJ"][0]["Sphere"][0]["PNJName"], json["Scene"][0]["PNJ"][0]["Sphere"][0]["PositionX"].AsFloat,
-        //    json["Scene"][0]["PNJ"][0]["Sphere"][0]["PositionY"].AsFloat, json["Scene"][0]["PNJ"][0]["Sphere"][0]["PositionZ"].AsFloat,
-        //    json["Scene"][0]["PNJ"][0]["Sphere"][0]["RotationX"].AsFloat, json["Scene"][0]["PNJ"][0]["Sphere"][0]["RotationY"].AsFloat,
-        //    json["Scene"][0]["PNJ"][0]["Sphere"][0]["RotationZ"].AsFloat, json["Scene"][0]["PNJ"][0]["Sphere"][0]["PNJCurrentQuestID"].AsFloat);
-
-        //Debug.Log(json);
-    }
+        GeneratePNJQuestGearDistrict(json["Scene"][0]["PNJ"][3]["PNJName"], json["Scene"][0]["PNJ"][0]["PositionX"].AsFloat,
+                json["Scene"][0]["PNJ"][0]["PositionY"].AsFloat, json["Scene"][0]["PNJ"][0]["PositionZ"].AsFloat,
+                json["Scene"][0]["PNJ"][0]["RotationX"].AsFloat, json["Scene"][0]["PNJ"][0]["RotationY"].AsFloat,
+                json["Scene"][0]["PNJ"][0]["RotationZ"].AsFloat);
+}
 
     /// <summary>
     /// Reads the pnjjson.
@@ -141,7 +139,7 @@ public class InstanceLostTimeGearDistrictContext : MonoBehaviour {
         float rotationX, float rotationY, float rotationZ, float questID)
     {
         GameObject gameobject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        // attribuer le nom du pnj via json
+        GameObject.Find("Cube").transform.name = name;
         gameobject.transform.position = new Vector3(positionX, positionY, positionZ);
         gameobject.AddComponent<MeshCollider>();
         gameobject.AddComponent<BoxCollider>();
@@ -151,13 +149,5 @@ public class InstanceLostTimeGearDistrictContext : MonoBehaviour {
         gameobject.AddComponent<PNJQuestController>().PNJName = name;
         gameobject.GetComponent<PNJQuestController>().CurrentQuestID = questID;
 
-        //GameObject gameobject1 = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        //gameobject1.transform.position = new Vector3(positionX, positionY, positionZ);
-        //gameobject1.AddComponent<MeshCollider>();
-        //gameobject1.AddComponent<BoxCollider>();
-        //gameobject1.AddComponent<Rigidbody>();
-        //gameobject1.AddComponent<MeshFilter>();
-        //gameobject1.AddComponent<PNJQuestController>();
-        //gameobject1.GetComponent<PNJQuestController>().CurrentQuestID = questID;
     }
 }
