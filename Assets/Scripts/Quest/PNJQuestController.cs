@@ -17,7 +17,6 @@ public class PNJQuestController : MonoBehaviour {
      * quand current quest is complete, il demande a quest manager de lui fournir la prochaine quete
      * */
 
-
     // supprimer. l'idée c'est qu'il récupère ses questID via JSON
     // _current questID  recupre les infos du JSON
 
@@ -32,29 +31,40 @@ public class PNJQuestController : MonoBehaviour {
     private int currentObjectiveID;
     private string pnjName;
 
+    /// <summary>
+    /// Gets or sets the current quest identifier.
+    /// </summary>
+    /// <value>
+    /// The current quest identifier.
+    /// </value>
     public float CurrentQuestID
     {
         get { return currentQuestID; }
         set { currentQuestID = value; }
     }
 
+    /// <summary>
+    /// Gets or sets the name of the PNJ.
+    /// </summary>
+    /// <value>
+    /// The name of the PNJ.
+    /// </value>
     public string PNJName
     {
         get { return pnjName; }
         set { pnjName = value; }
     }
 
+    /// <summary>
+    /// Gets or sets the current PNJ quest context.
+    /// </summary>
+    /// <value>
+    /// The current PNJ quest context.
+    /// </value>
     public string CurrentPNJQuestContext
     {
-        get
-        {
-            return currentPNJQuestContext;
-        }
-
-        set
-        {
-            currentPNJQuestContext = value;
-        }
+        get { return currentPNJQuestContext; }
+        set { currentPNJQuestContext = value; }
     }      
 
     void Start ()
@@ -62,17 +72,19 @@ public class PNJQuestController : MonoBehaviour {
         GameObject.Find(this.transform.name).AddComponent<UIDialogueSystem>();
 
         CheckNextQuest();
-
         GetQuestFromJson();
     }
 
+    /// <summary>
+    /// Gets the quest from json.
+    /// </summary>
     private void GetQuestFromJson()
     {
         string str = ReadJSON("/Scripts/Quest/JsonParser/QuestTest.json");
         JSONNode json = JSON.Parse(str);
 
         //2 boucles une sur les int ou sur les float
-        // quest + i fonctionne 
+        //quest + i fonctionne 
         for (float i = 1; i < json["QuestMax"].AsInt; i += 0.1f)
         {
             if (CurrentQuestID == json["Quest" + i][0]["QuestID"].AsFloat && this.transform.name == json["Quest" + i][0]["QuestPNJ"].Value)
@@ -106,9 +118,13 @@ public class PNJQuestController : MonoBehaviour {
 
     void Update ()
     {
-        //QuestSystemComportement();
+        QuestSystemComportement();
     }
 
+    /// <summary>
+    /// Called when [collision enter].
+    /// </summary>
+    /// <param name="collision">The collision.</param>
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.name == "AstridPlayer") // si le PNJ a une quête 
@@ -120,6 +136,10 @@ public class PNJQuestController : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Called when [collision exit].
+    /// </summary>
+    /// <param name="collision">The collision.</param>
     private void OnCollisionExit(Collision collision)
     {
         if (collision.transform.name == "AstridPlayer") // si le PNJ a une quête 
@@ -131,6 +151,9 @@ public class PNJQuestController : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Quests the system comportement.
+    /// </summary>
     private void QuestSystemComportement()
     {
         int objID = 0;
@@ -140,7 +163,11 @@ public class PNJQuestController : MonoBehaviour {
             if(questController.ObjectiveID == objID)
             {
                 Debug.Log(questController.QuestContext);
-                questController.ObjectiveID++;
+                if (GameObject.Find(this.transform.name).GetComponent<UIDialogueSystem>().IsQuestAccepted == true)
+                {
+                    questController.ObjectiveID++;
+                    GameObject.Find(this.transform.name).GetComponent<UIDialogueSystem>().IsQuestAccepted = false;
+                }
             }
             else
             { 
@@ -167,11 +194,14 @@ public class PNJQuestController : MonoBehaviour {
                 CheckNextQuest();
                 //fct de recherche quete suivante
                 //demander pnj.json sa prochaine quete
-                // demande quetes.json donne moi la quete de telle ID
+                //demande quetes.json donne moi la quete de telle ID
             }
         }
     }
 
+    /// <summary>
+    /// Checks the next quest.
+    /// </summary>
     private void CheckNextQuest()
     {
         string str = ReadJSON("/Scripts/Quest/JsonParser/PNJ.json");
@@ -197,12 +227,15 @@ public class PNJQuestController : MonoBehaviour {
                 }
                 Debug.Log("CurrentQuestID "+ CurrentQuestID);
             }
-        }
-
-        
+        }  
         //vérifier si on est dans la bonne scene 
     }
 
+    /// <summary>
+    /// Reads the json.
+    /// </summary>
+    /// <param name="JSONPath">The json path.</param>
+    /// <returns></returns>
     private string ReadJSON(string JSONPath)
     {
         StreamReader sr = new StreamReader(Application.dataPath + JSONPath);

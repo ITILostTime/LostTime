@@ -6,6 +6,19 @@ using UnityEngine.UI;
 public class UIDialogueSystem : MonoBehaviour
 {
     private bool isInteractionOn;
+    private bool isQuestAccepted;
+
+    /// <summary>
+    /// Gets or sets a value indicating whether this instance is quest accepted.
+    /// </summary>
+    /// <value>
+    ///   <c>true</c> if this instance is quest accepted; otherwise, <c>false</c>.
+    /// </value>
+    public bool IsQuestAccepted
+    {
+        get { return isQuestAccepted; }
+        set { isQuestAccepted = value; }
+    }
 
     /// <summary>
     /// Interacts the with PNJ.
@@ -65,6 +78,7 @@ public class UIDialogueSystem : MonoBehaviour
     private void ClickAccepted()
     {
         Debug.Log("Accepted");
+        IsQuestAccepted = true;
     }
 
     /// <summary>
@@ -73,13 +87,14 @@ public class UIDialogueSystem : MonoBehaviour
     private void ClickRefused()
     {
         Debug.Log("Refused");
+        Destroy(GameObject.Find("PanelPNJContextBackground"));
     }
 
     /// <summary>
     /// Dialogues the panel.
     /// </summary>
     /// <param name="pnjName">Name of the PNJ.</param>
-    void DialoguePanel(string pnjName) // prend en paramètre un string pnjText et peut etre pnjName
+    void DialoguePanel(string pnjName)
     {
         if(InteractWithPNJ(pnjName) == true)
         {
