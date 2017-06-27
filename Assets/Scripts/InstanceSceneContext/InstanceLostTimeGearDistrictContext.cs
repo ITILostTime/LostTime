@@ -96,7 +96,8 @@ public class InstanceLostTimeGearDistrictContext : MonoBehaviour
         JSONNode json = JSON.Parse(PNJ);
 
         for (int i = 0; i < json["PNJCount"].AsInt; i++)
-        {
+        {   
+
             GeneratePNJQuestGearDistrict(json["Scene"][0]["PNJ"][i]["PNJName"], json["Scene"][0]["PNJ"][i]["PositionX"].AsFloat,
             json["Scene"][0]["PNJ"][i]["PositionY"].AsFloat, json["Scene"][0]["PNJ"][i]["PositionZ"].AsFloat,
             json["Scene"][0]["PNJ"][i]["RotationX"].AsFloat, json["Scene"][0]["PNJ"][i]["RotationY"].AsFloat,
@@ -131,10 +132,9 @@ public class InstanceLostTimeGearDistrictContext : MonoBehaviour
     private void GeneratePNJQuestGearDistrict(string name, float positionX, float positionY, float positionZ,
         float rotationX, float rotationY, float rotationZ, float questID)
     {
-        GameObject gameobject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        GameObject.Find("Cube").transform.name = name;
+        GameObject gameobject = new GameObject(name);
+        gameobject.AddComponent<MeshRenderer>();
         gameobject.transform.position = new Vector3(positionX, positionY, positionZ);
-        gameobject.AddComponent<MeshCollider>();
         gameobject.AddComponent<BoxCollider>();
         gameobject.AddComponent<Rigidbody>();
         gameobject.AddComponent<MeshFilter>();

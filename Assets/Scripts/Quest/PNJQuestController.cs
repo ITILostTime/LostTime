@@ -97,6 +97,7 @@ public class PNJQuestController : MonoBehaviour {
 
         //2 boucles une sur les int ou sur les float
         // quest + i fonctionne 
+        //for(float x = 1; x<)
         for (float i = 1; i < QuestTest["QuestMax"].AsInt; i += 0.1f)
         {
             if (CurrentQuestID == QuestTest["Quest" + i][0]["QuestID"].AsFloat && this.transform.name == QuestTest["Quest" + i][0]["QuestPNJ"].Value)
@@ -237,6 +238,7 @@ public class PNJQuestController : MonoBehaviour {
     private void WriteAndDeleteJSONFile()
     {
         //Doesn't work correctly
+        // change quest1.1 to dynamic quest
         if (QuestTest["Quest1.1"][0]["ObjectiveID"] != null)
         {
             QuestTest["Quest1.1"][0]["ObjectiveID"].AsInt = questController.ObjectiveID + 1;
@@ -263,7 +265,6 @@ public class PNJQuestController : MonoBehaviour {
                 using (StreamWriter writer = new StreamWriter(fs))
                 {
                     writer.WriteLine(s);
-
                 }
             }
             finally
