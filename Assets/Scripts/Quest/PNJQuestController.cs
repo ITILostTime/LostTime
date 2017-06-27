@@ -182,6 +182,10 @@ public class PNJQuestController : MonoBehaviour {
             {
                 Destroy(GameObject.Find("TalkButtonBackground"));
             }
+            if (GameObject.Find("PanelPNJContextBackground") == true)
+            {
+                Destroy(GameObject.Find("PanelPNJContextBackground"));
+            }
         }
     }
 

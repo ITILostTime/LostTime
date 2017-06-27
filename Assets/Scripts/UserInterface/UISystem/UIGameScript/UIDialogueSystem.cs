@@ -14,38 +14,40 @@ public class UIDialogueSystem : MonoBehaviour
     /// <returns></returns>
     public bool InteractWithPNJ(string pnjName)
     {
-        #region TalkButtonBackground | TalkButton
-        // TalkButtonBackground
-        GameObject talkButtonBackground = new GameObject("TalkButtonBackground");
-        talkButtonBackground.transform.SetParent(GameObject.Find("MenuCanvas").transform, true);
+        if(GameObject.Find("PanelPNJContextBackground") == false)
+        {
+            #region TalkButtonBackground | TalkButton
+            // TalkButtonBackground
+            GameObject talkButtonBackground = new GameObject("TalkButtonBackground");
+            talkButtonBackground.transform.SetParent(GameObject.Find("MenuCanvas").transform, true);
 
-        talkButtonBackground.AddComponent<RectTransform>();
-        talkButtonBackground.GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width / 6, Screen.height / 7);
-        talkButtonBackground.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, Screen.height / -4);
+            talkButtonBackground.AddComponent<RectTransform>();
+            talkButtonBackground.GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width / 6, Screen.height / 7);
+            talkButtonBackground.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, Screen.height / -4);
 
-        talkButtonBackground.AddComponent<Image>();
-        talkButtonBackground.GetComponent<Image>().color = new Color(255, 255, 255, 0f); // Button is transparency
-        
-        // TalkButton
-        GameObject talkButton = new GameObject("TalkButton");
-        talkButton.transform.SetParent(GameObject.Find("TalkButtonBackground").transform, true);
+            talkButtonBackground.AddComponent<Image>();
+            talkButtonBackground.GetComponent<Image>().color = new Color(255, 255, 255, 0f); // Button is transparency
 
-        talkButton.AddComponent<RectTransform>();
-        talkButton.GetComponent<RectTransform>().sizeDelta = talkButtonBackground.GetComponent<RectTransform>().sizeDelta;
-        talkButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+            // TalkButton
+            GameObject talkButton = new GameObject("TalkButton");
+            talkButton.transform.SetParent(GameObject.Find("TalkButtonBackground").transform, true);
 
-        talkButton.AddComponent<Button>();
-        talkButton.GetComponent<Button>().onClick.AddListener(() => OnClick(pnjName));
+            talkButton.AddComponent<RectTransform>();
+            talkButton.GetComponent<RectTransform>().sizeDelta = talkButtonBackground.GetComponent<RectTransform>().sizeDelta;
+            talkButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
 
-        talkButton.AddComponent<Text>();
-        talkButton.GetComponent<Text>().font = GameObject.Find("MenuCanvas").GetComponent<TextMonitoring>().GetArialTextFont;
-        talkButton.GetComponent<Text>().color = new Color(255, 255, 255, 1f);
-        talkButton.GetComponent<Text>().text = "Discuter";
-        talkButton.GetComponent<Text>().alignment = TextAnchor.MiddleCenter;
-        talkButton.GetComponent<Text>().fontStyle = FontStyle.Bold;
-        talkButton.GetComponent<Text>().resizeTextForBestFit = true;
-        #endregion
+            talkButton.AddComponent<Button>();
+            talkButton.GetComponent<Button>().onClick.AddListener(() => OnClick(pnjName));
 
+            talkButton.AddComponent<Text>();
+            talkButton.GetComponent<Text>().font = GameObject.Find("MenuCanvas").GetComponent<TextMonitoring>().GetArialTextFont;
+            talkButton.GetComponent<Text>().color = new Color(255, 255, 255, 1f);
+            talkButton.GetComponent<Text>().text = "Discuter";
+            talkButton.GetComponent<Text>().alignment = TextAnchor.MiddleCenter;
+            talkButton.GetComponent<Text>().fontStyle = FontStyle.Bold;
+            talkButton.GetComponent<Text>().resizeTextForBestFit = true;
+            #endregion     
+        }
         return isInteractionOn;
     }
 
@@ -84,7 +86,14 @@ public class UIDialogueSystem : MonoBehaviour
     {
         if(InteractWithPNJ(pnjName) == true)
         {
-            Destroy(GameObject.Find("TalkButtonBackground")); // Destroy button "Discuter"
+            if(GameObject.Find("PanelPNJContextBackground") == true)
+            {
+                Destroy(GameObject.Find("TalkButtonBackground")); // Destroy button "Discuter"
+            }
+            else
+            {
+                Destroy(GameObject.Find("TalkButtonBackground"));
+            }
 
             #region PanelPNJContextBackground | PanelPNJContext
             // PanelPNJContextBackground
