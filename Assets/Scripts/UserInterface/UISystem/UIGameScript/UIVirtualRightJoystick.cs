@@ -19,10 +19,12 @@ public class UIVirtualRightJoystick : MonoBehaviour, IDragHandler, IPointerUpHan
     {
         _canvas = GameObject.Find("MenuCanvas");
         CreateJoystick();
+        
     }
 
     public virtual void OnDrag(PointerEventData eventData)
     {
+        GetJoystickEnabled();
         Vector2 RightJoystickPosition;
 
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(_rightJoystick.GetComponent<RectTransform>(), eventData.position,
@@ -46,6 +48,7 @@ public class UIVirtualRightJoystick : MonoBehaviour, IDragHandler, IPointerUpHan
         _rightJoystick.GetComponent<RectTransform>().position = new Vector2(eventData.position.x, eventData.position.y);
         _isRightJoystickUsed = true;
         OnDrag(eventData);
+        GetJoystickEnabled();
     }
 
     public virtual void OnPointerUp(PointerEventData eventData)
@@ -53,6 +56,7 @@ public class UIVirtualRightJoystick : MonoBehaviour, IDragHandler, IPointerUpHan
         _isRightJoystickUsed = false;
         _rightJoystickInputVector = new Vector3(0, 0, 0);
         ResetJoystickPosition();
+        GetJoystickDisabled();
     }
 
     private void CreateJoystick()
@@ -64,6 +68,8 @@ public class UIVirtualRightJoystick : MonoBehaviour, IDragHandler, IPointerUpHan
         _canvas.GetComponent<CreateUserInterfaceObject>().CreateGameObjectImage("RightJoystickStick", GameObject.Find("RightJoystick"), true,
             _canvas.GetComponent<RectTransform>().rect.height / 8, _canvas.GetComponent<RectTransform>().rect.height / 8, 0, 0, Color.black);
         _rightJoystickStick = GameObject.Find("RightJoystickStick");
+
+        GetJoystickDisabled();
     }
 
     private void ResetJoystickPosition()
@@ -93,5 +99,17 @@ public class UIVirtualRightJoystick : MonoBehaviour, IDragHandler, IPointerUpHan
         {
             return Input.GetAxis("Vertical");
         }
+    }
+
+    private void GetJoystickEnabled()
+    {
+        _rightJoystick.GetComponent<Image>().enabled = true;
+        _rightJoystickStick.GetComponent<Image>().enabled = true;
+    }
+
+    private void GetJoystickDisabled()
+    {
+        _rightJoystick.GetComponent<Image>().enabled = false;
+        _rightJoystickStick.GetComponent<Image>().enabled = false;
     }
 }

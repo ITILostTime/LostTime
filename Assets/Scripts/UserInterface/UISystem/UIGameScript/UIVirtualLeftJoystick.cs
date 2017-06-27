@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class UIVirtualLeftJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDownHandler
 {
@@ -23,6 +24,7 @@ public class UIVirtualLeftJoystick : MonoBehaviour, IDragHandler, IPointerUpHand
     public virtual void OnDrag(PointerEventData eventData)
     {
         Vector2 RightJoystickPosition;
+        GetJoystickEnabled();
 
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(_leftJoystick.GetComponent<RectTransform>(), eventData.position,
             eventData.pressEventCamera, out RightJoystickPosition))
@@ -45,6 +47,7 @@ public class UIVirtualLeftJoystick : MonoBehaviour, IDragHandler, IPointerUpHand
         _leftJoystick.GetComponent<RectTransform>().position = new Vector2(eventData.position.x, eventData.position.y);
         _isLeftJoystickUsed = true;
         OnDrag(eventData);
+        GetJoystickEnabled();
     }
 
     public virtual void OnPointerUp(PointerEventData eventData)
@@ -52,6 +55,7 @@ public class UIVirtualLeftJoystick : MonoBehaviour, IDragHandler, IPointerUpHand
         _isLeftJoystickUsed = false;
         _leftJoystickInputVector = new Vector3(0, 0, 0);
         ResetJoystickPosition();
+        GetJoystickDisabled();
     }
 
     private void CreateJoystick()
@@ -63,6 +67,8 @@ public class UIVirtualLeftJoystick : MonoBehaviour, IDragHandler, IPointerUpHand
         _canvas.GetComponent<CreateUserInterfaceObject>().CreateGameObjectImage("LeftJoystickStick", GameObject.Find("LeftJoystick"), true,
             _canvas.GetComponent<RectTransform>().rect.height / 8, _canvas.GetComponent<RectTransform>().rect.height / 8, 0, 0, Color.black);
         _leftJoystickStick = GameObject.Find("LeftJoystickStick");
+
+        GetJoystickDisabled();
     }
 
     private void ResetJoystickPosition()
@@ -92,5 +98,18 @@ public class UIVirtualLeftJoystick : MonoBehaviour, IDragHandler, IPointerUpHand
         {
             return Input.GetAxis("Vertical");
         }
+    }
+
+
+    private void GetJoystickEnabled()
+    {
+        _leftJoystick.GetComponent<Image>().enabled = true;
+        _leftJoystickStick.GetComponent<Image>().enabled = true;
+    }
+
+    private void GetJoystickDisabled()
+    {
+        _leftJoystick.GetComponent<Image>().enabled = false;
+        _leftJoystickStick.GetComponent<Image>().enabled = false;
     }
 }
