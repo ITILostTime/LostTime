@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace Assets.Scripts.Quest.ObjectivesTypes
 {
     /// <summary>
     /// Implement the objective types collect.
     /// </summary>
-    public class TypeCollect
+    public class TypeCollect : MonoBehaviour
     {
         private int _amount;
         private int _goalAmount;

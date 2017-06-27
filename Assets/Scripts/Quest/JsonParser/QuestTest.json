@@ -111,6 +111,7 @@
       "Objectives": [
         {
           "ObjectiveID": 1,
+          "ObjectiveType" : "Collecte",
           "ObjectiveName": "Retrouver le truc",
           "QuestContext": "Tu a trouver le truc ?",
           "ObjectiveDescription": "TRUC TRUC TRUC",

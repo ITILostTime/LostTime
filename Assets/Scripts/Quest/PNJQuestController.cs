@@ -7,6 +7,7 @@ using UnityEngine;
 using SimpleJSON;
 using System.IO;
 using Assets.Scripts.Quest.Interfaces;
+using Assets.Scripts.Quest.ObjectivesTypes;
 
 public class PNJQuestController : MonoBehaviour {
 
@@ -117,6 +118,9 @@ public class PNJQuestController : MonoBehaviour {
 
                         questObjectives.Add(tmpIQuestObjective);
                         count++;
+
+
+                        GenerateObjectiveItem(QuestTest, i);
                     }
                 }
                 questController = new QuestController(QuestTest["Quest" + i][0]["QuestPNJ"], QuestTest["Quest" + i][0]["QuestID"].AsFloat,
@@ -126,6 +130,7 @@ public class PNJQuestController : MonoBehaviour {
                 currentPNJQuestContext = questController.QuestContext;
                 _hasQuest = true;
             }
+
         }
     }
 
@@ -323,5 +328,35 @@ public class PNJQuestController : MonoBehaviour {
         sr.Close();
 
         return content;
+    }
+
+    /// <summary>
+    /// Generates the objective item.
+    /// </summary>
+    /// <param name="json">The json.</param>
+    private void GenerateObjectiveItem(JSONNode json, float id)
+    {
+        for (float i = 0; i < QuestTest["Quest" + id][0]["Objectives"][0]["ItemQuantity"].AsInt; i ++)
+        {
+            GameObject gameobject = new GameObject(QuestTest["Quest" + id][0]["Objectives"][0]["ObjectiveItems"][0]["ItemName"].Value);
+            gameobject.transform.position = new Vector3(
+                QuestTest["Quest" + id][0]["Objectives"][0]["ObjectiveItems"][0]["PositionX"].AsFloat,
+                QuestTest["Quest" + id][0]["Objectives"][0]["ObjectiveItems"][0]["PositionY"].AsFloat,
+                QuestTest["Quest" + id][0]["Objectives"][0]["ObjectiveItems"][0]["PositionZ"].AsFloat);
+            gameobject.AddComponent<BoxCollider>();
+            gameobject.AddComponent<Rigidbody>();
+            gameobject.AddComponent<MeshFilter>();
+            gameobject.AddComponent<MeshRenderer>();
+            
+            switch(QuestTest["Quest" + id][0]["Objectives"][0]["ObjectiveType"].Value)
+            {
+                case "Collecte":
+                    gameobject.AddComponent<TypeCollect>();
+                    break;
+                default:
+                    break;
+            }
+
+        }
     }
 }
