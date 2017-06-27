@@ -119,8 +119,21 @@ public class PNJQuestController : MonoBehaviour {
                         questObjectives.Add(tmpIQuestObjective);
                         count++;
 
-
-                        GenerateObjectiveItem(QuestTest, i);
+                        switch (QuestTest["Quest" + i][0]["Objectives"][0]["ObjectiveType"].Value)
+                        {
+                            case "Collecte":
+                                GenerateObjectiveItem(QuestTest, i);
+                                break;
+                            case "GoToZone":
+                                GenerateZone();
+                                break;
+                            case "TalkToPNJ":
+                                AttributeObjectiveToAPNJ();
+                                break;
+                            default:
+                                break;
+                        }
+                        
                     }
                 }
                 questController = new QuestController(QuestTest["Quest" + i][0]["QuestPNJ"], QuestTest["Quest" + i][0]["QuestID"].AsFloat,
@@ -347,23 +360,18 @@ public class PNJQuestController : MonoBehaviour {
             gameobject.AddComponent<Rigidbody>();
             gameobject.AddComponent<MeshFilter>();
             gameobject.AddComponent<MeshRenderer>();
-            
-            switch(QuestTest["Quest" + id][0]["Objectives"][0]["ObjectiveType"].Value)
-            {
-                case "Collecte":
-                    gameobject.AddComponent<TypeCollect>();
-                    gameobject.GetComponent<TypeCollect>().GoalAmount = QuestTest["Quest" + id][0]["Objectives"][0]["ItemQuantity"].AsInt;
-                    break;
-                case "GoToZone":
-                    gameobject.AddComponent<TypeGoToZone>();
-                    break;
-                case "TalkToPNJ":
-                    gameobject.AddComponent<TypeTalkToPNJ>();
-                    break;
-                default:
-                    break;
-            }
-
+            gameobject.AddComponent<TypeCollect>();
+            gameobject.GetComponent<TypeCollect>().GoalAmount = QuestTest["Quest" + id][0]["Objectives"][0]["ItemQuantity"].AsInt;
         }
+    }
+
+    private void AttributeObjectiveToAPNJ()
+    {
+        throw new NotImplementedException();
+    }
+
+    private void GenerateZone()
+    {
+        throw new NotImplementedException();
     }
 }
