@@ -1,1 +1,134 @@
-{"QuestMax":2,"Quest1.1":[{"QuestPNJ":"Cube","QuestID":1.1,"QuestName":"Tutorial","QuestContext":"Bonjour voyageur, j'effectue un test","QuestDescription":"Prise en main du jeu et d'astrid","QuestIsComplete":false,"ObjectiveID":2,"ObjectiveMax":3,"Objectives":[{"ObjectiveID":1,"ObjectiveName":"Marcher avec le stick gauche","QuestContext":"Bonjour voyageur, j'effectue un test ObjectiveID 1","ObjectiveDescription":"Utilisation du stick gauche","ObjectiveIsComplete":false},{"ObjectiveID":2,"ObjectiveName":"Bouger la caméra avec le stick droit","QuestContext":"Bonjour voyageur, j'effectue un testObjectiveID 2","ObjectiveDescription":"Utilisation du stick droit","ObjectiveIsComplete":false},{"ObjectiveID":3,"ObjectiveName":"Découvrir des objets","QuestContext":"Bonjour voyageur, j'effectue un test ObjectiveID 3","ObjectiveDescription":"Appuyer sur écran pour interagir avec un objet","ObjectiveIsComplete":false}]}],"Quest1.2":[{"QuestPNJ":"Julien","QuestID":1.2,"QuestName":"TestJSON","QuestContext":"Patapo","QuestDescription":"Prise en main du JSON","QuestIsComplete":false,"ObjectiveID":0,"ObjectiveMax":3,"Objectives":[{"ObjectiveID":1,"ObjectiveName":"Lire le JSON correctement","QuestContext":"Salut je suis une sphère 1","ObjectiveDescription":"Test test test","ObjectiveIsComplete":false}]}],"Quest1.3":[{"QuestPNJ":"Julie","QuestID":1.3,"QuestName":"Test numero 3","QuestContext":"Salut je m'appelle Pepito-dono","QuestDescription":"Prise en main du test","QuestIsComplete":false,"ObjectiveID":0,"ObjectiveMax":3,"Objectives":[{"ObjectiveID":1,"ObjectiveName":"Lire le JSON correctement","QuestContext":"Salut je suis une sphère 1","ObjectiveDescription":"Test test test","ObjectiveIsComplete":false}]}],"Quest1.4":[{"QuestPNJ":"CubeE","QuestID":1.4,"QuestName":"Test numero 4","QuestContext":"CubeE desu","QuestDescription":"Prise en main du test","QuestIsComplete":false,"ObjectiveID":0,"ObjectiveMax":3,"Objectives":[{"ObjectiveID":1,"ObjectiveName":"Lire le JSON correctement","QuestContext":"Salut je suis une sphère 1","ObjectiveDescription":"Test test test","ObjectiveIsComplete":false}]}],"Quest1":[{"QuestID":0}],"Quest1.5":[{"QuestID":0}],"Quest1.6":[{"QuestID":0}],"Quest1.7":[{"QuestID":0}],"Quest1.8":[{"QuestID":0}],"Quest1.9":[{"QuestID":0}]}
+{
+  "QuestMax": 2,
+  "Quest1.1": [
+    {
+      "QuestPNJ": "Cube",
+      "QuestID": 1.1,
+      "QuestName": "Tutorial",
+      "QuestContext": "Bonjour voyageur, j'effectue un test",
+      "QuestDescription": "Prise en main du jeu et d'astrid",
+      "QuestIsComplete": false,
+      "ObjectiveID": 2,
+      "ObjectiveMax": 3,
+      "Objectives": [
+        {
+          "ObjectiveID": 1,
+          "ObjectiveName": "Marcher avec le stick gauche",
+          "QuestContext": "Bonjour voyageur, j'effectue un test ObjectiveID 1",
+          "ObjectiveDescription": "Utilisation du stick gauche",
+          "ObjectiveIsComplete": false
+        },
+        {
+          "ObjectiveID": 2,
+          "ObjectiveName": "Bouger la caméra avec le stick droit",
+          "QuestContext": "Bonjour voyageur, j'effectue un testObjectiveID 2",
+          "ObjectiveDescription": "Utilisation du stick droit",
+          "ObjectiveIsComplete": false
+        },
+        {
+          "ObjectiveID": 3,
+          "ObjectiveName": "Découvrir des objets",
+          "QuestContext": "Bonjour voyageur, j'effectue un test ObjectiveID 3",
+          "ObjectiveDescription": "Appuyer sur écran pour interagir avec un objet",
+          "ObjectiveIsComplete": false
+        }
+      ]
+    }
+  ],
+  "Quest1.2": [
+    {
+      "QuestPNJ": "Julien",
+      "QuestID": 1.2,
+      "QuestName": "TestJSON",
+      "QuestContext": "Patapo",
+      "QuestDescription": "Prise en main du JSON",
+      "QuestIsComplete": false,
+      "ObjectiveID": 0,
+      "ObjectiveMax": 3,
+      "Objectives": [
+        {
+          "ObjectiveID": 1,
+          "ObjectiveName": "Lire le JSON correctement",
+          "QuestContext": "Salut je suis une sphère 1",
+          "ObjectiveDescription": "Test test test",
+          "ObjectiveIsComplete": false
+        }
+      ]
+    }
+  ],
+  "Quest1.3": [
+    {
+      "QuestPNJ": "Julie",
+      "QuestID": 1.3,
+      "QuestName": "Test numero 3",
+      "QuestContext": "Salut je m'appelle Pepito-dono",
+      "QuestDescription": "Prise en main du test",
+      "QuestIsComplete": false,
+      "ObjectiveID": 0,
+      "ObjectiveMax": 3,
+      "Objectives": [
+        {
+          "ObjectiveID": 1,
+          "ObjectiveName": "Lire le JSON correctement",
+          "QuestContext": "Salut je suis une sphère 1",
+          "ObjectiveDescription": "Test test test",
+          "ObjectiveIsComplete": false
+        }
+      ]
+    }
+  ],
+  "Quest1.4": [
+    {
+      "QuestPNJ": "CubeE",
+      "QuestID": 1.4,
+      "QuestName": "Test numero 4",
+      "QuestContext": "CubeE desu",
+      "QuestDescription": "Prise en main du test",
+      "QuestIsComplete": false,
+      "ObjectiveID": 0,
+      "ObjectiveMax": 3,
+      "Objectives": [
+        {
+          "ObjectiveID": 1,
+          "ObjectiveName": "Lire le JSON correctement",
+          "QuestContext": "Salut je suis une sphère 1",
+          "ObjectiveDescription": "Test test test",
+          "ObjectiveIsComplete": false
+        }
+      ]
+    }
+  ],
+  "Quest1.5": [
+    {
+      "QuestPNJ": "Bidule",
+      "QuestID": 1.5,
+      "QuestName": "Test numero 5",
+      "QuestContext": "J'ai perdu un truc",
+      "QuestDescription": "Bidule a perdu un truc",
+      "QuestIsComplete": false,
+      "ObjectiveID": 0,
+      "ObjectiveMax": 3,
+      "Objectives": [
+        {
+          "ObjectiveID": 1,
+          "ObjectiveName": "Retrouver le truc",
+          "QuestContext": "Tu a trouver le truc ?",
+          "ObjectiveDescription": "TRUC TRUC TRUC",
+          "ObjectiveIsComplete": false,
+          "ItemQuantity": 1,
+          "ObjectiveItems": [
+            {
+              "ItemName": "Truc",
+              "PositionX": 12,
+              "PositionY": 0,
+              "PositionZ": -3,
+              "RotationX": 0,
+              "RotationY": 0,
+              "RotationZ": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
