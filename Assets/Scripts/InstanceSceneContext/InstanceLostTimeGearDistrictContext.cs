@@ -132,12 +132,13 @@ public class InstanceLostTimeGearDistrictContext : MonoBehaviour
     private void GeneratePNJQuestGearDistrict(string name, float positionX, float positionY, float positionZ,
         float rotationX, float rotationY, float rotationZ, float questID)
     {
-        GameObject gameobject = new GameObject(name);
+
+        GameObject gameobject = (GameObject)Instantiate(Resources.Load("CharacterLowPo/PNJ"));
+        GameObject.Find("PNJ(Clone)").transform.name = name;
         gameobject.AddComponent<MeshRenderer>();
         gameobject.transform.position = new Vector3(positionX, positionY, positionZ);
-        gameobject.AddComponent<BoxCollider>();
         gameobject.AddComponent<Rigidbody>();
-        gameobject.AddComponent<MeshFilter>();
+        gameobject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
         gameobject.AddComponent<PNJQuestController>();
         gameobject.GetComponent<PNJQuestController>().CurrentQuestID = questID;
     }
