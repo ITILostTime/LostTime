@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\PNJQuest\PNJ.cs" />
+    <Compile Include="Assets\PNJQuest\PNJPathfinding.cs" />
     <Compile Include="Assets\Scripts\Animation\CharaAnimCtrl.cs" />
     <Compile Include="Assets\Scripts\Animation\CloudsAnims.cs" />
     <Compile Include="Assets\Scripts\Animation\IPuppetMaster.cs" />

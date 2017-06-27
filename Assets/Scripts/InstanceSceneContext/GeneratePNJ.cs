@@ -65,23 +65,21 @@ public class GeneratePNJ : MonoBehaviour {
 
         GameObject gameobject = (GameObject)Instantiate(Resources.Load("CharacterLowPo/PNJ"));
         GameObject.Find("PNJ(Clone)").transform.name = name;
-        GameObject.Find("body").transform.name = name + "body";
+        gameobject.transform.GetChild(0).transform.name = name + "body";
         gameobject.AddComponent<MeshRenderer>();
+        gameobject.GetComponent<CapsuleCollider>().radius = 2;
+        gameobject.GetComponent<CapsuleCollider>().height = 4;
         gameobject.transform.position = new Vector3(positionX, positionY, positionZ);
         GameObject.Find(name + "body").GetComponent<SkinnedMeshRenderer>().material = SetSkin(job);
         gameobject.AddComponent<Rigidbody>();
-        gameobject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        gameobject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
         gameobject.AddComponent<PNJQuestController>();
         gameobject.GetComponent<PNJQuestController>().CurrentQuestID = questID;
+        gameobject.AddComponent<PNJPathfinding>();
     }
 
     private Material SetSkin(string job)
     {
-        if (job == "citizen")
-        {
-            System.Random r = new System.Random();
-            job = job + r.Next(1, 4);
-        }
         Material returned = (Material)Resources.Load("CharacterLowPo/Materials/citizen1");
         string craft = string.Format("CharacterLowPo/Materials/{0}", job);
         returned = (Material)Resources.Load(craft);
