@@ -28,6 +28,9 @@ public class PNJQuestController : MonoBehaviour {
     private bool _hasQuest;
     private string pnjName;
 
+    private string tmpFilePath = "./Assets/Scripts/Quest/JsonParser/tmpFile";
+    private string sourcePath = "./Assets/Scripts/Quest/JsonParser/QuestTest.json";
+
     QuestController questController;
     List<ObjectiveController> questObjectives;
     ObjectiveController _currentQuestObjectif;
@@ -197,13 +200,7 @@ public class PNJQuestController : MonoBehaviour {
                     questController.ObjectiveID++;
                     this.GetComponent<PNJQuestController>().IsQuestAccepted = false;
 
-                    //Doesn't work correctly
-                    /*if(QuestTest["Quest1.1"][0]["ObjectiveID"] != null)
-                    {
-                        QuestTest["Quest1.1"][0]["ObjectiveID"].AsInt = questController.ObjectiveID + 1;
-                        Debug.Log(questController.ObjectiveID);
-                        Debug.Log("Enter in write JSON");
-                    }*/
+                    WriteAndDeleteJSONFile();
                 }
             }
             else
@@ -234,6 +231,54 @@ public class PNJQuestController : MonoBehaviour {
                 //demander pnj.json sa prochaine quete
                 //demande quetes.json donne moi la quete de telle ID
             }
+        }
+    }
+
+    private void WriteAndDeleteJSONFile()
+    {
+        //Doesn't work correctly
+        if (QuestTest["Quest1.1"][0]["ObjectiveID"] != null)
+        {
+            QuestTest["Quest1.1"][0]["ObjectiveID"].AsInt = questController.ObjectiveID + 1;
+
+            Debug.Log(QuestTest["Quest1.1"][0]["ObjectiveID"].AsInt);
+            Debug.Log(questController.ObjectiveID);
+            Debug.Log(QuestTest);
+            var s = QuestTest.ToString();
+
+            FileStream fs = null;
+            try
+            {
+                // créer dossier tmpFile
+                if (!System.IO.Directory.Exists(tmpFilePath))
+                {
+                    System.IO.Directory.CreateDirectory(tmpFilePath);
+                }
+
+                // copier old file .json in tmpFile
+                System.IO.File.Copy(sourcePath, tmpFilePath + "QuestTest");
+
+                fs = new FileStream(sourcePath, FileMode.Create);
+                Debug.Log(fs);
+                using (StreamWriter writer = new StreamWriter(fs))
+                {
+                    writer.WriteLine(s);
+
+                }
+            }
+            finally
+            {
+                if (fs != null)
+                    fs.Dispose();
+            }
+
+            Debug.Log(s);
+
+            //delete old file 
+            System.IO.File.Delete(tmpFilePath + "QuestTest");
+
+            //Debug.Log(questController.ObjectiveID);
+            //Debug.Log("Enter in write JSON");
         }
     }
 
