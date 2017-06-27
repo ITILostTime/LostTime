@@ -117,6 +117,7 @@
     <Compile Include="Assets\Scripts\EntityGenerator\PositionEntity.cs" />
     <Compile Include="Assets\Scripts\Installer\CrossDependecyResolver.cs" />
     <Compile Include="Assets\Scripts\Installer\GameInstaller.cs" />
+    <Compile Include="Assets\Scripts\InstanceSceneContext\GeneratePNJ.cs" />
     <Compile Include="Assets\Scripts\InstanceSceneContext\InstanceAstridHouseContext.cs" />
     <Compile Include="Assets\Scripts\InstanceSceneContext\InstanceLostTimeGearDistrictContext.cs" />
     <Compile Include="Assets\Scripts\LoadNewSceneScript\CreateLoadSceneWayPoints.cs" />
