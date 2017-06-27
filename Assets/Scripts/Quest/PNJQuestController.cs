@@ -352,6 +352,13 @@ public class PNJQuestController : MonoBehaviour {
             {
                 case "Collecte":
                     gameobject.AddComponent<TypeCollect>();
+                    gameobject.GetComponent<TypeCollect>().GoalAmount = QuestTest["Quest" + id][0]["Objectives"][0]["ItemQuantity"].AsInt;
+                    break;
+                case "GoToZone":
+                    gameobject.AddComponent<TypeGoToZone>();
+                    break;
+                case "TalkToPNJ":
+                    gameobject.AddComponent<TypeTalkToPNJ>();
                     break;
                 default:
                     break;

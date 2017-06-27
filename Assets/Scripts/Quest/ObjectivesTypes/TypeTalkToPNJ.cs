@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace Assets.Scripts.Quest.ObjectivesTypes
 {
     /// <summary>
     /// Implement the objective type talk to a pnj
     /// </summary>
-    public class TypeTalkToPNJ
+    public class TypeTalkToPNJ : MonoBehaviour
     {
         private string _talk;
 

@@ -13,18 +13,7 @@ namespace Assets.Scripts.Quest.ObjectivesTypes
     {
         private int _amount;
         private int _goalAmount;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TypeCollect"/> class.
-        /// </summary>
-        /// <param name="amount">The amount.</param>
-        /// <param name="goalAmount">The goal amount.</param>
-        public TypeCollect(int amount, int goalAmount)
-        {
-            Amount = amount;
-            GoalAmount = goalAmount;
-        }
-
+        
         /// <summary>
         /// Gets or sets the amount.
         /// </summary>
@@ -59,12 +48,22 @@ namespace Assets.Scripts.Quest.ObjectivesTypes
         /// </returns>
         public bool IsComplete()
         {
-            if(Amount == GoalAmount)
+            if (Amount == GoalAmount)
             {
                 return true;
             }
 
             return false;
         }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.transform.name == "AstridPlayer") // si le PNJ a une quête 
+            {
+                gameObject.SetActive(false);
+                Amount++;
+            }
+        }
+
     }
 }

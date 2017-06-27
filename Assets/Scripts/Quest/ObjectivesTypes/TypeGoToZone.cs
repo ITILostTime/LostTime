@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace Assets.Scripts.Quest.ObjectivesTypes
 {
-    public class TypeGoToZone
+    public class TypeGoToZone : MonoBehaviour
     {
         private int _zone;
         private int _positionX;
