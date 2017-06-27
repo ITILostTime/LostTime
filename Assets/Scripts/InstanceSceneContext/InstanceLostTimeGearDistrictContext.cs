@@ -94,14 +94,14 @@ public class InstanceLostTimeGearDistrictContext : MonoBehaviour
         // Read PNJ.json
         string PNJ = ReadPNJJSON();
         JSONNode json = JSON.Parse(PNJ);
-
+        
         for (int i = 0; i < json["PNJCount"].AsInt; i++)
         {   
 
             GeneratePNJQuestGearDistrict(json["Scene"][0]["PNJ"][i]["PNJName"], json["Scene"][0]["PNJ"][i]["PositionX"].AsFloat,
             json["Scene"][0]["PNJ"][i]["PositionY"].AsFloat, json["Scene"][0]["PNJ"][i]["PositionZ"].AsFloat,
             json["Scene"][0]["PNJ"][i]["RotationX"].AsFloat, json["Scene"][0]["PNJ"][i]["RotationY"].AsFloat,
-            json["Scene"][0]["PNJ"][i]["RotationZ"].AsFloat, json["Scene"][0]["PNJ"][i]["PNJCurrentQuestID"].AsFloat);
+            json["Scene"][0]["PNJ"][i]["RotationZ"].AsFloat, json["Scene"][0]["PNJ"][i]["PNJCurrentQuestID"].AsFloat, json["Scene"][0]["PNJ"][i]["PNJJob"]);
         }
     }
 
@@ -130,16 +130,36 @@ public class InstanceLostTimeGearDistrictContext : MonoBehaviour
     /// <param name="rotationZ">The rotation z.</param>
     /// <param name="questID">The quest identifier.</param>
     private void GeneratePNJQuestGearDistrict(string name, float positionX, float positionY, float positionZ,
-        float rotationX, float rotationY, float rotationZ, float questID)
+        float rotationX, float rotationY, float rotationZ, float questID, string job)
     {
 
         GameObject gameobject = (GameObject)Instantiate(Resources.Load("CharacterLowPo/PNJ"));
         GameObject.Find("PNJ(Clone)").transform.name = name;
+        GameObject.Find("body").transform.name = name + "body";
         gameobject.AddComponent<MeshRenderer>();
         gameobject.transform.position = new Vector3(positionX, positionY, positionZ);
+        GameObject.Find(name + "body").GetComponent<SkinnedMeshRenderer>().material = SetSkin(job);
         gameobject.AddComponent<Rigidbody>();
         gameobject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
         gameobject.AddComponent<PNJQuestController>();
         gameobject.GetComponent<PNJQuestController>().CurrentQuestID = questID;
+    }
+
+    private Material SetSkin(string job)
+    {
+        if(job == "citizen")
+        {
+            System.Random r = new System.Random();
+            job = job + r.Next(1, 4);
+        }
+        Material returned = (Material)Resources.Load("CharacterLowPo/Materials/citizen1");
+        string craft = string.Format("CharacterLowPo/Materials/{0}", job);
+        returned = (Material)Resources.Load(craft);
+        if (returned == null)
+        {
+            Debug.Log(string.Format("Texture .{0}. does not exist, use default instead", job));
+            returned = (Material)Resources.Load("CharacterLowPo/Materials/citizen1");
+        }
+        return returned;
     }
 }

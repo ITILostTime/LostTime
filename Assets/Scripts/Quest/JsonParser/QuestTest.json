@@ -1,7 +1,7 @@
 {
   "QuestMax": 2,
   "Quest1.1": [{
-    "QuestPNJ": "Cube",
+    "QuestPNJ": "Forgeron",
     "QuestID": 1.1,
     "QuestName": "Tutorial",
     "QuestContext": "Bonjour voyageur, j'effectue un test",

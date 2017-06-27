@@ -5,26 +5,10 @@
       "SceneName": "LostTimeGearDistrict",
       "PNJ": [
         {
-          "PNJName": "CubeE",
+          "PNJName": "Forgeron",
           "PNJCurrentQuestID": 1,
           "PNJQuestIDMax": 3,
-          "PNJJob": "",
-          "PositionX": 14,
-          "PositionY": 5,
-          "PositionZ": 5,
-          "RotationX": 0,
-          "RotationY": 0,
-          "RotationZ": 0,
-          "ListQuestID": [
-            {
-              "QuestID1": 1.4
-            }
-          ]
-        },
-        {
-          "PNJName": "Cube",
-          "PNJCurrentQuestID": 1,
-          "PNJQuestIDMax": 3,
+          "PNJJob": "blacksmith",
           "PositionX": 14,
           "PositionY": 5,
           "PositionZ": 5,
@@ -38,12 +22,30 @@
           ]
         },
         {
+          "PNJName": "Sandra",
+          "PNJCurrentQuestID": 1,
+          "PNJQuestIDMax": 3,
+          "PNJJob": "sandra",
+          "PositionX": 14,
+          "PositionY": 5,
+          "PositionZ": 10,
+          "RotationX": 0,
+          "RotationY": 0,
+          "RotationZ": 0,
+          "ListQuestID": [
+            {
+              "QuestID1": 1.3
+            }
+          ]
+        },
+        {
             "PNJName": "Julien",
             "PNJCurrentQuestID": 1,
             "PNJQuestIDMax": 3,
+            "PNJJob": "citizen",
             "PositionX": 14,
             "PositionY": 5,
-            "PositionZ": 5,
+            "PositionZ": 0,
             "RotationX": 0,
             "RotationY": 0,
             "RotationZ": 0,
@@ -58,16 +60,17 @@
             "PNJName": "Julie",
             "PNJCurrentQuestID": 1,
             "PNJQuestIDMax": 3,
+            "PNJJob": "citizen",
             "PositionX": 14,
             "PositionY": 5,
-            "PositionZ": 5,
+            "PositionZ": -5,
             "RotationX": 0,
             "RotationY": 0,
             "RotationZ": 0,
             "ListQuestID": 
             [
                 {
-                  "QuestID1": 1.3
+                  "QuestID1": 1.4
                 }
             ]
         }
