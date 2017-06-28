@@ -125,10 +125,10 @@ public class PNJQuestController : MonoBehaviour {
                                 GenerateObjectiveItem(QuestTest, i);
                                 break;
                             case "GoToZone":
-                                GenerateZone();
+                                GenerateZone(i);
                                 break;
                             case "TalkToPNJ":
-                                AttributeObjectiveToAPNJ();
+                                AttributeObjectiveToAPNJ(i);
                                 break;
                             default:
                                 break;
@@ -349,9 +349,13 @@ public class PNJQuestController : MonoBehaviour {
     /// <param name="json">The json.</param>
     private void GenerateObjectiveItem(JSONNode json, float id)
     {
-        for (float i = 0; i < QuestTest["Quest" + id][0]["Objectives"][0]["ItemQuantity"].AsInt; i ++)
+        GameObject typeCollect = new GameObject("TypeCollectController");
+        typeCollect.AddComponent<TypeCollect>();
+        typeCollect.GetComponent<TypeCollect>().GoalAmount = QuestTest["Quest" + id][0]["Objectives"][0]["ItemQuantity"].AsInt;
+        
+        for (int i = 0; i < QuestTest["Quest" + id][0]["Objectives"][0]["ItemQuantity"].AsInt; i ++)
         {
-            GameObject gameobject = new GameObject(QuestTest["Quest" + id][0]["Objectives"][0]["ObjectiveItems"][0]["ItemName"].Value);
+            GameObject gameobject = new GameObject(QuestTest["Quest" + id][0]["Objectives"][0]["ObjectiveItems"][i]["ItemName"].Value);
             gameobject.transform.position = new Vector3(
                 QuestTest["Quest" + id][0]["Objectives"][0]["ObjectiveItems"][0]["PositionX"].AsFloat,
                 QuestTest["Quest" + id][0]["Objectives"][0]["ObjectiveItems"][0]["PositionY"].AsFloat,
@@ -360,18 +364,26 @@ public class PNJQuestController : MonoBehaviour {
             gameobject.AddComponent<Rigidbody>();
             gameobject.AddComponent<MeshFilter>();
             gameobject.AddComponent<MeshRenderer>();
-            gameobject.AddComponent<TypeCollect>();
-            gameobject.GetComponent<TypeCollect>().GoalAmount = QuestTest["Quest" + id][0]["Objectives"][0]["ItemQuantity"].AsInt;
+            gameobject.AddComponent<TypeCollectBehaviour>();
         }
     }
 
-    private void AttributeObjectiveToAPNJ()
+    private void AttributeObjectiveToAPNJ(float id)
     {
         throw new NotImplementedException();
     }
 
-    private void GenerateZone()
+    private void GenerateZone(float id)
     {
-        throw new NotImplementedException();
+        GameObject gameobject = new GameObject();
+        gameobject.transform.position = new Vector3(
+            QuestTest["Quest" + id][0]["Objectives"][0]["ObjectiveItems"][0]["PositionX"].AsFloat,
+            QuestTest["Quest" + id][0]["Objectives"][0]["ObjectiveItems"][0]["PositionY"].AsFloat,
+            QuestTest["Quest" + id][0]["Objectives"][0]["ObjectiveItems"][0]["PositionZ"].AsFloat);
+        gameobject.AddComponent<BoxCollider>();
+        gameobject.AddComponent<Rigidbody>();
+        gameobject.AddComponent<MeshFilter>();
+        gameobject.AddComponent<MeshRenderer>();
+        gameobject.AddComponent<TypeGoToZone>();
     }
 }

@@ -13,7 +13,13 @@ namespace Assets.Scripts.Quest.ObjectivesTypes
     {
         private int _amount;
         private int _goalAmount;
-        
+
+
+        private void Start()
+        {
+            Debug.Log(Amount);
+            Debug.Log(GoalAmount);
+        }
         /// <summary>
         /// Gets or sets the amount.
         /// </summary>
@@ -56,14 +62,7 @@ namespace Assets.Scripts.Quest.ObjectivesTypes
             return false;
         }
 
-        private void OnCollisionEnter(Collision collision)
-        {
-            if (collision.transform.name == "AstridPlayer") // si le PNJ a une quête 
-            {
-                gameObject.SetActive(false);
-                Amount++;
-            }
-        }
+        
 
     }
 }

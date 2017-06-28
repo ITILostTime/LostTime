@@ -116,10 +116,18 @@
           "QuestContext": "Tu a trouver le truc ?",
           "ObjectiveDescription": "TRUC TRUC TRUC",
           "ObjectiveIsComplete": false,
-          "ItemQuantity": 1,
+          "ItemQuantity": 2,
           "ObjectiveItems": [
             {
               "ItemName": "Truc",
+              "PositionX": 12,
+              "PositionY": 0,
+              "PositionZ": -3,
+              "RotationX": 0,
+              "RotationY": 0,
+              "RotationZ": 0
+            },{
+              "ItemName": "Machin",
               "PositionX": 12,
               "PositionY": 0,
               "PositionZ": -3,
