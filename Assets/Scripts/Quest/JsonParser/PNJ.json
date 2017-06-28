@@ -1,5 +1,5 @@
 {
-  "PNJCount": 5,
+  "PNJCount": 6,
   "Scene": [
     {
       "SceneName": "LostTimeGearDistrict",
@@ -37,55 +37,68 @@
           ]
         },
         {
-            "PNJName": "Julien",
-            "PNJCurrentQuestID": 1,
-            "PNJQuestIDMax": 3,
-            "PositionX": 50,
-            "PositionY": 2,
-            "PositionZ": 50,
-            "RotationX": 0,
-            "RotationY": 0,
-            "RotationZ": 0,
-            "ListQuestID": 
-            [
-                {
-                  "QuestID1": 1.2
-                }
-            ]
+          "PNJName": "Julien",
+          "PNJCurrentQuestID": 1,
+          "PNJQuestIDMax": 3,
+          "PositionX": 50,
+          "PositionY": 2,
+          "PositionZ": 50,
+          "RotationX": 0,
+          "RotationY": 0,
+          "RotationZ": 0,
+          "ListQuestID": [
+            {
+              "QuestID1": 1.2
+            }
+          ]
         },
         {
-            "PNJName": "Julie",
-            "PNJCurrentQuestID": 1,
-            "PNJQuestIDMax": 3,
-            "PositionX": -10, 
-            "PositionY": 5,
-            "PositionZ": -10,
-            "RotationX": 0,
-            "RotationY": 0,
-            "RotationZ": 0,
-            "ListQuestID": 
-            [
-                {
-                  "QuestID1": 1.3
-                }
-            ]
+          "PNJName": "Julie",
+          "PNJCurrentQuestID": 1,
+          "PNJQuestIDMax": 3,
+          "PositionX": -10,
+          "PositionY": 5,
+          "PositionZ": -10,
+          "RotationX": 0,
+          "RotationY": 0,
+          "RotationZ": 0,
+          "ListQuestID": [
+            {
+              "QuestID1": 1.3
+            }
+          ]
         },
         {
-            "PNJName": "Bidule",
-            "PNJCurrentQuestID": 1,
-            "PNJQuestIDMax": 3,
-            "PositionX": 14, 
-            "PositionY": 0,
-            "PositionZ": -3,
-            "RotationX": 0,
-            "RotationY": 0,
-            "RotationZ": 0,
-            "ListQuestID": 
-            [
-                {
-                  "QuestID1": 1.5
-                }
-            ]
+          "PNJName": "Bidule",
+          "PNJCurrentQuestID": 1,
+          "PNJQuestIDMax": 3,
+          "PositionX": 14,
+          "PositionY": 0,
+          "PositionZ": -3,
+          "RotationX": 0,
+          "RotationY": 0,
+          "RotationZ": 0,
+          "ListQuestID": [
+            {
+              "QuestID1": 1.5
+            }
+          ]
+        },
+        {
+          "PNJName": "Yoyo",
+          "PNJCurrentQuestID": 1,
+          "PNJQuestIDMax": 3,
+          "PositionX": 14,
+          "PositionY": 0,
+          "PositionZ": -3,
+          "RotationX": 0,
+          "RotationY": 0,
+          "RotationZ": 0,
+          "ListQuestID": [
+            {
+              "QuestID1": 1.6
+            }
+          ]
         }
       ]
     }
