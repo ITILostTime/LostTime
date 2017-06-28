@@ -373,17 +373,24 @@ public class PNJQuestController : MonoBehaviour {
         throw new NotImplementedException();
     }
 
+    /// <summary>
+    /// Generates the zone.
+    /// </summary>
+    /// <param name="id">The identifier.</param>
     private void GenerateZone(float id)
     {
-        GameObject gameobject = new GameObject();
+        // Peut etre l'ecrire un peu differemment 
+        GameObject gameobject = new GameObject("TypeGoToZone");
         gameobject.transform.position = new Vector3(
-            QuestTest["Quest" + id][0]["Objectives"][0]["ObjectiveItems"][0]["PositionX"].AsFloat,
-            QuestTest["Quest" + id][0]["Objectives"][0]["ObjectiveItems"][0]["PositionY"].AsFloat,
-            QuestTest["Quest" + id][0]["Objectives"][0]["ObjectiveItems"][0]["PositionZ"].AsFloat);
+            QuestTest["Quest" + id][0]["Objectives"][0]["PositionX"].AsFloat,
+            QuestTest["Quest" + id][0]["Objectives"][0]["PositionY"].AsFloat,
+            QuestTest["Quest" + id][0]["Objectives"][0]["PositionZ"].AsFloat);
         gameobject.AddComponent<BoxCollider>();
         gameobject.AddComponent<Rigidbody>();
+        gameobject.AddComponent<MeshCollider>();
         gameobject.AddComponent<MeshFilter>();
         gameobject.AddComponent<MeshRenderer>();
         gameobject.AddComponent<TypeGoToZone>();
+        gameobject.GetComponent<TypeGoToZone>().TypeGoToZoneIsComplete = true;
     }
 }

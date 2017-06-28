@@ -8,36 +8,16 @@ namespace Assets.Scripts.Quest.ObjectivesTypes
 {
     public class TypeGoToZone : MonoBehaviour
     {
-        private int _zone;
         private int _positionX;
         private int _positionY;
         private int _positionZ;
+        private bool _typeGoToZoneIsComplete;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TypeGoToZone"/> class.
-        /// </summary>
-        /// <param name="zone">The zone.</param>
-        /// <param name="positionX">The position x.</param>
-        /// <param name="positionY">The position y.</param>
-        /// <param name="positionZ">The position z.</param>
-        public TypeGoToZone(int zone, int positionX, int positionY, int positionZ)
-        {
-            Zone = zone;
-            PositionX = positionX;
-            PositionY = positionY;
-            PositionZ = positionZ;
-        }
+        // Ecrire différement 
 
-        /// <summary>
-        /// Gets or sets the zone.
-        /// </summary>
-        /// <value>
-        /// The zone.
-        /// </value>
-        public int Zone
+        private void Start()
         {
-            get { return _zone; }
-            set { _zone = value; }
+            
         }
 
         /// <summary>
@@ -74,6 +54,29 @@ namespace Assets.Scripts.Quest.ObjectivesTypes
         {
             get { return _positionZ; }
             set { _positionZ = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether [type go to zone is complete].
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [type go to zone is complete]; otherwise, <c>false</c>.
+        /// </value>
+        public bool TypeGoToZoneIsComplete
+        {
+            get { return _typeGoToZoneIsComplete; }
+            set { _typeGoToZoneIsComplete = value; }
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.transform.name == "AstridPlayer") // si le PNJ a une quête 
+            {
+                gameObject.SetActive(false);
+
+                this.GetComponent<TypeGoToZone>().TypeGoToZoneIsComplete = true;
+                Debug.Log(this.GetComponent<TypeGoToZone>().TypeGoToZoneIsComplete);
+            }
         }
     }
 }
