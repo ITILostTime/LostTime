@@ -194,60 +194,81 @@ public class PNJQuestController : MonoBehaviour {
     /// </summary>
     private void QuestSystemComportement()
     {
-        int objID = 0;
-        
-        for(int i = 0; i <= questController.ObjectiveMax; i++)
+        if(QuestTest["Quest" + currentQuestID][0]["QuestIsComplete"].AsBool == false)
         {
-            if(questController.ObjectiveID == objID)
-            {
-                if(this.GetComponent<PNJQuestController>().IsQuestAccepted == true)
-                {
-                    questController.ObjectiveID++;
-                    this.GetComponent<PNJQuestController>().IsQuestAccepted = false;
+            int objID = 0;
 
-                    WriteAndDeleteJSONFile();
-                }
-            }
-            else
-            { 
-                foreach(ObjectiveController objC in questObjectives)
+            for (int i = 0; i <= questController.ObjectiveMax; i++)
+            {
+                if (questController.ObjectiveID == objID)
                 {
-                    if(objC.ObjectiveID == questController.ObjectiveID)
+                    if (this.GetComponent<PNJQuestController>().IsQuestAccepted == true)
                     {
-                        _currentQuestObjectif = objC;
-                        currentPNJQuestContext = objC.ObjectiveContext;
-                        _currentQuestObjectif.ObjectiveIsComplete = true;
+                        questController.ObjectiveID++;
+                        this.GetComponent<PNJQuestController>().IsQuestAccepted = false;
+
+                        WriteAndDeleteJSONFile();
                     }
                 }
-
-                if(_currentQuestObjectif.ObjectiveIsComplete == true)
+                else
                 {
-                    questController.ObjectiveID++;
+                    int count = 0;
+                    foreach (ObjectiveController objC in questObjectives)
+                    {
+                        if (objC.ObjectiveID == questController.ObjectiveID)
+                        {
+                            _currentQuestObjectif = objC;
+                            currentPNJQuestContext = objC.ObjectiveContext;
+                            if (this.GetComponent<PNJQuestController>().IsQuestAccepted == true)
+                            {
+                                _currentQuestObjectif.ObjectiveIsComplete = true;
+                                this.GetComponent<PNJQuestController>().IsQuestAccepted = false;
+                                questController.QuestDescription = "test";
+                                QuestTest["Quest" + currentQuestID][0]["Objectives"][count]["ObjectiveIsComplete"].AsBool = true;
+                            }
+                        }
+                        count++;
+                    }
+                    if (questController.ObjectiveID > questController.ObjectiveMax)
+                    {
+                        questController.QuestIsComplete = true;
+                        _hasQuest = false;
+                        QuestTest["Quest" + currentQuestID][0]["QuestIsComplete"].AsBool = true;
+                        WriteAndDeleteJSONFile();
+                        CheckNextQuest();
+                        GetQuestFromJson();
+                        //fct de recherche quete suivante
+                        //demander pnj.json sa prochaine quete
+                        //demande quetes.json donne moi la quete de telle ID
+                    }
+                    else if(_currentQuestObjectif.ObjectiveIsComplete == true)
+                    {
+                        questController.ObjectiveID++;
+                        WriteAndDeleteJSONFile();
+                    }
                 }
-            } 
-
-            if(questController.ObjectiveID > questController.ObjectiveMax)
-            {
-                questController.QuestIsComplete = true;
-                _hasQuest = false;
-                CheckNextQuest();
-                GetQuestFromJson();
-                //fct de recherche quete suivante
-                //demander pnj.json sa prochaine quete
-                //demande quetes.json donne moi la quete de telle ID
             }
         }
+        else
+        {
+            currentPNJQuestContext = "Bonjour Astrind. Quelle belle journée aujourd'hui, n'est-ce-pas ?";
+        }
+        
     }
 
+    /// <summary>
+    /// Writes the and delete json file.
+    /// </summary>
     private void WriteAndDeleteJSONFile()
     {
         //Doesn't work correctly
-        // change quest1.1 to dynamic quest
-        if (QuestTest["Quest1.1"][0]["ObjectiveID"] != null)
+        // stocke correctement l'information dans le JSON 
+        // A la fin je devrai pouvoir lire le context d'un pnj que ce soit pour la quete ou pour les objectifs
+        if (QuestTest["Quest" + currentQuestID][0]["ObjectiveID"] != null)
         {
-            QuestTest["Quest1.1"][0]["ObjectiveID"].AsInt = questController.ObjectiveID + 1;
+            QuestTest["Quest" + currentQuestID][0]["ObjectiveID"].AsInt = questController.ObjectiveID;
 
-            Debug.Log(QuestTest["Quest1.1"][0]["ObjectiveID"].AsInt);
+            Debug.Log(QuestTest["Quest" + currentQuestID][0]["ObjectiveID"].AsInt);
             Debug.Log(questController.ObjectiveID);
             Debug.Log(QuestTest);
             var s = QuestTest.ToString();
@@ -255,17 +276,17 @@ public class PNJQuestController : MonoBehaviour {
             FileStream fs = null;
             try
             {
-                // créer dossier tmpFile
+                // Create file tmpFile
                 if (!System.IO.Directory.Exists(tmpFilePath))
                 {
                     System.IO.Directory.CreateDirectory(tmpFilePath);
                 }
 
-                // copier old file .json in tmpFile
+                // Copy old file .json in tmpFile
                 System.IO.File.Copy(sourcePath, tmpFilePath + "QuestTest");
 
+                // create
                 fs = new FileStream(sourcePath, FileMode.Create);
-                Debug.Log(fs);
                 using (StreamWriter writer = new StreamWriter(fs))
                 {
                     writer.WriteLine(s);
@@ -276,14 +297,8 @@ public class PNJQuestController : MonoBehaviour {
                 if (fs != null)
                     fs.Dispose();
             }
-
-            Debug.Log(s);
-
             //delete old file 
             System.IO.File.Delete(tmpFilePath + "QuestTest");
-
-            //Debug.Log(questController.ObjectiveID);
-            //Debug.Log("Enter in write JSON");
         }
     }
 
@@ -308,7 +323,6 @@ public class PNJQuestController : MonoBehaviour {
                     {
                         CurrentQuestID = PNJ["Scene"][0]["PNJ"][i]["ListQuestID"][0]["QuestID" + j].AsFloat;
                     }
-
                 }
             }
         }
