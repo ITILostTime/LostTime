@@ -76,6 +76,8 @@ public class GameLanguagesFirstChoiceScript : MonoBehaviour {
             ((int)(_userInterface.GetComponent<RectTransform>().rect.height / 10)), Color.black);
         GameObject.Find("Validate").GetComponent<Button>().onClick.AddListener(() => ButtonValidation());
 
+        CheckLanguagesLanguages();
+
         AdminCommand();
     }
 
@@ -115,9 +117,7 @@ public class GameLanguagesFirstChoiceScript : MonoBehaviour {
             _userInterface.GetComponent<RectTransform>().rect.height / 3, "Reset All PlayerPrefs", _userInterface.GetComponent<TextMonitoring>().GetArialTextFont, 
             TextAnchor.MiddleCenter, FontStyle.Bold, 0, Color.black);
         GameObject.Find("ButtonResetPlayerPrefs").GetComponent<Button>().onClick.AddListener(() => ResetAllPlayersPrefs());
-
-        // TPAstridToAstridHouse select the save Game and save position astrid to astrid House
-        // Close Admin Panel
+        
 
         _userInterface.GetComponent<CreateUserInterfaceObject>().CreateGameObjectButtonWithText("ClosePanel", AdminPanel, true,
             AdminPanel.GetComponent<RectTransform>().rect.width / 2, _userInterface.GetComponent<RectTransform>().rect.height / 10, 0,
@@ -128,6 +128,9 @@ public class GameLanguagesFirstChoiceScript : MonoBehaviour {
 
     private void ResetAllPlayersPrefs()
     {
+
+        GameObject.Find("FirstEnglishGear").GetComponent<Image>().color = Color.clear;
+        GameObject.Find("FirstFrenchGear").GetComponent<Image>().color = Color.clear;
         PlayerPrefs.DeleteAll();
     }
 
@@ -135,6 +138,18 @@ public class GameLanguagesFirstChoiceScript : MonoBehaviour {
     {
         GameObject.Find("AdminInputZone").GetComponent<UIAdminCommand>().IsAdminCommandOn = false;
         Destroy(GameObject.Find("AdminPanel"));
+    }
+
+    private void CheckLanguagesLanguages()
+    {
+        if(PlayerPrefs.GetString("CurrentLanguagesUsed") == "Français" || PlayerPrefs.GetString("CurrentLanguagesUsed") == "French")
+        {
+            FrenchButtonAction();
+        }
+        else if(PlayerPrefs.GetString("CurrentLanguagesUsed") == "Anglais" || PlayerPrefs.GetString("CurrentLanguagesUsed") == "English")
+        {
+            EnglishButtonAction();
+        }
     }
 
     private void FrenchButtonAction()

@@ -94,13 +94,16 @@ public class CharaAnimCtrl : MonoBehaviour {
     {
 
         //check if the avatar get bored.
-        getBored();
+        if(this.gameObject.name == "AstridPlayer")
+        {
+            GetBored();
+        }
 
         //change the state of the animCtrl according to the environnement
         normalizedHorizontal = (inputMode == InputMode.byTransform) ? Horizontal() : InputH;
         normalizedVertical = (inputMode == InputMode.byTransform) ? Vertical() : InputV;
 
-        resetBool();
+        ResetBool();
         switch (walkmode)
         {
             case WalkMode.idle:
@@ -157,7 +160,7 @@ public class CharaAnimCtrl : MonoBehaviour {
         computedVelocity = (lastPosition.magnitude - transformOfTheCharacter.position.magnitude)*Time.deltaTime* walkSpeed;
         return Mathf.Clamp(computedVelocity, -1.0f, 1.0f); 
     }
-    private void getBored()
+    private void GetBored()
     {
         if (normalizedHorizontal == 0 || normalizedVertical == 0)
         {
@@ -191,7 +194,7 @@ public class CharaAnimCtrl : MonoBehaviour {
         //Debug.Log(String.Format("{0},{1}", waitForBoringDelay, waitForBoringCounter));
 
     }
-    private void resetBool()
+    private void ResetBool()
     {
         isWalking = false;
         isRunning = false;
