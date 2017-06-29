@@ -161,20 +161,6 @@ public class SetLoadGameButtonScript : MonoBehaviour, IPointerDownHandler
         PrefabMenuGear.GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width, Screen.height);
         PrefabMenuGear.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
 
-        _canvasMenu.GetComponent<CreateUserInterfaceObject>().CreateGameObjectTextZone(GameObjectName + "CycleTextZone", GameObject.Find(GameObjectName), true,
-            GameObject.Find(GameObjectName).GetComponent<RectTransform>().rect.width / 2, GameObject.Find(GameObjectName).GetComponent<RectTransform>().rect.height / 2,
-            GameObject.Find(GameObjectName).GetComponent<RectTransform>().rect.width / 4, GameObject.Find(GameObjectName).GetComponent<RectTransform>().rect.height / 4, "",
-            _canvasMenu.GetComponent<TextMonitoring>().GetArialTextFont, TextAnchor.MiddleCenter, FontStyle.Bold,
-            ((int)(Screen.height / 20)), Color.black);
-        if (PlayerPrefs.GetInt("Is" + PlayerPrefsCurrentSaveState + "Used") != 1)
-        {
-            _canvasMenu.GetComponent<TextMonitoring>().SetTextInCorrectLanguages(GameObjectName + "CycleTextZone", "Empty Save", "Sauvegarde Vide");
-        }
-        else
-        {
-            _canvasMenu.GetComponent<TextMonitoring>().SetTextInCorrectLanguages(GameObjectName + "CycleTextZone", "Number of cycle : " + PlayerPrefs.GetInt(PlayerPrefsCurrentSaveState + "Cycle"), "Nombre de cycle : " + PlayerPrefs.GetInt(PlayerPrefsCurrentSaveState + "Cycle"));
-        }
-
         _canvasMenu.GetComponent<CreateUserInterfaceObject>().CreateGameObjectTextZone(GameObjectName + "FragmentTextZone", GameObject.Find(GameObjectName), true,
             GameObject.Find(GameObjectName).GetComponent<RectTransform>().rect.width / 2, GameObject.Find(GameObjectName).GetComponent<RectTransform>().rect.height / 2,
             GameObject.Find(GameObjectName).GetComponent<RectTransform>().rect.width / 4, GameObject.Find(GameObjectName).GetComponent<RectTransform>().rect.height / -4, "",
@@ -182,7 +168,7 @@ public class SetLoadGameButtonScript : MonoBehaviour, IPointerDownHandler
             ((int)(Screen.height / 20)), Color.black);
         if (PlayerPrefs.GetInt("Is" + PlayerPrefsCurrentSaveState + "Used") != 1)
         {
-           
+            _canvasMenu.GetComponent<TextMonitoring>().SetTextInCorrectLanguages(GameObjectName + "FragmentTextZone", "Empty Save", "Sauvegarde Vide");
         }
         else
         {

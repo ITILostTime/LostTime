@@ -7,8 +7,8 @@ public class UIQuestBook : MonoBehaviour, IPointerDownHandler
 {
 
     private GameObject _canvas;
-    public bool _UIQuestBookPanelActivated;
-    public bool _UIQuestBookAnimationOn;
+    private bool _UIQuestBookPanelActivated;
+    private bool _UIQuestBookAnimationOn;
 
     public bool UIQuestBookAnimationOn { get { return _UIQuestBookAnimationOn; } set { _UIQuestBookAnimationOn = value; } }
     public bool UIQuestBookPanelActivated { get { return _UIQuestBookPanelActivated; } set { _UIQuestBookPanelActivated = value; } }
@@ -57,7 +57,7 @@ public class UIQuestBook : MonoBehaviour, IPointerDownHandler
         if (GameObject.Find("UIQuestBookPanel") == false)
         {
             _canvas.GetComponent<CreateUserInterfaceObject>().CreateGameObjectImageSprite("UIQuestBookPanel", _canvas, true,
-            _canvas.GetComponent<RectTransform>().rect.width / 3, _canvas.GetComponent<RectTransform>().rect.height,
+            _canvas.GetComponent<RectTransform>().rect.width / 3, (_canvas.GetComponent<RectTransform>().rect.height / 10) * 8,
             0, _canvas.GetComponent<RectTransform>().rect.height,
             _canvas.GetComponent<ImageMonitoring>().GetSprite("SpriteBackGround_03", _canvas.GetComponent<ImageMonitoring>()._BackGroundSprite));
 

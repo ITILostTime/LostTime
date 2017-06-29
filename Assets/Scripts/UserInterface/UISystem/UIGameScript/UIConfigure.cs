@@ -8,8 +8,8 @@ public class UIConfigure : MonoBehaviour, IPointerDownHandler
 {
 
     private GameObject _canvas;
-    public bool _UIConfigureActivated;
-    public bool _UIConfigureAnimationOn;
+    private bool _UIConfigureActivated;
+    private bool _UIConfigureAnimationOn;
 
     public bool UIConfigureAnimationOn { get { return _UIConfigureAnimationOn; } set { _UIConfigureAnimationOn = value; } }
     public bool UIConfigureActivated { get { return _UIConfigureActivated; } set { _UIConfigureActivated = value; } }
@@ -58,7 +58,7 @@ public class UIConfigure : MonoBehaviour, IPointerDownHandler
         if (GameObject.Find("UIConfigurePanel") == false)
         {
             _canvas.GetComponent<CreateUserInterfaceObject>().CreateGameObjectImageSprite("UIConfigurePanel", _canvas, true,
-            _canvas.GetComponent<RectTransform>().rect.width / 3, _canvas.GetComponent<RectTransform>().rect.height,
+            _canvas.GetComponent<RectTransform>().rect.width / 3, (_canvas.GetComponent<RectTransform>().rect.height / 10) * 8,
             0, _canvas.GetComponent<RectTransform>().rect.height,
             _canvas.GetComponent<ImageMonitoring>().GetSprite("SpriteBackGround_03", _canvas.GetComponent<ImageMonitoring>()._BackGroundSprite));
 
