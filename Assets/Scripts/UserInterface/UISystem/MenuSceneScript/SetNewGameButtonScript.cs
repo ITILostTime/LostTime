@@ -26,7 +26,7 @@ public class SetNewGameButtonScript : MonoBehaviour, IPointerDownHandler
         if (GameObject.Find("NewGamePanel") == true && _newGamePanelActivated == true && _newGameAnimationOn == true)
         {
             _newGameAnimationOn = _canvasMenu.GetComponent<AnimationUserInterfaceController>().HztAnimToUserInterfaceRightToLeft("NewGamePanel",
-                _canvasMenu.GetComponent<RectTransform>().rect.width / 2.7f, 0, -1);
+                ((_canvasMenu.GetComponent<RectTransform>().rect.width / 2) - (_canvasMenu.GetComponent<RectTransform>().rect.width / 6)), 0, -1);
         }
         else if (GameObject.Find("NewGamePanel") == true && _newGamePanelActivated == false && _newGameAnimationOn == true)
         {
@@ -64,15 +64,12 @@ public class SetNewGameButtonScript : MonoBehaviour, IPointerDownHandler
 
         if(GameObject.Find("NewGamePanel") == false)
         {
-            _canvasMenu.GetComponent<CreateUserInterfaceObject>().CreateEmptyGameObject("NewGamePanel", _canvasMenu, true, _canvasMenu.GetComponent<RectTransform>().rect.width / 4,
-            _canvasMenu.GetComponent<RectTransform>().rect.height, ((_canvasMenu.GetComponent<RectTransform>().rect.width / 2) + (_canvasMenu.GetComponent<RectTransform>().rect.width / 8)), 0);
+            _canvasMenu.GetComponent<CreateUserInterfaceObject>().CreateEmptyGameObject("NewGamePanel", _canvasMenu, true, _canvasMenu.GetComponent<RectTransform>().rect.width / 3,
+            _canvasMenu.GetComponent<RectTransform>().rect.height, ((_canvasMenu.GetComponent<RectTransform>().rect.width / 2) + (_canvasMenu.GetComponent<RectTransform>().rect.width / 6)), 0);
 
             _newGamePanel = GameObject.Find("NewGamePanel");
 
-
-            CreateNewSaveStateOneButton();
-            CreateNewSaveStateTwoButton();
-            CreateNewSaveStateThreeButton();
+            CreateSaveStateButton();
 
             _newGamePanelActivated = true;
             _newGameAnimationOn = true;
@@ -85,29 +82,51 @@ public class SetNewGameButtonScript : MonoBehaviour, IPointerDownHandler
 
     }
 
-    private void CreateNewSaveStateOneButton()
+    private void CreateSaveStateButton()
     {
-        CreateNewGamePanelCSaveStateComponent("SaveStateOne", "SaveStateOne", "NewGamePanel", _newGamePanel.GetComponent<RectTransform>().rect.width,
-                (_newGamePanel.GetComponent<RectTransform>().rect.height / 10) * 2.5f, 0, (_newGamePanel.GetComponent<RectTransform>().rect.height / 10) * 3.5f);
-        GameObject.Find("SaveStateOneButtonZone").AddComponent<Button>();
-        GameObject.Find("SaveStateOneButtonZone").GetComponent<Button>().onClick.AddListener(() => SaveStateAction("SaveStateOne"));
+        for(int x = 1; x <= 3; x++)
+        {
+            float y = 0;
+            switch (x)
+            {
+                case 1:
+                    y = 3.5f;
+                    break;
+                case 2:
+                    y = 0;
+                    break;
+                case 3:
+                    y = -3.5f;
+                    break;
+            }
+
+            string var = GetXAsString(x);
+            CreateNewGamePanelCSaveStateComponent("SaveState" + var, "SaveState" + var, "NewGamePanel", _newGamePanel.GetComponent<RectTransform>().rect.width,
+                (_newGamePanel.GetComponent<RectTransform>().rect.height / 10) * 2.5f, 0, (_newGamePanel.GetComponent<RectTransform>().rect.height / 10) * y);
+            GameObject.Find("SaveState" + var + "ButtonZone").AddComponent<Button>();
+            GameObject.Find("SaveState" + var + "ButtonZone").GetComponent<Button>().onClick.AddListener(() => SaveStateAction("SaveState" + var));
+        }
     }
 
-    private void CreateNewSaveStateTwoButton()
+    private string GetXAsString(int x)
     {
-        CreateNewGamePanelCSaveStateComponent("SaveStateTwo", "SaveStateTwo", "NewGamePanel", _newGamePanel.GetComponent<RectTransform>().rect.width,
-                (_newGamePanel.GetComponent<RectTransform>().rect.height / 10) * 2.5f, 0, 0);
-        GameObject.Find("SaveStateTwoButtonZone").AddComponent<Button>();
-        GameObject.Find("SaveStateTwoButtonZone").GetComponent<Button>().onClick.AddListener(() => SaveStateAction("SaveStateTwo"));
-    }
+        string var;
 
-    private void CreateNewSaveStateThreeButton()
-    {
-        CreateNewGamePanelCSaveStateComponent("SaveStateThree", "SaveStateThree", "NewGamePanel", _newGamePanel.GetComponent<RectTransform>().rect.width,
-                (_newGamePanel.GetComponent<RectTransform>().rect.height / 10) * 2.5f, 0, (_newGamePanel.GetComponent<RectTransform>().rect.height / 10) * -3.5f);
-        GameObject.Find("SaveStateThreeButtonZone").AddComponent<Button>();
-        GameObject.Find("SaveStateThreeButtonZone").GetComponent<Button>().onClick.AddListener(() => SaveStateAction("SaveStateThree"));
+        switch (x)
+        {
+            case 1:
+                var = "One";
+                return var;
+            case 2:
+                var = "Two";
+                return var;
+            case 3:
+                var = "Three";
+                return var;
+        }
+        return null;
     }
+    
 
     private void CreateNewGamePanelCSaveStateComponent(string GameObjectName, string PlayerPrefsCurrentSaveState, string GameObjectParentName, float sizedeltaX, float sizeDeltaY, 
         float anchoredPositionX, float anchoredPositionY)
@@ -124,28 +143,28 @@ public class SetNewGameButtonScript : MonoBehaviour, IPointerDownHandler
             GameObject.Find(GameObjectName).GetComponent<RectTransform>().rect.width / 2, GameObject.Find(GameObjectName).GetComponent<RectTransform>().rect.height / 2,
             GameObject.Find(GameObjectName).GetComponent<RectTransform>().rect.width / 4, GameObject.Find(GameObjectName).GetComponent<RectTransform>().rect.height / 4, "",
             _canvasMenu.GetComponent<TextMonitoring>().GetArialTextFont, TextAnchor.MiddleCenter, FontStyle.Bold,
-            ((int)(GameObject.Find(GameObjectName).GetComponent<RectTransform>().rect.height / 10)), Color.black);
+            ((int)(Screen.height / 20)), Color.black);
         if (PlayerPrefs.GetInt("Is" + PlayerPrefsCurrentSaveState + "Used") != 1)
         {
-            _canvasMenu.GetComponent<TextMonitoring>().setTextInCorrectLanguages(GameObjectName + "CycleTextZone", "Empty Save", "Sauvegarde Vide");
+            _canvasMenu.GetComponent<TextMonitoring>().SetTextInCorrectLanguages(GameObjectName + "CycleTextZone", "Empty Save", "Sauvegarde Vide");
         }
         else
         {
-            _canvasMenu.GetComponent<TextMonitoring>().setTextInCorrectLanguages(GameObjectName + "CycleTextZone", "Number of cycle : " + PlayerPrefs.GetInt(PlayerPrefsCurrentSaveState + "Cycle"), "Nombre de cycle : " + PlayerPrefs.GetInt(PlayerPrefsCurrentSaveState + "Cycle"));
+            _canvasMenu.GetComponent<TextMonitoring>().SetTextInCorrectLanguages(GameObjectName + "CycleTextZone", "Number of cycle : " + PlayerPrefs.GetInt(PlayerPrefsCurrentSaveState + "Cycle"), "Nombre de cycle : " + PlayerPrefs.GetInt(PlayerPrefsCurrentSaveState + "Cycle"));
         }
 
         _canvasMenu.GetComponent<CreateUserInterfaceObject>().CreateGameObjectTextZone(GameObjectName + "FragmentTextZone", GameObject.Find(GameObjectName), true,
             GameObject.Find(GameObjectName).GetComponent<RectTransform>().rect.width / 2, GameObject.Find(GameObjectName).GetComponent<RectTransform>().rect.height / 2,
             GameObject.Find(GameObjectName).GetComponent<RectTransform>().rect.width / 4, GameObject.Find(GameObjectName).GetComponent<RectTransform>().rect.height / -4, "",
             _canvasMenu.GetComponent<TextMonitoring>().GetArialTextFont, TextAnchor.MiddleCenter, FontStyle.Bold,
-            ((int)(GameObject.Find(GameObjectName).GetComponent<RectTransform>().rect.height / 10)), Color.black);
+            ((int)(Screen.height / 20)), Color.black);
         if (PlayerPrefs.GetInt("Is" + PlayerPrefsCurrentSaveState + "Used") != 1)
         {
-            _canvasMenu.GetComponent<TextMonitoring>().setTextInCorrectLanguages((GameObjectName + "FragmentTextZone"), "Start New Game", "Nouvelle Partie");
+            _canvasMenu.GetComponent<TextMonitoring>().SetTextInCorrectLanguages((GameObjectName + "FragmentTextZone"), "Start New Game", "Nouvelle Partie");
         }
         else
         {
-            _canvasMenu.GetComponent<TextMonitoring>().setTextInCorrectLanguages((GameObjectName + "FragmentTextZone"), "Number of fragments : " + PlayerPrefs.GetInt(PlayerPrefsCurrentSaveState + "Fragments"), "Nombre de fragments : " + PlayerPrefs.GetInt(PlayerPrefsCurrentSaveState + "Fragments"));
+            _canvasMenu.GetComponent<TextMonitoring>().SetTextInCorrectLanguages((GameObjectName + "FragmentTextZone"), "Number of fragments : " + PlayerPrefs.GetInt(PlayerPrefsCurrentSaveState + "Fragments"), "Nombre de fragments : " + PlayerPrefs.GetInt(PlayerPrefsCurrentSaveState + "Fragments"));
         }
 
         _canvasMenu.GetComponent<CreateUserInterfaceObject>().CreateEmptyGameObject(GameObjectName + "ButtonZone", GameObject.Find(GameObjectName), true,
@@ -182,16 +201,16 @@ public class SetNewGameButtonScript : MonoBehaviour, IPointerDownHandler
             GameObject.Find("PanelOverWriteData").GetComponent<RectTransform>().rect.width, GameObject.Find("PanelOverWriteData").GetComponent<RectTransform>().rect.height / 3, 0,
             GameObject.Find("PanelOverWriteData").GetComponent<RectTransform>().rect.height / 2 - GameObject.Find("PanelOverWriteData").GetComponent<RectTransform>().rect.height / 6,
             "", _canvasMenu.GetComponent<TextMonitoring>().GetArialTextFont, TextAnchor.MiddleCenter, FontStyle.Bold,
-            ((int)(GameObject.Find("PanelOverWriteData").GetComponent<RectTransform>().rect.height / 10)), Color.black);
-        _canvasMenu.GetComponent<TextMonitoring>().setTextInCorrectLanguages(("PanelOverWriteDataLabel"), "OverWrite Data File", "Ecraser les données");
+            ((int)(Screen.height / 20)), Color.black);
+        _canvasMenu.GetComponent<TextMonitoring>().SetTextInCorrectLanguages(("PanelOverWriteDataLabel"), "OverWrite Data File", "Ecraser les données");
 
         _canvasMenu.GetComponent<CreateUserInterfaceObject>().CreateGameObjectTextZone("PanelOverWriteDataLabelYes", GameObject.Find("PanelOverWriteData"), true,
             GameObject.Find("PanelOverWriteData").GetComponent<RectTransform>().rect.width / 2, GameObject.Find("PanelOverWriteData").GetComponent<RectTransform>().rect.height / 3,
             -GameObject.Find("PanelOverWriteData").GetComponent<RectTransform>().rect.width / 3.5f,
             -(GameObject.Find("PanelOverWriteData").GetComponent<RectTransform>().rect.height / 2 - GameObject.Find("PanelOverWriteData").GetComponent<RectTransform>().rect.height / 6),
             "", _canvasMenu.GetComponent<TextMonitoring>().GetArialTextFont, TextAnchor.MiddleCenter, FontStyle.Bold,
-            ((int)(GameObject.Find("PanelOverWriteData").GetComponent<RectTransform>().rect.height / 10)), Color.black);
-        _canvasMenu.GetComponent<TextMonitoring>().setTextInCorrectLanguages(("PanelOverWriteDataLabelYes"), "YES", "OUI");
+            ((int)(Screen.height / 20)), Color.black);
+        _canvasMenu.GetComponent<TextMonitoring>().SetTextInCorrectLanguages(("PanelOverWriteDataLabelYes"), "YES", "OUI");
         GameObject.Find("PanelOverWriteDataLabelYes").AddComponent<Button>();
         GameObject.Find("PanelOverWriteDataLabelYes").GetComponent<Button>().onClick.AddListener(() => Yes(SaveStateName));
 
@@ -200,8 +219,8 @@ public class SetNewGameButtonScript : MonoBehaviour, IPointerDownHandler
             GameObject.Find("PanelOverWriteData").GetComponent<RectTransform>().rect.width / 3.5f,
             -(GameObject.Find("PanelOverWriteData").GetComponent<RectTransform>().rect.height / 2 - GameObject.Find("PanelOverWriteData").GetComponent<RectTransform>().rect.height / 6),
             "", _canvasMenu.GetComponent<TextMonitoring>().GetArialTextFont, TextAnchor.MiddleCenter, FontStyle.Bold,
-            ((int)(GameObject.Find("PanelOverWriteData").GetComponent<RectTransform>().rect.height / 10)), Color.black);
-        _canvasMenu.GetComponent<TextMonitoring>().setTextInCorrectLanguages(("PanelOverWriteDataLabelNo"), "NO", "NON");
+            ((int)(Screen.height / 20)), Color.black);
+        _canvasMenu.GetComponent<TextMonitoring>().SetTextInCorrectLanguages(("PanelOverWriteDataLabelNo"), "NO", "NON");
         GameObject.Find("PanelOverWriteDataLabelNo").AddComponent<Button>();
         GameObject.Find("PanelOverWriteDataLabelNo").GetComponent<Button>().onClick.AddListener(() => No());
     }
