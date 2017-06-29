@@ -77,7 +77,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\PNJQuest\PNJ.cs" />
     <Compile Include="Assets\Scripts\Animation\CharaAnimCtrl.cs" />
     <Compile Include="Assets\Scripts\Animation\CloudsAnims.cs" />
     <Compile Include="Assets\Scripts\Animation\IPuppetMaster.cs" />
@@ -110,10 +109,13 @@
     <Compile Include="Assets\Scripts\EntityGenerator\PositionEntity.cs" />
     <Compile Include="Assets\Scripts\Installer\CrossDependecyResolver.cs" />
     <Compile Include="Assets\Scripts\Installer\GameInstaller.cs" />
+    <Compile Include="Assets\Scripts\InstanceSceneContext\GeneratePNJ.cs" />
     <Compile Include="Assets\Scripts\InstanceSceneContext\InstanceAstridHouseContext.cs" />
     <Compile Include="Assets\Scripts\InstanceSceneContext\InstanceLostTimeGearDistrictContext.cs" />
     <Compile Include="Assets\Scripts\LoadNewSceneScript\CreateLoadSceneWayPoints.cs" />
     <Compile Include="Assets\Scripts\LoadNewSceneScript\NewSceneWayPointsController.cs" />
+    <Compile Include="Assets\Scripts\PNJQuest\PNJ.cs" />
+    <Compile Include="Assets\Scripts\PNJQuest\PNJPathfinding.cs" />
     <Compile Include="Assets\Scripts\Pathfinding\Pathfinder.cs" />
     <Compile Include="Assets\Scripts\Pathfinding\Pathfinding.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />

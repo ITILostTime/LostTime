@@ -63,7 +63,6 @@ public class NPCSpawner : ITickable, IInitializable
     /// </summary>
     public void Tick()
     {
-
         if (_questManager.hasRequest)
         {
             List<NPCData> npcRequested =  _questManager.NPCCache;

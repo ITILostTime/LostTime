@@ -2,13 +2,13 @@
   "QuestMax": 2,
   "Quest1.1": [
     {
-      "QuestPNJ": "Cube",
+      "QuestPNJ": "Forgeron",
       "QuestID": 1.1,
       "QuestName": "Tutorial",
       "QuestContext": "Bonjour voyageur, j'effectue un test",
       "QuestDescription": "Prise en main du jeu et d'astrid",
       "QuestIsComplete": false,
-      "ObjectiveID": 2,
+      "ObjectiveID": 0,
       "ObjectiveMax": 3,
       "Objectives": [
         {
@@ -40,11 +40,9 @@
       "QuestPNJ": "Julien",
       "QuestID": 1.2,
       "QuestName": "TestJSON",
-      "QuestContext": "Patapo",
+      "QuestContext": "Salut je suis une sphère",
       "QuestDescription": "Prise en main du JSON",
       "QuestIsComplete": false,
-      "ObjectiveID": 0,
-      "ObjectiveMax": 3,
       "Objectives": [
         {
           "ObjectiveID": 1,
@@ -53,7 +51,9 @@
           "ObjectiveDescription": "Test test test",
           "ObjectiveIsComplete": false
         }
-      ]
+      ],
+      "ObjectiveMax": 0,
+      "ObjectiveID": 0
     }
   ],
   "Quest1.3": [

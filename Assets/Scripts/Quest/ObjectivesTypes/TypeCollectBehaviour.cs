@@ -18,6 +18,7 @@ namespace Assets.Scripts.Quest.ObjectivesTypes
 
                 Debug.Log(GameObject.Find("TypeCollectController").GetComponent<TypeCollect>().Amount);
                 Debug.Log(GameObject.Find("TypeCollectController").GetComponent<TypeCollect>().GoalAmount);
+                Debug.Log(GameObject.Find("TypeCollectController").GetComponent<TypeCollect>().IsComplete());
             }
         }
     }

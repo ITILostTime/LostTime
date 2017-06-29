@@ -1,29 +1,15 @@
 {
   "PNJCount": 6,
+  "SceneMax": 2,
   "Scene": [
     {
       "SceneName": "LostTimeGearDistrict",
       "PNJ": [
         {
-          "PNJName": "CubeE",
+          "PNJName": "Forgeron",
           "PNJCurrentQuestID": 1,
           "PNJQuestIDMax": 3,
-          "PositionX": 0,
-          "PositionY": 2,
-          "PositionZ": 0,
-          "RotationX": 0,
-          "RotationY": 0,
-          "RotationZ": 0,
-          "ListQuestID": [
-            {
-              "QuestID1": 1.4
-            }
-          ]
-        },
-        {
-          "PNJName": "Cube",
-          "PNJCurrentQuestID": 1,
-          "PNJQuestIDMax": 3,
+          "PNJJob": "blacksmith",
           "PositionX": 14,
           "PositionY": 5,
           "PositionZ": 5,
@@ -37,12 +23,30 @@
           ]
         },
         {
+          "PNJName": "Sandra",
+          "PNJCurrentQuestID": 1,
+          "PNJQuestIDMax": 3,
+          "PNJJob": "sandra",
+          "PositionX": 14,
+          "PositionY": 5,
+          "PositionZ": 10,
+          "RotationX": 0,
+          "RotationY": 0,
+          "RotationZ": 0,
+          "ListQuestID": [
+            {
+              "QuestID1": 1.3
+            }
+          ]
+        },
+        {
           "PNJName": "Julien",
           "PNJCurrentQuestID": 1,
           "PNJQuestIDMax": 3,
-          "PositionX": 50,
-          "PositionY": 2,
-          "PositionZ": 50,
+          "PNJJob": "citizen1",
+          "PositionX": 14,
+          "PositionY": 5,
+          "PositionZ": 0,
           "RotationX": 0,
           "RotationY": 0,
           "RotationZ": 0,
@@ -56,15 +60,16 @@
           "PNJName": "Julie",
           "PNJCurrentQuestID": 1,
           "PNJQuestIDMax": 3,
-          "PositionX": -10,
+          "PNJJob": "citizen3",
+          "PositionX": 14,
           "PositionY": 5,
-          "PositionZ": -10,
+          "PositionZ": -5,
           "RotationX": 0,
           "RotationY": 0,
           "RotationZ": 0,
           "ListQuestID": [
             {
-              "QuestID1": 1.3
+              "QuestID1": 1.4
             }
           ]
         },

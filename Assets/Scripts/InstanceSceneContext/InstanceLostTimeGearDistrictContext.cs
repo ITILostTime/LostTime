@@ -3,9 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using System.IO;
-using SimpleJSON;
-
 public class InstanceLostTimeGearDistrictContext : MonoBehaviour
 {
     private void Start()
@@ -90,55 +87,6 @@ public class InstanceLostTimeGearDistrictContext : MonoBehaviour
 
         GameObject Waypoints = (GameObject)Instantiate(Resources.Load("LostTimeGearDistrict/WayPoints"));
 
-        // if condition JsonScene == _currentScene (playerprefs)
-        // Read PNJ.json
-        string PNJ = ReadPNJJSON();
-        JSONNode json = JSON.Parse(PNJ);
-
-        for (int i = 0; i < json["PNJCount"].AsInt; i++)
-        {   
-
-            GeneratePNJQuestGearDistrict(json["Scene"][0]["PNJ"][i]["PNJName"], json["Scene"][0]["PNJ"][i]["PositionX"].AsFloat,
-            json["Scene"][0]["PNJ"][i]["PositionY"].AsFloat, json["Scene"][0]["PNJ"][i]["PositionZ"].AsFloat,
-            json["Scene"][0]["PNJ"][i]["RotationX"].AsFloat, json["Scene"][0]["PNJ"][i]["RotationY"].AsFloat,
-            json["Scene"][0]["PNJ"][i]["RotationZ"].AsFloat, json["Scene"][0]["PNJ"][i]["PNJCurrentQuestID"].AsFloat);
-        }
-    }
-
-    /// <summary>
-    /// Reads the pnjjson.
-    /// </summary>
-    /// <returns></returns>
-    private string ReadPNJJSON()
-    {
-        StreamReader sr = new StreamReader(Application.dataPath + "/Scripts/Quest/JsonParser/PNJ.json");
-        string content = sr.ReadToEnd();
-
-        sr.Close();
-        return content;
-    }
-
-    /// <summary>
-    /// Generates the PNJ quest gear district.
-    /// </summary>
-    /// <param name="name">The name.</param>
-    /// <param name="positionX">The position x.</param>
-    /// <param name="positionY">The position y.</param>
-    /// <param name="positionZ">The position z.</param>
-    /// <param name="rotationX">The rotation x.</param>
-    /// <param name="rotationY">The rotation y.</param>
-    /// <param name="rotationZ">The rotation z.</param>
-    /// <param name="questID">The quest identifier.</param>
-    private void GeneratePNJQuestGearDistrict(string name, float positionX, float positionY, float positionZ,
-        float rotationX, float rotationY, float rotationZ, float questID)
-    {
-        GameObject gameobject = new GameObject(name);
-        gameobject.AddComponent<MeshRenderer>();
-        gameobject.transform.position = new Vector3(positionX, positionY, positionZ);
-        gameobject.AddComponent<BoxCollider>();
-        gameobject.AddComponent<Rigidbody>();
-        gameobject.AddComponent<MeshFilter>();
-        gameobject.AddComponent<PNJQuestController>();
-        gameobject.GetComponent<PNJQuestController>().CurrentQuestID = questID;
+        Event.AddComponent<GeneratePNJ>();
     }
 }
