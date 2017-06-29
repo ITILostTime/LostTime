@@ -32,8 +32,9 @@ public class InstanceLostTimeGearDistrictContext : MonoBehaviour
         Sun.GetComponent<Light>().shadowBias = 0.05f;
         Sun.GetComponent<Light>().shadowNormalBias = 0.4f;
         Sun.GetComponent<Light>().shadowNearPlane = 0.2f;
-        //Sun.AddComponent<Timer>();
-        //Sun.AddComponent<lightCtrl>();
+        Sun.AddComponent<Timer>();
+        Sun.AddComponent<lightCtrl>();
+        Sun.AddComponent<SoundController>();
 
         GameObject MapChunkSource = (GameObject)Instantiate(Resources.Load("MapEngrenage/map-chunk-source-v2"));
         GameObject.Find("map-chunk-source-v2(Clone)").name = "map-chunk-source";

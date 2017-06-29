@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour {
-
-    public Light sun;
+    
     private static float WAKE_UP_SUN = 0.22f;
     public float secondsInFullDay = 120f;
     [Range(0,1)]
@@ -23,28 +22,25 @@ public class Timer : MonoBehaviour {
     }
 
     void Start () {
-        sun = GameObject.Find("Sun").GetComponent<Light>();
-        sunInitialIntensity = sun.intensity;
+        sunInitialIntensity = this.GetComponent<Light>().intensity;
         jeuFini = false;
-        GameObject.Find("Canvas").GetComponent<SaveController>().loadTimer();
-        GameObject.Find("Sun").AddComponent<SoundController>();
-        GameObject.Find("Sun").GetComponent<SoundController>().PlaySong(((AudioClip)(Resources.Load("Sound/Bruitages horloges - vieille - minuit - 12 coups"))), 2f, true);
         swapMalus = 0;
         level = "LostTimeGearDistrict";
-        getSwapMalus();
+        GetSwapMalus();
     }
 
     void Update () {
-        getSwapMalus();
+        GetSwapMalus();
         Chrono();     
         if(currentTimeOfDay > 0.57)
         {
-            GameObject.Find("Sun").GetComponent<SoundController>().GetSongOnOff = true;
-            GameObject.Find("Sun").GetComponent<SoundController>().GetComponent<AudioSource>().volume = 0.2f;
+            this.gameObject.GetComponent<SoundController>().PlaySong(((AudioClip)(Resources.Load("Sound/Bruitages horloges - vieille - minuit - 12 coups"))), 2f, true);
+            this.gameObject.GetComponent<SoundController>().GetSongOnOff = true;
+            this.gameObject.GetComponent<SoundController>().GetComponent<AudioSource>().volume = 0.2f;
         }
         else
         {
-            GameObject.Find("Sun").GetComponent<SoundController>().GetSongOnOff = false;
+            this.gameObject.GetComponent<SoundController>().GetSongOnOff = false;
         }
 	}
 
@@ -53,7 +49,7 @@ public class Timer : MonoBehaviour {
         if (currentTimeOfDay >= 1)
         {
             currentTimeOfDay = WAKE_UP_SUN;
-            TimeUp();
+            //TimeUp();
         }
         else
         {
@@ -62,15 +58,15 @@ public class Timer : MonoBehaviour {
                 currentTimeOfDay += ((Time.deltaTime / secondsInFullDay)) * timeMutiplier + swapMalus;
             }
         }
-        updateSun();
+        UpdateSun();
     }
 
-    public void updateSun()
+    public void UpdateSun()
     {
-        sun.transform.localRotation = Quaternion.Euler((currentTimeOfDay * 360f) - 90, 170, 0);
+        this.GetComponent<Light>().transform.localRotation = Quaternion.Euler((currentTimeOfDay * 360f) - 90, 170, 0);
         float intensityMultiplier = 1;
 
-        sun.intensity = sunInitialIntensity * intensityMultiplier;
+        this.GetComponent<Light>().intensity = sunInitialIntensity * intensityMultiplier;
     }
 
     void TimeUp()
@@ -83,7 +79,7 @@ public class Timer : MonoBehaviour {
          SceneManager.LoadScene(level);  
     }
 
-    float getSwapMalus()
+    float GetSwapMalus()
     {
         return swapMalus = 0;
     }
