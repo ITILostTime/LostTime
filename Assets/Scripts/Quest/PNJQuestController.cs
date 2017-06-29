@@ -28,8 +28,8 @@ public class PNJQuestController : MonoBehaviour {
     private bool _hasQuest;
     private string pnjName;
 
-    private string tmpFilePath = "./Assets/Scripts/Quest/JsonParser/tmpFile";
-    private string sourcePath = "./Assets/Scripts/Quest/JsonParser/QuestTest.json";
+    private string tmpFilePath = "./Resources/JSON/tmpFile";
+    private string sourcePath = "./Resources/JSON/QuestTest.json";
 
     QuestController questController;
     List<ObjectiveController> questObjectives;
@@ -92,7 +92,7 @@ public class PNJQuestController : MonoBehaviour {
     /// </summary>
     private void GetQuestFromJson()
     {
-        string str = ReadJSON("/Scripts/Quest/JsonParser/QuestTest.json");
+        string str = ReadJSON("/Resources/JSON/QuestTest.json");
         QuestTest = JSON.Parse(str);
 
         //2 boucles une sur les int ou sur les float
@@ -307,7 +307,7 @@ public class PNJQuestController : MonoBehaviour {
     /// </summary>
     private void CheckNextQuest()
     {
-        string str = ReadJSON("/Scripts/Quest/JsonParser/PNJ.json");
+        string str = ReadJSON("/Resources/JSON/PNJ.json");
 
         PNJ = JSON.Parse(str);
 

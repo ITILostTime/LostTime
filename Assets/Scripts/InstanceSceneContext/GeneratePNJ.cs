@@ -41,7 +41,7 @@ public class GeneratePNJ : MonoBehaviour {
     /// <returns></returns>
     private string ReadPNJJSON()
     {
-        StreamReader sr = new StreamReader(Application.dataPath + "/Scripts/Quest/JsonParser/PNJ.json");
+        StreamReader sr = new StreamReader(Application.dataPath + "/Resources/JSON/PNJ.json");
         string content = sr.ReadToEnd();
 
         sr.Close();
