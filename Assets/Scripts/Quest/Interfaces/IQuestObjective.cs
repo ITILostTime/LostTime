@@ -47,7 +47,21 @@ namespace Assets.Scripts.Quest.Interfaces
         ///   <c>true</c> if this instance is complete; otherwise, <c>false</c>.
         /// </value>
         bool ObjectiveIsComplete { get; set; }
-        
+
+        /// <summary>
+        /// Gets or sets the objective context.
+        /// </summary>
+        /// <value>
+        /// The objective context.
+        /// </value>
         string ObjectiveContext { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type of the objective.
+        /// </summary>
+        /// <value>
+        /// The type of the objective.
+        /// </value>
+        string ObjectiveType { get; set; }
     }
 }

@@ -9,7 +9,8 @@ using System.IO;
 using Assets.Scripts.Quest.Interfaces;
 using Assets.Scripts.Quest.ObjectivesTypes;
 
-public class PNJQuestController : MonoBehaviour {
+public class PNJQuestController : MonoBehaviour
+{
 
     /*
      * List QuestID par PNJ
@@ -80,7 +81,7 @@ public class PNJQuestController : MonoBehaviour {
     /// <summary>
     /// Starts this instance.
     /// </summary>
-    void Start ()
+    void Start()
     {
         GameObject.Find(this.transform.name).AddComponent<UIDialogueSystem>();
 
@@ -114,12 +115,9 @@ public class PNJQuestController : MonoBehaviour {
                         tmpIQuestObjective = new ObjectiveController(
                             QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveName"],
                             QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveDescription"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveIsComplete"],
-                            QuestTest["Quest" + i][0]["Objectives"][count]["QuestContext"]);
+                            QuestTest["Quest" + i][0]["Objectives"][count]["QuestContext"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"]);
 
-                        questObjectives.Add(tmpIQuestObjective);
-                        count++;
-
-                        switch (QuestTest["Quest" + i][0]["Objectives"][0]["ObjectiveType"].Value)
+                        switch (QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"].Value)
                         {
                             case "Collecte":
                                 GenerateObjectiveItem(QuestTest, i);
@@ -133,7 +131,12 @@ public class PNJQuestController : MonoBehaviour {
                             default:
                                 break;
                         }
+                            
+                        questObjectives.Add(tmpIQuestObjective);
+                        count++;
+
                         
+
                     }
                 }
                 questController = new QuestController(QuestTest["Quest" + i][0]["QuestPNJ"], QuestTest["Quest" + i][0]["QuestID"].AsFloat,
@@ -150,9 +153,9 @@ public class PNJQuestController : MonoBehaviour {
     /// <summary>
     /// Updates this instance.
     /// </summary>
-    void Update ()
+    void Update()
     {
-        if(_hasQuest == true)
+        if (_hasQuest == true)
         {
             QuestSystemComportement();
         }
@@ -208,49 +211,66 @@ public class PNJQuestController : MonoBehaviour {
     /// </summary>
     private void QuestSystemComportement()
     {
-        int objID = 0;
-        
-        for(int i = 0; i <= questController.ObjectiveMax; i++)
+        if (QuestTest["Quest" + currentQuestID][0]["QuestIsComplete"].AsBool == false)
         {
-            if(questController.ObjectiveID == objID)
-            {
-                if(this.GetComponent<PNJQuestController>().IsQuestAccepted == true)
-                {
-                    questController.ObjectiveID++;
-                    this.GetComponent<PNJQuestController>().IsQuestAccepted = false;
+            int objID = 0;
 
-                    WriteAndDeleteJSONFile();
-                }
-            }
-            else
-            { 
-                foreach(ObjectiveController objC in questObjectives)
+            for (int i = 0; i <= questController.ObjectiveMax; i++)
+            {
+                if (questController.ObjectiveID == objID)
                 {
-                    if(objC.ObjectiveID == questController.ObjectiveID)
+                    if (this.GetComponent<PNJQuestController>().IsQuestAccepted == true)
                     {
-                        _currentQuestObjectif = objC;
-                        currentPNJQuestContext = objC.ObjectiveContext;
-                        _currentQuestObjectif.ObjectiveIsComplete = true;
+                        questController.ObjectiveID++;
+                        this.GetComponent<PNJQuestController>().IsQuestAccepted = false;
+
+                        WriteAndDeleteJSONFile();
                     }
                 }
-
-                if(_currentQuestObjectif.ObjectiveIsComplete == true)
+                else
                 {
-                    questController.ObjectiveID++;
+                    int count = 0;
+                    foreach (ObjectiveController objC in questObjectives)
+                    {
+                        if (objC.ObjectiveID == questController.ObjectiveID)
+                        {
+                            _currentQuestObjectif = objC;
+                            currentPNJQuestContext = objC.ObjectiveContext;
+                            if (this.GetComponent<PNJQuestController>().IsQuestAccepted == true)
+                            {
+                                _currentQuestObjectif.ObjectiveIsComplete = true;
+                                this.GetComponent<PNJQuestController>().IsQuestAccepted = false;
+                                questController.QuestDescription = "test";
+                                QuestTest["Quest" + currentQuestID][0]["Objectives"][count]["ObjectiveIsComplete"].AsBool = true;
+                            }
+                        }
+                        count++;
+                    }
+                    if (questController.ObjectiveID > questController.ObjectiveMax)
+                    {
+                        questController.QuestIsComplete = true;
+                        _hasQuest = false;
+                        QuestTest["Quest" + currentQuestID][0]["QuestIsComplete"].AsBool = true;
+                        WriteAndDeleteJSONFile();
+                        CheckNextQuest();
+                        GetQuestFromJson();
+                        //fct de recherche quete suivante
+                        //demander pnj.json sa prochaine quete
+                        //demande quetes.json donne moi la quete de telle ID
+                    }
+                    else if (_currentQuestObjectif.ObjectiveIsComplete == true)
+                    {
+                        questController.ObjectiveID++;
+                        WriteAndDeleteJSONFile();
+                    }
                 }
-            } 
-
-            if(questController.ObjectiveID > questController.ObjectiveMax)
-            {
-                questController.QuestIsComplete = true;
-                _hasQuest = false;
-                CheckNextQuest();
-                GetQuestFromJson();
-                //fct de recherche quete suivante
-                //demander pnj.json sa prochaine quete
-                //demande quetes.json donne moi la quete de telle ID
             }
         }
+        else
+        {
+            currentPNJQuestContext = "Bonjour Astrind. Quelle belle journée aujourd'hui, n'est-ce-pas ?";
+        }
+
     }
 
     private void WriteAndDeleteJSONFile()
@@ -352,8 +372,8 @@ public class PNJQuestController : MonoBehaviour {
         GameObject typeCollect = new GameObject("TypeCollectController");
         typeCollect.AddComponent<TypeCollect>();
         typeCollect.GetComponent<TypeCollect>().GoalAmount = QuestTest["Quest" + id][0]["Objectives"][0]["ItemQuantity"].AsInt;
-        
-        for (int i = 0; i < QuestTest["Quest" + id][0]["Objectives"][0]["ItemQuantity"].AsInt; i ++)
+
+        for (int i = 0; i < QuestTest["Quest" + id][0]["Objectives"][0]["ItemQuantity"].AsInt; i++)
         {
             GameObject gameobject = new GameObject(QuestTest["Quest" + id][0]["Objectives"][0]["ObjectiveItems"][i]["ItemName"].Value);
             gameobject.transform.position = new Vector3(
