@@ -8,7 +8,7 @@ public class SceneController : MonoBehaviour {
 
     private bool _onCollision;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.transform.tag == "Player")
         {
@@ -16,11 +16,20 @@ public class SceneController : MonoBehaviour {
         }
     }
 
-    private void OnCollisionStay(Collision collision)
+    private void OnTriggerStay(Collider collision)
     {
         if (collision.transform.tag == "Player")
         {
             _onCollision = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.transform.tag == "Player")
+        {
+            _onCollision = false;
+            Destroy(GameObject.Find("PanelOverWriteData"));
         }
     }
 
@@ -57,16 +66,6 @@ public class SceneController : MonoBehaviour {
             GameObject.Find("PanelOverWriteDataLabelNo").AddComponent<Button>();
             GameObject.Find("PanelOverWriteDataLabelNo").GetComponent<Button>().onClick.AddListener(() => ClosePanel());
         }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.transform.tag == "Player")
-        {
-            _onCollision = false;
-            Destroy(GameObject.Find("PanelOverWriteData"));
-        }
-
     }
     private void LoadScene()
     {

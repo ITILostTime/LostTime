@@ -9,7 +9,7 @@ public class SaveWayPointsController : MonoBehaviour {
 
     private bool _onCollision;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.transform.tag == "Player")
         {
@@ -17,11 +17,20 @@ public class SaveWayPointsController : MonoBehaviour {
         }
     }
 
-    private void OnCollisionStay(Collision collision)
+    private void OnTriggerStay(Collider collision)
     {
         if (collision.transform.tag == "Player")
         {
             _onCollision = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.transform.tag == "Player")
+        {
+            _onCollision = false;
+            Destroy(GameObject.Find("PanelOverWriteData"));
         }
     }
 
@@ -60,18 +69,6 @@ public class SaveWayPointsController : MonoBehaviour {
         }
     }
 
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.transform.tag == "Player")
-        {
-            _onCollision = false;
-            Destroy(GameObject.Find("PanelOverWriteData"));
-        }
-
-    }
-
-
-
     private void SaveGame()
     {
         GameObject.Find("MenuCanvas").GetComponent<SaveAndLoadSystemController>().SaveBackUpSystem(PlayerPrefs.GetString("CurrentScene"));
@@ -82,6 +79,5 @@ public class SaveWayPointsController : MonoBehaviour {
     {
         Destroy(GameObject.Find("PanelOverWriteData"));
     }
-
 
 }
