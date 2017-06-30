@@ -27,6 +27,7 @@ public class LoadingScreenController : MonoBehaviour
     private GameObject GameLogo;
     private GameObject LoadingBar;
     private string _waypointName;
+    private AsyncOperation operation;
 
     public void StartLoadingNewScene(string waypointName)
     {
@@ -88,12 +89,13 @@ public class LoadingScreenController : MonoBehaviour
         GameLogo.GetComponent<Image>().color = new Color(255, 255, 255, 0);
 
         LoadingBar = (GameObject)Instantiate(Resources.Load("UnityUserInterfacePrefabs/ConfigureSoundPrefab"));
+        LoadingBar.transform.name = "LoadingBarUI";
         LoadingBar.transform.SetParent(GameObject.Find("LoadingCanvas").transform, true);
         LoadingBar.GetComponent<RectTransform>().sizeDelta = new Vector2((GameObject.Find("LoadingCanvas").GetComponent<RectTransform>().rect.width / 2), 
             GameObject.Find("LoadingCanvas").GetComponent<RectTransform>().rect.height / 20);
         LoadingBar.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 
             (GameObject.Find("LoadingCanvas").GetComponent<RectTransform>().rect.height / -2) + GameObject.Find("LoadingCanvas").GetComponent<RectTransform>().rect.height / 40);
-        GameObject.Find("ConfigureSoundPrefab(Clone)").GetComponent<Slider>().value = 0;
+        GameObject.Find("LoadingBarUI").GetComponent<Slider>().value = 0;
         LoadingBar.GetComponent<Slider>().interactable = false;
         PrefabLoadingBarUpdateAlpha(0);
     }
@@ -106,7 +108,19 @@ public class LoadingScreenController : MonoBehaviour
             _currentCanvasAlpha -= 0.05f;
 
             LoadingScreen.GetComponent<Image>().color = new Color(0, 0, 0, _currentCanvasAlpha);
+            PrefabCloudLayerUpdateAlpha(_currentCanvasAlpha);
+            PrefabLoadingBarUpdateAlpha(_currentCanvasAlpha);
+            if (_currentCanvasAlpha < 0.6f)
+            {
+                GameLogo.GetComponent<Image>().color = new Color(255, 255, 255, _currentCanvasAlpha);
+            }
+            if(_currentCanvasAlpha < 0.6f)
+            {
+                operation.allowSceneActivation = true;
+            }
         }
+
+        Destroy(GameObject.Find("LoadingCanvas"));
         Destroy(GameObject.Find("loadingScreen"));
     }
 
@@ -117,6 +131,7 @@ public class LoadingScreenController : MonoBehaviour
         LoadingScreen.AddComponent<CanvasScaler>();
         LoadingScreen.AddComponent<GraphicRaycaster>();
         LoadingCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        LoadingScreen.gameObject.layer = 5;
 
         LoadingScreen.AddComponent<Image>();
         LoadingScreen.GetComponent<Image>().color = new Color(0, 0, 0, 0);
@@ -125,7 +140,6 @@ public class LoadingScreenController : MonoBehaviour
     private void EndLoadingScreen()
     {
         LoadSceneSystem();
-        StartCoroutine(CloseScreen());
     }
 
     public void LoadSceneSystem()
@@ -144,16 +158,18 @@ public class LoadingScreenController : MonoBehaviour
 
     private IEnumerator LoadSceneAndLoadingBar(string sceneName)
     {
-        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
+        DontDestroyOnLoad(GameObject.Find("LoadingCanvas"));
+        DontDestroyOnLoad(GameObject.Find("loadingScreen"));
 
-        // Ne pas détruire le gameobject LoadingCanvas pendant la page de chargement
+        operation = SceneManager.LoadSceneAsync(sceneName);
+        operation.allowSceneActivation = false;
 
-        while (!operation.isDone && GameObject.Find("ConfigureSoundPrefab(Clone)").GetComponent<Slider>().value != GameObject.Find("ConfigureSoundPrefab(Clone)").GetComponent<Slider>().maxValue)
+        while (!operation.isDone && GameObject.Find("LoadingBarUI").GetComponent<Slider>().value != GameObject.Find("LoadingBarUI").GetComponent<Slider>().maxValue)
         {
-            GameObject.Find("ConfigureSoundPrefab(Clone)").GetComponent<Slider>().value += 0.1f;
+            GameObject.Find("LoadingBarUI").GetComponent<Slider>().value += 0.1f;
+
             yield return new WaitForSeconds(_timeToWait);
         }
-
-        // détruire le gameobject LoadingCanvas à la fin de la boucle while
+        StartCoroutine(CloseScreen());
     }
 }
