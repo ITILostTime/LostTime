@@ -126,6 +126,7 @@ public class UIDialogueSystem : MonoBehaviour
             panelPNJContext.GetComponent<Text>().text = GameObject.Find(pnjName).GetComponent<PNJQuestController>().CurrentPNJQuestContext;
             panelPNJContext.GetComponent<Text>().alignment = TextAnchor.MiddleLeft;
             panelPNJContext.GetComponent<Text>().fontStyle = FontStyle.Bold;
+            panelPNJContext.GetComponent<Text>().resizeTextForBestFit = true;
             #endregion
 
             #region PanelPNJTextBackground | PanelPNJText
