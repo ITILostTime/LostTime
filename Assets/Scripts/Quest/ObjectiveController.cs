@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using Assets.Scripts.Quest.Interfaces;
 using Assets.Scripts.Quest.ObjectivesTypes;
+using UnityEngine;
 
 namespace Assets.Scripts.Quest
 {
-    public class ObjectiveController : IQuestObjective
+    public class ObjectiveController : MonoBehaviour, IQuestObjective
     {
         private int _questID;
         private int _objectiveID;
@@ -16,8 +17,15 @@ namespace Assets.Scripts.Quest
         private bool _objectiveIsComplete;
         private string _objectiveContext;
         private string _objectiveType;
+
+        // Fields TypeCollect
         private int _amount;
         private int _goalAmount;
+
+        // Fields TypeGoToZone
+        private int _positionX;
+        private int _positionY;
+        private int _positionZ;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ObjectiveController"/> class.
@@ -38,6 +46,17 @@ namespace Assets.Scripts.Quest
             ObjectiveType = objectiveType;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ObjectiveController"/> class.
+        /// TypeCollect
+        /// </summary>
+        /// <param name="objectiveID">The objective identifier.</param>
+        /// <param name="objectiveName">Name of the objective.</param>
+        /// <param name="objectiveDescription">The objective description.</param>
+        /// <param name="objectiveIsComplete">if set to <c>true</c> [objective is complete].</param>
+        /// <param name="objectiveContext">The objective context.</param>
+        /// <param name="objectiveType">Type of the objective.</param>
+        /// <param name="goalAmount">The goal amount.</param>
         public ObjectiveController(int objectiveID, string objectiveName, string objectiveDescription, bool objectiveIsComplete, string objectiveContext, string objectiveType, int goalAmount)
         {
             ObjectiveID = objectiveID;
@@ -47,6 +66,32 @@ namespace Assets.Scripts.Quest
             ObjectiveIsComplete = objectiveIsComplete;
             ObjectiveType = objectiveType;
             GoalAmount = goalAmount;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ObjectiveController"/> class.
+        /// TypeGoToZone
+        /// </summary>
+        /// <param name="objectiveID">The objective identifier.</param>
+        /// <param name="objectiveName">Name of the objective.</param>
+        /// <param name="objectiveDescription">The objective description.</param>
+        /// <param name="objectiveIsComplete">if set to <c>true</c> [objective is complete].</param>
+        /// <param name="objectiveContext">The objective context.</param>
+        /// <param name="objectiveType">Type of the objective.</param>
+        /// <param name="positionX">The position x.</param>
+        /// <param name="positionY">The position y.</param>
+        /// <param name="positionZ">The position z.</param>
+        public ObjectiveController(int objectiveID, string objectiveName, string objectiveDescription, bool objectiveIsComplete, string objectiveContext, string objectiveType, int positionX, int positionY, int positionZ)
+        {
+            ObjectiveID = objectiveID;
+            ObjectiveName = objectiveName;
+            ObjectiveDescription = objectiveDescription;
+            ObjectiveContext = objectiveContext;
+            ObjectiveIsComplete = objectiveIsComplete;
+            ObjectiveType = objectiveType;
+            PositionX = positionX;
+            PositionY = positionY;
+            PositionZ = positionZ;
         }
 
         /// <summary>
@@ -132,6 +177,7 @@ namespace Assets.Scripts.Quest
             set { _objectiveType = value; }
         }
 
+        #region TypeCollect Properties
         /// <summary>
         /// Gets or sets the goal amount.
         /// </summary>
@@ -155,5 +201,44 @@ namespace Assets.Scripts.Quest
             get { return _amount; }
             set { _amount = value; }
         }
+        #endregion
+
+        #region TypeGoToZone Properties
+        /// <summary>
+        /// Gets or sets the position x.
+        /// </summary>
+        /// <value>
+        /// The position x.
+        /// </value>
+        public int PositionX
+        {
+            get { return _positionX; }
+            set { _positionX = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the position y.
+        /// </summary>
+        /// <value>
+        /// The position y.
+        /// </value>
+        public int PositionY
+        {
+            get { return _positionY; }
+            set { _positionY = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the position z.
+        /// </summary>
+        /// <value>
+        /// The position z.
+        /// </value>
+        public int PositionZ
+        {
+            get { return _positionZ; }
+            set { _positionZ = value; }
+        }
+        #endregion
     }
 }

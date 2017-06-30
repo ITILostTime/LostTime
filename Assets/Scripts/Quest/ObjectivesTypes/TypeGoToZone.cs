@@ -8,53 +8,7 @@ namespace Assets.Scripts.Quest.ObjectivesTypes
 {
     public class TypeGoToZone : MonoBehaviour
     {
-        private int _positionX;
-        private int _positionY;
-        private int _positionZ;
         private bool _typeGoToZoneIsComplete;
-
-        // Ecrire différement 
-
-        private void Start()
-        {
-            
-        }
-
-        /// <summary>
-        /// Gets or sets the position x.
-        /// </summary>
-        /// <value>
-        /// The position x.
-        /// </value>
-        public int PositionX
-        {
-            get { return _positionX; }
-            set { _positionX = value; }
-        }
-
-        /// <summary>
-        /// Gets or sets the position y.
-        /// </summary>
-        /// <value>
-        /// The position y.
-        /// </value>
-        public int PositionY
-        {
-            get { return _positionY; }
-            set { _positionY = value; }
-        }
-
-        /// <summary>
-        /// Gets or sets the position z.
-        /// </summary>
-        /// <value>
-        /// The position z.
-        /// </value>
-        public int PositionZ
-        {
-            get { return _positionZ; }
-            set { _positionZ = value; }
-        }
 
         /// <summary>
         /// Gets or sets a value indicating whether [type go to zone is complete].
