@@ -16,6 +16,8 @@ namespace Assets.Scripts.Quest
         private bool _objectiveIsComplete;
         private string _objectiveContext;
         private string _objectiveType;
+        private int _amount;
+        private int _goalAmount;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ObjectiveController"/> class.
@@ -34,6 +36,17 @@ namespace Assets.Scripts.Quest
             ObjectiveContext = objectiveContext;
             ObjectiveIsComplete = objectiveIsComplete;
             ObjectiveType = objectiveType;
+        }
+
+        public ObjectiveController(int objectiveID, string objectiveName, string objectiveDescription, bool objectiveIsComplete, string objectiveContext, string objectiveType, int goalAmount)
+        {
+            ObjectiveID = objectiveID;
+            ObjectiveName = objectiveName;
+            ObjectiveDescription = objectiveDescription;
+            ObjectiveContext = objectiveContext;
+            ObjectiveIsComplete = objectiveIsComplete;
+            ObjectiveType = objectiveType;
+            GoalAmount = goalAmount;
         }
 
         /// <summary>
@@ -117,6 +130,30 @@ namespace Assets.Scripts.Quest
         {
             get { return _objectiveType; }
             set { _objectiveType = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the goal amount.
+        /// </summary>
+        /// <value>
+        /// The goal amount.
+        /// </value>
+        public int GoalAmount
+        {
+            get { return _goalAmount; }
+            set { _goalAmount = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the amount.
+        /// </summary>
+        /// <value>
+        /// The amount.
+        /// </value>
+        public int Amount
+        {
+            get { return _amount; }
+            set { _amount = value; }
         }
     }
 }

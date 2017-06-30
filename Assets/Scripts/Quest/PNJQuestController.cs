@@ -122,6 +122,11 @@ public class PNJQuestController : MonoBehaviour
                         switch (QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"].Value)
                         {
                             case "Collecte":
+                                tmpIQuestObjective = new ObjectiveController(
+                            QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveName"],
+                            QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveDescription"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveIsComplete"],
+                            QuestTest["Quest" + i][0]["Objectives"][count]["QuestContext"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"],
+                            QuestTest["Quest" + i][0]["Objectives"][count]["ItemQuantity"]);
                                 GenerateObjectiveItem(QuestTest, i);
                                 break;
                             case "GoToZone":
