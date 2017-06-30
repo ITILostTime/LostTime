@@ -115,18 +115,19 @@ public class PNJQuestController : MonoBehaviour
                     if (j == QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"])
                     {
                         tmpIQuestObjective = new ObjectiveController(
-                            QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveName"],
-                            QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveDescription"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveIsComplete"],
-                            QuestTest["Quest" + i][0]["Objectives"][count]["QuestContext"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"]);
+                            QuestTest["Quest" + i][0]["Objectives"][count]["QuestID"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"],
+                            QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveName"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveDescription"],
+                            QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveIsComplete"], QuestTest["Quest" + i][0]["Objectives"][count]["QuestContext"],
+                            QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"]);
 
                         switch (QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"].Value)
                         {
                             case "Collecte":
                                 tmpIQuestObjective = new ObjectiveController(
-                            QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveName"],
-                            QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveDescription"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveIsComplete"],
-                            QuestTest["Quest" + i][0]["Objectives"][count]["QuestContext"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"],
-                            QuestTest["Quest" + i][0]["Objectives"][count]["ItemQuantity"]);
+                            QuestTest["Quest" + i][0]["Objectives"][count]["QuestID"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"],
+                            QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveName"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveDescription"],
+                            QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveIsComplete"], QuestTest["Quest" + i][0]["Objectives"][count]["QuestContext"],
+                            QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"], QuestTest["Quest" + i][0]["Objectives"][count]["ItemQuantity"]);
                                 GenerateObjectiveItem(QuestTest, i);
                                 break;
                             case "GoToZone":
@@ -138,11 +139,11 @@ public class PNJQuestController : MonoBehaviour
                             default:
                                 break;
                         }
-                            
+
                         questObjectives.Add(tmpIQuestObjective);
                         count++;
 
-                        
+
 
                     }
                 }
@@ -222,7 +223,7 @@ public class PNJQuestController : MonoBehaviour
     /// </summary>
     private void QuestSystemComportement()
     {
-        if(QuestTest["Quest" + currentQuestID][0]["QuestIsComplete"].AsBool == false)
+        if (QuestTest["Quest" + currentQuestID][0]["QuestIsComplete"].AsBool == false)
         {
             int objID = 0;
 
@@ -269,7 +270,7 @@ public class PNJQuestController : MonoBehaviour
                         //demander pnj.json sa prochaine quete
                         //demande quetes.json donne moi la quete de telle ID
                     }
-                    else if(_currentQuestObjectif.ObjectiveIsComplete == true)
+                    else if (_currentQuestObjectif.ObjectiveIsComplete == true)
                     {
                         questController.ObjectiveID++;
                         WriteAndDeleteJSONFile();

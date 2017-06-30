@@ -36,8 +36,9 @@ namespace Assets.Scripts.Quest
         /// <param name="objectiveIsComplete">if set to <c>true</c> [objective is complete].</param>
         /// <param name="objectiveContext">The objective context.</param>
         /// <param name="objectiveType">Type of the objective.</param>
-        public ObjectiveController(int objectiveID, string objectiveName, string objectiveDescription, bool objectiveIsComplete, string objectiveContext, string objectiveType)
+        public ObjectiveController(int questID,int objectiveID, string objectiveName, string objectiveDescription, bool objectiveIsComplete, string objectiveContext, string objectiveType)
         {
+            QuestID = questID;
             ObjectiveID = objectiveID;
             ObjectiveName = objectiveName;
             ObjectiveDescription = objectiveDescription;
@@ -57,8 +58,9 @@ namespace Assets.Scripts.Quest
         /// <param name="objectiveContext">The objective context.</param>
         /// <param name="objectiveType">Type of the objective.</param>
         /// <param name="goalAmount">The goal amount.</param>
-        public ObjectiveController(int objectiveID, string objectiveName, string objectiveDescription, bool objectiveIsComplete, string objectiveContext, string objectiveType, int goalAmount)
+        public ObjectiveController(int questID, int objectiveID, string objectiveName, string objectiveDescription, bool objectiveIsComplete, string objectiveContext, string objectiveType, int goalAmount)
         {
+            QuestID = questID;
             ObjectiveID = objectiveID;
             ObjectiveName = objectiveName;
             ObjectiveDescription = objectiveDescription;
@@ -103,6 +105,7 @@ namespace Assets.Scripts.Quest
         public int QuestID
         {
             get { return _questID; }
+            set { _questID = value; }
         }
 
         /// <summary>
