@@ -69,7 +69,9 @@ public class SceneController : MonoBehaviour {
     }
     private void LoadScene()
     {
-        GameObject.Find("MenuCanvas").GetComponent<SaveAndLoadSystemController>().LoadSceneSystem(this.transform.name);
+        GameObject LoadingScreen = new GameObject("loadingScreen");
+        LoadingScreen.AddComponent<LoadingScreenController>();
+        LoadingScreen.GetComponent<LoadingScreenController>().StartLoadingNewScene(this.transform.name);
         Destroy(GameObject.Find("PanelOverWriteData"));
     }
 

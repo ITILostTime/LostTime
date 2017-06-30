@@ -88,7 +88,7 @@ public class SaveAndLoadSystemController : MonoBehaviour {
         return null;
     }
 
-    private void SetNewCurrentAstridPositionOnLoadScene(string wayPointsName)
+    public void SetNewCurrentAstridPositionOnLoadScene(string wayPointsName)
     {
         if(wayPointsName == "LostTimeAstridHouseToLostTimeGearDistrictWayPoints")
         {
@@ -109,20 +109,6 @@ public class SaveAndLoadSystemController : MonoBehaviour {
             PlayerPrefs.SetFloat("CurrentAstridRotationY", -180);
             PlayerPrefs.SetFloat("CurrentAstridRotationZ", 0);
             PlayerPrefs.SetString("CurrentScene", "LostTimeAstridHouse");
-        }
-    }
-
-    public void LoadSceneSystem(string wayPointsName)
-    {
-        if(wayPointsName == "LostTimeAstridHouseToLostTimeGearDistrictWayPoints")
-        {
-            SetNewCurrentAstridPositionOnLoadScene(wayPointsName);
-            SceneManager.LoadScene("LostTimeGearDistrict");
-        }
-        else if (wayPointsName == "LostTimeGearDistrictToAstridHouseWayPoints")
-        {
-            SetNewCurrentAstridPositionOnLoadScene(wayPointsName);
-            SceneManager.LoadScene("LostTimeAstridHouse");
         }
     }
 }

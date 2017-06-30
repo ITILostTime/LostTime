@@ -9,13 +9,6 @@ public class CameraBehavior : MonoBehaviour
     private Transform targetPlayer;
     private Vector3 direction;
 
-    // Use this for initialization
-    void Start()
-    {
-        cameraPosition = GameObject.Find("CameraPosition").transform;
-        targetPlayer = GameObject.Find("CameraTarget").transform;
-    }
-
     // Update is called once per frame
     void Update()
     {
