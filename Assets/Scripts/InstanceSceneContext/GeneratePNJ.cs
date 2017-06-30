@@ -15,7 +15,7 @@ public class GeneratePNJ : MonoBehaviour {
 
     private void GeneratePNJOnMap()
     {
-        string PNJ = ReadPNJJSON();
+        string PNJ = ReadPNJJSON("JSON/PNJ");
         JSONNode json = JSON.Parse(PNJ);
 
         for(int j = 0; j < json["SceneMax"].AsInt; j++)
@@ -39,12 +39,15 @@ public class GeneratePNJ : MonoBehaviour {
     /// Reads the pnjjson.
     /// </summary>
     /// <returns></returns>
-    private string ReadPNJJSON()
+    private string ReadPNJJSON(string JSONPath)
     {
-        StreamReader sr = new StreamReader(Application.dataPath + "/Resources/JSON/PNJ.json");
+        /*StreamReader sr = new StreamReader(Application.dataPath + "/Resources/JSON/PNJ.json");
         string content = sr.ReadToEnd();
 
         sr.Close();
+        return content;*/
+        TextAsset file = Resources.Load(JSONPath) as TextAsset;
+        string content = file.ToString();
         return content;
     }
 

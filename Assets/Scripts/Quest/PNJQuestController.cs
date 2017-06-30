@@ -29,7 +29,7 @@ public class PNJQuestController : MonoBehaviour {
     private string pnjName;
 
     private string tmpFilePath = "./Resources/JSON/tmpFile";
-    private string sourcePath = "./Resources/JSON/QuestTest.json";
+    private string sourcePath = "./Resources/JSON/QuestTest";
 
     QuestController questController;
     List<ObjectiveController> questObjectives;
@@ -92,8 +92,10 @@ public class PNJQuestController : MonoBehaviour {
     /// </summary>
     private void GetQuestFromJson()
     {
-        string str = ReadJSON("/Resources/JSON/QuestTest.json");
+        string str = ReadJSON("JSON/QuestTest");
         QuestTest = JSON.Parse(str);
+
+        Debug.Log(QuestTest);
 
         //2 boucles une sur les int ou sur les float
         // quest + i fonctionne 
@@ -307,9 +309,10 @@ public class PNJQuestController : MonoBehaviour {
     /// </summary>
     private void CheckNextQuest()
     {
-        string str = ReadJSON("/Resources/JSON/PNJ.json");
-
+        string str = ReadJSON("JSON/PNJ");
         PNJ = JSON.Parse(str);
+
+        Debug.Log(PNJ);
 
         for (int i = 0; i <= PNJ["PNJCount"]; i++)
         {
@@ -336,10 +339,14 @@ public class PNJQuestController : MonoBehaviour {
     /// <returns></returns>
     private string ReadJSON(string JSONPath)
     {
-        StreamReader sr = new StreamReader(Application.dataPath + JSONPath);
+        /*StreamReader sr = new StreamReader(Application.dataPath + JSONPath);
         string content = sr.ReadToEnd();
         sr.Close();
 
+        return content;*/
+
+        TextAsset file = Resources.Load(JSONPath) as TextAsset;
+        string content = file.ToString();
         return content;
     }
 }
