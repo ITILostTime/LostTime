@@ -16,6 +16,8 @@ namespace Assets.Scripts.Quest.ObjectivesTypes
                 
                 GameObject.Find("TypeCollectController").GetComponent<TypeCollect>().Amount++;
 
+                Destroy(gameObject);
+
                 Debug.Log(GameObject.Find("TypeCollectController").GetComponent<TypeCollect>().Amount);
                 Debug.Log(GameObject.Find("TypeCollectController").GetComponent<TypeCollect>().GoalAmount);
                 Debug.Log(GameObject.Find("TypeCollectController").GetComponent<TypeCollect>().IsComplete());
