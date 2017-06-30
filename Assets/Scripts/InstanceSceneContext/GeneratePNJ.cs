@@ -67,8 +67,9 @@ public class GeneratePNJ : MonoBehaviour {
         GameObject.Find("PNJ(Clone)").transform.name = name;
         gameobject.transform.GetChild(0).transform.name = name + "body";
         gameobject.AddComponent<MeshRenderer>();
-        gameobject.GetComponent<CapsuleCollider>().radius = 2;
+        gameobject.GetComponent<CapsuleCollider>().radius = 3.5f;
         gameobject.GetComponent<CapsuleCollider>().height = 4;
+        gameobject.GetComponent<CapsuleCollider>().isTrigger = true;
         gameobject.transform.position = new Vector3(positionX, positionY, positionZ);
         GameObject.Find(name + "body").GetComponent<SkinnedMeshRenderer>().material = SetSkin(job);
         gameobject.AddComponent<Rigidbody>();

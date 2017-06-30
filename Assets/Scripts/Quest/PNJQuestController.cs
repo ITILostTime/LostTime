@@ -140,11 +140,7 @@ public class PNJQuestController : MonoBehaviour {
         }
     }
 
-    /// <summary>
-    /// Called when [collision enter].
-    /// </summary>
-    /// <param name="collision">The collision.</param>
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.transform.name == "AstridPlayer") // si le PNJ a une quête 
         {
@@ -155,11 +151,7 @@ public class PNJQuestController : MonoBehaviour {
         }
     }
 
-    /// <summary>
-    /// Called when [collision stay].
-    /// </summary>
-    /// <param name="collision">The collision.</param>
-    private void OnCollisionStay(Collision collision)
+    private void OnTriggerStay(Collider collision)
     {
         if (collision.transform.name == "AstridPlayer") // si le PNJ a une quête 
         {
@@ -170,11 +162,7 @@ public class PNJQuestController : MonoBehaviour {
         }
     }
 
-    /// <summary>
-    /// Called when [collision exit].
-    /// </summary>
-    /// <param name="collision">The collision.</param>
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider collision)
     {
         if (collision.transform.name == "AstridPlayer") // si le PNJ a une quête 
         {
