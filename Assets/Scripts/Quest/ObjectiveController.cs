@@ -21,11 +21,14 @@ namespace Assets.Scripts.Quest
         // Fields TypeCollect
         private int _amount;
         private int _goalAmount;
+        // End Fields TypeCollect
 
         // Fields TypeGoToZone
         private int _positionX;
         private int _positionY;
         private int _positionZ;
+        private bool _typeGoToZoneIsComplete; // Useless ?
+        // End Fields TypeGoToZone
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ObjectiveController"/> class.
@@ -83,7 +86,7 @@ namespace Assets.Scripts.Quest
         /// <param name="positionX">The position x.</param>
         /// <param name="positionY">The position y.</param>
         /// <param name="positionZ">The position z.</param>
-        public ObjectiveController(int objectiveID, string objectiveName, string objectiveDescription, bool objectiveIsComplete, string objectiveContext, string objectiveType, int positionX, int positionY, int positionZ)
+        public ObjectiveController(int questID, int objectiveID, string objectiveName, string objectiveDescription, bool objectiveIsComplete, string objectiveContext, string objectiveType, int positionX, int positionY, int positionZ)
         {
             ObjectiveID = objectiveID;
             ObjectiveName = objectiveName;
@@ -241,6 +244,18 @@ namespace Assets.Scripts.Quest
         {
             get { return _positionZ; }
             set { _positionZ = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether [type go to zone is complete].
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [type go to zone is complete]; otherwise, <c>false</c>.
+        /// </value>
+        public bool TypeGoToZoneIsComplete
+        {
+            get { return _typeGoToZoneIsComplete; }
+            set { _typeGoToZoneIsComplete = value; }
         }
         #endregion
     }
