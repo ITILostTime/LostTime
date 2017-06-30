@@ -339,12 +339,6 @@ public class PNJQuestController : MonoBehaviour {
     /// <returns></returns>
     private string ReadJSON(string JSONPath)
     {
-        /*StreamReader sr = new StreamReader(Application.dataPath + JSONPath);
-        string content = sr.ReadToEnd();
-        sr.Close();
-
-        return content;*/
-
         TextAsset file = Resources.Load(JSONPath) as TextAsset;
         string content = file.ToString();
         return content;

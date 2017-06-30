@@ -13,6 +13,9 @@ public class GeneratePNJ : MonoBehaviour {
         GeneratePNJOnMap();
     }
 
+    /// <summary>
+    /// Generates the PNJ on map.
+    /// </summary>
     private void GeneratePNJOnMap()
     {
         string PNJ = ReadPNJJSON("JSON/PNJ");
@@ -41,11 +44,6 @@ public class GeneratePNJ : MonoBehaviour {
     /// <returns></returns>
     private string ReadPNJJSON(string JSONPath)
     {
-        /*StreamReader sr = new StreamReader(Application.dataPath + "/Resources/JSON/PNJ.json");
-        string content = sr.ReadToEnd();
-
-        sr.Close();
-        return content;*/
         TextAsset file = Resources.Load(JSONPath) as TextAsset;
         string content = file.ToString();
         return content;
@@ -81,6 +79,11 @@ public class GeneratePNJ : MonoBehaviour {
         gameobject.AddComponent<PNJPathfinding>();
     }
 
+    /// <summary>
+    /// Sets the skin.
+    /// </summary>
+    /// <param name="job">The job.</param>
+    /// <returns></returns>
     private Material SetSkin(string job)
     {
         Material returned = (Material)Resources.Load("CharacterLowPo/Materials/citizen1");
