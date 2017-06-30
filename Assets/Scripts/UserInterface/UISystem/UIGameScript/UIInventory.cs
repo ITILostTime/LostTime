@@ -8,8 +8,8 @@ public class UIInventory : MonoBehaviour, IPointerDownHandler
 {
 
     private GameObject _canvas;
-    public bool _UIInventoryPanelActivated;
-    public bool _UIInventoryPanelAnimationOn;
+    private bool _UIInventoryPanelActivated;
+    private bool _UIInventoryPanelAnimationOn;
 
     public bool UIInventoryPanelAnimationOn { get { return _UIInventoryPanelAnimationOn; } set { _UIInventoryPanelAnimationOn = value; } }
     public bool UIInventoryPanelActivated { get { return _UIInventoryPanelActivated; } set { _UIInventoryPanelActivated = value; } }
@@ -39,7 +39,7 @@ public class UIInventory : MonoBehaviour, IPointerDownHandler
         if (GameObject.Find("UIInventoryPanel") == false)
         {
             _canvas.GetComponent<CreateUserInterfaceObject>().CreateGameObjectImageSprite("UIInventoryPanel", _canvas, true,
-            _canvas.GetComponent<RectTransform>().rect.width / 3, _canvas.GetComponent<RectTransform>().rect.height,
+            _canvas.GetComponent<RectTransform>().rect.width / 3, (_canvas.GetComponent<RectTransform>().rect.height / 10) * 8,
             0, _canvas.GetComponent<RectTransform>().rect.height,
             _canvas.GetComponent<ImageMonitoring>().GetSprite("SpriteBackGround_03", _canvas.GetComponent<ImageMonitoring>()._BackGroundSprite));
 

@@ -10,7 +10,7 @@ public class TextMonitoring : MonoBehaviour {
         get { return Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font; }
     }
 
-    public void setTextInCorrectLanguages(string gameObjectName, string englishText, string frenchText)
+    public void SetTextInCorrectLanguages(string gameObjectName, string englishText, string frenchText)
     {
         if (PlayerPrefs.GetString("CurrentLanguagesUsed") == "French" || PlayerPrefs.GetString("CurrentLanguagesUsed") == "Français")
         {

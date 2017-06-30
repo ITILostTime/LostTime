@@ -15,7 +15,7 @@ public class InstanceAstridHouseContext : MonoBehaviour {
         Camera.AddComponent<AudioListener>();
         Camera.AddComponent<CameraBehavior>();
 
-        GameObject FireLight = new GameObject("Point Light");
+        GameObject FireLight = new GameObject("Sun");
         FireLight.transform.position = new Vector3(1.82f, 1.95f, -3.98f);
         FireLight.AddComponent<Light>();
         FireLight.GetComponent<Light>().range = 14.68f;

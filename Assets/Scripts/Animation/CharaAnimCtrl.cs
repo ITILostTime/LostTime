@@ -14,12 +14,13 @@ public enum InputMode
     byTransform,
     byInput,
 }
-public class CharaAnimCtrl : MonoBehaviour {
+public class CharaAnimCtrl : MonoBehaviour
+{
 
     public Animator anim;
     //public float turnSpeed;
     //public float runSpeed;
-   private float walkSpeed;
+    private float walkSpeed;
     public InputMode inputMode = InputMode.byTransform;
     public WalkMode walkmode = WalkMode.idle;
 
@@ -62,7 +63,7 @@ public class CharaAnimCtrl : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         anim = GetComponent<Animator>();
 
@@ -74,7 +75,7 @@ public class CharaAnimCtrl : MonoBehaviour {
         }
 
         transformOfTheCharacter = GetComponent<Transform>();
-        
+
         isWalking = anim.GetBool("isWalking");
         isRunning = anim.GetBool("isRunning");
         isJumping = anim.GetBool("isJumping");
@@ -90,17 +91,20 @@ public class CharaAnimCtrl : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update ()
+    void Update()
     {
 
         //check if the avatar get bored.
-        getBored();
+        if (this.gameObject.name == "AstridPlayer")
+        {
+            GetBored();
+        }
 
         //change the state of the animCtrl according to the environnement
         normalizedHorizontal = (inputMode == InputMode.byTransform) ? Horizontal() : InputH;
         normalizedVertical = (inputMode == InputMode.byTransform) ? Vertical() : InputV;
 
-        resetBool();
+        ResetBool();
         switch (walkmode)
         {
             case WalkMode.idle:
@@ -116,7 +120,7 @@ public class CharaAnimCtrl : MonoBehaviour {
             default:
                 break;
         }
-        
+
 
         //set the state of animation
         anim.SetFloat("horizontal", normalizedHorizontal);
@@ -131,7 +135,7 @@ public class CharaAnimCtrl : MonoBehaviour {
 
         //if set to true : no move !
         if (AwaitThisUpdate == true)
-        {            
+        {
             transformOfTheCharacter.position = lastPosition;
         }
 
@@ -146,7 +150,7 @@ public class CharaAnimCtrl : MonoBehaviour {
     public float InputV { get { return inputV; } set { inputV = Mathf.Clamp(value, -1.0f, 1.0f); } }
     public bool AwaitThisUpdate { get { return awaitThisUpdate; } private set { awaitThisUpdate = value; } }
     public float WaitForActionDelay { get { return waitForActionDelay; } private set { waitForActionDelay = value; } }
-    private float WaitForActionResetAt { get { return waitForActionDelay; } set{ waitForActionDelay = value; waitForActionCounter = waitForActionDelay; } }
+    private float WaitForActionResetAt { get { return waitForActionDelay; } set { waitForActionDelay = value; waitForActionCounter = waitForActionDelay; } }
     public WalkMode WalkMode { get { return walkmode; } internal set { walkmode = value; } }
     private float Horizontal()
     {
@@ -154,16 +158,16 @@ public class CharaAnimCtrl : MonoBehaviour {
     }
     private float Vertical()
     {
-        computedVelocity = (lastPosition.magnitude - transformOfTheCharacter.position.magnitude)*Time.deltaTime* walkSpeed;
-        return Mathf.Clamp(computedVelocity, -1.0f, 1.0f); 
+        computedVelocity = (lastPosition.magnitude - transformOfTheCharacter.position.magnitude) * Time.deltaTime * walkSpeed;
+        return Mathf.Clamp(computedVelocity, -1.0f, 1.0f);
     }
-    private void getBored()
+    private void GetBored()
     {
         if (normalizedHorizontal == 0 || normalizedVertical == 0)
         {
             waitForBoringCounter++;
 
-            if(waitForBoringCounter > waitForBoringDelay)
+            if (waitForBoringCounter > waitForBoringDelay)
             {
                 string idleState;
                 int randomNumber = UnityEngine.Random.Range(0, 2);
@@ -191,7 +195,7 @@ public class CharaAnimCtrl : MonoBehaviour {
         //Debug.Log(String.Format("{0},{1}", waitForBoringDelay, waitForBoringCounter));
 
     }
-    private void resetBool()
+    private void ResetBool()
     {
         isWalking = false;
         isRunning = false;

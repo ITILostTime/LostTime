@@ -76,6 +76,8 @@ public class GeneratePNJ : MonoBehaviour {
         gameobject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
         gameobject.AddComponent<PNJQuestController>();
         gameobject.GetComponent<PNJQuestController>().CurrentQuestID = questID;
+        gameobject.AddComponent<CharaAnimCtrl>();
+        gameobject.GetComponent<CharaAnimCtrl>().walkmode = WalkMode.walking;
         gameobject.AddComponent<PNJPathfinding>();
     }
 

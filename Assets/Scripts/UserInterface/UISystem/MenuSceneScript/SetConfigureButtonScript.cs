@@ -110,7 +110,7 @@ public class SetConfigureButtonScript : MonoBehaviour, IPointerDownHandler
             _configurePanel.GetComponent<RectTransform>().rect.width * 8 / 10, _configurePanel.GetComponent<RectTransform>().rect.height / 10,
             0, _configurePanel.GetComponent<RectTransform>().rect.height * 4 / 10, "", _canvasMenu.GetComponent<TextMonitoring>().GetArialTextFont, TextAnchor.MiddleCenter, FontStyle.Bold,
             ((int)(Screen.height / 20)), Color.black);
-        _canvasMenu.GetComponent<TextMonitoring>().setTextInCorrectLanguages("ConfigurePanelLabel", "Options", "Options");
+        _canvasMenu.GetComponent<TextMonitoring>().SetTextInCorrectLanguages("ConfigurePanelLabel", "Options", "Options");
     }
 
     private void LanguagesPanel()
@@ -131,7 +131,7 @@ public class SetConfigureButtonScript : MonoBehaviour, IPointerDownHandler
             _SelectLanguagesBackGround.GetComponent<RectTransform>().rect.height, _SelectLanguagesBackGround.GetComponent<RectTransform>().rect.width / 2 -
             (_SelectLanguagesBackGround.GetComponent<RectTransform>().rect.width - _SelectLanguagesBackGround.GetComponent<RectTransform>().rect.height) / 2, 0,
             "", _canvasMenu.GetComponent<TextMonitoring>().GetArialTextFont, TextAnchor.MiddleCenter, FontStyle.Bold, ((int)(Screen.height / 20)), Color.black);
-        _canvasMenu.GetComponent<TextMonitoring>().setTextInCorrectLanguages("FrenchText", "French", "Français");
+        _canvasMenu.GetComponent<TextMonitoring>().SetTextInCorrectLanguages("FrenchText", "French", "Français");
         GameObject.Find("FrenchText").GetComponent<Button>().onClick.AddListener(() => FRButton());
 
         _canvasMenu.GetComponent<CreateUserInterfaceObject>().CreateGameObjectImageSprite("SelectLanguagesArrowEN", _SelectLanguagesBackGround, true,
@@ -145,7 +145,7 @@ public class SetConfigureButtonScript : MonoBehaviour, IPointerDownHandler
             (_SelectLanguagesBackGround.GetComponent<RectTransform>().rect.width - _SelectLanguagesBackGround.GetComponent<RectTransform>().rect.height) / 2),
             _SelectLanguagesBackGround.GetComponent<RectTransform>().rect.height * -2,
             "", _canvasMenu.GetComponent<TextMonitoring>().GetArialTextFont, TextAnchor.MiddleCenter, FontStyle.Bold, ((int)(Screen.height / 20)), Color.black);
-        _canvasMenu.GetComponent<TextMonitoring>().setTextInCorrectLanguages("EnglishText", "English", "Anglais");
+        _canvasMenu.GetComponent<TextMonitoring>().SetTextInCorrectLanguages("EnglishText", "English", "Anglais");
         GameObject.Find("EnglishText").GetComponent<Button>().onClick.AddListener(() => ENButton());
 
         if (PlayerPrefs.GetString("CurrentLanguagesUsed") == "French" || PlayerPrefs.GetString("CurrentLanguagesUsed") == "Français")
@@ -166,7 +166,7 @@ public class SetConfigureButtonScript : MonoBehaviour, IPointerDownHandler
             _configurePanel.GetComponent<RectTransform>().rect.width, _configurePanel.GetComponent<RectTransform>().rect.height / 10,
             0, (_configurePanel.GetComponent<RectTransform>().rect.height / 10) * -1.5f, "",
             _canvasMenu.GetComponent<TextMonitoring>().GetArialTextFont, TextAnchor.MiddleCenter, FontStyle.Bold, ((int)(Screen.height / 20)), Color.black);
-        _canvasMenu.GetComponent<TextMonitoring>().setTextInCorrectLanguages("SoundEffectLabel", "Sound Level", "Niveau Sonore");
+        _canvasMenu.GetComponent<TextMonitoring>().SetTextInCorrectLanguages("SoundEffectLabel", "Sound Level", "Niveau Sonore");
 
         GameObject SoundEffectSlider = (GameObject)Instantiate(Resources.Load("UnityUserInterfacePrefabs/ConfigureSoundPrefab"));
         SoundEffectSlider.transform.SetParent(_configurePanel.transform, true);
@@ -183,10 +183,13 @@ public class SetConfigureButtonScript : MonoBehaviour, IPointerDownHandler
         ShadowToggle.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, (_configurePanel.GetComponent<RectTransform>().rect.height / 10) * -4  );
         GameObject.Find("ShadowToggleLabel").GetComponent<Text>().fontStyle = FontStyle.Bold;
         GameObject.Find("ShadowToggleLabel").GetComponent<Text>().color = Color.black;
-        _canvasMenu.GetComponent<TextMonitoring>().setTextInCorrectLanguages("ShadowToggleLabel", "Activate Shadow", "Activer les Ombres");
+        GameObject.Find("ShadowToggleLabel").GetComponent<Text>().fontSize = ((int)(Screen.height / 20));
+        _canvasMenu.GetComponent<TextMonitoring>().SetTextInCorrectLanguages("ShadowToggleLabel", "Activate Shadow", "Activer les Ombres");
+        GameObject.Find("ShadowToggleBackground").GetComponent<RectTransform>().sizeDelta = new Vector2(ShadowToggle.GetComponent<RectTransform>().rect.height, ShadowToggle.GetComponent<RectTransform>().rect.height);
+        GameObject.Find("ToggleShadowGear").GetComponent<RectTransform>().sizeDelta = GameObject.Find("ShadowToggleBackground").GetComponent<RectTransform>().sizeDelta;
         GameObject.Find("ToggleShadowGear").GetComponent<Image>().sprite = _canvasMenu.GetComponent<ImageMonitoring>().GetBlackGear;
 
-        if(PlayerPrefs.GetInt("ShadowIsActivatedSave") == 0)
+        if (PlayerPrefs.GetInt("ShadowIsActivatedSave") == 0)
         {
             GameObject.Find("ConfigureShadowPrefab(Clone)").GetComponent<Toggle>().isOn = false;
         }
@@ -203,10 +206,10 @@ public class SetConfigureButtonScript : MonoBehaviour, IPointerDownHandler
         GameObject.Find("SelectLanguagesArrowEN").GetComponent<Image>().color = Color.clear;
         GameObject.Find("SelectLanguagesArrowFR").GetComponent<Image>().color = Color.white;
 
-        _canvasMenu.GetComponent<TextMonitoring>().setTextInCorrectLanguages("ShadowToggleLabel", "Activate Shadow", "Activer les Ombres");
-        _canvasMenu.GetComponent<TextMonitoring>().setTextInCorrectLanguages("SoundEffectLabel", "Sound Level", "Niveau Sonore");
-        _canvasMenu.GetComponent<TextMonitoring>().setTextInCorrectLanguages("EnglishText", "English", "Anglais");
-        _canvasMenu.GetComponent<TextMonitoring>().setTextInCorrectLanguages("FrenchText", "French", "Français");
+        _canvasMenu.GetComponent<TextMonitoring>().SetTextInCorrectLanguages("ShadowToggleLabel", "Activate Shadow", "Activer les Ombres");
+        _canvasMenu.GetComponent<TextMonitoring>().SetTextInCorrectLanguages("SoundEffectLabel", "Sound Level", "Niveau Sonore");
+        _canvasMenu.GetComponent<TextMonitoring>().SetTextInCorrectLanguages("EnglishText", "English", "Anglais");
+        _canvasMenu.GetComponent<TextMonitoring>().SetTextInCorrectLanguages("FrenchText", "French", "Français");
     }
 
     private void ENButton()
@@ -216,9 +219,9 @@ public class SetConfigureButtonScript : MonoBehaviour, IPointerDownHandler
         GameObject.Find("SelectLanguagesArrowFR").GetComponent<Image>().color = Color.clear;
         GameObject.Find("SelectLanguagesArrowEN").GetComponent<Image>().color = Color.white;
 
-        _canvasMenu.GetComponent<TextMonitoring>().setTextInCorrectLanguages("ShadowToggleLabel", "Activate Shadow", "Activer les Ombres");
-        _canvasMenu.GetComponent<TextMonitoring>().setTextInCorrectLanguages("SoundEffectLabel", "Sound Level", "Niveau Sonore");
-        _canvasMenu.GetComponent<TextMonitoring>().setTextInCorrectLanguages("EnglishText", "English", "Anglais");
-        _canvasMenu.GetComponent<TextMonitoring>().setTextInCorrectLanguages("FrenchText", "French", "Français");
+        _canvasMenu.GetComponent<TextMonitoring>().SetTextInCorrectLanguages("ShadowToggleLabel", "Activate Shadow", "Activer les Ombres");
+        _canvasMenu.GetComponent<TextMonitoring>().SetTextInCorrectLanguages("SoundEffectLabel", "Sound Level", "Niveau Sonore");
+        _canvasMenu.GetComponent<TextMonitoring>().SetTextInCorrectLanguages("EnglishText", "English", "Anglais");
+        _canvasMenu.GetComponent<TextMonitoring>().SetTextInCorrectLanguages("FrenchText", "French", "Français");
     }
 }

@@ -27,6 +27,7 @@ public class SceneWayPointsGenerator : MonoBehaviour {
         gameObject.transform.position = new Vector3(WayPointsPositionX, WayPointsPositionY, WayPointsPositionZ);
         gameObject.AddComponent<BoxCollider>();
         gameObject.GetComponent<BoxCollider>().size = new Vector3(1f, 5f, 1f);
+        gameObject.GetComponent<BoxCollider>().isTrigger = true;
         gameObject.AddComponent<SceneController>();
 
         GameObject gameObjectAnimation = new GameObject(WayPointsName + "GearAnimation");

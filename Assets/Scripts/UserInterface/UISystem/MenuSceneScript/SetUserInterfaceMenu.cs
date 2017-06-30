@@ -13,36 +13,37 @@ public class SetUserInterfaceMenu : MonoBehaviour {
         _menuCanvas = GameObject.Find("MenuCanvas");
         _gameName = GameObject.Find("GameName(Clone)");
 
-        setUserInterface();
+        SetUserInterface();
     }
 
     private void Update()
     {
-        _menuCanvas.GetComponent<TextMonitoring>().setTextInCorrectLanguages("NewGameButton", "New Game", "Nouvelle Partie");
-        _menuCanvas.GetComponent<TextMonitoring>().setTextInCorrectLanguages("LoadGameButton", "Load Game", "Charger une partie");
-        _menuCanvas.GetComponent<TextMonitoring>().setTextInCorrectLanguages("ConfigureGameButton", "Options", "Options");
+        _menuCanvas.GetComponent<TextMonitoring>().SetTextInCorrectLanguages("NewGameButton", "New Game", "Nouvelle Partie");
+        _menuCanvas.GetComponent<TextMonitoring>().SetTextInCorrectLanguages("LoadGameButton", "Load Game", "Charger une partie");
+        _menuCanvas.GetComponent<TextMonitoring>().SetTextInCorrectLanguages("ConfigureGameButton", "Options", "Options");
     }
 
-    private void setUserInterface()
+    private void SetUserInterface()
     {
         _menuCanvas.GetComponent<CreateUserInterfaceObject>().CreateGameObjectTextZone("NewGameButton", _menuCanvas, true, _gameName.GetComponent<RectTransform>().rect.width,
-            _gameName.GetComponent<RectTransform>().rect.height / 4, _menuCanvas.GetComponent<RectTransform>().rect.width / -2 + _gameName.GetComponent<RectTransform>().rect.width / 2, 
-            _gameName.GetComponent<RectTransform>().rect.height / 2, "",
+            _gameName.GetComponent<RectTransform>().rect.height / 4, _menuCanvas.GetComponent<RectTransform>().rect.width / -2 + _gameName.GetComponent<RectTransform>().rect.width / 2,
+             _gameName.GetComponent<RectTransform>().rect.height / 4, "",
             _menuCanvas.GetComponent<TextMonitoring>().GetArialTextFont, TextAnchor.MiddleCenter, FontStyle.Bold, ((int)(Screen.height / 20)), Color.black);
-        _menuCanvas.GetComponent<TextMonitoring>().setTextInCorrectLanguages("NewGameButton", "New Game", "Nouvelle Partie");
+        _menuCanvas.GetComponent<TextMonitoring>().SetTextInCorrectLanguages("NewGameButton", "New Game", "Nouvelle Partie");
         GameObject.Find("NewGameButton").AddComponent<SetNewGameButtonScript>();
 
-        _menuCanvas.GetComponent<CreateUserInterfaceObject>().CreateGameObjectTextZone("LoadGameButton", _menuCanvas, true, _gameName.GetComponent<RectTransform>().rect.width,
-            _gameName.GetComponent<RectTransform>().rect.height / 4, _menuCanvas.GetComponent<RectTransform>().rect.width / -2 + _gameName.GetComponent<RectTransform>().rect.width / 2, 0, "",
+        _menuCanvas.GetComponent<CreateUserInterfaceObject>().CreateGameObjectTextZone("LoadGameButton", GameObject.Find("NewGameButton"), true, 
+            GameObject.Find("NewGameButton").GetComponent<RectTransform>().rect.width, GameObject.Find("NewGameButton").GetComponent<RectTransform>().rect.height, 
+            0, GameObject.Find("NewGameButton").GetComponent<RectTransform>().rect.height * -2, "",
             _menuCanvas.GetComponent<TextMonitoring>().GetArialTextFont, TextAnchor.MiddleCenter, FontStyle.Bold, ((int)(Screen.height / 20)), Color.black);
-        _menuCanvas.GetComponent<TextMonitoring>().setTextInCorrectLanguages("LoadGameButton", "Load Game", "Charger une partie");
+        _menuCanvas.GetComponent<TextMonitoring>().SetTextInCorrectLanguages("LoadGameButton", "Load Game", "Charger une partie");
         GameObject.Find("LoadGameButton").AddComponent<SetLoadGameButtonScript>();
 
-        _menuCanvas.GetComponent<CreateUserInterfaceObject>().CreateGameObjectTextZone("ConfigureGameButton", _menuCanvas, true,
-            _gameName.GetComponent<RectTransform>().rect.width, _gameName.GetComponent<RectTransform>().rect.height / 4,
-            _menuCanvas.GetComponent<RectTransform>().rect.width / -2 + _gameName.GetComponent<RectTransform>().rect.width / 2, _gameName.GetComponent<RectTransform>().rect.height / -2,
-            "", _menuCanvas.GetComponent<TextMonitoring>().GetArialTextFont, TextAnchor.MiddleCenter, FontStyle.Bold, ((int)(Screen.height / 20)), Color.black);
-        _menuCanvas.GetComponent<TextMonitoring>().setTextInCorrectLanguages("ConfigureGameButton", "Options", "Options");
+        _menuCanvas.GetComponent<CreateUserInterfaceObject>().CreateGameObjectTextZone("ConfigureGameButton", GameObject.Find("LoadGameButton"), true,
+            GameObject.Find("LoadGameButton").GetComponent<RectTransform>().rect.width, GameObject.Find("LoadGameButton").GetComponent<RectTransform>().rect.height,
+            0, GameObject.Find("LoadGameButton").GetComponent<RectTransform>().rect.height * -2, "",
+            _menuCanvas.GetComponent<TextMonitoring>().GetArialTextFont, TextAnchor.MiddleCenter, FontStyle.Bold, ((int)(Screen.height / 20)), Color.black);
+        _menuCanvas.GetComponent<TextMonitoring>().SetTextInCorrectLanguages("ConfigureGameButton", "Options", "Options");
         GameObject.Find("ConfigureGameButton").AddComponent<SetConfigureButtonScript>();
     }
 }

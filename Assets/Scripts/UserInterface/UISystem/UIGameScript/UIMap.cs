@@ -7,8 +7,8 @@ using UnityEngine.EventSystems;
 public class UIMap : MonoBehaviour, IPointerDownHandler
 {
     private GameObject _canvas;
-    public bool _UIMapPanelActivated;
-    public bool _UIMapPanelAnimationOn;
+    private bool _UIMapPanelActivated;
+    private bool _UIMapPanelAnimationOn;
 
     public bool UIMapPanelAnimationOn { get { return _UIMapPanelAnimationOn; } set { _UIMapPanelAnimationOn = value; } }
     public bool UIMapPanelActivated { get { return _UIMapPanelActivated; } set { _UIMapPanelActivated = value; } }
@@ -39,7 +39,7 @@ public class UIMap : MonoBehaviour, IPointerDownHandler
         if (GameObject.Find("UIMapPanel") == false)
         {
             _canvas.GetComponent<CreateUserInterfaceObject>().CreateGameObjectImageSprite("UIMapPanel", _canvas, true,
-            _canvas.GetComponent<RectTransform>().rect.width / 3, _canvas.GetComponent<RectTransform>().rect.height,
+            _canvas.GetComponent<RectTransform>().rect.width / 3, (_canvas.GetComponent<RectTransform>().rect.height / 10) * 8,
             0, _canvas.GetComponent<RectTransform>().rect.height, 
             _canvas.GetComponent<ImageMonitoring>().GetSprite("SpriteOther_03", _canvas.GetComponent<ImageMonitoring>()._other));
 

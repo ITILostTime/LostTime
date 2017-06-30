@@ -42,7 +42,7 @@ public class TmpTutorielScript : MonoBehaviour {
             _userInterface.GetComponent<CreateUserInterfaceObject>().CreateGameObjectTextZone("FirstWakeUpText", GameObject.Find("BlackPanel"), true,
                 _userInterface.GetComponent<RectTransform>().rect.width / 2, _userInterface.GetComponent<RectTransform>().rect.height / 2, 0, 0, "", _userInterface.GetComponent<TextMonitoring>().GetArialTextFont, TextAnchor.MiddleCenter, FontStyle.Bold,
                 ((int)(_userInterface.GetComponent<RectTransform>().rect.height / 30)), Color.white);
-            _userInterface.GetComponent<TextMonitoring>().setTextInCorrectLanguages("FirstWakeUpText", "Wake Up Astrid. It's time! \r\n\r\n\r\n\r\n\r\n\r\n --Touch to continue--", "Reveille toi Astrid. C'est l'heure ! \r\n\r\n\r\n\r\n\r\n\r\n --Touchez pour continuer--");
+            _userInterface.GetComponent<TextMonitoring>().SetTextInCorrectLanguages("FirstWakeUpText", "Wake Up Astrid. It's time! \r\n\r\n\r\n\r\n\r\n\r\n --Touch to continue--", "Reveille toi Astrid. C'est l'heure ! \r\n\r\n\r\n\r\n\r\n\r\n --Touchez pour continuer--");
             GameObject.Find("FirstWakeUpText").AddComponent<Button>();
             GameObject.Find("FirstWakeUpText").GetComponent<Button>().onClick.AddListener(() => TimeToWork());
 
@@ -170,7 +170,7 @@ public class TmpTutorielScript : MonoBehaviour {
             _userInterface.GetComponent<CreateUserInterfaceObject>().CreateGameObjectTextZone("TutorialText", GameObject.Find("FirstStepPanel"), true,
                 _userInterface.GetComponent<RectTransform>().rect.width / 2, _userInterface.GetComponent<RectTransform>().rect.height / 2, 0, 0, "", _userInterface.GetComponent<TextMonitoring>().GetArialTextFont, TextAnchor.MiddleCenter, FontStyle.Bold,
                 ((int)(_userInterface.GetComponent<RectTransform>().rect.height / 15)), Color.white);
-            _userInterface.GetComponent<TextMonitoring>().setTextInCorrectLanguages("TutorialText", "--  Tutorial  --", "--  Tutorial  --");
+            _userInterface.GetComponent<TextMonitoring>().SetTextInCorrectLanguages("TutorialText", "--  Tutorial  --", "--  Tutorial  --");
             _FirstStepPanelanimationText = true;
         }
        
@@ -186,7 +186,7 @@ public class TmpTutorielScript : MonoBehaviour {
             _userInterface.GetComponent<CreateUserInterfaceObject>().CreateGameObjectTextZone("JoysticksDiscoverText", GameObject.Find("JoysticksDiscoverPanel"), true,
                 _userInterface.GetComponent<RectTransform>().rect.width / 2, _userInterface.GetComponent<RectTransform>().rect.height / 2, 0, 0, "", _userInterface.GetComponent<TextMonitoring>().GetArialTextFont, TextAnchor.MiddleCenter, FontStyle.Bold,
                 ((int)(_userInterface.GetComponent<RectTransform>().rect.height / 15)), Color.white);
-            _userInterface.GetComponent<TextMonitoring>().setTextInCorrectLanguages("JoysticksDiscoverText", "--  Use Your Left Hand on the left area  --\r\n--  to move Astrid  --", "--  Utlisez votre main gauche sur la surface de gauche  --\r\n--  pour déplacer Astrid  --");
+            _userInterface.GetComponent<TextMonitoring>().SetTextInCorrectLanguages("JoysticksDiscoverText", "--  Use Your Left Hand on the left area  --\r\n--  to move Astrid  --", "--  Utlisez votre main gauche sur la surface de gauche  --\r\n--  pour déplacer Astrid  --");
             _JoysticksDiscoverAnimationText = true;
         }
             
@@ -202,7 +202,7 @@ public class TmpTutorielScript : MonoBehaviour {
             _userInterface.GetComponent<CreateUserInterfaceObject>().CreateGameObjectTextZone("RightJoysticksDiscoverText", GameObject.Find("RightJoysticksDiscoverPanel"), true,
                 _userInterface.GetComponent<RectTransform>().rect.width / 2, _userInterface.GetComponent<RectTransform>().rect.height / 2, 0, 0, "", _userInterface.GetComponent<TextMonitoring>().GetArialTextFont, TextAnchor.MiddleCenter, FontStyle.Bold,
                 ((int)(_userInterface.GetComponent<RectTransform>().rect.height / 15)), Color.white);
-            _userInterface.GetComponent<TextMonitoring>().setTextInCorrectLanguages("RightJoysticksDiscoverText", "--  Use Your Right Hand on the right area  --\r\n--  to move the camera  --", "--  Utlisez votre main droite sur la surface de droite  --\r\n--  pour déplacer la caméra  --");
+            _userInterface.GetComponent<TextMonitoring>().SetTextInCorrectLanguages("RightJoysticksDiscoverText", "--  Use Your Right Hand on the right area  --\r\n--  to move the camera  --", "--  Utlisez votre main droite sur la surface de droite  --\r\n--  pour déplacer la caméra  --");
             _RightJoysticksDiscoverAnimationText = true;
         }
         
@@ -218,7 +218,7 @@ public class TmpTutorielScript : MonoBehaviour {
             _userInterface.GetComponent<CreateUserInterfaceObject>().CreateGameObjectTextZone("SeeFireText", GameObject.Find("SeeFire"), true,
                 _userInterface.GetComponent<RectTransform>().rect.width / 2, _userInterface.GetComponent<RectTransform>().rect.height / 2, 0, 0, "", _userInterface.GetComponent<TextMonitoring>().GetArialTextFont, TextAnchor.MiddleCenter, FontStyle.Bold,
                 ((int)(_userInterface.GetComponent<RectTransform>().rect.height / 15)), Color.white);
-            _userInterface.GetComponent<TextMonitoring>().setTextInCorrectLanguages("SeeFireText", "--  Go to the boiler  --", "-- Aller à la chaudière  --");
+            _userInterface.GetComponent<TextMonitoring>().SetTextInCorrectLanguages("SeeFireText", "--  Go to the boiler  --", "-- Aller à la chaudière  --");
             _seeFireAnimationText = true;
         }
         
@@ -241,7 +241,7 @@ public class TmpTutorielScript : MonoBehaviour {
             _userInterface.GetComponent<CreateUserInterfaceObject>().CreateGameObjectTextZone("letterText", GameObject.Find("letterTextbackGround"), true, _userInterface.GetComponent<RectTransform>().rect.width / 2, _userInterface.GetComponent<RectTransform>().rect.height / 2,
                 0, 0, "", _userInterface.GetComponent<TextMonitoring>().GetArialTextFont, TextAnchor.MiddleCenter, FontStyle.Bold,
                 ((int)(_userInterface.GetComponent<RectTransform>().rect.height / 20)), Color.black);
-            _userInterface.GetComponent<TextMonitoring>().setTextInCorrectLanguages("letterText",
+            _userInterface.GetComponent<TextMonitoring>().SetTextInCorrectLanguages("letterText",
                 "Clumsy person that you are! The clock which you have just broken was not that a simple antiquity. It is an artefact controlling the time. Now, the City is condemned to live again the same day as long as you will not have assembled all the fragments...You have to find how to repair your damages. Visit the watchmakers' guild's master, he will help you.",
                 "Maladroite que tu es ! L’horloge que tu viens de briser n’était pas qu’une simple antiquité. Il s’agit d’un artefact contrôlant le temps. Maintenant, la Ville est condamnée à revivre la même journée tant que tu n’auras pas réassemblé tous les fragments... A toi de trouver comment réparer tes dégats. Vas voir le maître de la Guilde des horlogers, il t'aidera.");
             GameObject.Find("letterText").AddComponent<Button>();
@@ -272,7 +272,7 @@ public class TmpTutorielScript : MonoBehaviour {
             _userInterface.GetComponent<CreateUserInterfaceObject>().CreateGameObjectTextZone("GoOutSidetext", GameObject.Find("GoOutSide"), true,
                 _userInterface.GetComponent<RectTransform>().rect.width / 2, _userInterface.GetComponent<RectTransform>().rect.height / 2, 0, 0, "", _userInterface.GetComponent<TextMonitoring>().GetArialTextFont, TextAnchor.MiddleCenter, FontStyle.Bold,
                 ((int)(_userInterface.GetComponent<RectTransform>().rect.height / 15)), Color.white);
-            _userInterface.GetComponent<TextMonitoring>().setTextInCorrectLanguages("GoOutSidetext", "--  Go to the city  --", "-- Aller en ville  --");
+            _userInterface.GetComponent<TextMonitoring>().SetTextInCorrectLanguages("GoOutSidetext", "--  Go to the city  --", "-- Aller en ville  --");
             _GoOutSideAnimationText = true;
         }
     }

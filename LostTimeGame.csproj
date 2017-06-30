@@ -75,6 +75,15 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Animation\CharaAnimCtrl.cs" />
@@ -114,6 +123,7 @@
     <Compile Include="Assets\Scripts\InstanceSceneContext\InstanceLostTimeGearDistrictContext.cs" />
     <Compile Include="Assets\Scripts\LoadNewSceneScript\CreateLoadSceneWayPoints.cs" />
     <Compile Include="Assets\Scripts\LoadNewSceneScript\NewSceneWayPointsController.cs" />
+    <Compile Include="Assets\Scripts\LoadingScreen\LoadingScreenController.cs" />
     <Compile Include="Assets\Scripts\PNJQuest\PNJ.cs" />
     <Compile Include="Assets\Scripts\PNJQuest\PNJPathfinding.cs" />
     <Compile Include="Assets\Scripts\Pathfinding\Pathfinder.cs" />
@@ -146,7 +156,6 @@
     <Compile Include="Assets\Scripts\Save\SaveController.cs" />
     <Compile Include="Assets\Scripts\Save\SaveStateController.cs" />
     <Compile Include="Assets\Scripts\Save\SaveStateWayPoints.cs" />
-    <Compile Include="Assets\Scripts\SaveControllerSystem\PlayerPrefsController.cs" />
     <Compile Include="Assets\Scripts\SaveControllerSystem\SaveAndLoadSystemController.cs" />
     <Compile Include="Assets\Scripts\SaveControllerSystem\SaveStateAnimation.cs" />
     <Compile Include="Assets\Scripts\SaveControllerSystem\SaveStateSpriteAnimation.cs" />
