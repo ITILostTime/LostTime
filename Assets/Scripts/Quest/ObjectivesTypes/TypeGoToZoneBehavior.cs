@@ -26,17 +26,15 @@ namespace Assets.Scripts.Quest.ObjectivesTypes
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.transform.name == "AstridPlayer") // si le PNJ a une quête 
-            {
-
-                //gameObject.SetActive(false);
+            { 
                 GameObject.Find("QID" + QuestID + "OID" + ObjectiveID).GetComponent<ObjectiveController>().TypeGoToZoneIsComplete = true;
 
                 Debug.Log(QuestID);
                 Debug.Log(ObjectiveID);
 
-                Destroy(gameObject);
+                Destroy(this.gameObject);
 
-                Debug.Log(this.GetComponent<ObjectiveController>().TypeGoToZoneIsComplete);
+                Debug.Log(GameObject.Find("QID" + QuestID + "OID" + ObjectiveID).GetComponent<ObjectiveController>().TypeGoToZoneIsComplete);
             }
         }
     }

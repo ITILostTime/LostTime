@@ -135,7 +135,7 @@
     <Compile Include="Assets\Scripts\Quest\ObjectivesTypes\TypeCollect.cs" />
     <Compile Include="Assets\Scripts\Quest\ObjectivesTypes\TypeCollectBehavior.cs" />
     <Compile Include="Assets\Scripts\Quest\ObjectivesTypes\TypeGoToZoneBehavior.cs" />
-    <Compile Include="Assets\Scripts\Quest\ObjectivesTypes\TypeTalkToPNJ.cs" />
+    <Compile Include="Assets\Scripts\Quest\ObjectivesTypes\TypeTalkToPNJBehavior.cs" />
     <Compile Include="Assets\Scripts\Quest\PNJQuestController.cs" />
     <Compile Include="Assets\Scripts\Quest\QuestContainer.cs" />
     <Compile Include="Assets\Scripts\Quest\QuestController.cs" />

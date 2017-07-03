@@ -136,13 +136,13 @@ public class PNJQuestController : MonoBehaviour
                                 OC.GetComponent<ObjectiveController>().ObjectiveType = tmpIQuestObjective.ObjectiveType;
                                 OC.GetComponent<ObjectiveController>().GoalAmount = tmpIQuestObjective.GoalAmount;
 
-                                Debug.Log(tmpIQuestObjective.QuestID);
-                                Debug.Log(tmpIQuestObjective.ObjectiveID);
-                                Debug.Log(tmpIQuestObjective.ObjectiveDescription);
-                                Debug.Log(tmpIQuestObjective.ObjectiveIsComplete);
-                                Debug.Log(tmpIQuestObjective.ObjectiveContext);
-                                Debug.Log(tmpIQuestObjective.ObjectiveType);
-                                Debug.Log(tmpIQuestObjective.GoalAmount);
+                                //Debug.Log(tmpIQuestObjective.QuestID);
+                                //Debug.Log(tmpIQuestObjective.ObjectiveID);
+                                //Debug.Log(tmpIQuestObjective.ObjectiveDescription);
+                                //Debug.Log(tmpIQuestObjective.ObjectiveIsComplete);
+                                //Debug.Log(tmpIQuestObjective.ObjectiveContext);
+                                //Debug.Log(tmpIQuestObjective.ObjectiveType);
+                                //Debug.Log(tmpIQuestObjective.GoalAmount);
                                 GenerateObjectiveItem(QuestTest, i, tmpIQuestObjective.ObjectiveID);
                                 break;
                             case "GoToZone":
@@ -459,7 +459,7 @@ public class PNJQuestController : MonoBehaviour
         gameobject.AddComponent<MeshFilter>();
         gameobject.AddComponent<MeshRenderer>();
         gameobject.AddComponent<TypeGoToZoneBehavior>();
-        gameObject.GetComponent<TypeGoToZoneBehavior>().QuestID = questID;
-        gameObject.GetComponent<TypeGoToZoneBehavior>().ObjectiveID = objectiveID;
+        gameobject.GetComponent<TypeGoToZoneBehavior>().QuestID = questID;
+        gameobject.GetComponent<TypeGoToZoneBehavior>().ObjectiveID = objectiveID;
     }
 }
