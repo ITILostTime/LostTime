@@ -17,8 +17,8 @@ namespace Assets.Scripts.Quest.ObjectivesTypes
 
         private void Start()
         {
-            Debug.Log(Amount);
-            Debug.Log(GoalAmount);
+            //Debug.Log(Amount);
+            //Debug.Log(GoalAmount);
         }
         /// <summary>
         /// Gets or sets the amount.

@@ -9,15 +9,15 @@ namespace Assets.Scripts.Quest.ObjectivesTypes
     /// <summary>
     /// Implement the objective type talk to a pnj
     /// </summary>
-    public class TypeTalkToPNJ : MonoBehaviour
+    public class TypeTalkToPNJBehavior : MonoBehaviour
     {
         private string _talk;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TypeTalkToPNJ"/> class.
+        /// Initializes a new instance of the <see cref="TypeTalkToPNJBehavior"/> class.
         /// </summary>
         /// <param name="talk">The talk.</param>
-        public TypeTalkToPNJ(string talk)
+        public TypeTalkToPNJBehavior(string talk)
         {
             _talk = talk;
         }
