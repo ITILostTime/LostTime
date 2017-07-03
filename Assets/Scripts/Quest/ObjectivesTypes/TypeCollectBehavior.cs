@@ -8,10 +8,10 @@ namespace Assets.Scripts.Quest.ObjectivesTypes
 {
     class TypeCollectBehavior : MonoBehaviour
     {
-        int _questID;
+        float _questID;
         int _objectiveID;
 
-        public int QuestID
+        public float QuestID
         {
             get { return _questID; }
             set { _questID = value; }

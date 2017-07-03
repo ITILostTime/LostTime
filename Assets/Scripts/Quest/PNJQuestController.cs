@@ -127,7 +127,7 @@ public class PNJQuestController : MonoBehaviour
                                 QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"], QuestTest["Quest" + i][0]["Objectives"][count]["ItemQuantity"]);
                                 questObjectives.Add(tmpIQuestObjective);
                                 OC.AddComponent<ObjectiveController>();
-                                OC.GetComponent<ObjectiveController>().name = "QID" + QuestTest["Quest" + i][0]["Objectives"][count]["QuestID"].AsInt + "OID" + QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"].AsInt;
+                                OC.GetComponent<ObjectiveController>().name = "QID" + QuestTest["Quest" + i][count]["QuestID"].AsFloat + "OID" + QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"].AsInt;
                                 OC.GetComponent<ObjectiveController>().QuestID = tmpIQuestObjective.QuestID;
                                 OC.GetComponent<ObjectiveController>().ObjectiveID = tmpIQuestObjective.ObjectiveID;
                                 OC.GetComponent<ObjectiveController>().ObjectiveDescription = tmpIQuestObjective.ObjectiveDescription;
@@ -143,7 +143,7 @@ public class PNJQuestController : MonoBehaviour
                                 Debug.Log(tmpIQuestObjective.ObjectiveContext);
                                 Debug.Log(tmpIQuestObjective.ObjectiveType);
                                 Debug.Log(tmpIQuestObjective.GoalAmount);
-                                GenerateObjectiveItem(QuestTest, i, tmpIQuestObjective.QuestID, tmpIQuestObjective.ObjectiveID);
+                                GenerateObjectiveItem(QuestTest, i, tmpIQuestObjective.ObjectiveID);
                                 break;
                             case "GoToZone":
                                 GameObject OGTZ = new GameObject();
@@ -155,7 +155,7 @@ public class PNJQuestController : MonoBehaviour
                                 QuestTest["Quest" + i][0]["Objectives"][count]["PositionY"], QuestTest["Quest" + i][0]["Objectives"][count]["PositionZ"]);
                                 questObjectives.Add(tmpIQuestObjective);
                                 OGTZ.AddComponent<ObjectiveController>();
-                                OGTZ.GetComponent<ObjectiveController>().name = "QID" + QuestTest["Quest" + i][0]["Objectives"][count]["QuestID"].AsInt + "OID" + QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"].AsInt;
+                                OGTZ.GetComponent<ObjectiveController>().name = "QID" + QuestTest["Quest" + i][count]["QuestID"].AsFloat + "OID" + QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"].AsInt;
                                 OGTZ.GetComponent<ObjectiveController>().QuestID = tmpIQuestObjective.QuestID;
                                 OGTZ.GetComponent<ObjectiveController>().ObjectiveID = tmpIQuestObjective.ObjectiveID;
                                 OGTZ.GetComponent<ObjectiveController>().ObjectiveDescription = tmpIQuestObjective.ObjectiveDescription;
@@ -418,7 +418,7 @@ public class PNJQuestController : MonoBehaviour
     /// Generates the objective item.
     /// </summary>
     /// <param name="json">The json.</param>
-    private void GenerateObjectiveItem(JSONNode json, float id, int questID, int objectiveID)
+    private void GenerateObjectiveItem(JSONNode json, float id, int objectiveID)
     {
         for (int i = 0; i < QuestTest["Quest" + id][0]["Objectives"][0]["ItemQuantity"].AsInt; i++)
         {
@@ -432,7 +432,7 @@ public class PNJQuestController : MonoBehaviour
             gameobject.AddComponent<MeshFilter>();
             gameobject.AddComponent<MeshRenderer>();
             gameobject.AddComponent<TypeCollectBehavior>();
-            gameobject.GetComponent<TypeCollectBehavior>().QuestID = questID;
+            gameobject.GetComponent<TypeCollectBehavior>().QuestID = id;
             gameobject.GetComponent<TypeCollectBehavior>().ObjectiveID = objectiveID;
         }
     }
