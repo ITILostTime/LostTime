@@ -110,7 +110,7 @@
       "ObjectiveMax": 3,
       "Objectives": [
         {
-          "ObjectiveID": 2,
+          "ObjectiveID": 1,
           "ObjectiveType": "GoToZone",
           "ObjectiveName": "Aller à l'opéra",
           "QuestContext": "Va au trou au milieu de la place",

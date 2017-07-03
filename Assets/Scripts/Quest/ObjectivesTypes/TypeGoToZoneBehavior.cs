@@ -8,28 +8,35 @@ namespace Assets.Scripts.Quest.ObjectivesTypes
 {
     public class TypeGoToZoneBehavior : MonoBehaviour
     {
-        private bool _typeGoToZoneIsComplete;
+        int _questID;
+        int _objectiveID;
 
-        /// <summary>
-        /// Gets or sets a value indicating whether [type go to zone is complete].
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if [type go to zone is complete]; otherwise, <c>false</c>.
-        /// </value>
-        public bool TypeGoToZoneIsComplete
+        public int QuestID
         {
-            get { return _typeGoToZoneIsComplete; }
-            set { _typeGoToZoneIsComplete = value; }
+            get { return _questID; }
+            set { _questID = value; }
+        }
+        
+        public int ObjectiveID
+        {
+            get { return _objectiveID; }
+            set { _objectiveID = value; }
         }
 
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.transform.name == "AstridPlayer") // si le PNJ a une quête 
             {
-                gameObject.SetActive(false);
 
-                this.GetComponent<TypeGoToZoneBehavior>().TypeGoToZoneIsComplete = true;
-                Debug.Log(this.GetComponent<TypeGoToZoneBehavior>().TypeGoToZoneIsComplete);
+                //gameObject.SetActive(false);
+                GameObject.Find("QID" + QuestID + "OID" + ObjectiveID).GetComponent<ObjectiveController>().TypeGoToZoneIsComplete = true;
+
+                Debug.Log(QuestID);
+                Debug.Log(ObjectiveID);
+
+                Destroy(gameObject);
+
+                Debug.Log(this.GetComponent<ObjectiveController>().TypeGoToZoneIsComplete);
             }
         }
     }

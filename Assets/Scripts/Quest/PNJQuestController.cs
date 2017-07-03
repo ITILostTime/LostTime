@@ -146,6 +146,7 @@ public class PNJQuestController : MonoBehaviour
                                 GenerateObjectiveItem(QuestTest, i, tmpIQuestObjective.QuestID, tmpIQuestObjective.ObjectiveID);
                                 break;
                             case "GoToZone":
+                                GameObject OGTZ = new GameObject();
                                 tmpIQuestObjective = new ObjectiveController(
                                 QuestTest["Quest" + i][0]["Objectives"][count]["QuestID"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"],
                                 QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveName"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveDescription"],
@@ -153,7 +154,25 @@ public class PNJQuestController : MonoBehaviour
                                 QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"], QuestTest["Quest" + i][0]["Objectives"][count]["PositionX"],
                                 QuestTest["Quest" + i][0]["Objectives"][count]["PositionY"], QuestTest["Quest" + i][0]["Objectives"][count]["PositionZ"]);
                                 questObjectives.Add(tmpIQuestObjective);
-                                GenerateZone(i);
+                                OGTZ.AddComponent<ObjectiveController>();
+                                OGTZ.GetComponent<ObjectiveController>().name = "QID" + QuestTest["Quest" + i][0]["Objectives"][count]["QuestID"].AsInt + "OID" + QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"].AsInt;
+                                OGTZ.GetComponent<ObjectiveController>().QuestID = tmpIQuestObjective.QuestID;
+                                OGTZ.GetComponent<ObjectiveController>().ObjectiveID = tmpIQuestObjective.ObjectiveID;
+                                OGTZ.GetComponent<ObjectiveController>().ObjectiveDescription = tmpIQuestObjective.ObjectiveDescription;
+                                OGTZ.GetComponent<ObjectiveController>().ObjectiveIsComplete = tmpIQuestObjective.ObjectiveIsComplete;
+                                OGTZ.GetComponent<ObjectiveController>().ObjectiveContext = tmpIQuestObjective.ObjectiveContext;
+                                OGTZ.GetComponent<ObjectiveController>().ObjectiveType = tmpIQuestObjective.ObjectiveType;
+                                OGTZ.GetComponent<ObjectiveController>().TypeGoToZoneIsComplete = tmpIQuestObjective.TypeGoToZoneIsComplete;
+
+                                Debug.Log(tmpIQuestObjective.QuestID);
+                                Debug.Log(tmpIQuestObjective.ObjectiveID);
+                                Debug.Log(tmpIQuestObjective.ObjectiveDescription);
+                                Debug.Log(tmpIQuestObjective.ObjectiveIsComplete);
+                                Debug.Log(tmpIQuestObjective.ObjectiveContext);
+                                Debug.Log(tmpIQuestObjective.ObjectiveType);
+                                Debug.Log(tmpIQuestObjective.TypeGoToZoneIsComplete);
+
+                                GenerateZone(QuestTest, i, tmpIQuestObjective.QuestID, tmpIQuestObjective.ObjectiveID);
                                 break;
                             case "TalkToPNJ":
                                 AttributeObjectiveToAPNJ(i);
@@ -427,7 +446,7 @@ public class PNJQuestController : MonoBehaviour
     /// Generates the zone.
     /// </summary>
     /// <param name="id">The identifier.</param>
-    private void GenerateZone(float id)
+    private void GenerateZone(JSONNode json, float id, int questID, int objectiveID)
     {
         // Peut etre l'ecrire un peu differemment 
         GameObject gameobject = new GameObject("TypeGoToZone");
@@ -437,10 +456,10 @@ public class PNJQuestController : MonoBehaviour
             QuestTest["Quest" + id][0]["Objectives"][0]["PositionZ"].AsFloat);
         gameobject.AddComponent<BoxCollider>();
         gameobject.AddComponent<Rigidbody>();
-        gameobject.AddComponent<MeshCollider>();
         gameobject.AddComponent<MeshFilter>();
         gameobject.AddComponent<MeshRenderer>();
         gameobject.AddComponent<TypeGoToZoneBehavior>();
-        gameobject.GetComponent<TypeGoToZoneBehavior>().TypeGoToZoneIsComplete = true;
+        gameObject.GetComponent<TypeGoToZoneBehavior>().QuestID = questID;
+        gameObject.GetComponent<TypeGoToZoneBehavior>().ObjectiveID = objectiveID;
     }
 }

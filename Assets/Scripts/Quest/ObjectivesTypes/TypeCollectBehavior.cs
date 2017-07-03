@@ -28,14 +28,10 @@ namespace Assets.Scripts.Quest.ObjectivesTypes
             {
                 gameObject.SetActive(false);
 
-                //GameObject.Find("QID" + QuestID + "OID" + ObjectiveID).GetComponent<ObjectiveController>().Amount++;
-                //GameObject.Find("QID" + QuestID + "OID" + ObjectiveID).GetComponent<ObjectiveController>().CollectIsComplete();
+                GameObject.Find("QID" + QuestID + "OID" + ObjectiveID).GetComponent<ObjectiveController>().Amount++;
+                GameObject.Find("QID" + QuestID + "OID" + ObjectiveID).GetComponent<ObjectiveController>().CollectIsComplete();
 
                 Destroy(gameObject);
-
-                //Debug.Log(GameObject.Find("QID" + QuestID + "OID" + ObjectiveID).GetComponent<ObjectiveController>().Amount);
-                //Debug.Log(GameObject.Find("QID" + QuestID + "OID" + ObjectiveID).GetComponent<ObjectiveController>().GoalAmount);
-                //Debug.Log(GameObject.Find("QID" + QuestID + "OID" + ObjectiveID).GetComponent<ObjectiveController>().ObjectiveIsComplete);
             }
         }
     }
