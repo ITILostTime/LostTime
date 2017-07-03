@@ -398,7 +398,7 @@ public class PNJQuestController : MonoBehaviour
             gameobject.AddComponent<Rigidbody>();
             gameobject.AddComponent<MeshFilter>();
             gameobject.AddComponent<MeshRenderer>();
-            gameobject.AddComponent<TypeCollectBehaviour>();
+            gameobject.AddComponent<TypeCollectBehavior>();
         }
     }
 
@@ -424,7 +424,7 @@ public class PNJQuestController : MonoBehaviour
         gameobject.AddComponent<MeshCollider>();
         gameobject.AddComponent<MeshFilter>();
         gameobject.AddComponent<MeshRenderer>();
-        gameobject.AddComponent<TypeGoToZone>();
-        gameobject.GetComponent<TypeGoToZone>().TypeGoToZoneIsComplete = true;
+        gameobject.AddComponent<TypeGoToZoneBehavior>();
+        gameobject.GetComponent<TypeGoToZoneBehavior>().TypeGoToZoneIsComplete = true;
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Quest.ObjectivesTypes
 {
-    class TypeCollectBehaviour : MonoBehaviour
+    class TypeCollectBehavior : MonoBehaviour
     {
         private void OnCollisionEnter(Collision collision)
         {

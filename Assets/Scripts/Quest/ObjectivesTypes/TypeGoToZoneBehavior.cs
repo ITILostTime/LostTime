@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Quest.ObjectivesTypes
 {
-    public class TypeGoToZone : MonoBehaviour
+    public class TypeGoToZoneBehavior : MonoBehaviour
     {
         private bool _typeGoToZoneIsComplete;
 
@@ -28,8 +28,8 @@ namespace Assets.Scripts.Quest.ObjectivesTypes
             {
                 gameObject.SetActive(false);
 
-                this.GetComponent<TypeGoToZone>().TypeGoToZoneIsComplete = true;
-                Debug.Log(this.GetComponent<TypeGoToZone>().TypeGoToZoneIsComplete);
+                this.GetComponent<TypeGoToZoneBehavior>().TypeGoToZoneIsComplete = true;
+                Debug.Log(this.GetComponent<TypeGoToZoneBehavior>().TypeGoToZoneIsComplete);
             }
         }
     }
