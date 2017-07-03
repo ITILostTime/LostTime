@@ -114,43 +114,61 @@ public class PNJQuestController : MonoBehaviour
                 {
                     if (j == QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"])
                     {
-                        tmpIQuestObjective = new ObjectiveController(
-                            QuestTest["Quest" + i][0]["Objectives"][count]["QuestID"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"],
-                            QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveName"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveDescription"],
-                            QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveIsComplete"], QuestTest["Quest" + i][0]["Objectives"][count]["QuestContext"],
-                            QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"]);
+
 
                         switch (QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"].Value)
                         {
                             case "Collecte":
+                                GameObject OC = new GameObject();
                                 tmpIQuestObjective = new ObjectiveController(
                                 QuestTest["Quest" + i][0]["Objectives"][count]["QuestID"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"],
                                 QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveName"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveDescription"],
                                 QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveIsComplete"], QuestTest["Quest" + i][0]["Objectives"][count]["QuestContext"],
                                 QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"], QuestTest["Quest" + i][0]["Objectives"][count]["ItemQuantity"]);
-                                GenerateObjectiveItem(QuestTest, i);
+                                questObjectives.Add(tmpIQuestObjective);
+                                OC.AddComponent<ObjectiveController>();
+                                OC.GetComponent<ObjectiveController>().name = "QID" + QuestTest["Quest" + i][0]["Objectives"][count]["QuestID"].AsInt + "OID" + QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"].AsInt;
+                                OC.GetComponent<ObjectiveController>().QuestID = tmpIQuestObjective.QuestID;
+                                OC.GetComponent<ObjectiveController>().ObjectiveID = tmpIQuestObjective.ObjectiveID;
+                                OC.GetComponent<ObjectiveController>().ObjectiveDescription = tmpIQuestObjective.ObjectiveDescription;
+                                OC.GetComponent<ObjectiveController>().ObjectiveIsComplete = tmpIQuestObjective.ObjectiveIsComplete;
+                                OC.GetComponent<ObjectiveController>().ObjectiveContext = tmpIQuestObjective.ObjectiveContext;
+                                OC.GetComponent<ObjectiveController>().ObjectiveType = tmpIQuestObjective.ObjectiveType;
+                                OC.GetComponent<ObjectiveController>().GoalAmount = tmpIQuestObjective.GoalAmount;
+
+                                Debug.Log(tmpIQuestObjective.QuestID);
+                                Debug.Log(tmpIQuestObjective.ObjectiveID);
+                                Debug.Log(tmpIQuestObjective.ObjectiveDescription);
+                                Debug.Log(tmpIQuestObjective.ObjectiveIsComplete);
+                                Debug.Log(tmpIQuestObjective.ObjectiveContext);
+                                Debug.Log(tmpIQuestObjective.ObjectiveType);
+                                Debug.Log(tmpIQuestObjective.GoalAmount);
+                                GenerateObjectiveItem(QuestTest, i, tmpIQuestObjective.QuestID, tmpIQuestObjective.ObjectiveID);
                                 break;
                             case "GoToZone":
                                 tmpIQuestObjective = new ObjectiveController(
                                 QuestTest["Quest" + i][0]["Objectives"][count]["QuestID"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"],
                                 QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveName"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveDescription"],
                                 QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveIsComplete"], QuestTest["Quest" + i][0]["Objectives"][count]["QuestContext"],
-                                QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"], QuestTest["Quest" + i][0]["Objectives"][count]["PositionX"], 
+                                QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"], QuestTest["Quest" + i][0]["Objectives"][count]["PositionX"],
                                 QuestTest["Quest" + i][0]["Objectives"][count]["PositionY"], QuestTest["Quest" + i][0]["Objectives"][count]["PositionZ"]);
+                                questObjectives.Add(tmpIQuestObjective);
                                 GenerateZone(i);
                                 break;
                             case "TalkToPNJ":
                                 AttributeObjectiveToAPNJ(i);
                                 break;
                             default:
+                                tmpIQuestObjective = new ObjectiveController(
+                                QuestTest["Quest" + i][0]["Objectives"][count]["QuestID"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"],
+                                QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveName"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveDescription"],
+                                QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveIsComplete"], QuestTest["Quest" + i][0]["Objectives"][count]["QuestContext"],
+                                QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"]);
+                                questObjectives.Add(tmpIQuestObjective);
                                 break;
                         }
 
-                        questObjectives.Add(tmpIQuestObjective);
                         count++;
-
-
-
                     }
                 }
                 questController = new QuestController(QuestTest["Quest" + i][0]["QuestPNJ"], QuestTest["Quest" + i][0]["QuestID"].AsFloat,
@@ -381,12 +399,8 @@ public class PNJQuestController : MonoBehaviour
     /// Generates the objective item.
     /// </summary>
     /// <param name="json">The json.</param>
-    private void GenerateObjectiveItem(JSONNode json, float id)
+    private void GenerateObjectiveItem(JSONNode json, float id, int questID, int objectiveID)
     {
-        GameObject typeCollect = new GameObject("TypeCollectController");
-        typeCollect.AddComponent<TypeCollect>();
-        typeCollect.GetComponent<TypeCollect>().GoalAmount = QuestTest["Quest" + id][0]["Objectives"][0]["ItemQuantity"].AsInt;
-
         for (int i = 0; i < QuestTest["Quest" + id][0]["Objectives"][0]["ItemQuantity"].AsInt; i++)
         {
             GameObject gameobject = new GameObject(QuestTest["Quest" + id][0]["Objectives"][0]["ObjectiveItems"][i]["ItemName"].Value);
@@ -399,6 +413,8 @@ public class PNJQuestController : MonoBehaviour
             gameobject.AddComponent<MeshFilter>();
             gameobject.AddComponent<MeshRenderer>();
             gameobject.AddComponent<TypeCollectBehavior>();
+            gameobject.GetComponent<TypeCollectBehavior>().QuestID = questID;
+            gameobject.GetComponent<TypeCollectBehavior>().ObjectiveID = objectiveID;
         }
     }
 

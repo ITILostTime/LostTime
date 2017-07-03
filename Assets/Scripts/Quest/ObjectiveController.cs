@@ -207,6 +207,14 @@ namespace Assets.Scripts.Quest
             get { return _amount; }
             set { _amount = value; }
         }
+
+        public void CollectIsComplete()
+        {
+            if(Amount == GoalAmount)
+            {
+                ObjectiveIsComplete = true;
+            }
+        }
         #endregion
 
         #region TypeGoToZone Properties
