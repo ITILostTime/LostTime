@@ -22,9 +22,9 @@ public class PNJQuestController : MonoBehaviour
     // supprimer. l'idée c'est qu'il récupère ses questID via JSON
     // _current questID  recupre les infos du JSON
 
-    private string currentPNJQuestContext;
+    public string CurrentPNJQuestContext { get; set; }
 
-    private float currentQuestID;
+    public float CurrentQuestID { get; set; }
     private int PNJCurrentQuestID;
     private int currentObjectiveID;
     private bool _hasQuest;
@@ -43,43 +43,8 @@ public class PNJQuestController : MonoBehaviour
     JSONNode QuestTest;
     JSONNode PNJ;
 
-    private bool isQuestAccepted;
-
-    /// <summary>
-    /// Gets or sets a value indicating whether this instance is quest accepted.
-    /// </summary>
-    /// <value>
-    ///   <c>true</c> if this instance is quest accepted; otherwise, <c>false</c>.
-    /// </value>
-    public bool IsQuestAccepted
-    {
-        get { return isQuestAccepted; }
-        set { isQuestAccepted = value; }
-    }
-
-    /// <summary>
-    /// Gets or sets the current quest identifier.
-    /// </summary>
-    /// <value>
-    /// The current quest identifier.
-    /// </value>
-    public float CurrentQuestID
-    {
-        get { return currentQuestID; }
-        set { currentQuestID = value; }
-    }
-
-    /// <summary>
-    /// Gets or sets the current PNJ quest context.
-    /// </summary>
-    /// <value>
-    /// The current PNJ quest context.
-    /// </value>
-    public string CurrentPNJQuestContext
-    {
-        get { return currentPNJQuestContext; }
-        set { currentPNJQuestContext = value; }
-    }
+    public bool isQuestAccepted { get; set; }
+    
 
     /// <summary>
     /// Starts this instance.
@@ -117,8 +82,6 @@ public class PNJQuestController : MonoBehaviour
                 {
                     if (j == QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"])
                     {
-
-
                         /*switch (QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"].Value)
                         {
                             case "Collecte":
@@ -190,14 +153,82 @@ public class PNJQuestController : MonoBehaviour
                                 break;
                         }*/
 
+                        // changer les quest context en objective context
+                        Debug.Log(QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"]);
+                        Debug.Log(QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"].Value);
+
+                        if (QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"] == "Collecte")
+                        {
+                            Debug.Log("Collect");
+                            GameObject OC = new GameObject();
+                            tmpIQuestObjective = new ObjectiveController(
+                            QuestTest["Quest" + i][0]["Objectives"][count]["QuestID"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"],
+                            QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveName"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveDescription"],
+                            QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveIsComplete"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveContext"],
+                            QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"], QuestTest["Quest" + i][0]["Objectives"][count]["ItemQuantity"]);
+                            questObjectives.Add(tmpIQuestObjective);
+                            OC.AddComponent<ObjectiveController>();
+                            OC.GetComponent<ObjectiveController>().name = "QID" + QuestTest["Quest" + i][count]["QuestID"].AsFloat + "OID" + QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"].AsInt;
+                            OC.GetComponent<ObjectiveController>().QuestID = tmpIQuestObjective.QuestID;
+                            OC.GetComponent<ObjectiveController>().ObjectiveID = tmpIQuestObjective.ObjectiveID;
+                            OC.GetComponent<ObjectiveController>().ObjectiveDescription = tmpIQuestObjective.ObjectiveDescription;
+                            OC.GetComponent<ObjectiveController>().ObjectiveIsComplete = tmpIQuestObjective.ObjectiveIsComplete;
+                            OC.GetComponent<ObjectiveController>().ObjectiveContext = tmpIQuestObjective.ObjectiveContext;
+                            OC.GetComponent<ObjectiveController>().ObjectiveType = tmpIQuestObjective.ObjectiveType;
+                            OC.GetComponent<ObjectiveController>().GoalAmount = tmpIQuestObjective.GoalAmount;
+
+                            GenerateObjectiveItem(QuestTest, i, tmpIQuestObjective.ObjectiveID);
+                            Debug.Log("generate");
+
+                        }
+                        else if(QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"] == "GoToZone")
+                        {
+                            Debug.Log("GoToZone");
+                            GameObject OGTZ = new GameObject();
+                            tmpIQuestObjective = new ObjectiveController(
+                            QuestTest["Quest" + i][0]["Objectives"][count]["QuestID"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"],
+                            QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveName"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveDescription"],
+                            QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveIsComplete"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveContext"],
+                            QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"], QuestTest["Quest" + i][0]["Objectives"][count]["PositionX"],
+                            QuestTest["Quest" + i][0]["Objectives"][count]["PositionY"], QuestTest["Quest" + i][0]["Objectives"][count]["PositionZ"]);
+                            questObjectives.Add(tmpIQuestObjective);
+                            OGTZ.AddComponent<ObjectiveController>();
+                            OGTZ.GetComponent<ObjectiveController>().name = "QID" + QuestTest["Quest" + i][count]["QuestID"].AsFloat + "OID" + QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"].AsInt;
+                            OGTZ.GetComponent<ObjectiveController>().QuestID = tmpIQuestObjective.QuestID;
+                            OGTZ.GetComponent<ObjectiveController>().ObjectiveID = tmpIQuestObjective.ObjectiveID;
+                            OGTZ.GetComponent<ObjectiveController>().ObjectiveDescription = tmpIQuestObjective.ObjectiveDescription;
+                            OGTZ.GetComponent<ObjectiveController>().ObjectiveIsComplete = tmpIQuestObjective.ObjectiveIsComplete;
+                            OGTZ.GetComponent<ObjectiveController>().ObjectiveContext = tmpIQuestObjective.ObjectiveContext;
+                            OGTZ.GetComponent<ObjectiveController>().ObjectiveType = tmpIQuestObjective.ObjectiveType;
+                            OGTZ.GetComponent<ObjectiveController>().TypeGoToZoneIsComplete = tmpIQuestObjective.TypeGoToZoneIsComplete;
+
+                            GenerateZone(QuestTest, i, tmpIQuestObjective.QuestID, tmpIQuestObjective.ObjectiveID);
+                        }else if(QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"] == "TalkToPNJ")
+                        {
+                            Debug.Log("TalkToPNJ");
+                            AttributeObjectiveToAPNJ(i);
+                        }else
+                        {
+                            Debug.Log("Default");
+                            tmpIQuestObjective = new ObjectiveController(
+                                QuestTest["Quest" + i][0]["Objectives"][count]["QuestID"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"],
+                                QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveName"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveDescription"],
+                                QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveIsComplete"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveContext"],
+                                QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"]);
+                            questObjectives.Add(tmpIQuestObjective);
+                        }
                         count++;
                     }
                 }
+
+                Debug.Log("QuestController");
                 questController = new QuestController(QuestTest["Quest" + i][0]["QuestPNJ"], QuestTest["Quest" + i][0]["QuestID"].AsFloat,
                 QuestTest["Quest" + i][0]["QuestName"], QuestTest["Quest" + i][0]["QuestContext"], QuestTest["Quest" + i][0]["QuestDescription"],
                 QuestTest["Quest" + i][0]["QuestIsComplete"].AsBool, QuestTest["Quest" + i][0]["ObjectiveID"].AsInt, QuestTest["Quest" + i][0]["ObjectiveMax"].AsInt, questObjectives);
 
-                currentPNJQuestContext = questController.QuestContext;
+                Debug.Log(questController.QuestContext);
+                CurrentPNJQuestContext = questController.QuestContext;
+                Debug.Log(CurrentPNJQuestContext);
                 _hasQuest = true;
             }
 
@@ -221,7 +252,7 @@ public class PNJQuestController : MonoBehaviour
     /// <param name="collision">The collision.</param>
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.name == "AstridPlayer") // si le PNJ a une quête 
+        if (collision.transform.name == "AstridPlayer")  
         {
             if (GameObject.Find("TalkButtonBackground") == false)
             {
@@ -236,7 +267,7 @@ public class PNJQuestController : MonoBehaviour
     /// <param name="collision">The collision.</param>
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.transform.name == "AstridPlayer") // si le PNJ a une quête 
+        if (collision.transform.name == "AstridPlayer")
         {
             if (GameObject.Find("TalkButtonBackground") == false)
             {
@@ -251,7 +282,7 @@ public class PNJQuestController : MonoBehaviour
     /// <param name="collision">The collision.</param>
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.transform.name == "AstridPlayer") // si le PNJ a une quête 
+        if (collision.transform.name == "AstridPlayer") 
         {
             if (GameObject.Find("TalkButtonBackground") == true)
             {
@@ -269,7 +300,7 @@ public class PNJQuestController : MonoBehaviour
     /// </summary>
     private void QuestSystemComportement()
     {
-        if (QuestTest["Quest" + currentQuestID][0]["QuestIsComplete"].AsBool == false)
+        if (QuestTest["Quest" + CurrentQuestID][0]["QuestIsComplete"].AsBool == false)
         {
             int objID = 0;
 
@@ -277,10 +308,10 @@ public class PNJQuestController : MonoBehaviour
             {
                 if (questController.ObjectiveID == objID)
                 {
-                    if (this.GetComponent<PNJQuestController>().IsQuestAccepted == true)
+                    if (this.GetComponent<PNJQuestController>().isQuestAccepted == true)
                     {
                         questController.ObjectiveID++;
-                        this.GetComponent<PNJQuestController>().IsQuestAccepted = false;
+                        this.GetComponent<PNJQuestController>().isQuestAccepted = false;
 
                         WriteAndDeleteJSONFile();
                     }
@@ -288,18 +319,20 @@ public class PNJQuestController : MonoBehaviour
                 else
                 {
                     int count = 0;
+                    // switch par type
                     foreach (ObjectiveController objC in questObjectives)
                     {
                         if (objC.ObjectiveID == questController.ObjectiveID)
                         {
                             _currentQuestObjectif = objC;
-                            currentPNJQuestContext = objC.ObjectiveContext;
-                            if (this.GetComponent<PNJQuestController>().IsQuestAccepted == true)
+                            Debug.Log(objC.ObjectiveContext);
+                            CurrentPNJQuestContext = objC.ObjectiveContext;
+                            if (this.GetComponent<PNJQuestController>().isQuestAccepted == true)
                             {
                                 _currentQuestObjectif.ObjectiveIsComplete = true;
-                                this.GetComponent<PNJQuestController>().IsQuestAccepted = false;
+                                this.GetComponent<PNJQuestController>().isQuestAccepted = false;
                                 questController.QuestDescription = "test";
-                                QuestTest["Quest" + currentQuestID][0]["Objectives"][count]["ObjectiveIsComplete"].AsBool = true;
+                                QuestTest["Quest" + CurrentQuestID][0]["Objectives"][count]["ObjectiveIsComplete"].AsBool = true;
                             }
                         }
                         count++;
@@ -308,7 +341,7 @@ public class PNJQuestController : MonoBehaviour
                     {
                         questController.QuestIsComplete = true;
                         _hasQuest = false;
-                        QuestTest["Quest" + currentQuestID][0]["QuestIsComplete"].AsBool = true;
+                        QuestTest["Quest" + CurrentQuestID][0]["QuestIsComplete"].AsBool = true;
                         WriteAndDeleteJSONFile();
                         CheckNextQuest();
                         GetQuestFromJson();
@@ -326,7 +359,7 @@ public class PNJQuestController : MonoBehaviour
         }
         else
         {
-            currentPNJQuestContext = "Bonjour Astrind. Quelle belle journée aujourd'hui, n'est-ce-pas ?";
+            CurrentPNJQuestContext = "Bonjour Astrind. Quelle belle journée aujourd'hui, n'est-ce-pas ?";
         }
 
     }
@@ -339,11 +372,11 @@ public class PNJQuestController : MonoBehaviour
         //Doesn't work correctly
         // stocke correctement l'information dans le JSON 
         // A la fin je devrai pouvoir lire le context d'un pnj que ce soit pour la quete ou pour les objectifs
-        if (QuestTest["Quest" + currentQuestID][0]["ObjectiveID"] != null)
+        if (QuestTest["Quest" + CurrentQuestID][0]["ObjectiveID"] != null)
         {
-            QuestTest["Quest" + currentQuestID][0]["ObjectiveID"].AsInt = questController.ObjectiveID;
+            QuestTest["Quest" + CurrentQuestID][0]["ObjectiveID"].AsInt = questController.ObjectiveID;
 
-            Debug.Log(QuestTest["Quest" + currentQuestID][0]["ObjectiveID"].AsInt);
+            Debug.Log(QuestTest["Quest" + CurrentQuestID][0]["ObjectiveID"].AsInt);
             Debug.Log(questController.ObjectiveID);
             Debug.Log(QuestTest);
             var s = QuestTest.ToString();
@@ -442,7 +475,7 @@ public class PNJQuestController : MonoBehaviour
 
     private void AttributeObjectiveToAPNJ(float id)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 
     /// <summary>

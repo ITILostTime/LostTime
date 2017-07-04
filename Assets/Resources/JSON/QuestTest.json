@@ -1,1 +1,83 @@
-{"QuestMax":2,"Quest1.1":[{"QuestPNJ":"Forgeron","QuestID":1.1,"QuestName":"Mon marteau !","QuestContext":"Bonjour Astrid, j'ai perdu un objet de tr�s grande valeur... Pouvez-vous m'aider ?","QuestDescription":"R�cup�rer le marteau enchant� du Forgeron. Sans celui-ci, le Forgeron ne peut plus r�parer les m�canismes endommag�s. Son marteau se trouve au milieu du jardin dans le quartier des engrenages.","QuestIsComplete":false,"ObjectiveID":1,"ObjectiveMax":2,"Objectives":[{"ObjectiveID":1,"ObjectiveType":"Collecte","ObjectiveName":"R�cup�rer le marteau enchant� du Forgeron","ObjectiveContext":"J'ai perdu mon unique marteau ! Il se trouve dans le jardin du quartier des engrenages!","ObjectiveDescription":"Aller r�cup�rer le marteau qui se trouve dans le jardin des engrenages","ObjectiveIsComplete":false,"ItemQuantity":1,"ObjectiveItems":[{"ItemName":"Marteau enchant� du Forgeron","PositionX":0,"PositionY":4,"PositionZ":5,"RotationX":0,"RotationY":0,"RotationZ":0}]},{"ObjectiveID":2,"ObjectiveType":"TalkToPNJ","ObjectiveName":"Retourner parler au Forgeron","ObjectiveContext":"Merci d'avoir r�cup�rer mon marteau ! Comme r�compense je vous offre un marteau ! Hey toi aventurier j'ai perdu mon unique marteau","ObjectiveDescription":"Vous redonnez le marteau perdu au Forgeron, celui-ci vous remercie avec beaucoup d'enthousiasme.","ObjectiveIsComplete":false}]}],"Quest1.2":[{"QuestPNJ":"Julien","QuestID":1.2,"QuestName":"Rendez-vous � la guilde des horlogers","QuestContext":"Astrid, vous voulez entrer dans l'ordre des horlogers ? Pr�sentez-vous devant la grande horloge de la ville","QuestDescription":"La guilde des horlogers est l'une des plus grande guilde de la ville. En tant qu'horlogere il est important pour vous de vous faire conna�tre aupr�s d'eux pour pouvoir continuer vos activit�s.","QuestIsComplete":false,"ObjectiveID":0,"ObjectiveMax":2,"Objectives":[{"ObjectiveID":1,"ObjectiveType":"GoToZone","ObjectiveName":"Aller � la grande horloge","ObjectiveContext":"Rendez-vous � la grande horloge.","ObjectiveDescription":"D�couvrez la place forte de la guilde des horlogers.","ObjectiveIsComplete":false},{"ObjectiveID":2,"ObjectiveType":"TalkToPNJ","ObjectiveName":"Retourner parler � Julien","ObjectiveContext":"Si vous avez besoin d'aide vous pouvez aller voir la guilde des horlogers.","ObjectiveDescription":"Vous avez visiter la guilde et discuter avec Julien, un des membres.","ObjectiveIsComplete":false}]}],"Quest1":[{"QuestID":0}],"Quest1.3":[{"QuestID":0}],"Quest1.4":[{"QuestID":0}],"Quest1.5":[{"QuestID":0}],"Quest1.6":[{"QuestID":0}],"Quest1.7":[{"QuestID":0}],"Quest1.8":[{"QuestID":0}],"Quest1.9":[{"QuestID":0}]}
+{
+  "QuestMax": 2,
+  "Quest1.1": [
+    {
+      "QuestPNJ": "Forgeron",
+      "QuestID": 1.1,
+      "QuestName": "Mon marteau !",
+      "QuestContext": "Bonjour Astrid, j'ai perdu un objet de tr�s grande valeur... Pouvez-vous m'aider ?",
+      "QuestDescription": "R�cup�rer le marteau enchant� du Forgeron. Sans celui-ci, le Forgeron ne peut plus r�parer les m�canismes endommag�s. Son marteau se trouve au milieu du jardin dans le quartier des engrenages.",
+      "QuestIsComplete": false,
+      "ObjectiveID": 0,
+      "ObjectiveMax": 2,
+      "Objectives": [
+        {
+          "ObjectiveID": 1,
+          "ObjectiveType": "Collecte",
+          "ObjectiveName": "R�cup�rer le marteau enchant� du Forgeron",
+          "ObjectiveContext": "J'ai perdu mon unique marteau ! Il se trouve dans le jardin du quartier des engrenages!",
+          "ObjectiveDescription": "Aller r�cup�rer le marteau qui se trouve dans le jardin des engrenages",
+          "ObjectiveIsComplete": false,
+          "ItemQuantity": 1,
+          "ObjectiveItems": [
+            {
+              "ItemName": "Marteau enchant� du Forgeron",
+              "PositionX": 0,
+              "PositionY": 4,
+              "PositionZ": 5,
+              "RotationX": 0,
+              "RotationY": 0,
+              "RotationZ": 0
+            }
+          ]
+        },
+        {
+          "ObjectiveID": 2,
+          "ObjectiveType": "TalkToPNJ",
+          "ObjectiveName": "Retourner parler au Forgeron",
+          "ObjectiveContext": "Merci d'avoir r�cup�rer mon marteau ! Comme r�compense je vous offre un marteau ! Hey toi aventurier j'ai perdu mon unique marteau",
+          "ObjectiveDescription": "Vous redonnez le marteau perdu au Forgeron, celui-ci vous remercie avec beaucoup d'enthousiasme.",
+          "ObjectiveIsComplete": false
+        }
+      ]
+    }
+  ],
+  "Quest1.2": [
+    {
+      "QuestPNJ": "Julien",
+      "QuestID": 1.2,
+      "QuestName": "Rendez-vous � la guilde des horlogers",
+      "QuestContext": "Astrid, vous voulez entrer dans l'ordre des horlogers ? Pr�sentez-vous devant la grande horloge de la ville",
+      "QuestDescription": "La guilde des horlogers est l'une des plus grande guilde de la ville. En tant qu'horlogere il est important pour vous de vous faire conna�tre aupr�s d'eux pour pouvoir continuer vos activit�s.",
+      "QuestIsComplete": false,
+      "ObjectiveID": 0,
+      "ObjectiveMax": 2,
+      "Objectives": [
+        {
+          "ObjectiveID": 1,
+          "ObjectiveType": "GoToZone",
+          "ObjectiveName": "Aller à la grande horloge",
+          "ObjectiveContext": "Rendez-vous à la grande horloge.",
+          "ObjectiveDescription": "D�couvrez la place forte de la guilde des horlogers.",
+          "ObjectiveIsComplete": false
+        },
+        {
+          "ObjectiveID": 2,
+          "ObjectiveType": "TalkToPNJ",
+          "ObjectiveName": "Retourner parler � Julien",
+          "ObjectiveContext": "Si vous avez besoin d'aide vous pouvez aller voir la guilde des horlogers.",
+          "ObjectiveDescription": "Vous avez visiter la guilde et discuter avec Julien, un des membres.",
+          "ObjectiveIsComplete": false
+        }
+      ]
+    }
+  ],
+  "Quest1": [ { "QuestID": 0 } ],
+  "Quest1.3": [ { "QuestID": 0 } ],
+  "Quest1.4": [ { "QuestID": 0 } ],
+  "Quest1.5": [ { "QuestID": 0 } ],
+  "Quest1.6": [ { "QuestID": 0 } ],
+  "Quest1.7": [ { "QuestID": 0 } ],
+  "Quest1.8": [ { "QuestID": 0 } ],
+  "Quest1.9": [ { "QuestID": 0 } ]
+}

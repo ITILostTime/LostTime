@@ -66,7 +66,7 @@ public class UIDialogueSystem : MonoBehaviour
     /// </summary>
     private void ClickAccepted()
     {
-        GameObject.Find(this.transform.name).GetComponent<PNJQuestController>().IsQuestAccepted = true;
+        GameObject.Find(this.transform.name).GetComponent<PNJQuestController>().isQuestAccepted = true;
         Destroy(GameObject.Find("PanelPNJContextBackground"));
     }
 
@@ -123,6 +123,9 @@ public class UIDialogueSystem : MonoBehaviour
             panelPNJContext.AddComponent<Text>();
             panelPNJContext.GetComponent<Text>().font = GameObject.Find("MenuCanvas").GetComponent<TextMonitoring>().GetArialTextFont;
             panelPNJContext.GetComponent<Text>().color = new Color(0, 0, 0, 1f);
+
+            Debug.Log(GameObject.Find(pnjName).GetComponent<PNJQuestController>().CurrentPNJQuestContext);
+
             panelPNJContext.GetComponent<Text>().text = GameObject.Find(pnjName).GetComponent<PNJQuestController>().CurrentPNJQuestContext;
             panelPNJContext.GetComponent<Text>().alignment = TextAnchor.MiddleLeft;
             panelPNJContext.GetComponent<Text>().fontStyle = FontStyle.Bold;
