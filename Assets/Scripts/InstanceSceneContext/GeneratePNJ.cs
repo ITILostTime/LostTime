@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 using System.IO;
 using SimpleJSON;
@@ -70,6 +71,7 @@ public class GeneratePNJ : MonoBehaviour {
         gameobject.AddComponent<MeshRenderer>();
         gameobject.GetComponent<CapsuleCollider>().radius = 2;
         gameobject.GetComponent<CapsuleCollider>().height = 4;
+        gameobject.GetComponent<CapsuleCollider>().isTrigger = true;
         gameobject.transform.position = new Vector3(positionX, positionY, positionZ);
         GameObject.Find(name + "body").GetComponent<SkinnedMeshRenderer>().material = SetSkin(job);
         gameobject.AddComponent<Rigidbody>();
@@ -78,7 +80,10 @@ public class GeneratePNJ : MonoBehaviour {
         gameobject.GetComponent<PNJQuestController>().CurrentQuestID = questID;
         gameobject.AddComponent<CharaAnimCtrl>();
         gameobject.GetComponent<CharaAnimCtrl>().walkmode = WalkMode.walking;
-        //gameobject.AddComponent<PNJPathfinding>();
+        gameobject.AddComponent<NavMeshAgent>();
+        gameobject.GetComponent<NavMeshAgent>().radius = 1;
+        gameobject.GetComponent<NavMeshAgent>().height = 3.5f;
+        gameobject.GetComponent<NavMeshAgent>().speed = 1.5f;
     }
 
     /// <summary>

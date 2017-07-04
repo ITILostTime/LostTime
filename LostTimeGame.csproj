@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>5.5.3f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -115,6 +113,8 @@
     <Compile Include="Assets\Scripts\LoadNewSceneScript\CreateLoadSceneWayPoints.cs" />
     <Compile Include="Assets\Scripts\LoadNewSceneScript\NewSceneWayPointsController.cs" />
     <Compile Include="Assets\Scripts\LoadingScreen\LoadingScreenController.cs" />
+    <Compile Include="Assets\Scripts\PNJQuest\DialogueBubbleController.cs" />
+    <Compile Include="Assets\Scripts\PNJQuest\DialogueController.cs" />
     <Compile Include="Assets\Scripts\PNJQuest\PNJ.cs" />
     <Compile Include="Assets\Scripts\PNJQuest\PNJPathfinding.cs" />
     <Compile Include="Assets\Scripts\Pathfinding\Pathfinder.cs" />

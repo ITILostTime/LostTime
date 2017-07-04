@@ -22,6 +22,9 @@ public class PNJQuestController : MonoBehaviour
     // supprimer. l'idée c'est qu'il récupère ses questID via JSON
     // _current questID  recupre les infos du JSON
 
+    private bool _istrigger;
+    GameObject _collider;
+
     public string CurrentPNJQuestContext { get; set; }
 
     public float CurrentQuestID { get; set; }
@@ -51,10 +54,14 @@ public class PNJQuestController : MonoBehaviour
     /// </summary>
     void Start()
     {
-        GameObject.Find(this.transform.name).AddComponent<UIDialogueSystem>();
-
+        GameObject.Find(this.transform.name).AddComponent<DialogueController>();
+        _collider = GameObject.Find("AstridPlayer");
         CheckNextQuest();
         GetQuestFromJson();
+    }
+    private void FixedUpdate()
+    {
+        MyTriggerByGE();
     }
 
     /// <summary>
@@ -242,48 +249,28 @@ public class PNJQuestController : MonoBehaviour
     {
         if (_hasQuest == true)
         {
+            // afficher image (poit d'exclamation)
+            // faire comme le dialogueBubble
             QuestSystemComportement();
         }
-    }
-
-    /// <summary>
-    /// Called when [trigger enter].
-    /// </summary>
-    /// <param name="other">The other.</param>
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.transform.name == "AstridPlayer")
+        else
         {
-            if (GameObject.Find("TalkButtonBackground") == false)
-            {
-                this.gameObject.GetComponent<UIDialogueSystem>().InteractWithPNJ(this.transform.name);
-            }
+            // détruire image
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void MyTriggerByGE()
     {
-        if (other.transform.name == "AstridPlayer")
+        if ((_collider.transform.position.x > this.transform.position.x - 2
+                && _collider.transform.position.x < this.transform.position.x + 2)
+                && _collider.transform.position.z > this.transform.position.z - 2
+                && _collider.transform.position.z < this.transform.position.z + 2)
         {
-            if (GameObject.Find("TalkButtonBackground") == false)
-            {
-                this.gameObject.GetComponent<UIDialogueSystem>().InteractWithPNJ(this.transform.name);
-            }
+            this.GetComponent<DialogueController>().StartDialogueWithPNJ();
         }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.transform.name == "AstridPlayer")
+        else
         {
-            if (GameObject.Find("TalkButtonBackground") == true)
-            {
-                Destroy(GameObject.Find("TalkButtonBackground"));
-            }
-            if (GameObject.Find("PanelPNJContextBackground") == true)
-            {
-                Destroy(GameObject.Find("PanelPNJContextBackground"));
-            }
+            this.GetComponent<DialogueController>().DestroyDialoguePanel();
         }
     }
 

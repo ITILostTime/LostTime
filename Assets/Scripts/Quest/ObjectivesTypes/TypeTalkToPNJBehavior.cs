@@ -46,7 +46,7 @@ namespace Assets.Scripts.Quest.ObjectivesTypes
             Debug.Log("Salut je suis dans le Start");
 
             // Add au PNJ un script => ce script va appeler l'ui dialogue avec le text passé en parametre 
-            pnj.AddComponent<UIDialogueSystem>();
+            
 
         }
 
@@ -54,7 +54,7 @@ namespace Assets.Scripts.Quest.ObjectivesTypes
         {
             if (other.transform.name == "AstridPlayer")
             {
-                pnj.GetComponent<UIDialogueSystem>().InteractWithPNJ(pnj.transform.name);
+                
             }
         }
 

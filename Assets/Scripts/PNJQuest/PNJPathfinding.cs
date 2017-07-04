@@ -11,7 +11,6 @@ public class PNJPathfinding : MonoBehaviour
 
     private void Start()
     {
-        this.gameObject.AddComponent<NavMeshAgent>();
         this.gameObject.GetComponent<NavMeshAgent>().radius = 1;
         this.gameObject.GetComponent<NavMeshAgent>().height = 3.5f;
         this.gameObject.GetComponent<NavMeshAgent>().speed = 1.5f;
