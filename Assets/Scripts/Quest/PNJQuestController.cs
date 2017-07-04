@@ -30,8 +30,11 @@ public class PNJQuestController : MonoBehaviour
     private bool _hasQuest;
     private string pnjName;
 
-    private string tmpFilePath = "./Resources/JSON/tmpFile";
-    private string sourcePath = "./Resources/JSON/QuestTest";
+    //private string tmpFilePath = "./Resources/JSON/tmpFile";
+    //private string sourcePath = "./Resources/JSON/QuestTest";
+
+    private string tmpFilePath = "./Assets/Resources/JSON/tmpFile";
+    private string sourcePath = "./Assets/Resources/JSON/QuestTest.json";
 
     QuestController questController;
     List<ObjectiveController> questObjectives;
@@ -116,7 +119,7 @@ public class PNJQuestController : MonoBehaviour
                     {
 
 
-                        switch (QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"].Value)
+                        /*switch (QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"].Value)
                         {
                             case "Collecte":
                                 GameObject OC = new GameObject();
@@ -185,7 +188,7 @@ public class PNJQuestController : MonoBehaviour
                                 QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"]);
                                 questObjectives.Add(tmpIQuestObjective);
                                 break;
-                        }
+                        }*/
 
                         count++;
                     }

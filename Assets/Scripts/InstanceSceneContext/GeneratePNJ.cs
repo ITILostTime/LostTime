@@ -78,7 +78,7 @@ public class GeneratePNJ : MonoBehaviour {
         gameobject.GetComponent<PNJQuestController>().CurrentQuestID = questID;
         gameobject.AddComponent<CharaAnimCtrl>();
         gameobject.GetComponent<CharaAnimCtrl>().walkmode = WalkMode.walking;
-        gameobject.AddComponent<PNJPathfinding>();
+        //gameobject.AddComponent<PNJPathfinding>();
     }
 
     /// <summary>
