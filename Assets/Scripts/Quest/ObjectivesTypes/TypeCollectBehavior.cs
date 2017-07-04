@@ -24,7 +24,7 @@ namespace Assets.Scripts.Quest.ObjectivesTypes
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.transform.name == "AstridPlayer") // si le PNJ a une quête 
+            if (collision.transform.name == "AstridPlayer") 
             {
                 gameObject.SetActive(false);
 

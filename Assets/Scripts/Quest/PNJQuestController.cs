@@ -206,7 +206,7 @@ public class PNJQuestController : MonoBehaviour
                         }else if(QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"] == "TalkToPNJ")
                         {
                             Debug.Log("TalkToPNJ");
-                            AttributeObjectiveToAPNJ(i);
+                            //AttributeObjectiveToAPNJ(QuestTest, i, tmpIQuestObjective.ObjectiveID);
                         }else
                         {
                             Debug.Log("Default");
@@ -247,12 +247,12 @@ public class PNJQuestController : MonoBehaviour
     }
 
     /// <summary>
-    /// Called when [collision enter].
+    /// Called when [trigger enter].
     /// </summary>
-    /// <param name="collision">The collision.</param>
-    private void OnCollisionEnter(Collision collision)
+    /// <param name="other">The other.</param>
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.transform.name == "AstridPlayer")  
+        if (other.transform.name == "AstridPlayer")
         {
             if (GameObject.Find("TalkButtonBackground") == false)
             {
@@ -261,13 +261,9 @@ public class PNJQuestController : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Called when [collision stay].
-    /// </summary>
-    /// <param name="collision">The collision.</param>
-    private void OnCollisionStay(Collision collision)
+    private void OnTriggerStay(Collider other)
     {
-        if (collision.transform.name == "AstridPlayer")
+        if (other.transform.name == "AstridPlayer")
         {
             if (GameObject.Find("TalkButtonBackground") == false)
             {
@@ -276,13 +272,9 @@ public class PNJQuestController : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Called when [collision exit].
-    /// </summary>
-    /// <param name="collision">The collision.</param>
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
-        if (collision.transform.name == "AstridPlayer") 
+        if (other.transform.name == "AstridPlayer")
         {
             if (GameObject.Find("TalkButtonBackground") == true)
             {
@@ -473,9 +465,13 @@ public class PNJQuestController : MonoBehaviour
         }
     }
 
-    private void AttributeObjectiveToAPNJ(float id)
+    private void AttributeObjectiveToAPNJ(JSONNode json, float id, int objectiveID)
     {
-        //throw new NotImplementedException();
+        GameObject talkToPNJ = new GameObject("TalkToPNJ");
+        talkToPNJ.transform.position = new Vector3(
+            QuestTest["Quest" + id][0]["Objectives"][0]["PositionX"].AsFloat,
+            QuestTest["Quest" + id][0]["Objectives"][0]["PositionY"].AsFloat,
+            QuestTest["Quest" + id][0]["Objectives"][0]["PositionZ"].AsFloat);
     }
 
     /// <summary>

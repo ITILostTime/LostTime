@@ -82,6 +82,35 @@ public class GeneratePNJ : MonoBehaviour {
     }
 
     /// <summary>
+    /// Generates the PNJ gear district.
+    /// </summary>
+    /// <param name="name">The name.</param>
+    /// <param name="positionX">The position x.</param>
+    /// <param name="positionY">The position y.</param>
+    /// <param name="positionZ">The position z.</param>
+    /// <param name="rotationX">The rotation x.</param>
+    /// <param name="rotationY">The rotation y.</param>
+    /// <param name="rotationZ">The rotation z.</param>
+    /// <param name="job">The job.</param>
+    public void GeneratePNJGearDistrict(string name, float positionX, float positionY, float positionZ, 
+        float rotationX, float rotationY, float rotationZ, string job)
+    {
+        GameObject generatePNJ = (GameObject)Instantiate(Resources.Load("CharacterLowPo/PNJ"));
+        GameObject.Find("PNJ(Clone)").transform.name = name;
+        generatePNJ.transform.GetChild(0).transform.name = name + "body";
+        generatePNJ.AddComponent<MeshRenderer>();
+        generatePNJ.GetComponent<CapsuleCollider>().radius = 2;
+        generatePNJ.GetComponent<CapsuleCollider>().height = 4;
+        generatePNJ.transform.position = new Vector3(positionX, positionY, positionZ);
+        GameObject.Find(name + "body").GetComponent<SkinnedMeshRenderer>().material = SetSkin(job);
+        generatePNJ.AddComponent<Rigidbody>();
+        generatePNJ.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
+        generatePNJ.AddComponent<CharaAnimCtrl>();
+        generatePNJ.GetComponent<CharaAnimCtrl>().walkmode = WalkMode.walking;
+        //generatePNJ.AddComponent<PNJPathfinding>();
+    }
+
+    /// <summary>
     /// Sets the skin.
     /// </summary>
     /// <param name="job">The job.</param>

@@ -266,5 +266,9 @@ namespace Assets.Scripts.Quest
             set { _typeGoToZoneIsComplete = value; }
         }
         #endregion
+
+        #region TypeTalkToPNJ
+
+        #endregion
     }
 }

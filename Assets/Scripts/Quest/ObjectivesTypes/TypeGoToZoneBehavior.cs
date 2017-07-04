@@ -23,10 +23,10 @@ namespace Assets.Scripts.Quest.ObjectivesTypes
             set { _objectiveID = value; }
         }
 
-        private void OnCollisionEnter(Collision collision)
+        private void OnTriggerEnter(Collider collision)
         {
             if (collision.transform.name == "AstridPlayer") // si le PNJ a une quête 
-            { 
+            {
                 GameObject.Find("QID" + QuestID + "OID" + ObjectiveID).GetComponent<ObjectiveController>().TypeGoToZoneIsComplete = true;
 
                 Debug.Log(QuestID);
