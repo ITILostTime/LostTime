@@ -21,13 +21,13 @@
           "ItemQuantity": 1,
           "ObjectiveItems": [
             {
-              "ItemName": "Marteau enchant� du Forgeron",
-              "PositionX": 0,
-              "PositionY": 4,
-              "PositionZ": 5,
-              "RotationX": 0,
+              "ItemName": "Hammer",
+              "PositionX": -9.259459,
+              "PositionY": 0.5276659,
+              "PositionZ": -49.82,
+              "RotationX": 90.00001,
               "RotationY": 0,
-              "RotationZ": 0
+              "RotationZ": 59.732
             }
           ]
         }
@@ -48,7 +48,7 @@
         {
           "ObjectiveID": 1,
           "ObjectiveType": "GoToZone",
-          "ObjectiveName": "Aller à la grande horloge",
+          "ObjectiveName": "ClockTower",
           "ObjectiveContext": "Rendez-vous à la grande horloge.",
           "ObjectiveDescription": "D�couvrez la place forte de la guilde des horlogers.",
           "ObjectiveIsComplete": false
@@ -70,12 +70,12 @@
         {
           "ObjectiveID": 1,
           "ObjectiveType": "GoToZone",
-          "ObjectiveName": "Aller à la grande horloge",
+          "ObjectiveName": "ClockTower",
           "ObjectiveContext": "Rendez-vous à la grande horloge.",
           "ObjectiveDescription": "D�couvrez la place forte de la guilde des horlogers.",
           "ObjectiveIsComplete": false
         }
       ]
     }
-  ],
+  ]
 }

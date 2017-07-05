@@ -27,6 +27,7 @@ namespace Assets.Scripts.Quest.ObjectivesTypes
         {
             if (collision.transform.name == "AstridPlayer") // si le PNJ a une quête 
             {
+                Debug.Log("questid : " + QuestID + "ObjectifID :" + ObjectiveID);
                 GameObject.Find("QID" + QuestID + "OID" + ObjectiveID).GetComponent<ObjectiveController>().TypeGoToZoneIsComplete = true;
 
                 Destroy(this.gameObject);
