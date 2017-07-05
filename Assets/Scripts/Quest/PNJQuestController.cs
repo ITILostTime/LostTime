@@ -130,12 +130,13 @@ public class PNJQuestController : MonoBehaviour
                             //Debug.Log("GoToZone");
                             GameObject OGTZ = new GameObject();
                             tmpIQuestObjective = new ObjectiveController(
-                            QuestTest["Quest" + i][0]["Objectives"][count]["QuestID"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"],
+                            QuestTest["Quest" + i][0]["QuestID"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"],
                             QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveName"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveDescription"],
                             QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveIsComplete"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveContext"],
                             QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"], QuestTest["Quest" + i][0]["Objectives"][count]["PositionX"],
                             QuestTest["Quest" + i][0]["Objectives"][count]["PositionY"], QuestTest["Quest" + i][0]["Objectives"][count]["PositionZ"]);
                             questObjectives.Add(tmpIQuestObjective);
+
                             OGTZ.AddComponent<ObjectiveController>();
                             OGTZ.GetComponent<ObjectiveController>().name = "QID" + QuestTest["Quest" + i][count]["QuestID"].AsFloat + "OID" + QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"].AsInt;
                             OGTZ.GetComponent<ObjectiveController>().QuestID = tmpIQuestObjective.QuestID;
@@ -147,7 +148,7 @@ public class PNJQuestController : MonoBehaviour
                             OGTZ.GetComponent<ObjectiveController>().TypeGoToZoneIsComplete = tmpIQuestObjective.TypeGoToZoneIsComplete;
 
                             questName = "QID" + QuestTest["Quest" + i][count]["QuestID"].AsFloat + "OID" + QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"].AsInt;
-                            GenerateZone(QuestTest, i, tmpIQuestObjective.QuestID, tmpIQuestObjective.ObjectiveID);
+                            GenerateZone(QuestTest, i, tmpIQuestObjective.ObjectiveID);
                         }else if(QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"] == "TalkToPNJ")
                         {
                             //Debug.Log("TalkToPNJ");
@@ -375,11 +376,11 @@ public class PNJQuestController : MonoBehaviour
     {
         string str = ReadJSON("JSON/PNJ");
         PNJFile = JSON.Parse(str);
-        Debug.Log(str);
+        //Debug.Log(str);
 
         string rd = ReadJSON("JSON/QuestTest");
         QuestTest = JSON.Parse(rd);
-        Debug.Log(rd);
+        //Debug.Log(rd);
 
         bool QuestFound = false;
 
@@ -390,7 +391,7 @@ public class PNJQuestController : MonoBehaviour
             if (this.transform.name == PNJFile["Scene"][0]["PNJ"][i]["PNJName"])
             {
                 tmpID = PNJFile["Scene"][0]["PNJ"][i]["PNJCurrentQuestID"];
-                Debug.Log(tmpID + "tmpID");
+                //Debug.Log(tmpID + "tmpID");
 
                 for(int x = tmpID; x < PNJFile["Scene"][0]["PNJ"][i]["PNJQuestIDMax"].AsInt; x++)
                 {
@@ -404,7 +405,7 @@ public class PNJQuestController : MonoBehaviour
             }
         }
 
-        Debug.Log(CurrentQuestID);
+        //Debug.Log(CurrentQuestID);
     }
 
     private bool CheckIfJSONQuestIsComplete(float questID)
@@ -466,7 +467,7 @@ public class PNJQuestController : MonoBehaviour
     /// Generates the zone.
     /// </summary>
     /// <param name="id">The identifier.</param>
-    private void GenerateZone(JSONNode json, float id, int questID, int objectiveID)
+    private void GenerateZone(JSONNode json, float id, int objectiveID)
     {
         // Peut etre l'ecrire un peu differemment 
         GameObject gameobject = new GameObject("TypeGoToZone");
@@ -475,11 +476,11 @@ public class PNJQuestController : MonoBehaviour
             QuestTest["Quest" + id][0]["Objectives"][0]["PositionY"].AsFloat,
             QuestTest["Quest" + id][0]["Objectives"][0]["PositionZ"].AsFloat);
         gameobject.AddComponent<BoxCollider>();
-        gameobject.AddComponent<Rigidbody>();
+        gameobject.GetComponent<BoxCollider>().isTrigger = true;
         gameobject.AddComponent<MeshFilter>();
         gameobject.AddComponent<MeshRenderer>();
         gameobject.AddComponent<TypeGoToZoneBehavior>();
-        gameobject.GetComponent<TypeGoToZoneBehavior>().QuestID = questID;
+        gameobject.GetComponent<TypeGoToZoneBehavior>().QuestID = id;
         gameobject.GetComponent<TypeGoToZoneBehavior>().ObjectiveID = objectiveID;
     }
 }

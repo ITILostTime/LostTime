@@ -10,7 +10,7 @@ namespace Assets.Scripts.Quest
 {
     public class ObjectiveController : MonoBehaviour, IQuestObjective
     {
-        private int _questID;
+        private float _questID;
         private int _objectiveID;
         private string _objectiveName;
         private string _objectiveDescription;
@@ -105,7 +105,7 @@ namespace Assets.Scripts.Quest
         /// <value>
         /// The quest identifier.
         /// </value>
-        public int QuestID
+        public float QuestID
         {
             get { return _questID; }
             set { _questID = value; }

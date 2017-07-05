@@ -8,10 +8,10 @@ namespace Assets.Scripts.Quest.ObjectivesTypes
 {
     public class TypeGoToZoneBehavior : MonoBehaviour
     {
-        int _questID;
+        float _questID;
         int _objectiveID;
 
-        public int QuestID
+        public float QuestID
         {
             get { return _questID; }
             set { _questID = value; }
@@ -29,12 +29,7 @@ namespace Assets.Scripts.Quest.ObjectivesTypes
             {
                 GameObject.Find("QID" + QuestID + "OID" + ObjectiveID).GetComponent<ObjectiveController>().TypeGoToZoneIsComplete = true;
 
-                Debug.Log(QuestID);
-                Debug.Log(ObjectiveID);
-
                 Destroy(this.gameObject);
-
-                Debug.Log(GameObject.Find("QID" + QuestID + "OID" + ObjectiveID).GetComponent<ObjectiveController>().TypeGoToZoneIsComplete);
             }
         }
     }

@@ -52,14 +52,6 @@
           "ObjectiveContext": "Rendez-vous à la grande horloge.",
           "ObjectiveDescription": "D�couvrez la place forte de la guilde des horlogers.",
           "ObjectiveIsComplete": false
-        },
-        {
-          "ObjectiveID": 2,
-          "ObjectiveType": "TalkToPNJ",
-          "ObjectiveName": "Retourner parler � Julien",
-          "ObjectiveContext": "Si vous avez besoin d'aide vous pouvez aller voir la guilde des horlogers.",
-          "ObjectiveDescription": "Vous avez visiter la guilde et discuter avec Julien, un des membres.",
-          "ObjectiveIsComplete": false
         }
       ]
     }
