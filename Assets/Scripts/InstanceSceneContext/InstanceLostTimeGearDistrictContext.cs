@@ -10,15 +10,6 @@ public class InstanceLostTimeGearDistrictContext : MonoBehaviour
         GameObject Event = new GameObject("Event");
         Event.AddComponent<UICanvas>();
 
-        GameObject Camera = new GameObject("Main Camera");
-        Camera.transform.tag = "MainCamera";
-        Camera.AddComponent<Camera>();
-        Camera.AddComponent<GUILayer>();
-        Camera.AddComponent<FlareLayer>();
-        Camera.AddComponent<AudioListener>();
-        Camera.AddComponent<CameraBehavior>();
-        Camera.GetComponent<Camera>().depth = -1;
-
         GameObject Sun = new GameObject("Sun");
         Sun.transform.position = new Vector3(32, 33.15f, 13.3f);
         Sun.transform.Rotate(36.31f, -71.2f, 0);
@@ -87,6 +78,9 @@ public class InstanceLostTimeGearDistrictContext : MonoBehaviour
         GameObject lampadaire = (GameObject)Instantiate(Resources.Load("LostTimeGearDistrict/Lampadaire"));
 
         GameObject Waypoints = (GameObject)Instantiate(Resources.Load("LostTimeGearDistrict/WayPoints"));
+
+        GameObject PrefabAstribPlayer = (GameObject)Instantiate(Resources.Load("Astrid/AstridPrefab"));
+        GameObject.Find("AstridPrefab(Clone)").name = "AstridPlayer";
 
         Event.AddComponent<GeneratePNJ>();
     }

@@ -6,14 +6,6 @@ public class InstanceAstridHouseContext : MonoBehaviour {
 
     private void Start()
     {
-        GameObject Camera = new GameObject("Main Camera");
-        Camera.transform.tag = "MainCamera";
-        Camera.AddComponent<Camera>();
-        Camera.GetComponent<Camera>().backgroundColor = new Color(0, 0, 0, 0);
-        Camera.AddComponent<GUILayer>();
-        Camera.AddComponent<FlareLayer>();
-        Camera.AddComponent<AudioListener>();
-        Camera.AddComponent<CameraBehavior>();
 
         GameObject FireLight = new GameObject("Sun");
         FireLight.transform.position = new Vector3(1.82f, 1.95f, -3.98f);
@@ -30,6 +22,9 @@ public class InstanceAstridHouseContext : MonoBehaviour {
         GameObject MiscAndDecor = (GameObject)Instantiate(Resources.Load("AstridHouse/MiscAndDecor"));
         GameObject.Find("MiscAndDecor(Clone)").name = "MiscAndDecor";
         MiscAndDecor.transform.position = new Vector3(3.26661f, 4.845532f, -2.241741f);
+
+        GameObject PrefabAstribPlayer = (GameObject)Instantiate(Resources.Load("Astrid/AstridPrefab"));
+        GameObject.Find("AstridPrefab(Clone)").name = "AstridPlayer";
     }
 
     private void FixedUpdate()

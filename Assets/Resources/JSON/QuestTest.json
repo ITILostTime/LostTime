@@ -7,7 +7,7 @@
       "QuestName": "Mon marteau !",
       "QuestContext": "Bonjour Astrid, j'ai perdu un objet de tr�s grande valeur... Pouvez-vous m'aider ?",
       "QuestDescription": "R�cup�rer le marteau enchant� du Forgeron. Sans celui-ci, le Forgeron ne peut plus r�parer les m�canismes endommag�s. Son marteau se trouve au milieu du jardin dans le quartier des engrenages.",
-      "QuestIsComplete": true,
+      "QuestIsComplete": false,
       "ObjectiveID": 0,
       "ObjectiveMax": 1,
       "Objectives": [
@@ -41,8 +41,8 @@
       "QuestName": "Rendez-vous � la guilde des horlogers",
       "QuestContext": "Astrid, vous voulez entrer dans l'ordre des horlogers ? Pr�sentez-vous devant la grande horloge de la ville",
       "QuestDescription": "La guilde des horlogers est l'une des plus grande guilde de la ville. En tant qu'horlogere il est important pour vous de vous faire conna�tre aupr�s d'eux pour pouvoir continuer vos activit�s.",
-      "QuestIsComplete": true,
-      "ObjectiveID": 1,
+      "QuestIsComplete": false,
+      "ObjectiveID": 0,
       "ObjectiveMax": 2,
       "Objectives": [
         {
@@ -63,7 +63,7 @@
       "QuestName": "Mon marteau !",
       "QuestContext": "Bonjour Astrid, j'ai perdu un objet de tr�s grande valeur... Pouvez-vous m'aider ?",
       "QuestDescription": "R�cup�rer le marteau enchant� du Forgeron. Sans celui-ci, le Forgeron ne peut plus r�parer les m�canismes endommag�s. Son marteau se trouve au milieu du jardin dans le quartier des engrenages.",
-      "QuestIsComplete": true,
+      "QuestIsComplete": false,
       "ObjectiveID": 0,
       "ObjectiveMax": 1,
       "Objectives": [

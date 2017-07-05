@@ -66,9 +66,6 @@ public class UICanvas : MonoBehaviour {
             (Screen.width / 2) - (_canvas.GetComponent<RectTransform>().rect.width / 8) - GameObject.Find("InventoryButton").GetComponent<RectTransform>().rect.width, 
             0, Color.clear);
         GameObject.Find("RightJoystickPanel").AddComponent<UIVirtualRightJoystick>();
-
-        GameObject PrefabAstribPlayer = (GameObject)Instantiate(Resources.Load("Astrid/AstridPuppet"));
-        GameObject.Find("AstridPuppet(Clone)").name = "AstridPlayer";
     }
 
     private void FixedUpdate()
