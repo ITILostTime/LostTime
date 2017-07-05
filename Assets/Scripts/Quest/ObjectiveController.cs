@@ -262,8 +262,8 @@ namespace Assets.Scripts.Quest
         /// </value>
         public bool TypeGoToZoneIsComplete
         {
-            get { return _typeGoToZoneIsComplete; }
-            set { _typeGoToZoneIsComplete = value; }
+            get { return ObjectiveIsComplete; }
+            set { ObjectiveIsComplete = value; }
         }
         #endregion
 

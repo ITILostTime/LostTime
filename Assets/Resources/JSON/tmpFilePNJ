@@ -7,7 +7,7 @@
       "PNJ": [
         {
           "PNJName": "Forgeron",
-          "PNJCurrentQuestID": 2,
+          "PNJCurrentQuestID": 1,
           "PNJQuestIDMax": 2,
           "PNJJob": "blacksmith",
           "PositionX": 14,

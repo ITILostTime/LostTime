@@ -28,25 +28,27 @@ public class PNJQuestController : MonoBehaviour
     public string CurrentPNJQuestContext { get; set; }
 
     public float CurrentQuestID { get; set; }
-    private int PNJCurrentQuestID;
+    //private int PNJCurrentQuestID;
     private int currentObjectiveID;
     private bool _hasQuest;
     private string pnjName;
+    private string questName;
 
     //private string tmpFilePath = "./Resources/JSON/tmpFile";
     //private string sourcePath = "./Resources/JSON/QuestTest";
 
     private string tmpFilePath = "./Assets/Resources/JSON/tmpFile";
-    private string sourcePath = "./Assets/Resources/JSON/QuestTest.json";
+    private string sourcePathQuestTestJson = "./Assets/Resources/JSON/QuestTest.json";
+    private string sourcePathPNJJson = "./Assets/Resources/JSON/PNJ.json";
 
     QuestController questController;
     List<ObjectiveController> questObjectives;
     ObjectiveController _currentQuestObjectif;
 
     JSONNode QuestTest;
-    JSONNode PNJ;
+    JSONNode PNJFile;
 
-    public bool isQuestAccepted { get; set; }
+    public bool IsQuestAccepted { get; set; }
     
 
     /// <summary>
@@ -62,6 +64,16 @@ public class PNJQuestController : MonoBehaviour
     private void FixedUpdate()
     {
         MyTriggerByGE();
+        if (_hasQuest == true)
+        {
+            // afficher image (poit d'exclamation)
+            // faire comme le dialogueBubble
+            QuestSystemComportement();
+        }
+        else
+        {
+            // détruire image
+        }
     }
 
     /// <summary>
@@ -72,7 +84,7 @@ public class PNJQuestController : MonoBehaviour
         string str = ReadJSON("JSON/QuestTest");
         QuestTest = JSON.Parse(str);
 
-        Debug.Log(QuestTest);
+        //Debug.Log(QuestTest);
 
         //2 boucles une sur les int ou sur les float
         // quest + i fonctionne 
@@ -89,84 +101,10 @@ public class PNJQuestController : MonoBehaviour
                 {
                     if (j == QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"])
                     {
-                        /*switch (QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"].Value)
-                        {
-                            case "Collecte":
-                                GameObject OC = new GameObject();
-                                tmpIQuestObjective = new ObjectiveController(
-                                QuestTest["Quest" + i][0]["Objectives"][count]["QuestID"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"],
-                                QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveName"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveDescription"],
-                                QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveIsComplete"], QuestTest["Quest" + i][0]["Objectives"][count]["QuestContext"],
-                                QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"], QuestTest["Quest" + i][0]["Objectives"][count]["ItemQuantity"]);
-                                questObjectives.Add(tmpIQuestObjective);
-                                OC.AddComponent<ObjectiveController>();
-                                OC.GetComponent<ObjectiveController>().name = "QID" + QuestTest["Quest" + i][count]["QuestID"].AsFloat + "OID" + QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"].AsInt;
-                                OC.GetComponent<ObjectiveController>().QuestID = tmpIQuestObjective.QuestID;
-                                OC.GetComponent<ObjectiveController>().ObjectiveID = tmpIQuestObjective.ObjectiveID;
-                                OC.GetComponent<ObjectiveController>().ObjectiveDescription = tmpIQuestObjective.ObjectiveDescription;
-                                OC.GetComponent<ObjectiveController>().ObjectiveIsComplete = tmpIQuestObjective.ObjectiveIsComplete;
-                                OC.GetComponent<ObjectiveController>().ObjectiveContext = tmpIQuestObjective.ObjectiveContext;
-                                OC.GetComponent<ObjectiveController>().ObjectiveType = tmpIQuestObjective.ObjectiveType;
-                                OC.GetComponent<ObjectiveController>().GoalAmount = tmpIQuestObjective.GoalAmount;
-
-                                //Debug.Log(tmpIQuestObjective.QuestID);
-                                //Debug.Log(tmpIQuestObjective.ObjectiveID);
-                                //Debug.Log(tmpIQuestObjective.ObjectiveDescription);
-                                //Debug.Log(tmpIQuestObjective.ObjectiveIsComplete);
-                                //Debug.Log(tmpIQuestObjective.ObjectiveContext);
-                                //Debug.Log(tmpIQuestObjective.ObjectiveType);
-                                //Debug.Log(tmpIQuestObjective.GoalAmount);
-                                GenerateObjectiveItem(QuestTest, i, tmpIQuestObjective.ObjectiveID);
-                                break;
-                            case "GoToZone":
-                                GameObject OGTZ = new GameObject();
-                                tmpIQuestObjective = new ObjectiveController(
-                                QuestTest["Quest" + i][0]["Objectives"][count]["QuestID"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"],
-                                QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveName"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveDescription"],
-                                QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveIsComplete"], QuestTest["Quest" + i][0]["Objectives"][count]["QuestContext"],
-                                QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"], QuestTest["Quest" + i][0]["Objectives"][count]["PositionX"],
-                                QuestTest["Quest" + i][0]["Objectives"][count]["PositionY"], QuestTest["Quest" + i][0]["Objectives"][count]["PositionZ"]);
-                                questObjectives.Add(tmpIQuestObjective);
-                                OGTZ.AddComponent<ObjectiveController>();
-                                OGTZ.GetComponent<ObjectiveController>().name = "QID" + QuestTest["Quest" + i][count]["QuestID"].AsFloat + "OID" + QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"].AsInt;
-                                OGTZ.GetComponent<ObjectiveController>().QuestID = tmpIQuestObjective.QuestID;
-                                OGTZ.GetComponent<ObjectiveController>().ObjectiveID = tmpIQuestObjective.ObjectiveID;
-                                OGTZ.GetComponent<ObjectiveController>().ObjectiveDescription = tmpIQuestObjective.ObjectiveDescription;
-                                OGTZ.GetComponent<ObjectiveController>().ObjectiveIsComplete = tmpIQuestObjective.ObjectiveIsComplete;
-                                OGTZ.GetComponent<ObjectiveController>().ObjectiveContext = tmpIQuestObjective.ObjectiveContext;
-                                OGTZ.GetComponent<ObjectiveController>().ObjectiveType = tmpIQuestObjective.ObjectiveType;
-                                OGTZ.GetComponent<ObjectiveController>().TypeGoToZoneIsComplete = tmpIQuestObjective.TypeGoToZoneIsComplete;
-
-                                Debug.Log(tmpIQuestObjective.QuestID);
-                                Debug.Log(tmpIQuestObjective.ObjectiveID);
-                                Debug.Log(tmpIQuestObjective.ObjectiveDescription);
-                                Debug.Log(tmpIQuestObjective.ObjectiveIsComplete);
-                                Debug.Log(tmpIQuestObjective.ObjectiveContext);
-                                Debug.Log(tmpIQuestObjective.ObjectiveType);
-                                Debug.Log(tmpIQuestObjective.TypeGoToZoneIsComplete);
-
-                                GenerateZone(QuestTest, i, tmpIQuestObjective.QuestID, tmpIQuestObjective.ObjectiveID);
-                                break;
-                            case "TalkToPNJ":
-                                AttributeObjectiveToAPNJ(i);
-                                break;
-                            default:
-                                tmpIQuestObjective = new ObjectiveController(
-                                QuestTest["Quest" + i][0]["Objectives"][count]["QuestID"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"],
-                                QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveName"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveDescription"],
-                                QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveIsComplete"], QuestTest["Quest" + i][0]["Objectives"][count]["QuestContext"],
-                                QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"]);
-                                questObjectives.Add(tmpIQuestObjective);
-                                break;
-                        }*/
-
-                        // changer les quest context en objective context
-                        Debug.Log(QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"]);
-                        Debug.Log(QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"].Value);
 
                         if (QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"] == "Collecte")
                         {
-                            Debug.Log("Collect");
+                            //Debug.Log("Collect");
                             GameObject OC = new GameObject();
                             tmpIQuestObjective = new ObjectiveController(
                             QuestTest["Quest" + i][0]["Objectives"][count]["QuestID"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"],
@@ -184,13 +122,14 @@ public class PNJQuestController : MonoBehaviour
                             OC.GetComponent<ObjectiveController>().ObjectiveType = tmpIQuestObjective.ObjectiveType;
                             OC.GetComponent<ObjectiveController>().GoalAmount = tmpIQuestObjective.GoalAmount;
 
+                            questName = "QID" + QuestTest["Quest" + i][count]["QuestID"].AsFloat + "OID" + QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"].AsInt;
                             GenerateObjectiveItem(QuestTest, i, tmpIQuestObjective.ObjectiveID);
-                            Debug.Log("generate");
+                            //Debug.Log("generate");
 
                         }
                         else if(QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"] == "GoToZone")
                         {
-                            Debug.Log("GoToZone");
+                            //Debug.Log("GoToZone");
                             GameObject OGTZ = new GameObject();
                             tmpIQuestObjective = new ObjectiveController(
                             QuestTest["Quest" + i][0]["Objectives"][count]["QuestID"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"],
@@ -209,14 +148,15 @@ public class PNJQuestController : MonoBehaviour
                             OGTZ.GetComponent<ObjectiveController>().ObjectiveType = tmpIQuestObjective.ObjectiveType;
                             OGTZ.GetComponent<ObjectiveController>().TypeGoToZoneIsComplete = tmpIQuestObjective.TypeGoToZoneIsComplete;
 
+                            questName = "QID" + QuestTest["Quest" + i][count]["QuestID"].AsFloat + "OID" + QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"].AsInt;
                             GenerateZone(QuestTest, i, tmpIQuestObjective.QuestID, tmpIQuestObjective.ObjectiveID);
                         }else if(QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveType"] == "TalkToPNJ")
                         {
-                            Debug.Log("TalkToPNJ");
+                            //Debug.Log("TalkToPNJ");
                             //AttributeObjectiveToAPNJ(QuestTest, i, tmpIQuestObjective.ObjectiveID);
                         }else
                         {
-                            Debug.Log("Default");
+                            //Debug.Log("Default");
                             tmpIQuestObjective = new ObjectiveController(
                                 QuestTest["Quest" + i][0]["Objectives"][count]["QuestID"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveID"],
                                 QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveName"], QuestTest["Quest" + i][0]["Objectives"][count]["ObjectiveDescription"],
@@ -228,34 +168,17 @@ public class PNJQuestController : MonoBehaviour
                     }
                 }
 
-                Debug.Log("QuestController");
+                //Debug.Log("QuestController");
                 questController = new QuestController(QuestTest["Quest" + i][0]["QuestPNJ"], QuestTest["Quest" + i][0]["QuestID"].AsFloat,
                 QuestTest["Quest" + i][0]["QuestName"], QuestTest["Quest" + i][0]["QuestContext"], QuestTest["Quest" + i][0]["QuestDescription"],
                 QuestTest["Quest" + i][0]["QuestIsComplete"].AsBool, QuestTest["Quest" + i][0]["ObjectiveID"].AsInt, QuestTest["Quest" + i][0]["ObjectiveMax"].AsInt, questObjectives);
 
-                Debug.Log(questController.QuestContext);
+                //Debug.Log(questController.QuestContext);
                 CurrentPNJQuestContext = questController.QuestContext;
-                Debug.Log(CurrentPNJQuestContext);
+                //Debug.Log(CurrentPNJQuestContext);
                 _hasQuest = true;
             }
 
-        }
-    }
-
-    /// <summary>
-    /// Updates this instance.
-    /// </summary>
-    void Update()
-    {
-        if (_hasQuest == true)
-        {
-            // afficher image (poit d'exclamation)
-            // faire comme le dialogueBubble
-            QuestSystemComportement();
-        }
-        else
-        {
-            // détruire image
         }
     }
 
@@ -269,7 +192,7 @@ public class PNJQuestController : MonoBehaviour
             this.GetComponent<DialogueController>().StartDialogueWithPNJ();
         }
         else
-        {
+        { 
             this.GetComponent<DialogueController>().DestroyDialoguePanel();
         }
     }
@@ -279,7 +202,7 @@ public class PNJQuestController : MonoBehaviour
     /// </summary>
     private void QuestSystemComportement()
     {
-        if (QuestTest["Quest" + CurrentQuestID][0]["QuestIsComplete"].AsBool == false)
+        if (QuestTest["Quest" + CurrentQuestID][0]["QuestIsComplete"].AsBool == false && questController.QuestIsComplete == false && CurrentQuestID != 0)
         {
             int objID = 0;
 
@@ -287,10 +210,10 @@ public class PNJQuestController : MonoBehaviour
             {
                 if (questController.ObjectiveID == objID)
                 {
-                    if (this.GetComponent<PNJQuestController>().isQuestAccepted == true)
+                    if (this.GetComponent<PNJQuestController>().IsQuestAccepted == true)
                     {
                         questController.ObjectiveID++;
-                        this.GetComponent<PNJQuestController>().isQuestAccepted = false;
+                        this.GetComponent<PNJQuestController>().IsQuestAccepted = false;
 
                         WriteAndDeleteJSONFile();
                     }
@@ -304,12 +227,12 @@ public class PNJQuestController : MonoBehaviour
                         if (objC.ObjectiveID == questController.ObjectiveID)
                         {
                             _currentQuestObjectif = objC;
-                            Debug.Log(objC.ObjectiveContext);
+                            //Debug.Log(objC.ObjectiveContext);
                             CurrentPNJQuestContext = objC.ObjectiveContext;
-                            if (this.GetComponent<PNJQuestController>().isQuestAccepted == true)
+                            if (GameObject.Find(questName).GetComponent<ObjectiveController>().ObjectiveIsComplete == true)
                             {
                                 _currentQuestObjectif.ObjectiveIsComplete = true;
-                                this.GetComponent<PNJQuestController>().isQuestAccepted = false;
+                                this.GetComponent<PNJQuestController>().IsQuestAccepted = false;
                                 questController.QuestDescription = "test";
                                 QuestTest["Quest" + CurrentQuestID][0]["Objectives"][count]["ObjectiveIsComplete"].AsBool = true;
                             }
@@ -321,12 +244,20 @@ public class PNJQuestController : MonoBehaviour
                         questController.QuestIsComplete = true;
                         _hasQuest = false;
                         QuestTest["Quest" + CurrentQuestID][0]["QuestIsComplete"].AsBool = true;
+                        for(int x = 0; x < PNJFile["PNJCount"].AsInt; x++)
+                        {
+                            Debug.Log("test");
+
+                            if (PNJFile["Scene"][0]["PNJ"][x]["PNJName"].Value == this.transform.name)
+                            {
+                                Debug.Log("enter");
+                                PNJFile["Scene"][0]["PNJ"][x]["PNJCurrentQuestID"].AsInt++;
+                                EditPNJJson();
+                            }
+                        }
                         WriteAndDeleteJSONFile();
                         CheckNextQuest();
                         GetQuestFromJson();
-                        //fct de recherche quete suivante
-                        //demander pnj.json sa prochaine quete
-                        //demande quetes.json donne moi la quete de telle ID
                     }
                     else if (_currentQuestObjectif.ObjectiveIsComplete == true)
                     {
@@ -338,9 +269,46 @@ public class PNJQuestController : MonoBehaviour
         }
         else
         {
-            CurrentPNJQuestContext = "Bonjour Astrind. Quelle belle journée aujourd'hui, n'est-ce-pas ?";
+            CurrentPNJQuestContext = "Bonjour Astrid. Quelle belle journée aujourd'hui, n'est-ce-pas ?";
         }
 
+    }
+
+    private void EditPNJJson()
+    {
+        Debug.Log(PNJFile);
+
+        var t = PNJFile.ToString();
+
+        Debug.Log(t);
+
+        FileStream fs = null;
+        try
+        {
+            // Create file tmpFile
+            if (!System.IO.Directory.Exists(tmpFilePath))
+            {
+                System.IO.Directory.CreateDirectory(tmpFilePath);
+            }
+
+            // Copy old file .json in tmpFile
+            System.IO.File.Copy(sourcePathPNJJson, tmpFilePath + "PNJ");
+
+            // create
+            fs = new FileStream(sourcePathPNJJson, FileMode.Create);
+            using (StreamWriter writer = new StreamWriter(fs))
+            {
+                writer.WriteLine(t);
+            }
+
+        }
+        finally
+        {
+            if (fs != null)
+                fs.Dispose();
+        }
+        //delete old file 
+        System.IO.File.Delete(tmpFilePath + "PNJ");
     }
 
     /// <summary>
@@ -348,9 +316,7 @@ public class PNJQuestController : MonoBehaviour
     /// </summary>
     private void WriteAndDeleteJSONFile()
     {
-        //Doesn't work correctly
-        // stocke correctement l'information dans le JSON 
-        // A la fin je devrai pouvoir lire le context d'un pnj que ce soit pour la quete ou pour les objectifs
+
         if (QuestTest["Quest" + CurrentQuestID][0]["ObjectiveID"] != null)
         {
             QuestTest["Quest" + CurrentQuestID][0]["ObjectiveID"].AsInt = questController.ObjectiveID;
@@ -358,6 +324,7 @@ public class PNJQuestController : MonoBehaviour
             Debug.Log(QuestTest["Quest" + CurrentQuestID][0]["ObjectiveID"].AsInt);
             Debug.Log(questController.ObjectiveID);
             Debug.Log(QuestTest);
+
             var s = QuestTest.ToString();
 
             FileStream fs = null;
@@ -370,14 +337,15 @@ public class PNJQuestController : MonoBehaviour
                 }
 
                 // Copy old file .json in tmpFile
-                System.IO.File.Copy(sourcePath, tmpFilePath + "QuestTest");
+                System.IO.File.Copy(sourcePathQuestTestJson, tmpFilePath + "QuestTest");
 
                 // create
-                fs = new FileStream(sourcePath, FileMode.Create);
+                fs = new FileStream(sourcePathQuestTestJson, FileMode.Create);
                 using (StreamWriter writer = new StreamWriter(fs))
                 {
                     writer.WriteLine(s);
                 }
+
             }
             finally
             {
@@ -386,6 +354,7 @@ public class PNJQuestController : MonoBehaviour
             }
             //delete old file 
             System.IO.File.Delete(tmpFilePath + "QuestTest");
+
         }
     }
 
@@ -395,26 +364,52 @@ public class PNJQuestController : MonoBehaviour
     private void CheckNextQuest()
     {
         string str = ReadJSON("JSON/PNJ");
-        PNJ = JSON.Parse(str);
+        Debug.Log(str);
+        PNJFile = JSON.Parse(str);
+        bool QuestFound = false;
 
-        Debug.Log(PNJ);
+        float tmpID = CurrentQuestID;
 
-        for (int i = 0; i <= PNJ["PNJCount"]; i++)
+        for (int i = 0; i <= PNJFile["PNJCount"]; i++)
         {
-            if (transform.name == PNJ["Scene"][0]["PNJ"][i]["PNJName"]) // comparer si on est dans la bonne scène aussi
+            if (this.transform.name == PNJFile["Scene"][0]["PNJ"][i]["PNJName"])
             {
-                PNJCurrentQuestID = PNJ["Scene"][0]["PNJ"][i]["PNJCurrentQuestID"];
+                CurrentQuestID = PNJFile["Scene"][0]["PNJ"][i]["PNJCurrentQuestID"];
 
-                for (int j = 0; j < PNJ["Scene"][0]["PNJ"][i]["PNJQuestIDMax"]; j++)
+                for (int j = PNJFile["Scene"][0]["PNJ"][i]["PNJCurrentQuestID"]; j < PNJFile["Scene"][0]["PNJ"][i]["PNJQuestIDMax"]; j++)
                 {
-                    if (j == PNJ["Scene"][0]["PNJ"][i]["PNJCurrentQuestID"])
+                    if (j == PNJFile["Scene"][0]["PNJ"][i]["PNJCurrentQuestID"] && QuestFound == false)
                     {
-                        CurrentQuestID = PNJ["Scene"][0]["PNJ"][i]["ListQuestID"][0]["QuestID" + j].AsFloat;
+                        if(CheckIfJSONQuestIsComplete(PNJFile["Scene"][0]["PNJ"][i]["ListQuestID"][0]["QuestID" + j].AsFloat) == false)
+                        {
+                            CurrentQuestID = PNJFile["Scene"][0]["PNJ"][i]["ListQuestID"][0]["QuestID" + j].AsFloat;
+                            QuestFound = true;
+                        }
+                    }
+                    if(j > PNJFile["Scene"][0]["PNJ"][i]["PNJCurrentQuestID"] && QuestFound == false)
+                    {
+                        CurrentQuestID = PNJFile["Scene"][0]["PNJ"][i]["ListQuestID"][0]["QuestID" + j].AsFloat;
+                        QuestFound = true;
                     }
                 }
             }
         }
-        //vérifier si on est dans la bonne scene 
+
+        if(tmpID == CurrentQuestID)
+        {
+            CurrentQuestID = 0;
+        }
+    }
+
+    private bool CheckIfJSONQuestIsComplete(float questID)
+    {
+        string str = ReadJSON("JSON/QuestTest");
+        JSONNode IsQuestComplete = JSON.Parse(str);
+        if(IsQuestComplete["Quest" + questID][0]["QuestIsComplete"].AsBool == true)
+        {
+            return true;
+        }
+        return false;
     }
 
     /// <summary>
