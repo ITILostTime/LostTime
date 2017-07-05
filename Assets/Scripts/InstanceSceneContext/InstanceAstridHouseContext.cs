@@ -28,7 +28,12 @@ public class InstanceAstridHouseContext : MonoBehaviour {
         ChambreMurSol.transform.position = new Vector3(0, 0, 0);
 
         GameObject MiscAndDecor = (GameObject)Instantiate(Resources.Load("AstridHouse/MiscAndDecor"));
-        GameObject.Find("MiscAndDecor(Clone)").name = "ChambresMursSol";
+        GameObject.Find("MiscAndDecor(Clone)").name = "MiscAndDecor";
         MiscAndDecor.transform.position = new Vector3(3.26661f, 4.845532f, -2.241741f);
+    }
+
+    private void FixedUpdate()
+    {
+        GameObject.Find("Poele").GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("SoundLevel");
     }
 }

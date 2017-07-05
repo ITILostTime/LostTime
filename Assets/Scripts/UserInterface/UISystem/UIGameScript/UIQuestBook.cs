@@ -70,4 +70,6 @@ public class UIQuestBook : MonoBehaviour, IPointerDownHandler
             _UIQuestBookAnimationOn = true;
         }
     }
+
+
 }

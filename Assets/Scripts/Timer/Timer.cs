@@ -34,9 +34,9 @@ public class Timer : MonoBehaviour {
         Chrono();     
         if(currentTimeOfDay > 0.57)
         {
-            this.gameObject.GetComponent<SoundController>().PlaySong(((AudioClip)(Resources.Load("Sound/Bruitages horloges - vieille - minuit - 12 coups"))), 2f, true);
+            this.gameObject.GetComponent<SoundController>().PlaySong(((AudioClip)(Resources.Load("Sound/Bruitages horloges - vieille - minuit - 12 coups"))), PlayerPrefs.GetFloat("SoundLevel"), true);
             this.gameObject.GetComponent<SoundController>().GetSongOnOff = true;
-            this.gameObject.GetComponent<SoundController>().GetComponent<AudioSource>().volume = 0.2f;
+            this.gameObject.GetComponent<SoundController>().GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("SoundLevel");
         }
         else
         {
