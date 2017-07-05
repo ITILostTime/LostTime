@@ -1,5 +1,5 @@
 {
-  "QuestMax": 2,
+  "QuestMax": 3,
   "Quest1.1": [
     {
       "QuestPNJ": "Forgeron",
@@ -36,7 +36,7 @@
   ],
   "Quest1.2": [
     {
-      "QuestPNJ": "Forgeron",
+      "QuestPNJ": "Julien",
       "QuestID": 1.2,
       "QuestName": "Rendez-vous � la guilde des horlogers",
       "QuestContext": "Astrid, vous voulez entrer dans l'ordre des horlogers ? Pr�sentez-vous devant la grande horloge de la ville",
@@ -77,32 +77,13 @@
       "Objectives": [
         {
           "ObjectiveID": 1,
-          "ObjectiveType": "Collecte",
-          "ObjectiveName": "R�cup�rer le marteau enchant� du Forgeron",
-          "ObjectiveContext": "J'ai perdu mon unique marteau ! Il se trouve dans le jardin du quartier des engrenages!",
-          "ObjectiveDescription": "Aller r�cup�rer le marteau qui se trouve dans le jardin des engrenages",
-          "ObjectiveIsComplete": false,
-          "ItemQuantity": 1,
-          "ObjectiveItems": [
-            {
-              "ItemName": "Marteau enchant� du Forgeron",
-              "PositionX": 0,
-              "PositionY": 4,
-              "PositionZ": 5,
-              "RotationX": 0,
-              "RotationY": 0,
-              "RotationZ": 0
-            }
-          ]
+          "ObjectiveType": "GoToZone",
+          "ObjectiveName": "Aller à la grande horloge",
+          "ObjectiveContext": "Rendez-vous à la grande horloge.",
+          "ObjectiveDescription": "D�couvrez la place forte de la guilde des horlogers.",
+          "ObjectiveIsComplete": false
         }
       ]
     }
   ],
-  "Quest1": [ { "QuestID": 0 } ],
-  "Quest1.4": [ { "QuestID": 0 } ],
-  "Quest1.5": [ { "QuestID": 0 } ],
-  "Quest1.6": [ { "QuestID": 0 } ],
-  "Quest1.7": [ { "QuestID": 0 } ],
-  "Quest1.8": [ { "QuestID": 0 } ],
-  "Quest1.9": [ { "QuestID": 0 } ]
 }

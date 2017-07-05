@@ -81,8 +81,6 @@ public class PNJQuestController : MonoBehaviour
     /// </summary>
     private void GetQuestFromJson()
     {
-        string str = ReadJSON("JSON/QuestTest");
-        QuestTest = JSON.Parse(str);
 
         //Debug.Log(QuestTest);
 
@@ -202,7 +200,7 @@ public class PNJQuestController : MonoBehaviour
     /// </summary>
     private void QuestSystemComportement()
     {
-        if (QuestTest["Quest" + CurrentQuestID][0]["QuestIsComplete"].AsBool == false && questController.QuestIsComplete == false && CurrentQuestID != 0)
+        if (QuestTest["Quest" + CurrentQuestID][0]["QuestIsComplete"].AsBool == false && questController.QuestIsComplete == false)
         {
             int objID = 0;
 
@@ -309,6 +307,13 @@ public class PNJQuestController : MonoBehaviour
         }
         //delete old file 
         System.IO.File.Delete(tmpFilePath + "PNJ");
+
+        UnityEditor.AssetDatabase.Refresh();
+
+        string str = ReadJSON("JSON/PNJ");
+        Debug.Log(str);
+        PNJFile = JSON.Parse(str);
+        Debug.Log(PNJFile);
     }
 
     /// <summary>
@@ -355,6 +360,11 @@ public class PNJQuestController : MonoBehaviour
             //delete old file 
             System.IO.File.Delete(tmpFilePath + "QuestTest");
 
+            UnityEditor.AssetDatabase.Refresh();
+
+            string str = ReadJSON("JSON/QuestTest");
+            QuestTest = JSON.Parse(str);
+            Debug.Log(QuestTest);
         }
     }
 
@@ -364,41 +374,37 @@ public class PNJQuestController : MonoBehaviour
     private void CheckNextQuest()
     {
         string str = ReadJSON("JSON/PNJ");
-        Debug.Log(str);
         PNJFile = JSON.Parse(str);
+        Debug.Log(str);
+
+        string rd = ReadJSON("JSON/QuestTest");
+        QuestTest = JSON.Parse(rd);
+        Debug.Log(rd);
+
         bool QuestFound = false;
 
-        float tmpID = CurrentQuestID;
+        int tmpID;
 
         for (int i = 0; i <= PNJFile["PNJCount"]; i++)
         {
             if (this.transform.name == PNJFile["Scene"][0]["PNJ"][i]["PNJName"])
             {
-                CurrentQuestID = PNJFile["Scene"][0]["PNJ"][i]["PNJCurrentQuestID"];
+                tmpID = PNJFile["Scene"][0]["PNJ"][i]["PNJCurrentQuestID"];
+                Debug.Log(tmpID + "tmpID");
 
-                for (int j = PNJFile["Scene"][0]["PNJ"][i]["PNJCurrentQuestID"]; j < PNJFile["Scene"][0]["PNJ"][i]["PNJQuestIDMax"]; j++)
+                for(int x = tmpID; x < PNJFile["Scene"][0]["PNJ"][i]["PNJQuestIDMax"].AsInt; x++)
                 {
-                    if (j == PNJFile["Scene"][0]["PNJ"][i]["PNJCurrentQuestID"] && QuestFound == false)
+                    float tmp = PNJFile["Scene"][0]["PNJ"][i]["ListQuestID"][0]["QuestID" + x].AsFloat;
+                    if (QuestTest["Quest" + tmp][0]["QuestIsComplete"].AsBool == false && QuestFound == false)
                     {
-                        if(CheckIfJSONQuestIsComplete(PNJFile["Scene"][0]["PNJ"][i]["ListQuestID"][0]["QuestID" + j].AsFloat) == false)
-                        {
-                            CurrentQuestID = PNJFile["Scene"][0]["PNJ"][i]["ListQuestID"][0]["QuestID" + j].AsFloat;
-                            QuestFound = true;
-                        }
-                    }
-                    if(j > PNJFile["Scene"][0]["PNJ"][i]["PNJCurrentQuestID"] && QuestFound == false)
-                    {
-                        CurrentQuestID = PNJFile["Scene"][0]["PNJ"][i]["ListQuestID"][0]["QuestID" + j].AsFloat;
+                        CurrentQuestID = PNJFile["Scene"][0]["PNJ"][i]["ListQuestID"][0]["QuestID" + tmpID].AsFloat;
                         QuestFound = true;
                     }
                 }
             }
         }
 
-        if(tmpID == CurrentQuestID)
-        {
-            CurrentQuestID = 0;
-        }
+        Debug.Log(CurrentQuestID);
     }
 
     private bool CheckIfJSONQuestIsComplete(float questID)
