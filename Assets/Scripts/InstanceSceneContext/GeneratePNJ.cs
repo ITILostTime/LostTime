@@ -28,15 +28,49 @@ public class GeneratePNJ : MonoBehaviour {
             {
                 for (int i = 0; i < json["PNJCount"].AsInt; i++)
                 {
+                    if(json["Scene"][0]["PNJ"][i]["PNJCurrentQuestID"].AsInt > 0)
+                    {
+                        GeneratePNJQuestGearDistrict(json["Scene"][0]["PNJ"][i]["PNJName"], json["Scene"][0]["PNJ"][i]["PositionX"].AsFloat,
+                        json["Scene"][0]["PNJ"][i]["PositionY"].AsFloat, json["Scene"][0]["PNJ"][i]["PositionZ"].AsFloat,
+                        json["Scene"][0]["PNJ"][i]["RotationX"].AsFloat, json["Scene"][0]["PNJ"][i]["RotationY"].AsFloat,
+                        json["Scene"][0]["PNJ"][i]["RotationZ"].AsFloat, json["Scene"][0]["PNJ"][i]["PNJCurrentQuestID"].AsFloat, json["Scene"][0]["PNJ"][i]["PNJJob"]);
+                    }else
+                    {
+                        GenerateAllPNJGearDistrict(json["Scene"][0]["PNJ"][i]["PNJName"], json["Scene"][0]["PNJ"][i]["PositionX"].AsFloat,
+                        json["Scene"][0]["PNJ"][i]["PositionY"].AsFloat, json["Scene"][0]["PNJ"][i]["PositionZ"].AsFloat,
+                        json["Scene"][0]["PNJ"][i]["RotationX"].AsFloat, json["Scene"][0]["PNJ"][i]["RotationY"].AsFloat,
+                        json["Scene"][0]["PNJ"][i]["RotationZ"].AsFloat, json["Scene"][0]["PNJ"][i]["PNJJob"]);
+                    }
 
-                    GeneratePNJQuestGearDistrict(json["Scene"][0]["PNJ"][i]["PNJName"], json["Scene"][0]["PNJ"][i]["PositionX"].AsFloat,
-                    json["Scene"][0]["PNJ"][i]["PositionY"].AsFloat, json["Scene"][0]["PNJ"][i]["PositionZ"].AsFloat,
-                    json["Scene"][0]["PNJ"][i]["RotationX"].AsFloat, json["Scene"][0]["PNJ"][i]["RotationY"].AsFloat,
-                    json["Scene"][0]["PNJ"][i]["RotationZ"].AsFloat, json["Scene"][0]["PNJ"][i]["PNJCurrentQuestID"].AsFloat, json["Scene"][0]["PNJ"][i]["PNJJob"]);
+                    
                 }
             }
         }
         
+    }
+
+    private void GenerateAllPNJGearDistrict(string name, float positionX, float positionY, float positionZ,
+        float rotationX, float rotationY, float rotationZ, string job)
+    {
+
+        GameObject gameobject = (GameObject)Instantiate(Resources.Load("CharacterLowPo/PNJ"));
+        GameObject.Find("PNJ(Clone)").transform.name = name;
+        gameobject.transform.GetChild(0).transform.name = name + "body";
+        gameobject.AddComponent<MeshRenderer>();
+        gameobject.GetComponent<CapsuleCollider>().radius = 2;
+        gameobject.GetComponent<CapsuleCollider>().height = 4;
+        gameobject.GetComponent<CapsuleCollider>().isTrigger = true;
+        gameobject.transform.position = new Vector3(positionX, positionY, positionZ);
+        GameObject.Find(name + "body").GetComponent<SkinnedMeshRenderer>().material = SetSkin(job);
+        gameobject.AddComponent<Rigidbody>();
+        gameobject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
+        gameobject.AddComponent<CharaAnimCtrl>();
+        gameobject.GetComponent<CharaAnimCtrl>().walkmode = WalkMode.walking;
+        gameobject.AddComponent<NavMeshAgent>();
+        gameobject.GetComponent<NavMeshAgent>().radius = 1;
+        gameobject.GetComponent<NavMeshAgent>().height = 3.5f;
+        gameobject.GetComponent<NavMeshAgent>().speed = 3f;
+        gameobject.AddComponent<PNJPathfinding>();
     }
 
     /// <summary>
@@ -82,8 +116,6 @@ public class GeneratePNJ : MonoBehaviour {
         gameobject.GetComponent<CharaAnimCtrl>().walkmode = WalkMode.walking;
         gameobject.AddComponent<NavMeshAgent>();
         gameobject.GetComponent<NavMeshAgent>().radius = 1;
-        gameobject.GetComponent<NavMeshAgent>().height = 3.5f;
-        gameobject.GetComponent<NavMeshAgent>().speed = 1.5f;
     }
 
     /// <summary>

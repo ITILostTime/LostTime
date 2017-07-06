@@ -10,11 +10,11 @@
           "PNJCurrentQuestID": 1,
           "PNJQuestIDMax": 3,
           "PNJJob": "blacksmith",
-          "PositionX": 14,
-          "PositionY": 5,
-          "PositionZ": 5,
+          "PositionX": 3.81,
+          "PositionY": -0.5513306,
+          "PositionZ": 0.45,
           "RotationX": 0,
-          "RotationY": 0,
+          "RotationY": 92.45,
           "RotationZ": 0,
           "ListQuestID": [
             {
@@ -28,17 +28,17 @@
           "PNJCurrentQuestID": 1,
           "PNJQuestIDMax": 3,
           "PNJJob": "sandra",
-          "PositionX": 14,
-          "PositionY": 5,
-          "PositionZ": 10,
+          "PositionX": 15.17,
+          "PositionY": -0.5513306,
+          "PositionZ": 22.04,
           "RotationX": 0,
           "RotationY": 0,
           "RotationZ": 0,
-          "ListQuestID": [ {} ]
+          "ListQuestID": [ { "QuestID1": 1.2 } ]
         },
         {
           "PNJName": "Julien",
-          "PNJCurrentQuestID": 1,
+          "PNJCurrentQuestID": 0,
           "PNJQuestIDMax": 2,
           "PNJJob": "citizen1",
           "PositionX": 14,
@@ -47,11 +47,11 @@
           "RotationX": 0,
           "RotationY": 0,
           "RotationZ": 0,
-          "ListQuestID": [ { "QuestID1": 1.2 } ]
+          "ListQuestID": [ {  } ]
         },
         {
           "PNJName": "Julie",
-          "PNJCurrentQuestID": 1,
+          "PNJCurrentQuestID": 0,
           "PNJQuestIDMax": 1,
           "PNJJob": "citizen3",
           "PositionX": 14,
@@ -64,7 +64,7 @@
         },
         {
           "PNJName": "Bidule",
-          "PNJCurrentQuestID": 1,
+          "PNJCurrentQuestID": 0,
           "PNJQuestIDMax": 1,
           "PNJJob": "citizen2",
           "PositionX": 14,
@@ -77,7 +77,7 @@
         },
         {
           "PNJName": "Yoyo",
-          "PNJCurrentQuestID": 1,
+          "PNJCurrentQuestID": 0,
           "PNJQuestIDMax": 1,
           "PNJJob": "citizen3",
           "PositionX": 14,
