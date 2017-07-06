@@ -61,9 +61,12 @@ public class GeneratePNJ : MonoBehaviour {
         gameobject.GetComponent<CapsuleCollider>().height = 4;
         gameobject.GetComponent<CapsuleCollider>().isTrigger = true;
         gameobject.transform.position = new Vector3(positionX, positionY, positionZ);
+        gameobject.transform.Rotate(rotationX, rotationY, rotationZ);
         GameObject.Find(name + "body").GetComponent<SkinnedMeshRenderer>().material = SetSkin(job);
         gameobject.AddComponent<Rigidbody>();
         gameobject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
+        gameobject.AddComponent<PNJQuestController>();
+        gameobject.GetComponent<PNJQuestController>().CurrentQuestID = 0;
         gameobject.AddComponent<CharaAnimCtrl>();
         gameobject.GetComponent<CharaAnimCtrl>().walkmode = WalkMode.walking;
         gameobject.AddComponent<NavMeshAgent>();
@@ -107,6 +110,7 @@ public class GeneratePNJ : MonoBehaviour {
         gameobject.GetComponent<CapsuleCollider>().height = 4;
         gameobject.GetComponent<CapsuleCollider>().isTrigger = true;
         gameobject.transform.position = new Vector3(positionX, positionY, positionZ);
+        gameobject.transform.Rotate(rotationX, rotationY, rotationZ);
         GameObject.Find(name + "body").GetComponent<SkinnedMeshRenderer>().material = SetSkin(job);
         gameobject.AddComponent<Rigidbody>();
         gameobject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;

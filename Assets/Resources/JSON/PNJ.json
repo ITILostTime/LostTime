@@ -10,11 +10,11 @@
           "PNJCurrentQuestID": 1,
           "PNJQuestIDMax": 3,
           "PNJJob": "blacksmith",
-          "PositionX": 3.81,
+          "PositionX": 5,
           "PositionY": -0.5513306,
           "PositionZ": 0.45,
           "RotationX": 0,
-          "RotationY": 92.45,
+          "RotationY": 90,
           "RotationZ": 0,
           "ListQuestID": [
             {

@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class InstanceLostTimeGearDistrictContext : MonoBehaviour
 {
+    public Sprite ExclamationMark;
+    public Sprite GoldInterrogationMark;
+    public Sprite GreyInterrogationMark;
+    public Sprite Dialoguebubble;
+
     private void Start()
     {
         GameObject Event = new GameObject("Event");

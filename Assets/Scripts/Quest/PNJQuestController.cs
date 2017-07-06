@@ -196,7 +196,16 @@ public class PNJQuestController : MonoBehaviour
                 && _collider.transform.position.z > this.transform.position.z - 2
                 && _collider.transform.position.z < this.transform.position.z + 2)
         {
-            this.GetComponent<DialogueController>().StartDialogueWithPNJ();
+            if(_hasQuest == true)
+            {
+                // fonctionne mais problems de size d'image
+                //this.GetComponent<DialogueController>().StartDialogueWithPNJ(GameObject.Find("SceneContext").GetComponent<InstanceLostTimeGearDistrictContext>().ExclamationMark);
+                this.GetComponent<DialogueController>().StartDialogueWithPNJ(GameObject.Find("SceneContext").GetComponent<InstanceLostTimeGearDistrictContext>().Dialoguebubble);
+            }
+            else
+            {
+                this.GetComponent<DialogueController>().StartDialogueWithPNJ(GameObject.Find("SceneContext").GetComponent<InstanceLostTimeGearDistrictContext>().Dialoguebubble);
+            }
         }
         else
         { 

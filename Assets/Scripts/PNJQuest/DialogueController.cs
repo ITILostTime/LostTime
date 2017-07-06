@@ -12,7 +12,7 @@ public class DialogueController : MonoBehaviour {
     {
         if(DialogueBubble != null)
         {
-            DialogueBubble.transform.position = new Vector3(this.transform.position.x, Mathf.Abs(this.transform.position.y) * 3, this.transform.position.z);
+            DialogueBubble.transform.position = new Vector3(this.transform.position.x, Mathf.Abs(this.transform.position.y) * 2, this.transform.position.z);
         }
         if(GameObject.Find("DialoguePanel" + this.transform.name) == true)
         {
@@ -28,7 +28,7 @@ public class DialogueController : MonoBehaviour {
         
     }
 
-    public void StartDialogueWithPNJ()
+    public void StartDialogueWithPNJ(Sprite icon)
     {
         if(GameObject.Find("DialogueBubble" + this.transform.name) == false)
         {
@@ -37,7 +37,8 @@ public class DialogueController : MonoBehaviour {
             DialogueBubble.AddComponent<DialogueBubbleController>();
             DialogueBubble.GetComponent<DialogueBubbleController>().GetParent = this.transform.name;
             DialogueBubble.AddComponent<BoxCollider>();
-            DialogueBubble.transform.position = new Vector3(this.transform.position.x, Mathf.Abs(this.transform.position.y) * 3, this.transform.position.z);
+            DialogueBubble.transform.position = new Vector3(this.transform.position.x, Mathf.Abs(this.transform.position.y) * 2, this.transform.position.z);
+            DialogueBubble.GetComponent<SpriteRenderer>().sprite = icon;
         }
     }
 
