@@ -49,6 +49,10 @@ public class InstanceLostTimeGearDistrictContext : MonoBehaviour
         GameObject.Find("Guild(Clone)").name = "Guild";
         Guild.transform.position = new Vector3(10.3f, 0.92f, 0 - 43.69f);
 
+        GameObject Theater = (GameObject)Instantiate(Resources.Load("Theatre/TheaterPrefab"));
+        GameObject.Find("TheaterPrefab(Clone)").name = "Theater";
+        //Guild.transform.position = new Vector3(10.3f, 0.92f, 0 - 43.69f);
+
         GameObject upperWall = (GameObject)Instantiate(Resources.Load("mur/upperwall"));
         GameObject.Find("upperwall(Clone)").name = "upperwall";
         upperWall.transform.position = new Vector3(0.6f, 0, 0);
