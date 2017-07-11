@@ -64,16 +64,18 @@ public class DialogueController : MonoBehaviour {
                 GameObject.Find("DialoguePanel" + this.transform.name).GetComponent<RectTransform>().rect.width / 2, 
                 GameObject.Find("DialoguePanel" + this.transform.name).GetComponent<RectTransform>().rect.height / 6,
                 0, GameObject.Find("DialoguePanel" + this.transform.name).GetComponent<RectTransform>().rect.height / 2 
-                + GameObject.Find("DialoguePanel" + this.transform.name).GetComponent<RectTransform>().rect.height / 12,
+                - GameObject.Find("DialoguePanel" + this.transform.name).GetComponent<RectTransform>().rect.height / 12,
                 "", UserInterface.GetComponent<TextMonitoring>().GetArialTextFont, TextAnchor.MiddleCenter, FontStyle.Bold, 0, Color.black);
             GameObject.Find("PNJNamePanel").GetComponent<Text>().resizeTextForBestFit = true;
             // attribuer le nom en anglais via textmonitoring => créer une fct qui va donner les noms des pnjs en anglais et en français au besoin
 
             UserInterface.GetComponent<CreateUserInterfaceObject>().CreateGameObjectTextZone("DialogueTextPanel", GameObject.Find("DialoguePanel" + this.transform.name), true,
                 (GameObject.Find("DialoguePanel" + this.transform.name).GetComponent<RectTransform>().rect.width / 10) * 9, 
-                (GameObject.Find("DialoguePanel" + this.transform.name).GetComponent<RectTransform>().rect.height / 4) * 3,
+                (GameObject.Find("DialoguePanel" + this.transform.name).GetComponent<RectTransform>().rect.height / 4) * 2,
                 0, 0, "", UserInterface.GetComponent<TextMonitoring>().GetArialTextFont, TextAnchor.MiddleLeft, FontStyle.Bold,
                 0, Color.black);
+            GameObject.Find("DialogueTextPanel").GetComponent<Text>().resizeTextForBestFit = true;
+            GameObject.Find("DialogueTextPanel").GetComponent<Text>().verticalOverflow = VerticalWrapMode.Truncate;
 
             UserInterface.GetComponent<CreateUserInterfaceObject>().CreateGameObjectButtonWithText("ButtonAccepted", GameObject.Find("DialoguePanel" + this.transform.name), true,
                 GameObject.Find("DialoguePanel" + this.transform.name).GetComponent<RectTransform>().rect.width / 4,

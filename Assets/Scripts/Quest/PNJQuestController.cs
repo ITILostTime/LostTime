@@ -326,7 +326,7 @@ public class PNJQuestController : MonoBehaviour
         //delete old file 
         System.IO.File.Delete(tmpFilePath + "PNJ");
 
-        //UnityEditor.AssetDatabase.Refresh();
+        UnityEditor.AssetDatabase.Refresh();
 
         string str = ReadJSON("JSON/PNJ");
         Debug.Log(str);
@@ -378,7 +378,7 @@ public class PNJQuestController : MonoBehaviour
             //delete old file 
             System.IO.File.Delete(tmpFilePath + "QuestTest");
 
-            //UnityEditor.AssetDatabase.Refresh();
+            UnityEditor.AssetDatabase.Refresh();
 
             string str = ReadJSON("JSON/QuestTest");
             QuestTest = JSON.Parse(str);

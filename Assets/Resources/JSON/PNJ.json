@@ -1,5 +1,5 @@
 {
-  "PNJCount": 6,
+  "PNJCount": 10,
   "SceneMax": 2,
   "Scene": [
     {
@@ -19,7 +19,7 @@
           "ListQuestID": [
             {
               "QuestID1": 1.1,
-              "QuestID2": 1.3
+              "QuestID2": 0
             }
           ]
         },
@@ -37,54 +37,106 @@
           "ListQuestID": [ { "QuestID1": 1.2 } ]
         },
         {
-          "PNJName": "Julien",
+          "PNJName": "PIerre",
           "PNJCurrentQuestID": 0,
           "PNJQuestIDMax": 2,
           "PNJJob": "citizen1",
-          "PositionX": 14,
-          "PositionY": 5,
-          "PositionZ": 0,
+          "PositionX": 20.19,
+          "PositionY": -0.55,
+          "PositionZ": -6.71,
           "RotationX": 0,
-          "RotationY": 0,
+          "RotationY": -72.48,
           "RotationZ": 0,
-          "ListQuestID": [ {  } ]
+          "ListQuestID": [ {} ]
         },
         {
           "PNJName": "Julie",
           "PNJCurrentQuestID": 0,
           "PNJQuestIDMax": 1,
           "PNJJob": "citizen3",
-          "PositionX": 14,
-          "PositionY": 5,
-          "PositionZ": -5,
+          "PositionX": 19.16,
+          "PositionY": -0.04,
+          "PositionZ": 7.22,
           "RotationX": 0,
-          "RotationY": 0,
+          "RotationY": -72.48,
           "RotationZ": 0,
           "ListQuestID": [ {} ]
         },
         {
-          "PNJName": "Bidule",
+          "PNJName": "Yacine",
           "PNJCurrentQuestID": 0,
           "PNJQuestIDMax": 1,
           "PNJJob": "citizen2",
-          "PositionX": 14,
-          "PositionY": 0,
-          "PositionZ": -3,
+          "PositionX": 11.14,
+          "PositionY": 2.03,
+          "PositionZ": -49.24,
           "RotationX": 0,
-          "RotationY": 0,
+          "RotationY": -6.72,
           "RotationZ": 0,
           "ListQuestID": [ {} ]
         },
         {
-          "PNJName": "Yoyo",
+          "PNJName": "Quentin",
           "PNJCurrentQuestID": 0,
           "PNJQuestIDMax": 1,
           "PNJJob": "citizen3",
-          "PositionX": 14,
-          "PositionY": 0,
-          "PositionZ": -3,
+          "PositionX": -10.94,
+          "PositionY": 0.84,
+          "PositionZ": 7.21,
           "RotationX": 0,
-          "RotationY": 0,
+          "RotationY": 100,
+          "RotationZ": 0,
+          "ListQuestID": [ {} ]
+        },
+        {
+          "PNJName": "Guillaume",
+          "PNJCurrentQuestID": 0,
+          "PNJQuestIDMax": 1,
+          "PNJJob": "citizen1",
+          "PositionX": -26.82,
+          "PositionY": 1.72,
+          "PositionZ": 39.51,
+          "RotationX": 0,
+          "RotationY": 109.27,
+          "RotationZ": 0,
+          "ListQuestID": [ {} ]
+        },
+        {
+          "PNJName": "Eric",
+          "PNJCurrentQuestID": 0,
+          "PNJQuestIDMax": 1,
+          "PNJJob": "citizen1",
+          "PositionX": 7.83,
+          "PositionY": 0.71,
+          "PositionZ": 25.08,
+          "RotationX": 0,
+          "RotationY": 96.3,
+          "RotationZ": 0,
+          "ListQuestID": [ {} ]
+        },
+        {
+          "PNJName": "Patrice",
+          "PNJCurrentQuestID": 0,
+          "PNJQuestIDMax": 1,
+          "PNJJob": "citizen3",
+          "PositionX": 17.19,
+          "PositionY": 0.05,
+          "PositionZ": 35.84,
+          "RotationX": 0,
+          "RotationY": 96.3,
+          "RotationZ": 0,
+          "ListQuestID": [ {} ]
+        },
+        {
+          "PNJName": "Corinne",
+          "PNJCurrentQuestID": 0,
+          "PNJQuestIDMax": 1,
+          "PNJJob": "citizen2",
+          "PositionX": 6.34,
+          "PositionY": 0.05,
+          "PositionZ": -2.68,
+          "RotationX": 0,
+          "RotationY": 150,
           "RotationZ": 0,
           "ListQuestID": [ {} ]
         }
